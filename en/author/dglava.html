@@ -16,6 +16,7 @@
                 <nav><ul>
                     <li><a href="http://dglava.github.io/en/pages/zasto.html">Why</a></li>
                     <li><a href="http://dglava.github.io/en/category/linux.html">Linux</a></li>
+                    <li><a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></li>
                     <li><a href="http://dglava.github.io/en/archives.html">Archive</a></li>
                     <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/en/theme/images/git.png"></a></li>
                     <li><a href="http://www.last.fm/user/dinoglava"><img src="http://dglava.github.io/en/theme/images/lastfm.png"></a></li>
@@ -26,7 +27,34 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/lightdm-openbox.html">Smooth transition between LightDM and Openbox</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/lista-ne-moze-manje.html">As little as possible</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-04-01T00:00:00+02:00">
+                Published: Fri, 01 Apr 2016
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/muzika.html">muzika</a> <a href="http://dglava.github.io/en/tag/lista.html">lista</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../lista-ne-moze-manje.html">bs</a>
+
+</footer><!-- /.post-info --><p>Bohren &amp; der Club of Gore - <a href="https://www.youtube.com/watch?v=lbACcNY8R0I">4</a></p>
+<p>Jim Fox - Descansos, past</p>
+<p>Arve Henriksen - Evening Call</p>
+<p>The Dead Texan - <a href="https://www.youtube.com/watch?v=v0fQP4NNJb8">A Chronicle of Early Failures, Part Two</a></p>
+<p>Mihály Víg - <a href="https://www.youtube.com/watch?v=m9FBdTFUe0g">Eső II.</a></p><p><a href="http://dglava.github.io/en/lista-ne-moze-manje.html#disqus_thread">Comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/lightdm-openbox.html" rel="bookmark"
+                           title="Permalink to Smooth transition between LightDM and Openbox">Smooth transition between LightDM and Openbox</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-03-21T00:00:00+01:00">
                 Published: Mon, 21 Mar 2016
@@ -36,7 +64,7 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/en/tag/lightdm.html">lightdm</a> </p>Translations:
         <a href="http://dglava.github.io/en/../lightdm-openbox.html">bs</a>
 
-</footer><!-- /.post-info --><p>The ugly transition between LigthDM, or more specifically its GTK greeter,
+</footer><!-- /.post-info -->                <p>The ugly transition between LigthDM, or more specifically its GTK greeter,
 and Openbox is kind of annoying. A gray background pops up shortly before
 the desktop wallpaper gets drawn (assuming you use a wallpaper).</p>
 <p>The ugly transition in action:</p>
@@ -45,40 +73,10 @@ the desktop wallpaper gets drawn (assuming you use a wallpaper).</p>
 </video>
 
 <p>Digging around, I found out that Openbox actually
-<a href="https://github.com/danakj/openbox/blob/d0ba8806689ea80b6a739122aaf8dac81d2a3e5c/data/autostart/openbox-autostart.in#L3-L12">runs x/e/hsetroot at startup</a>.
-to set the background color. To get rid of that ugly, temporary background
-during logging in, all you have to do is either delete or comment out the lines
-in Openbox's autostart bash script.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Set a background color</span>
-<span class="c1">#BG=&quot;&quot;</span>
-<span class="c1">#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=hsetroot</span>
-<span class="c1">#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=esetroot</span>
-<span class="c1">#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=xsetroot</span>
-<span class="c1">#fi</span>
-<span class="c1">#test -z $BG || $BG -solid &quot;#303030&quot;</span>
-</pre></div>
-
-
-<p>On Arch, the file you have to edit is <code>/usr/lib/openbox/openbox-autostart</code>.
-Other distributions probably keep it in the same place, but you can find the
-autostart's file location by checking the output of</p>
-<div class="highlight"><pre><span></span>ps x <span class="p">|</span> grep openbox
-</pre></div>
-
-
-<p>Finally, the transition should be smooth now, especially if your display manager's
-background is the same as your desktop background.</p>
-<video width="320" height="240" controls>
-  <source src="http://dglava.github.io/en/../images/login2.webm" type="video/webm">
-</video><p><a href="http://dglava.github.io/en/lightdm-openbox.html#disqus_thread">Comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<a href="https://github.com/danakj/openbox/blob/d0ba8806689ea80b6a739122aaf8dac81d2a3e5c/data/autostart/openbox-autostart.in#L3-L12">runs x/e ...</a></p>
+                <a class="readmore" href="http://dglava.github.io/en/lightdm-openbox.html">read more</a>
+<p><a href="http://dglava.github.io/en/lightdm-openbox.html#disqus_thread">Comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
