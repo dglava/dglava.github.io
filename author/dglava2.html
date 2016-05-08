@@ -2,7 +2,7 @@
 <html lang="bs">
 <head>
         <meta charset="utf-8" />
-        <title>dglava - openbox</title>
+        <title>dglava - dglava</title>
         <link rel="stylesheet" href="http://dglava.github.io/theme/css/main.css" />
 
         <!--[if IE]>
@@ -25,73 +25,8 @@
                 </ul></nav>
         </header><!-- /#banner -->
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/lightdm-openbox.html">Lijep prelaz između LightDMa i Openboxa</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2016-03-21T00:00:00+01:00">
-                Objavljeno: Pon, 21 Mar 2016
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/tag/lightdm.html">lightdm</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/lightdm-openbox.html">en</a>
-
-</footer><!-- /.post-info --><p>Jedna stvar koja me je pomalo nervirala je ružni prelaz između displej menadžera,
-u mom slučaju LightDMa, i desktopa, odnosno Openboxa. Druga desktop okruženja,
-kao naprimjer Xfce, imaju tečan prelaz. Nakon prijavljivanja nestanu elementi
-displej menadžera, pozadina ostane i na kraju se pojave elementi desktopa kao
-što je alatna traka. Sve glatko, jedno za drugim bez ikakvog prekida pozadine.</p>
-<p>Kod Openboxa je situacija malo drugačija. Tokom prelaska, nakratko se pokaže
-crna pozadina prije nego što se uspostavi pozadina desktopa.</p>
-<p>Primjer ružnog prelaza:</p>
-<video width="320" height="240" controls>
-  <source src="http://dglava.github.io/images/login1.webm" type="video/webm">
-</video>
-
-<p>Kao i uvijek, prvo rješenje je bilo hakasto i neidealno. Koristio sam
-<a href="https://github.com/kokoko3k/gopreload">GoPreload</a> da učitam u RAM tokom
-<em>bootovanja</em> sve fajlove koje koristi program za postavljanje pozadine,
-<a href="https://github.com/l3ib/nitrogen">Nitrogen</a>. Prelaz je bio brži, ali je
-crna pozadina još uvijek bljesnula nakratko.</p>
-<h4>Lijepi prelaz</h4>
-<p>Neželjena, crna boja pozadine je zapravo
-<a href="https://github.com/danakj/openbox/blob/d0ba8806689ea80b6a739122aaf8dac81d2a3e5c/data/autostart/openbox-autostart.in#L3-L12">standardna boja desktopa kod Openboxa</a>.
-Prema tome Openbox postavi crnu (zapravo je sivkasta <em>#303030</em>) boju
-pozadine, pa se tek nakon toga postavi pozadinska slika. Da bi se izbjeglo,
-potrebno je spriječiti Openbox da postavi boju <em>X root</em> prozora nakon starta.
-Sve što treba uraditi je izbaciti ili komentarisati dio openbox-autostart fajla:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Set a background color</span>
-<span class="c1">#BG=&quot;&quot;</span>
-<span class="c1">#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=hsetroot</span>
-<span class="c1">#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=esetroot</span>
-<span class="c1">#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=xsetroot</span>
-<span class="c1">#fi</span>
-<span class="c1">#test -z $BG || $BG -solid &quot;#303030&quot;</span>
-</pre></div>
-
-
-<p>Na Archu se taj fajl nalazi u <code>/usr/lib/openbox/openbox-autostart</code>. Kod
-drugih distribucija bi isto trebao biti tu, ako nije pogledajte sa</p>
-<div class="highlight"><pre><span></span>ps x <span class="p">|</span> grep openbox
-</pre></div>
-
-
-<p>gdje se nalazi. To je onaj fajl poslije --startup opcije.</p>
-<p>Sada je prelaz neprimjetan ako koristite istu pozadinu LightDM <em>greetera</em>
-i Openboxove radne površine.</p>
-<video width="320" height="240" controls>
-  <source src="http://dglava.github.io/images/login2.webm" type="video/webm">
-</video><p><a href="http://dglava.github.io/lightdm-openbox.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
                 <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
+                    <ol id="posts-list" class="hfeed" start="2">
             <li><article class="hentry">
                 <header>
                     <h1><a href="http://dglava.github.io/gedit-dbus-overlay.html" rel="bookmark"
@@ -117,6 +52,10 @@ je to ...</p>
 <p><a href="http://dglava.github.io/gedit-dbus-overlay.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="http://dglava.github.io/author/dglava.html">&laquo;</a>
+    Page 2 / 2
+</p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
         </section><!-- /#extras -->

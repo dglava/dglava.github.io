@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="http://dglava.github.io/">dglava. </a></h1>
+                <h1><a href="http://dglava.github.io/">dglava </a></h1>
                 <nav><ul>
                     <li><a href="http://dglava.github.io/pages/zasto.html">Zašto</a></li>
                     <li class="active"><a href="http://dglava.github.io/category/linux.html">Linux</a></li>
@@ -55,7 +55,7 @@ fajlove Geditom preko Thunara skrol traka se i dalje skrivala automatski.
 Prvo sam posumnjao da je kriv Thunar, čak sam otvorio i
 <a href="https://forum.xfce.org/viewtopic.php?id=9776">temu</a> na Xfce forumu, ali
 se na kraju ispostavilo da nije.</p>
-<h3>Šta se tačno dešavalo?</h3>
+<h4>Šta se tačno dešavalo?</h4>
 <p>Otvarajući Gedit iz terminala, skrol trake su bile uvijek vidljive.
 Otvarajući Gedit i tekstualni fajl iz Thunara, skrol trake su se skrivale.
 GTK_OVERLAY_SCROLLING je bio eksportovan uspiješno; <em>printenv | grep GTK_OVERLAY</em>
@@ -76,7 +76,7 @@ dretvi na Redditu. Dodavanje</p>
 
 <p>u Openboxov environment fajl je radilo, trake su bile vidljive uvijek.
 Gdbus call je bio nagovještaj za konačno rješenje problema.</p>
-<h3>Zašto se dešavalo</h3>
+<h4>Zašto se dešavalo</h4>
 <p>Dbus je kriv za sve. Otvaranje fajla Geditom preko Thunara koristi Geditov
 .desktop fajl. U njemu se nalazi linija <code>DBusActivatable=true</code> koja dozvoljava
 da se Gedit otvori putem Dbus aktivacije. Tako otvoreni Gedit iz nekog razloga

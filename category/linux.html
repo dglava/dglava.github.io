@@ -2,7 +2,7 @@
 <html lang="bs">
 <head>
         <meta charset="utf-8" />
-        <title>dglava. - Linux</title>
+        <title>dglava - Linux</title>
         <link rel="stylesheet" href="http://dglava.github.io/theme/css/main.css" />
 
         <!--[if IE]>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="http://dglava.github.io/">dglava. </a></h1>
+                <h1><a href="http://dglava.github.io/">dglava </a></h1>
                 <nav><ul>
                     <li><a href="http://dglava.github.io/pages/zasto.html">Zašto</a></li>
                     <li class="active"><a href="http://dglava.github.io/category/linux.html">Linux</a></li>
@@ -27,7 +27,92 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/lightdm-openbox.html">Lijep prelaz između LightDMa i Openboxa</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/gtk-teme.html">Prihvatljive GTK teme</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-05-08T00:00:00+02:00">
+                Objavljeno: Ned, 08 Maj 2016
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/gtk-teme.html">en</a>
+
+</footer><!-- /.post-info --><p>Gledajući stranice kao što su <a href="http://www.deviantart.com/browse/all/customization/skins/linuxutil/desktopenv/gnome/gtk3/?order=9">DeviantArt</a>
+ili <a href="http://gnome-look.org/index.php?xcontentmode=167">GNOME Look</a> reklo bi
+se da uopšte nije problem pronaći normalnu temu za korištenje. Da to nije
+slučaj osoba sazna veoma brzo.</p>
+<h4>Problem: GTK verzija</h4>
+<p>Tužna istina je da velika većina tih tema ne podržava posljednju (tokom pisanja
+ovog teksta to je 3.20) verziju GTKa. U slučaju da tema nije prilagođena
+za posljednju verziju očekujte mnoge sitne ali i velike problema oko prikaza.
+Pogotovo je 3.20 verzija GTKa mnogo pobrkala stvar, ali navodno je to u cilju
+izbjegavanja upravo tih grešaka oko tema u budućnosti.</p>
+<p>Problem je također činjenica da većina tema nudi samo podršku za jednu
+GTK verziju. Neke imaju samo GTK3, a neke samo GTK2 temu, dok neke imaju
+obe, ali se veoma razlikuju, te ne pružaju dosljedno iskustvo.</p>
+<h4>Problem: Bole oči</h4>
+<p>Drugi problem je to što je većina tema prosto ružna. Ima više stepena ružnoće.
+Od <a href="http://gnome-look.org/content/preview.php?preview=1&amp;id=106602&amp;file1=106602-1.jpg&amp;file2=&amp;file3=&amp;name=gnome+3+%28lol%29">"ubij me"</a>
+pa do relativno prihvatljivih tema koje imaju samo jednu manu. Među te spada
+Arc tema. Tehnički je uredna, podržava posljednju verziju, ima GTK2 i 3
+temu sa još dosta drugih (Xfwm, GNOME Shell, Cinnamon, itd.). Jedini problem,
+barem meni, je ogromni kontrast sa crnom/bijelom bojom. Središnji dio sa
+sadržajem je na čisto bijeloj podlozi koja bukvalno sija u pored crne trake
+sa strane. Sivkaste teme, tipa Greybird ili Zukitwo, nemaju taj problem.</p>
+<h4>Prihvatljive teme</h4>
+<p>Trenutno ne postoji ni jedna bez modifikacije. Najbliže što sam našao su
+sjajne Zuki-Themes. Sivkaste su, kontrast je na mimimumu i redovno su ažurirane.
+Jedini nedostatak im je svijetla boja za markirani sadržaj i previše istaknuti
+dugmići za zatvaranje prozora (samo GTK3 CSD).</p>
+<p>Napravio sam par izmjena među kojima je najbitnija manje agresivna boja
+za markirani sadržaj. Izgleda <a href="https://raw.githubusercontent.com/dglava/zukitre-6699cc/master/preview.png">ovako</a>.</p>
+<p><a href="https://github.com/dglava/zukitre-6699cc"><strong>Preuzmi Zukitre-6699CC</strong></a></p>
+<p>Pored moje modifikacije Zukitre teme, koliko-toliko su prihvatljive i ove:</p>
+<ul>
+<li>
+<p><a href="https://github.com/lassekongo83/zuki-themes">Zuki-Themes</a><br />
+GTK2/3; 3.20; redovno ažurirano<br />
+Većinom uredno, osim gore navedenih problemčića.</p>
+</li>
+<li>
+<p>Adwaita<br />
+GTK2/3; 3.20; redovno ažurirano<br />
+Podrazumijevana tema za GTK, tako da uvijek radi i kad izađe nova verzija.
+Bila bi sasvim u redu da je samo manje svijetla (više siva) i plića (<em>flat</em>).</p>
+</li>
+<li>
+<p><a href="https://github.com/horst3180/arc-theme">Arc</a><br />
+GTK2/3; 3.20; redovno ažurirano<br />
+Prevelik kontrast, čudna kombinacija okruglih i četvrtastih elemenata, skoro
+pa siv tekst na bijelu podlogu tj. nedovoljan kontrast tamo gdje treba.</p>
+</li>
+<li>
+<p><a href="https://github.com/numixproject/numix-gtk-theme">Numix</a><br />
+GTK2/3; 3.20; redovno ažurirano<br />
+Isto problemi sa crno/bijelim kontrastom, plus izgleda djetinjasto sa crvenim
+detaljima.</p>
+</li>
+<li>
+<p><a href="https://github.com/shimmerproject/Greybird">Greybird</a><br />
+GTK2/3; 3.18; redovno ažurirano<br />
+Lagano na oči sa sivom bojom. Jedina mana je što (još) ne podržava GTK 3.20.</p>
+</li>
+</ul>
+<p>Ako znate još kompletnih tema koje se redovno ažuriraju, javite mi da ih
+dodam na spisak.</p><p><a href="http://dglava.github.io/gtk-teme.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/lightdm-openbox.html" rel="bookmark"
+                           title="Permalink to Lijep prelaz između LightDMa i Openboxa">Lijep prelaz između LightDMa i Openboxa</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-03-21T00:00:00+01:00">
                 Objavljeno: Pon, 21 Mar 2016
@@ -37,60 +122,14 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/tag/lightdm.html">lightdm</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/lightdm-openbox.html">en</a>
 
-</footer><!-- /.post-info --><p>Jedna stvar koja me je pomalo nervirala je ružni prelaz između displej menadžera,
+</footer><!-- /.post-info -->                <p>Jedna stvar koja me je pomalo nervirala je ružni prelaz između displej menadžera,
 u mom slučaju LightDMa, i desktopa, odnosno Openboxa. Druga desktop okruženja,
 kao naprimjer Xfce, imaju tečan prelaz. Nakon prijavljivanja nestanu elementi
 displej menadžera, pozadina ostane i na kraju se pojave elementi desktopa kao
-što je alatna traka. Sve glatko, jedno za drugim bez ikakvog prekida pozadine.</p>
-<p>Kod Openboxa je situacija malo drugačija. Tokom prelaska, nakratko se pokaže 
-crna pozadina prije nego što se uspostavi pozadina desktopa.</p>
-<p>Primjer ružnog prelaza:</p>
-<video width="320" height="240" controls>
-  <source src="http://dglava.github.io/images/login1.webm" type="video/webm">
-</video>
-
-<p>Kao i uvijek, prvo rješenje je bilo hakasto i neidealno. Koristio sam
-<a href="https://github.com/kokoko3k/gopreload">GoPreload</a> da učitam u RAM tokom
-<em>bootovanja</em> sve fajlove koje koristi program za postavljanje pozadine, 
-<a href="https://github.com/l3ib/nitrogen">Nitrogen</a>. Prelaz je bio brži, ali je
-crna pozadina još uvijek bljesnula nakratko.</p>
-<h3>Lijepi prelaz</h3>
-<p>Neželjena, crna boja pozadine je zapravo
-<a href="https://github.com/danakj/openbox/blob/d0ba8806689ea80b6a739122aaf8dac81d2a3e5c/data/autostart/openbox-autostart.in#L3-L12">standardna boja desktopa kod Openboxa</a>.
-Prema tome Openbox postavi crnu (zapravo je sivkasta <em>#303030</em>) boju
-pozadine, pa se tek nakon toga postavi pozadinska slika. Da bi se izbjeglo,
-potrebno je spriječiti Openbox da postavi boju <em>X root</em> prozora nakon starta.
-Sve što treba uraditi je izbaciti ili komentarisati dio openbox-autostart fajla:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Set a background color</span>
-<span class="c1">#BG=&quot;&quot;</span>
-<span class="c1">#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=hsetroot</span>
-<span class="c1">#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=esetroot</span>
-<span class="c1">#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=xsetroot</span>
-<span class="c1">#fi</span>
-<span class="c1">#test -z $BG || $BG -solid &quot;#303030&quot;</span>
-</pre></div>
-
-
-<p>Na Archu se taj fajl nalazi u <code>/usr/lib/openbox/openbox-autostart</code>. Kod
-drugih distribucija bi isto trebao biti tu, ako nije pogledajte sa</p>
-<div class="highlight"><pre><span></span>ps x <span class="p">|</span> grep openbox
-</pre></div>
-
-
-<p>gdje se nalazi. To je onaj fajl poslije --startup opcije.</p>
-<p>Sada je prelaz neprimjetan ako koristite istu pozadinu LightDM <em>greetera</em>
-i Openboxove radne površine.</p>
-<video width="320" height="240" controls>
-  <source src="http://dglava.github.io/images/login2.webm" type="video/webm">
-</video><p><a href="http://dglava.github.io/lightdm-openbox.html#disqus_thread">Komentari</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Drugi članci</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+što je alatna traka ...</p>
+                <a class="readmore" href="http://dglava.github.io/lightdm-openbox.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/lightdm-openbox.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -114,7 +153,7 @@ da li lebdite mišom preko njih. Problemi su nastupili ubrzo jer su scrol
 trake prekrivale čitavu liniju nakon što se automatski pojave. Mislim da
 je to ...</p>
                 <a class="readmore" href="http://dglava.github.io/gedit-dbus-overlay.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/gedit-dbus-overlay.html#disqus_thread">Komentari</a>.</p>                </div><!-- /.entry-content -->
+<p><a href="http://dglava.github.io/gedit-dbus-overlay.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
                 </section><!-- /#content -->
