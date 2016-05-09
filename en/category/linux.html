@@ -27,7 +27,75 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/gtk-teme.html">Acceptable GTK themes</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/compton-xfcenotifyd.html">Xfce4-notifyd fading out</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-05-09T00:00:00+02:00">
+                Published: Mon, 09 May 2016
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/compton.html">compton</a> <a href="http://dglava.github.io/en/tag/xfce4-notifyd.html">xfce4-notifyd</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../compton-xfcenotifyd.html">bs</a>
+
+</footer><!-- /.post-info --><p>Whoever is using xfce4-notifyd with a compositor has probably noticed
+that there's an independent fade-out going on for every notification pop-up.
+Apparently it's built into xfce4-notifyd itself and it's the standard
+behaviour if xfce4-notifyd is running on a composited desktop.</p>
+<p>I wasn't the <a href="https://github.com/chjj/compton/issues/242">only one</a> complaining
+about it as it turns out. There's also a <a href="https://bugzilla.xfce.org/show_bug.cgi?id=11341">bug report</a>
+on the Xfce bug tracker. Unfortunately, there's no solution for this or a compile
+time option which would disable it.</p>
+<p>Being slightly curious, I decided to check out the source code and see if
+there's a really, really obvious part responsible for the fading out. It didn't
+take long for me to find someting that looked promising. At line 627, in
+<a href="http://git.xfce.org/apps/xfce4-notifyd/tree/xfce4-notifyd/xfce-notify-window.c">this</a>
+file, there's an <code>xfce_notify_window_expire_timeout()</code> function. Since I
+have literally zero C programming knowledge, I decided to just remove a few
+lines from it and see what happens.</p>
+<p>Weirdly enough, it worked. The notification pop-ups disappeared instantly,
+without that unnecessary fade-out. Everything else seemed to work as intended,
+but I haven't had enough time to test it for potential side-effects.</p>
+<p>Arch users can use the PKGBUILD from <a href="https://github.com/dglava/pkgbuilds">this</a>
+repository. If you're not using Arch, you can manually patch the package
+with the patch below.</p>
+<div class="highlight"><pre><span></span><span class="gd">--- xfce4-notifyd-0.2.4/xfce4-notifyd/xfce-notify-window.c  2013-04-21 16:42:08.000000000 +0200</span>
+<span class="gi">+++ xfce-notify-window.c    2016-05-09 17:47:19.730137584 +0200</span>
+<span class="gu">@@ -631,18 +631,9 @@</span>
+
+     window-&gt;expire_id = 0;
+
+<span class="gd">-    fade_transparent =</span>
+<span class="gd">-        gdk_screen_is_composited(gtk_window_get_screen(GTK_WINDOW(window)));</span>
+<span class="gd">-</span>
+<span class="gd">-    if(fade_transparent) {</span>
+<span class="gd">-        window-&gt;fade_id = g_timeout_add(FADE_CHANGE_TIMEOUT,</span>
+<span class="gd">-                                        xfce_notify_window_fade_timeout,</span>
+<span class="gd">-                                        window);</span>
+<span class="gd">-    } else {</span>
+<span class="gd">-        /* it might be 800ms early, but that&#39;s ok */</span>
+<span class="gd">-        g_signal_emit(G_OBJECT(window), signals[SIG_CLOSED], 0,</span>
+<span class="gd">-                      XFCE_NOTIFY_CLOSE_REASON_EXPIRED);</span>
+<span class="gd">-    }</span>
+<span class="gi">+    /* it might be 800ms early, but that&#39;s ok */</span>
+<span class="gi">+    g_signal_emit(G_OBJECT(window), signals[SIG_CLOSED], 0,</span>
+<span class="gi">+                    XFCE_NOTIFY_CLOSE_REASON_EXPIRED);</span>
+
+     return FALSE;
+ }
+</pre></div><p><a href="http://dglava.github.io/en/compton-xfcenotifyd.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/gtk-teme.html" rel="bookmark"
+                           title="Permalink to Acceptable GTK themes">Acceptable GTK themes</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-05-08T00:00:00+02:00">
                 Published: Sun, 08 May 2016
@@ -37,63 +105,16 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
         <a href="http://dglava.github.io/en/../gtk-teme.html">bs</a>
 
-</footer><!-- /.post-info --><p>When it comes to GTK themes, there are usually two problems.</p>
+</footer><!-- /.post-info -->                <p>When it comes to GTK themes, there are usually two problems.</p>
 <ol>
 <li>The theme doesn't keep up with GTK changes</li>
 <li>The theme is ugly</li>
 </ol>
 <p>While the latter one might be subjective, you can't really argue against
-theme incompatibility. There are only a handful of themes which keep up with
-the GTK development cycle, greatly narrowing down your options.</p>
-<p>Personally, I prefer my themes to be light/greyish and without any bright
-colors. From the few actively maintained themes (mentioned below),
-none really satisfies my demands. Fortunately the Zuki-Themes come pretty close
-to it.</p>
-<p>I tweaked Zukitre a bit, replacing the highlight color and changing the
-check/radio buttons. The result is a pretty neutral and "boring" GTK theme
-which gets out of my way. <a href="https://raw.githubusercontent.com/dglava/zukitre-6699cc/master/preview.png">Here's how it looks like.</a></p>
-<p><a href="https://github.com/dglava/zukitre-6699cc"><strong>Download Zukitre-6699CC</strong></a></p>
-<p>Apart from my slightly tweaked Zukitre theme, here's a list of other maintained
-and complete (covering both GTK2 and 3) GTK themes:</p>
-<ul>
-<li>
-<p><a href="https://github.com/lassekongo83/zuki-themes">Zuki-Themes</a><br />
-GTK2/3; 3.20; actively maintained<br />
-Amazing and simple themes with only a few issues that are mentioned above.</p>
-</li>
-<li>
-<p>Adwaita<br />
-GTK2/3; 3.20; actively maintained<br />
-The default GTK theme which means it will always work. Could be a little
-bit less white/bright and flatter.</p>
-</li>
-<li>
-<p><a href="https://github.com/horst3180/arc-theme">Arc</a><br />
-GTK2/3; 3.20; actively maintained<br />
-Looks too bright due to the high contrast between the dark sidebars and
-pure white content areas. Grey text on white background is also slightly obnoxious.
-I also dislike the mixture of round and straight corners.</p>
-</li>
-<li>
-<p><a href="https://github.com/numixproject/numix-gtk-theme">Numix</a><br />
-GTK2/3; 3.20; actively maintained<br />
-Same as with Arc, the contrast between the black and white areas is too off-putting.
-The red highlight color is also too distracting and aggressive.</p>
-</li>
-<li>
-<p><a href="https://github.com/shimmerproject/Greybird">Greybird</a><br />
-GTK2/3; 3.18; actively maintained<br />
-Pretty easy on the eyes with its consistently grey color. The only downside
-is that it hasn't been ported (yet) to GTK 3.20.</p>
-</li>
-</ul>
-<p>If you know more themes which are complete and actively maintained, let
-me know and I'll add them to the list.</p><p><a href="http://dglava.github.io/en/gtk-teme.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+theme incompatibility. There are only a handful of themes which keep up with ...</p>
+                <a class="readmore" href="http://dglava.github.io/en/gtk-teme.html">read more</a>
+<p><a href="http://dglava.github.io/en/gtk-teme.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -124,32 +145,11 @@ the desktop wallpaper gets drawn (assuming you use a wallpaper).</p>
                 <a class="readmore" href="http://dglava.github.io/en/lightdm-openbox.html">read more</a>
 <p><a href="http://dglava.github.io/en/lightdm-openbox.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/gedit-dbus-overlay.html" rel="bookmark"
-                           title="Permalink to Gedit, OverlayScrolling and DBus">Gedit, OverlayScrolling and DBus</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-03-18T00:00:00+01:00">
-                Published: Fri, 18 Mar 2016
-        </abbr>
-
-<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>tags: <a href="http://dglava.github.io/en/tag/gedit.html">gedit</a> <a href="http://dglava.github.io/en/tag/dbus.html">dbus</a> <a href="http://dglava.github.io/en/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../gedit-dbus-overlay.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>GTK3's overlay scrollbars can be quite annoying. Especially if the theme
-you're using isn't keeping up with the latest changes and is barely functional.
-Fortunately, there's an easy way to disable them by using the GTK_OVERLAY_SCROLLING
-environment variable.</p>
-<p>My Openbox environment had some trouble with that ...</p>
-                <a class="readmore" href="http://dglava.github.io/en/gedit-dbus-overlay.html">read more</a>
-<p><a href="http://dglava.github.io/en/gedit-dbus-overlay.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="http://dglava.github.io/en/category/linux2.html">&raquo;</a>
+</p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
         </section><!-- /#extras -->

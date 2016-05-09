@@ -27,7 +27,82 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/gtk-teme.html">Prihvatljive GTK teme</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/compton-xfcenotifyd.html">Xfce4-notifyd samostalno vene</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-05-09T00:00:00+02:00">
+                Objavljeno: Pon, 09 Maj 2016
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/compton.html">compton</a> <a href="http://dglava.github.io/tag/xfce4-notifyd.html">xfce4-notifyd</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/compton-xfcenotifyd.html">en</a>
+
+</footer><!-- /.post-info --><p>Vene u smislu "postepeno postaje proziran i nestane" ili na engleski <em>fade-out</em>.
+Nedavno sam počeo koristiti Compton na desktopu. Prvenstveno zbog v-synca
+za Nouveau drajvere koje koristim za grafičku. Kao prijatna nuspojava tu
+je i lijepši izgled sa sjenama, prozirnošću i upravo pomenutim
+<em>fade-inom</em> i <em>fade-outom</em>. Kao i uvijek, ne može ništa proći bez problema.</p>
+<p>Ovaj put je problem stvarao xfce4-notifyd. To je implementacija freedesktop
+specifikacije za notifikacije koja dolazi sa Xfce radnim okruženjem, ali
+se može naravno koristiti i van njega. Primjetio sam da se notifikacije
+postepeno sklanjaju i "izlape", umjesto da nestanu odmah. Provjerio sam
+Comptonov konfiguracioni fajl i dodao xfce4-notifyd za ignorisanje <em>fade-outa</em>,
+ali se i dalje postepeno gasio. </p>
+<p>Brzo pretraživanje interneta <a href="https://github.com/chjj/compton/issues/242">kaže</a> kaže
+da je krivac xfce4-notifyd. Naime xfce4-notifyd ima sopstveno <em>fade-outovanje</em>
+u slučaju da je pokrenut kompozitor. Ne postoji opcija za isključivanje
+prema <a href="https://bugzilla.xfce.org/show_bug.cgi?id=11341">ovome</a> izvještaju za bag.</p>
+<p>Ne znam zašto, ali sam pogledao izvorni fajl od xfce4-notifyd. Pošto nemam
+apsolutno nimalo znanja o C programiranju, jedino što mi je preostalo je
+da nasumično pokušam izbrisati nešto što liči kao da ima uticaja na <em>fade-out</em>.
+Našao sam fajl za <a href="http://git.xfce.org/apps/xfce4-notifyd/tree/xfce4-notifyd/xfce-notify-window.c">xfce-notify-window.c</a> i
+tražio gdje se sve spominje <em>fade-out</em>. Obećavajuće je izgledala
+<code>xfce_notify_window_expire_timeout()</code> funkcija koja počinje na liniji 627.</p>
+<p>Bukvalno sam samo izbrisao linije gdje se provjerava je li desktop kompozitovan
+(zahvaljujući poznatim, istim imenima kao i za Python GObject veze).
+Pogodio sam iz prvog puta. Xfce4-notifyd notifikacije su nestajale odjednom,
+bez sopstevnog, neovisnog <em>fade-outa</em>.</p>
+<p>Arch korisnici mogu koristiti ovaj <a href="https://github.com/dglava/pkgbuilds">PKGBUILD</a>, a
+svi drugi dole navedeni patch fajl. Nisam testirao dovoljno, ali mislim da je
+sve u redu i pored grubog i hakastog brisanja.</p>
+<div class="highlight"><pre><span></span><span class="gd">--- xfce4-notifyd-0.2.4/xfce4-notifyd/xfce-notify-window.c  2013-04-21 16:42:08.000000000 +0200</span>
+<span class="gi">+++ xfce-notify-window.c    2016-05-09 17:47:19.730137584 +0200</span>
+<span class="gu">@@ -631,18 +631,9 @@</span>
+
+     window-&gt;expire_id = 0;
+
+<span class="gd">-    fade_transparent =</span>
+<span class="gd">-        gdk_screen_is_composited(gtk_window_get_screen(GTK_WINDOW(window)));</span>
+<span class="gd">-</span>
+<span class="gd">-    if(fade_transparent) {</span>
+<span class="gd">-        window-&gt;fade_id = g_timeout_add(FADE_CHANGE_TIMEOUT,</span>
+<span class="gd">-                                        xfce_notify_window_fade_timeout,</span>
+<span class="gd">-                                        window);</span>
+<span class="gd">-    } else {</span>
+<span class="gd">-        /* it might be 800ms early, but that&#39;s ok */</span>
+<span class="gd">-        g_signal_emit(G_OBJECT(window), signals[SIG_CLOSED], 0,</span>
+<span class="gd">-                      XFCE_NOTIFY_CLOSE_REASON_EXPIRED);</span>
+<span class="gd">-    }</span>
+<span class="gi">+    /* it might be 800ms early, but that&#39;s ok */</span>
+<span class="gi">+    g_signal_emit(G_OBJECT(window), signals[SIG_CLOSED], 0,</span>
+<span class="gi">+                    XFCE_NOTIFY_CLOSE_REASON_EXPIRED);</span>
+
+     return FALSE;
+ }
+</pre></div><p><a href="http://dglava.github.io/compton-xfcenotifyd.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/gtk-teme.html" rel="bookmark"
+                           title="Permalink to Prihvatljive GTK teme">Prihvatljive GTK teme</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-05-08T00:00:00+02:00">
                 Objavljeno: Ned, 08 Maj 2016
@@ -37,74 +112,16 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/gtk-teme.html">en</a>
 
-</footer><!-- /.post-info --><p>Gledajući stranice kao što su <a href="http://www.deviantart.com/browse/all/customization/skins/linuxutil/desktopenv/gnome/gtk3/?order=9">DeviantArt</a>
+</footer><!-- /.post-info -->                <p>Gledajući stranice kao što su <a href="http://www.deviantart.com/browse/all/customization/skins/linuxutil/desktopenv/gnome/gtk3/?order=9">DeviantArt</a>
 ili <a href="http://gnome-look.org/index.php?xcontentmode=167">GNOME Look</a> reklo bi
 se da uopšte nije problem pronaći normalnu temu za korištenje. Da to nije
 slučaj osoba sazna veoma brzo.</p>
 <h4>Problem: GTK verzija</h4>
 <p>Tužna istina je da velika većina tih tema ne podržava posljednju (tokom pisanja
-ovog teksta to je 3.20) verziju GTKa. U slučaju da tema nije prilagođena
-za posljednju verziju očekujte mnoge sitne ali i velike problema oko prikaza.
-Pogotovo je 3.20 verzija GTKa mnogo pobrkala stvar, ali navodno je to u cilju
-izbjegavanja upravo tih grešaka oko tema u budućnosti.</p>
-<p>Problem je također činjenica da većina tema nudi samo podršku za jednu
-GTK verziju. Neke imaju samo GTK3, a neke samo GTK2 temu, dok neke imaju
-obe, ali se veoma razlikuju, te ne pružaju dosljedno iskustvo.</p>
-<h4>Problem: Bole oči</h4>
-<p>Drugi problem je to što je većina tema prosto ružna. Ima više stepena ružnoće.
-Od <a href="http://gnome-look.org/content/preview.php?preview=1&amp;id=106602&amp;file1=106602-1.jpg&amp;file2=&amp;file3=&amp;name=gnome+3+%28lol%29">"ubij me"</a>
-pa do relativno prihvatljivih tema koje imaju samo jednu manu. Među te spada
-Arc tema. Tehnički je uredna, podržava posljednju verziju, ima GTK2 i 3
-temu sa još dosta drugih (Xfwm, GNOME Shell, Cinnamon, itd.). Jedini problem,
-barem meni, je ogromni kontrast sa crnom/bijelom bojom. Središnji dio sa
-sadržajem je na čisto bijeloj podlozi koja bukvalno sija u pored crne trake
-sa strane. Sivkaste teme, tipa Greybird ili Zukitwo, nemaju taj problem.</p>
-<h4>Prihvatljive teme</h4>
-<p>Trenutno ne postoji ni jedna bez modifikacije. Najbliže što sam našao su
-sjajne Zuki-Themes. Sivkaste su, kontrast je na mimimumu i redovno su ažurirane.
-Jedini nedostatak im je svijetla boja za markirani sadržaj i previše istaknuti
-dugmići za zatvaranje prozora (samo GTK3 CSD).</p>
-<p>Napravio sam par izmjena među kojima je najbitnija manje agresivna boja
-za markirani sadržaj. Izgleda <a href="https://raw.githubusercontent.com/dglava/zukitre-6699cc/master/preview.png">ovako</a>.</p>
-<p><a href="https://github.com/dglava/zukitre-6699cc"><strong>Preuzmi Zukitre-6699CC</strong></a></p>
-<p>Pored moje modifikacije Zukitre teme, koliko-toliko su prihvatljive i ove:</p>
-<ul>
-<li>
-<p><a href="https://github.com/lassekongo83/zuki-themes">Zuki-Themes</a><br />
-GTK2/3; 3.20; redovno ažurirano<br />
-Većinom uredno, osim gore navedenih problemčića.</p>
-</li>
-<li>
-<p>Adwaita<br />
-GTK2/3; 3.20; redovno ažurirano<br />
-Podrazumijevana tema za GTK, tako da uvijek radi i kad izađe nova verzija.
-Bila bi sasvim u redu da je samo manje svijetla (više siva) i plića (<em>flat</em>).</p>
-</li>
-<li>
-<p><a href="https://github.com/horst3180/arc-theme">Arc</a><br />
-GTK2/3; 3.20; redovno ažurirano<br />
-Prevelik kontrast, čudna kombinacija okruglih i četvrtastih elemenata, skoro
-pa siv tekst na bijelu podlogu tj. nedovoljan kontrast tamo gdje treba.</p>
-</li>
-<li>
-<p><a href="https://github.com/numixproject/numix-gtk-theme">Numix</a><br />
-GTK2/3; 3.20; redovno ažurirano<br />
-Isto problemi sa crno/bijelim kontrastom, plus izgleda djetinjasto sa crvenim
-detaljima.</p>
-</li>
-<li>
-<p><a href="https://github.com/shimmerproject/Greybird">Greybird</a><br />
-GTK2/3; 3.18; redovno ažurirano<br />
-Lagano na oči sa sivom bojom. Jedina mana je što (još) ne podržava GTK 3.20.</p>
-</li>
-</ul>
-<p>Ako znate još kompletnih tema koje se redovno ažuriraju, javite mi da ih
-dodam na spisak.</p><p><a href="http://dglava.github.io/gtk-teme.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+ovog teksta to je 3 ...</p>
+                <a class="readmore" href="http://dglava.github.io/gtk-teme.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/gtk-teme.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -127,29 +144,6 @@ Dopplereffekt - <a href="https://www.youtube.com/watch?v=JqV5CfldWAw">Hyperellip
 Bowery Electric - <a href="https://youtu.be/KAo4svd7IR4?t=16m20s">Under the Sun</a></p>
                 <a class="readmore" href="http://dglava.github.io/topa-hladna-fizika-bs, en.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/topa-hladna-fizika-bs, en.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/ne-moze-manje-bs, en.html" rel="bookmark"
-                           title="Permalink to Ne može manje">Ne može manje</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-04-01T00:00:00+02:00">
-                Objavljeno: Fri 01 April 2016
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/muzika.html">muzika</a> <a href="http://dglava.github.io/tag/lista.html">lista</a> </p>
-</footer><!-- /.post-info -->                <p>Bohren &amp; der Club of Gore - <a href="https://www.youtube.com/watch?v=lbACcNY8R0I">4</a><br />
-Jim Fox - Descansos, past<br />
-Arve Henriksen - Evening Call<br />
-The Dead Texan - <a href="https://www.youtube.com/watch?v=v0fQP4NNJb8">A Chronicle of Early Failures, Part Two</a><br />
-Mihály Víg - <a href="https://www.youtube.com/watch?v=m9FBdTFUe0g">Eső II.</a>  </p>
-                <a class="readmore" href="http://dglava.github.io/ne-moze-manje-bs, en.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/ne-moze-manje-bs, en.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
