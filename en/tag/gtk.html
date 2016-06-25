@@ -26,7 +26,38 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/gtk-teme.html">Acceptable GTK themes</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/qtstyles.html">Keeping the GTK style with Qt 5.7</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-06-25T00:00:00+02:00">
+                Published: Sat, 25 Jun 2016
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/qt.html">qt</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../qtstyles.html">bs</a>
+
+</footer><!-- /.post-info --><p>Since version 5.7, Qt has moved the qtstyle support from <a href="https://github.com/qt/qtbase/commit/899a815414e95da8d9429a4a4f4d7094e49cfc55">qtbase</a>
+to a <a href="https://github.com/qt/qtstyleplugins/commit/102da7d50231fc5723dba6e72340bef3d29471aa">separate repository</a>.
+For the user that means that he can't just simply export <code>QT_STYLE_OVERRIDE=GTK+</code>
+to make Qt applications use the GTK widget style and theme.</p>
+<p>To get the old behaviour back, you need to install <a href="https://code.qt.io/cgit/qt/qtstyleplugins.git/">qtstyleplugins</a>.
+Arch users can use <a href="https://github.com/dglava/pkgbuilds/blob/master/qt5-qtstyleplugins/PKGBUILD">this PKGBUILD</a>.
+Once you have it installed, don't forget to export <code>QT_STYLE_OVERRIDE=gtk2</code>. Pay attention
+to the <strong>gtk2</strong> value. Before the split, the environment variable's value was GTK+, but
+now you have to set it to gtk2.</p><p><a href="http://dglava.github.io/en/qtstyles.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/gtk-teme.html" rel="bookmark"
+                           title="Permalink to Acceptable GTK themes">Acceptable GTK themes</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-05-08T00:00:00+02:00">
                 Published: Sun, 08 May 2016
@@ -36,63 +67,16 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
         <a href="http://dglava.github.io/en/../gtk-teme.html">bs</a>
 
-</footer><!-- /.post-info --><p>When it comes to GTK themes, there are usually two problems.</p>
+</footer><!-- /.post-info -->                <p>When it comes to GTK themes, there are usually two problems.</p>
 <ol>
 <li>The theme doesn't keep up with GTK changes</li>
 <li>The theme is ugly</li>
 </ol>
 <p>While the latter one might be subjective, you can't really argue against
-theme incompatibility. There are only a handful of themes which keep up with
-the GTK development cycle, greatly narrowing down your options.</p>
-<p>Personally, I prefer my themes to be light/greyish and without any bright
-colors. From the few actively maintained themes (mentioned below),
-none really satisfies my demands. Fortunately the Zuki-Themes come pretty close
-to it.</p>
-<p>I tweaked Zukitre a bit, replacing the highlight color and changing the
-check/radio buttons. The result is a pretty neutral and "boring" GTK theme
-which gets out of my way. <a href="https://raw.githubusercontent.com/dglava/zukitre-6699cc/master/preview.png">Here's how it looks like.</a></p>
-<p><a href="https://github.com/dglava/zukitre-6699cc"><strong>Download Zukitre-6699CC</strong></a></p>
-<p>Apart from my slightly tweaked Zukitre theme, here's a list of other maintained
-and complete (covering both GTK2 and 3) GTK themes:</p>
-<ul>
-<li>
-<p><a href="https://github.com/lassekongo83/zuki-themes">Zuki-Themes</a><br />
-GTK2/3; 3.20; actively maintained<br />
-Amazing and simple themes with only a few issues that are mentioned above.</p>
-</li>
-<li>
-<p>Adwaita<br />
-GTK2/3; 3.20; actively maintained<br />
-The default GTK theme which means it will always work. Could be a little
-bit less white/bright and flatter.</p>
-</li>
-<li>
-<p><a href="https://github.com/horst3180/arc-theme">Arc</a><br />
-GTK2/3; 3.20; actively maintained<br />
-Looks too bright due to the high contrast between the dark sidebars and
-pure white content areas. Grey text on white background is also slightly obnoxious.
-I also dislike the mixture of round and straight corners.</p>
-</li>
-<li>
-<p><a href="https://github.com/numixproject/numix-gtk-theme">Numix</a><br />
-GTK2/3; 3.20; actively maintained<br />
-Same as with Arc, the contrast between the black and white areas is too off-putting.
-The red highlight color is also too distracting and aggressive.</p>
-</li>
-<li>
-<p><a href="https://github.com/shimmerproject/Greybird">Greybird</a><br />
-GTK2/3; 3.18; actively maintained<br />
-Pretty easy on the eyes with its consistently grey color. The only downside
-is that it hasn't been ported (yet) to GTK 3.20.</p>
-</li>
-</ul>
-<p>If you know more themes which are complete and actively maintained, let
-me know and I'll add them to the list.</p><p><a href="http://dglava.github.io/en/gtk-teme.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+theme incompatibility. There are only a handful of themes which keep up with ...</p>
+                <a class="readmore" href="http://dglava.github.io/en/gtk-teme.html">read more</a>
+<p><a href="http://dglava.github.io/en/gtk-teme.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

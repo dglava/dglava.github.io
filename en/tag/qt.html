@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>dglava - Authors</title>
+        <title>dglava - qt</title>
         <link rel="stylesheet" href="http://dglava.github.io/en/theme/css/main.css" />
 
         <!--[if IE]>
@@ -24,13 +24,28 @@
                 </ul></nav>
         </header><!-- /#banner -->
 
-<section id="content" class="body">
-    <h1>Authors on dglava</h1>
-    <ul>
-        <li><a href="http://dglava.github.io/en/author/dglava.html">dglava</a> (5)</li>
-    </ul>
-</section>
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/qtstyles.html">Keeping the GTK style with Qt 5.7</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-06-25T00:00:00+02:00">
+                Published: Sat, 25 Jun 2016
+        </abbr>
 
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/qt.html">qt</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../qtstyles.html">bs</a>
+
+</footer><!-- /.post-info --><p>Since version 5.7, Qt has moved the qtstyle support from <a href="https://github.com/qt/qtbase/commit/899a815414e95da8d9429a4a4f4d7094e49cfc55">qtbase</a>
+to a <a href="https://github.com/qt/qtstyleplugins/commit/102da7d50231fc5723dba6e72340bef3d29471aa">separate repository</a>.
+For the user that means that he can't just simply export <code>QT_STYLE_OVERRIDE=GTK+</code>
+to make Qt applications use the GTK widget style and theme.</p>
+<p>To get the old behaviour back, you need to install <a href="https://code.qt.io/cgit/qt/qtstyleplugins.git/">qtstyleplugins</a>.
+Arch users can use <a href="https://github.com/dglava/pkgbuilds/blob/master/qt5-qtstyleplugins/PKGBUILD">this PKGBUILD</a>.
+Once you have it installed, don't forget to export <code>QT_STYLE_OVERRIDE=gtk2</code>. Pay attention
+to the <strong>gtk2</strong> value. Before the split, the environment variable's value was GTK+, but
+now you have to set it to gtk2.</p><p><a href="http://dglava.github.io/en/qtstyles.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
         <section id="extras" class="body">
         </section><!-- /#extras -->
 
