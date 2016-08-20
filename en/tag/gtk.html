@@ -26,7 +26,47 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/qtstyles.html">Keeping the GTK style with Qt 5.7</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/qtplatform-style.html">Uniform look for Qt and GTK applications, part 2</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-08-21T00:00:00+02:00">
+                Published: Sun, 21 Aug 2016
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/qt.html">qt</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../qtplatform-style.html">bs</a>
+
+</footer><!-- /.post-info --><p>Until now I've been using the GTK2 widget style for Qt as mentioned in
+<a href="http://dglava.github.io/en/qtstyles.html">this blog post</a>.
+It worked fine, but it had the disadvantage of not utilizing my system
+icon and font settings, nor using the better GTK2 file dialog (it used
+the awful default Qt file dialog). There was a way to get those things
+to work, but with mixed results, which often resulted in segfaults (<a href="https://bbs.archlinux.org/viewtopic.php?id=214147">described in this thread</a>).
+Basically, you can't use the GTK3 platform theme for Qt along with the
+GTK2 widget theme for Qt.</p>
+<p>Fortunately someone was kind enough to bundle (and create) a GTK2 platform AND widget
+theme for Qt5. You can find it <a href="https://bitbucket.org/trialuser02/qt5gtk2">here</a>.
+I tested it and it works well. All of the Qt5 applications can now use
+my system icon theme and what's even more important: the better GTK2
+file-dialog.</p>
+<p><img alt="qt5gtk-2.png" src="http://dglava.github.io/en/../images/qt5gtk2-2.png" title="qBittorrent using the GTK file-dialog" /></p>
+<p>Arch users can use <a href="https://github.com/dglava/pkgbuilds/tree/master/qt5gtk2-git">this PKGBUILD</a>
+to install it. Make sure to remove the <code>QT_STYLE_OVERRIDE=gtk2</code> environment
+variable if you had it set and export <code>QT_QPA_PLATFORMTHEME=qt5gtk2</code> instead.</p>
+<p>Link to the project's git repository and website: <a href="https://bitbucket.org/trialuser02/qt5gtk2">https://bitbucket.org/trialuser02/qt5gtk2</a></p><p><a href="http://dglava.github.io/en/qtplatform-style.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/qtstyles.html" rel="bookmark"
+                           title="Permalink to Keeping the GTK style with Qt 5.7">Keeping the GTK style with Qt 5.7</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-06-25T00:00:00+02:00">
                 Published: Sat, 25 Jun 2016
@@ -36,20 +76,14 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/qt.html">qt</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
         <a href="http://dglava.github.io/en/../qtstyles.html">bs</a>
 
-</footer><!-- /.post-info --><p>Since version 5.7, Qt has moved the qtstyle support from <a href="https://github.com/qt/qtbase/commit/899a815414e95da8d9429a4a4f4d7094e49cfc55">qtbase</a>
+</footer><!-- /.post-info -->                <p>Since version 5.7, Qt has moved the qtstyle support from <a href="https://github.com/qt/qtbase/commit/899a815414e95da8d9429a4a4f4d7094e49cfc55">qtbase</a>
 to a <a href="https://github.com/qt/qtstyleplugins/commit/102da7d50231fc5723dba6e72340bef3d29471aa">separate repository</a>.
 For the user that means that he can't just simply export <code>QT_STYLE_OVERRIDE=GTK+</code>
 to make Qt applications use the GTK widget style and theme.</p>
-<p>To get the old behaviour back, you need to install <a href="https://code.qt.io/cgit/qt/qtstyleplugins.git/">qtstyleplugins</a>.
-Arch users can use <a href="https://github.com/dglava/pkgbuilds/blob/master/qt5-qtstyleplugins/PKGBUILD">this PKGBUILD</a>.
-Once you have it installed, don't forget to export <code>QT_STYLE_OVERRIDE=gtk2</code>. Pay attention
-to the <strong>gtk2</strong> value. Before the split, the environment variable's value was GTK+, but
-now you have to set it to gtk2.</p><p><a href="http://dglava.github.io/en/qtstyles.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>To get the old behaviour back, you need to ...</p>
+                <a class="readmore" href="http://dglava.github.io/en/qtstyles.html">read more</a>
+<p><a href="http://dglava.github.io/en/qtstyles.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -77,32 +111,11 @@ theme incompatibility. There are only a handful of themes which keep up with ...
                 <a class="readmore" href="http://dglava.github.io/en/gtk-teme.html">read more</a>
 <p><a href="http://dglava.github.io/en/gtk-teme.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/gedit-dbus-overlay.html" rel="bookmark"
-                           title="Permalink to Gedit, OverlayScrolling and DBus">Gedit, OverlayScrolling and DBus</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-03-18T00:00:00+01:00">
-                Published: Fri, 18 Mar 2016
-        </abbr>
-
-<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>tags: <a href="http://dglava.github.io/en/tag/gedit.html">gedit</a> <a href="http://dglava.github.io/en/tag/dbus.html">dbus</a> <a href="http://dglava.github.io/en/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../gedit-dbus-overlay.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>GTK3's overlay scrollbars can be quite annoying. Especially if the theme
-you're using isn't keeping up with the latest changes and is barely functional.
-Fortunately, there's an easy way to disable them by using the GTK_OVERLAY_SCROLLING
-environment variable.</p>
-<p>My Openbox environment had some trouble with that ...</p>
-                <a class="readmore" href="http://dglava.github.io/en/gedit-dbus-overlay.html">read more</a>
-<p><a href="http://dglava.github.io/en/gedit-dbus-overlay.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="http://dglava.github.io/en/tag/gtk2.html">&raquo;</a>
+</p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
         </section><!-- /#extras -->

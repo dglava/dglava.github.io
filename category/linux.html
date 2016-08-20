@@ -27,7 +27,56 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/qtstyles.html">Zadržati GTK stil za Qt 5.7</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/qtplatform-style.html">Bolje ujedinjeni izgledi Qt i GTK programa</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-08-21T00:00:00+02:00">
+                Objavljeno: Ned, 21 Aug 2016
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/qt.html">qt</a> <a href="http://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/qtplatform-style.html">en</a>
+
+</footer><!-- /.post-info --><p>Do sada sam koristio samo GTK2 <em>widget</em> temu (<a href="http://dglava.github.io/qtstyles.html">objašnjeno ovdje</a>)
+za postizanje ujednačenog izgleda desktopa i GTK i Qt programa.
+Bilo je nekoliko problema sa <em>segfaultovanjem</em>, jer GTK2 <em>widget</em> stil nije radio
+sa GTK3 platformskom temom (<a href="https://bbs.archlinux.org/viewtopic.php?id=214147">novom u Qt5.7</a>).
+Platformska tema je zadužena za ikone, postavke fonta i izbornik fajlova.
+Widget tema je zadužena za izgled dugmića, izbornika i uopšteno programa.</p>
+<p>Bilo je par drugih riješenja da se ukombinuje (koristeći qt5ct i navedeni GTK2 stil),
+ali se nisam zamarao, jer je bilo poprilično bespotrebno komplikovano. Gore
+navedeni GTK2 stil za Qt5 programe je bio sasvim dovoljan. Ikone i očajni
+Qt5 izbornik mi nisu toliko smetali.</p>
+<h3>qt5gtk2</h3>
+<p>Neki dan sam naletio na nešto interesantno u tom pogledu na <a href="https://bbs.archlinux.org/viewtopic.php?id=216065">Arch forumu</a>.
+Jedna osoba je napravila ili preciznije rečeno ukombinovala GTK2 platformsku
+temu sa GTK2 <em>widget</em> stilom. Projekat se zove <a href="https://bitbucket.org/trialuser02/qt5gtk2">qt5gtk2</a>.
+Isprobao sam ga i za čudo radi bez problema. Sada mogu imati odgovarajuće
+ikone, postavke fonta, izbornik za fajlove istovremeno sa odgovarajućom
+temom (<em>widget</em> stilom).</p>
+<p><img alt="qt5gtk-1.png" src="http://dglava.github.io/images/qt5gtk2-1.png" title="Izgled qBittorrent-a sa qt5gtk2 paketom" /></p>
+<p>Nadam se da je ovo samo privremeno riješenje. Idealno bi bilo kad bi neko
+napravio GTK3 <em>widget</em> temu (Qt5 stil). Sa mojom <a href="https://github.com/dglava/zukitre-6699cc">trenutnom GTK temom</a>
+GTK2 <em>widget</em> stil ima par manjih ružnoća. Ništa strašno što remeti
+korištenje, ali je ipak pomalo uzrujavajuće.</p>
+<p>Bitno je da izbrišete <code>QT_STYLE_OVERRIDE=gtk2</code> okolinsku promjenljivu, a
+umjesto nje eksportujte <code>QT_QPA_PLATFORMTHEME=qt5gtk2</code>.</p>
+<p>Qt5gtk2 možete preuzeti <a href="https://bitbucket.org/trialuser02/qt5gtk2">ovdje</a>.</p>
+<p>Arch korisnici mogu preuzeti moj <a href="https://github.com/dglava/pkgbuilds/tree/master/qt5gtk2-git">PKGBUILD odavde</a>.</p>
+<p><img alt="qt5gtk-2.png" src="http://dglava.github.io/images/qt5gtk2-2.png" title="Qt5 programi sad koriste GTK2 izbornik fajlova" /></p><p><a href="http://dglava.github.io/qtplatform-style.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/qtstyles.html" rel="bookmark"
+                           title="Permalink to Zadržati GTK stil za Qt 5.7">Zadržati GTK stil za Qt 5.7</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-06-25T00:00:00+02:00">
                 Objavljeno: Sub, 25 Jun 2016
@@ -37,22 +86,14 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/qt.html">qt</a> <a href="http://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/qtstyles.html">en</a>
 
-</footer><!-- /.post-info --><p>Od verzije 5.7, Qt je odbacio podršku za GTK izgled <em>widgeta</em>. Ne potpuno,
+</footer><!-- /.post-info -->                <p>Od verzije 5.7, Qt je odbacio podršku za GTK izgled <em>widgeta</em>. Ne potpuno,
 nego je samo prebačen u drugi repozitorij. Do sada se nalazio u <a href="https://github.com/qt/qtbase/commit/899a815414e95da8d9429a4a4f4d7094e49cfc55">qtbase</a>,
 ali je prebačen u <a href="https://github.com/qt/qtstyleplugins/commit/102da7d50231fc5723dba6e72340bef3d29471aa">qtstyleplugins</a>.
 Za korisnike to znači da više ne mogu jednostavno eksportovati <code>QT_STYLE_OVERRIDE=GTK+</code>
-da bi natjerali Qt programe da koriste GTK temu.</p>
-<p>Da bi zadržali staro ponašanje i izgled, sada je potrebno instalirati
-<a href="https://code.qt.io/cgit/qt/qtstyleplugins.git/">qtstyleplugins</a>. Arch
-korisnici se mogu poslužiti <a href="https://github.com/dglava/pkgbuilds/blob/master/qt5-qtstyleplugins/PKGBUILD">PKGBUILDom</a>.
-Nakon instalacije potrebno je eksportovati <code>QT_STYLE_OVERRIDE=gtk2</code>. Pažnju
-posvetite na vrijednost <strong>gtk2</strong>. Do sada je korišteno GTK+, ali sa novim
-načinom je potrebno promijeniti GTK+ u gtk2.</p><p><a href="http://dglava.github.io/qtstyles.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+da bi natjerali Qt programe da ...</p>
+                <a class="readmore" href="http://dglava.github.io/qtstyles.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/qtstyles.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -77,33 +118,6 @@ je i lijepši izgled sa sjenama, prozirnošću i upravo pomenutim
 <em>fade-inom</em> i <em>fade-outom</em>. Kao i uvijek, ne ...</p>
                 <a class="readmore" href="http://dglava.github.io/compton-xfcenotifyd.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/compton-xfcenotifyd.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/gtk-teme.html" rel="bookmark"
-                           title="Permalink to Prihvatljive GTK teme">Prihvatljive GTK teme</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-05-08T00:00:00+02:00">
-                Objavljeno: Ned, 08 Maj 2016
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/gtk-teme.html">en</a>
-
-</footer><!-- /.post-info -->                <p>Gledajući stranice kao što su <a href="http://www.deviantart.com/browse/all/customization/skins/linuxutil/desktopenv/gnome/gtk3/?order=9">DeviantArt</a>
-ili <a href="http://gnome-look.org/index.php?xcontentmode=167">GNOME Look</a> reklo bi
-se da uopšte nije problem pronaći normalnu temu za korištenje. Da to nije
-slučaj osoba sazna veoma brzo.</p>
-<h4>Problem: GTK verzija</h4>
-<p>Tužna istina je da velika većina tih tema ne podržava posljednju (tokom pisanja
-ovog teksta to je 3 ...</p>
-                <a class="readmore" href="http://dglava.github.io/gtk-teme.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/gtk-teme.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
