@@ -26,7 +26,93 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/qtplatform-style.html">Uniform look for Qt and GTK applications, part 2</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/ergo525.html">Genius Ergo 525 on Linux</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-08-24T00:00:00+02:00">
+                Published: Wed, 24 Aug 2016
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/genius-ergo.html">genius ergo</a> <a href="http://dglava.github.io/en/tag/hardware.html">hardware</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../ergo525.html">bs</a>
+
+</footer><!-- /.post-info --><p>I'm the owner of a Genius Ergo 525 mouse and I'm satisfied with it. It's
+working great out-of-the-box on Linux, except for two minor issues.
+The first one is the fact that the Forward and Back
+side-buttons are swapped. The second one isn't really an issue, but extra
+functionality which I wanted from the mouse: remapping the middle side button
+to "Refresh".</p>
+<h3>Forward/Back buttons</h3>
+<p>Swapping them to restore the expected functionality was pretty easy. First
+I used <em>xinput</em> to find out the number of available buttons on my mouse.</p>
+<div class="highlight"><pre><span></span>$ xinput get-button-map 8
+<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
+</pre></div>
+
+
+<p>The 8 after "get-button-map" is our device ID, which you can find out by
+running <code>xinput</code> without any arguments. Next you need to find out which
+number our Forward and Back buttons are. Run xinput with the "query-state"
+command while holding down the respective button.</p>
+<div class="highlight"><pre><span></span>$ xinput query-state 8
+...
+    button<span class="o">[</span>7<span class="o">]=</span>up
+    button<span class="o">[</span>8<span class="o">]=</span>down
+    button<span class="o">[</span>9<span class="o">]=</span>up
+...
+</pre></div>
+
+
+<p>To swap the buttons, you can use xinput's "set-button-map" option. Just literally
+swap the 8 and 9 when you're entering the command.</p>
+<div class="highlight"><pre><span></span>$ xinput set-button-map <span class="m">8</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
+</pre></div>
+
+
+<p>To make this behaviour permanent, you can run the above command on every
+login. I didn't like that, since I prefer having a neat Xorg configuration
+file instead. I added this section to my Xorg configuration file and it's
+working as intended. The <code>MatchUSBID</code> ID can be found out from the <code>lsusb</code>
+output. It's the two 4-character words separated by a colon.</p>
+<div class="highlight"><pre><span></span>Section &quot;InputClass&quot;
+    Identifier &quot;Ergo Mouse&quot;
+    MatchUSBID &quot;0458:0087&quot;
+    Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;
+EndSection
+</pre></div>
+
+
+<h3>Binding the other button to "Refresh"</h3>
+<p>I used <em>udev</em> to handle the binding. There's a nice guide on <a href="http://www.vxnick.com/blog/2014/10/binding-extra-mouse-buttons-on-linux/">this</a>
+blog. As explained in there, I used <em>evtest</em> to find out the scancode and
+added it into our udev hwdb file.</p>
+<p>There was one important difference: the blog said to use <code>keyboard:usb:vXXXXpXXXX*</code>,
+but it didn't work for me. I found the solution on <a href="http://martins-prolog.blogspot.ba/2014/09/logitech-g600-in-arch-linux.html">another blog</a>.
+Using <code>evdev:input:b*vXXXXpXXXX*</code> worked perfectly. I don't know why, because
+I can't find any documentation online about that specific syntax.</p>
+<p>Here's how my /etc/udev/hwdb.d/10-genius-mouse.hwdb looks like:</p>
+<div class="highlight"><pre><span></span><span class="n">evdev</span><span class="o">:</span><span class="n">input</span><span class="o">:</span><span class="n">b</span><span class="o">*</span><span class="n">v0458p0087</span><span class="o">*</span>
+ <span class="n">KEYBOARD_KEY_90006</span><span class="o">=</span><span class="n">f5</span>
+</pre></div>
+
+
+<p>Finally, you have to run these two commands to update the database:</p>
+<div class="highlight"><pre><span></span>udevadm hwdb --update
+udevadm trigger
+</pre></div><p><a href="http://dglava.github.io/en/ergo525.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/qtplatform-style.html" rel="bookmark"
+                           title="Permalink to Uniform look for Qt and GTK applications, part 2">Uniform look for Qt and GTK applications, part 2</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-08-20T00:00:00+02:00">
                 Published: Sat, 20 Aug 2016
@@ -36,29 +122,14 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/qt.html">qt</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
         <a href="http://dglava.github.io/en/../qtplatform-style.html">bs</a>
 
-</footer><!-- /.post-info --><p>Until now I've been using the GTK2 widget style for Qt as mentioned in
+</footer><!-- /.post-info -->                <p>Until now I've been using the GTK2 widget style for Qt as mentioned in
 <a href="http://dglava.github.io/en/qtstyles.html">this blog post</a>.
 It worked fine, but it had the disadvantage of not utilizing my system
 icon and font settings, nor using the better GTK2 file dialog (it used
-the awful default Qt file dialog). There was a way to get those things
-to work, but with mixed results, which often resulted in segfaults (<a href="https://bbs.archlinux.org/viewtopic.php?id=214147">described in this thread</a>).
-Basically, you can't use the GTK3 platform theme for Qt along with the
-GTK2 widget theme for Qt.</p>
-<p>Fortunately someone was kind enough to bundle (and create) a GTK2 platform AND widget
-theme for Qt5. You can find it <a href="https://bitbucket.org/trialuser02/qt5gtk2">here</a>.
-I tested it and it works well. All of the Qt5 applications can now use
-my system icon theme and what's even more important: the better GTK2
-file-dialog.</p>
-<p><img alt="qt5gtk-2.png" src="http://dglava.github.io/en/../images/qt5gtk2-2.png" title="qBittorrent using the GTK file-dialog" /></p>
-<p>Arch users can use <a href="https://github.com/dglava/pkgbuilds/tree/master/qt5gtk2-git">this PKGBUILD</a>
-to install it. Make sure to remove the <code>QT_STYLE_OVERRIDE=gtk2</code> environment
-variable if you had it set and export <code>QT_QPA_PLATFORMTHEME=qt5gtk2</code> instead.</p>
-<p>Link to the project's git repository and website: <a href="https://bitbucket.org/trialuser02/qt5gtk2">https://bitbucket.org/trialuser02/qt5gtk2</a></p><p><a href="http://dglava.github.io/en/qtplatform-style.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+the awful default Qt file dialog ...</p>
+                <a class="readmore" href="http://dglava.github.io/en/qtplatform-style.html">read more</a>
+<p><a href="http://dglava.github.io/en/qtplatform-style.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -84,34 +155,9 @@ to make Qt applications use the GTK widget style and theme.</p>
                 <a class="readmore" href="http://dglava.github.io/en/qtstyles.html">read more</a>
 <p><a href="http://dglava.github.io/en/qtstyles.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/compton-xfcenotifyd.html" rel="bookmark"
-                           title="Permalink to Xfce4-notifyd fading out">Xfce4-notifyd fading out</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-05-09T00:00:00+02:00">
-                Published: Mon, 09 May 2016
-        </abbr>
-
-<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>tags: <a href="http://dglava.github.io/en/tag/compton.html">compton</a> <a href="http://dglava.github.io/en/tag/xfce4-notifyd.html">xfce4-notifyd</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../compton-xfcenotifyd.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>Whoever is using xfce4-notifyd with a compositor has probably noticed
-that there's an independent fade-out going on for every notification pop-up.
-Apparently it's built into xfce4-notifyd itself and it's the standard
-behaviour if xfce4-notifyd is running on a composited desktop.</p>
-<p>I wasn't the <a href="https://github.com/chjj/compton/issues/242">only one</a> complaining ...</p>
-                <a class="readmore" href="http://dglava.github.io/en/compton-xfcenotifyd.html">read more</a>
-<p><a href="http://dglava.github.io/en/compton-xfcenotifyd.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 2
+    Page 1 / 3
         <a href="http://dglava.github.io/en/category/linux2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
