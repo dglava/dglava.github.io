@@ -32,12 +32,23 @@
         <abbr class="published" title="2016-05-09T00:00:00+02:00">
                 Objavljeno: Pon, 09 Maj 2016
         </abbr>
+        <br />
+        <abbr class="modified" title="2016-09-07T00:00:00+02:00">
+                Ažurirano: Sri, 07 Sep 2016
+        </abbr>
 
 <p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
 <p>tagovi: <a href="http://dglava.github.io/tag/compton.html">compton</a> <a href="http://dglava.github.io/tag/xfce4-notifyd.html">xfce4-notifyd</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/compton-xfcenotifyd.html">en</a>
 
-</footer><!-- /.post-info --><p>Vene u smislu "postepeno postaje proziran i nestane" ili na engleski <em>fade-out</em>.
+</footer><!-- /.post-info --><h3>Izmjena</h3>
+<p>Verzija 0.3.1 <em>xfce4-notifyd</em> je dodala skrivenu opciju "do-fadeout",
+tako da ovo hakasto riješenje nije više potrebno. Pomoću <em>xfconf-query</em>
+je moguće isključiti efekat:</p>
+<p><code>xfconf-query -c xfce4-notifyd -p /do-fadeout -n -t bool -s false</code></p>
+<hr />
+<hr />
+<p>Vene u smislu "postepeno postaje proziran i nestane" ili na engleski <em>fade-out</em>.
 Nedavno sam počeo koristiti Compton na desktopu. Prvenstveno zbog v-synca
 za Nouveau drajvere koje koristim za grafičku. Kao prijatna nuspojava tu
 je i lijepši izgled sa sjenama, prozirnošću i upravo pomenutim
@@ -62,9 +73,6 @@ tražio gdje se sve spominje <em>fade-out</em>. Obećavajuće je izgledala
 (zahvaljujući poznatim, istim imenima kao i za Python GObject veze).
 Pogodio sam iz prvog puta. Xfce4-notifyd notifikacije su nestajale odjednom,
 bez sopstevnog, neovisnog <em>fade-outa</em>.</p>
-<p>Arch korisnici mogu koristiti ovaj <a href="https://github.com/dglava/pkgbuilds">PKGBUILD</a>, a
-svi drugi dole navedeni patch fajl. Nisam testirao dovoljno, ali mislim da je
-sve u redu i pored grubog i hakastog brisanja.</p>
 <div class="highlight"><pre><span></span><span class="gd">--- xfce4-notifyd-0.2.4/xfce4-notifyd/xfce-notify-window.c  2013-04-21 16:42:08.000000000 +0200</span>
 <span class="gi">+++ xfce-notify-window.c    2016-05-09 17:47:19.730137584 +0200</span>
 <span class="gu">@@ -631,18 +631,9 @@</span>
