@@ -27,7 +27,93 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/ergo525.html">Genius Ergo 525 miš i Linux</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html">Medicinska sestra-tehničar — pitanja i odgovori za stručni ispit</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-11-01T00:00:00+01:00">
+                Objavljeno: Uto, 01 Nov 2016
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/strucni.html">strucni</a> <a href="http://dglava.github.io/tag/medicina.html">medicina</a> </p>
+</footer><!-- /.post-info --><h3>Šta je ovo?</h3>
+<p>Ovo je skup pitanja i odgovora za polaganje stručnog ispita za zanimanje
+medicinska sestra-tehničar. Pitanja su bila ažurna za vrijeme pisanja
+ovod članka, 01 Novembra 2016. godine. Preporučljivo je da se ne uzdate
+u ažurnost ovih pitanja, već da podignete najnovija iz ministarstva
+(što dobijete zajedno sa prijavom).</p>
+<p>Veliki dio odgovora sam uzeo iz zvaničnih knjiga koje su u upotrebi u
+srednjim školama. Odgovore iz pravnog dijela sam preuzeo iz relevantnih
+zakona. Uz svako pitanje je naznačena literatura koja je korištena.</p>
+<h3>Preuzmi pitanja</h3>
+<p><a href="http://dglava.github.io/images/medicinski_dio.pdf"><strong>Medicinski dio</strong></a></p>
+<p><a href="http://dglava.github.io/images/pravni_dio.pdf"><strong>Pravni dio</strong></a></p>
+<p><strong>Napomena:</strong> pitanja i odgovori su moj lični rad;
+ne prihvatam nikakvu odgovornost ni obavezu u vezi s informacijama u
+dokumentu (ovoj stranici).</p>
+<h3>Korisni dodatak</h3>
+<p>Za simulirano ispitivanje, možete koristiti ovu malu Python skriptu.
+Učita pitanja iz fajla i postavi vam 3 medicinska i 1 pravno (kao na
+ispitu). U direktoriju gdje vam skripta, morate imati i 2 tekstualna fajla
+sa pitanjima (<a href="http://dglava.github.io/images/med.txt">med.txt</a> i
+<a href="http://dglava.github.io/images/med.txt">prav.txt</a>).</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">otvori_pitanja</span><span class="p">(</span><span class="n">ime</span><span class="p">):</span>
+    <span class="n">pitanja</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">fajl</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">fajl</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+            <span class="n">pitanja</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="n">fajl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pitanja</span>
+
+<span class="k">def</span> <span class="nf">snimi_pitanja</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="n">pitanja</span><span class="p">):</span>
+    <span class="n">fajl</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pitanja</span><span class="p">:</span>
+        <span class="n">fajl</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="n">fajl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">pitaj</span><span class="p">(</span><span class="n">prva</span><span class="p">,</span> <span class="n">druga</span><span class="p">):</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">druga</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">med1</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
+        <span class="n">med2</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
+        <span class="n">med3</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
+        <span class="n">prav</span> <span class="o">=</span> <span class="n">druga</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">druga</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">druga</span><span class="p">)))</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="n">med1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">input</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">med2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">input</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">med3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">input</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">prav</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">input</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
+
+<span class="n">medicinska</span> <span class="o">=</span> <span class="n">otvori_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">)</span>
+<span class="n">pravna</span> <span class="o">=</span> <span class="n">otvori_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">pitaj</span><span class="p">(</span><span class="n">medicinska</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">,</span> <span class="n">medicinska</span><span class="p">)</span>
+    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">,</span> <span class="n">medicinska</span><span class="p">)</span>
+    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
+</pre></div><p><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/ergo525.html" rel="bookmark"
+                           title="Permalink to Genius Ergo 525 miš i Linux">Genius Ergo 525 miš i Linux</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-08-24T00:00:00+02:00">
                 Objavljeno: Sri, 24 Aug 2016
@@ -37,118 +123,13 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/genius-ergo.html">genius ergo</a> <a href="http://dglava.github.io/tag/hardware.html">hardware</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/ergo525.html">en</a>
 
-</footer><!-- /.post-info --><p>Ne želim ga ureći, ali me ovaj miš već služi 7 godina. Istina, iz dva puta.
+</footer><!-- /.post-info -->                <p>Ne želim ga ureći, ali me ovaj miš već služi 7 godina. Istina, iz dva puta.
 Kao i većina uređaja na Linuxu, radi dovoljno dobro već nakon priključivanja.
 Prepoznati su svi ekstra dugmići, čak i oni koji nisu radili na Windowsu kao
-što je horizontalno skrolovanje sa kolutićem. Stvar koja kvari perfektan
-učinak su pobrkani dugmići za naprijed i nazad. Osim toga htio sam staviti
-dugmić između "naprijed/nazad" da osvježava stranicu, tj. da se ponaša
-kao da sam pritisno F5 (dugmić označen na slici).</p>
-<p><img alt="Dugme za F5" src="http://dglava.github.io/images/ergo-mis.jpg" title="Dugmić koji funkcioniše kao F5" /></p>
-<h3>Pogrešni "naprijed/nazad" dugmići</h3>
-<p>Prvi problem, sa pobrkanim dugmićima, je bilo relativno jednostavno
-riješiti. Pomoću <em>xinput-a</em> možete saznati trenutni raspored dugmića.</p>
-<div class="highlight"><pre><span></span>$ xinput
-⎡ Virtual core pointer                      <span class="nv">id</span><span class="o">=</span><span class="m">2</span>    <span class="o">[</span>master pointer  <span class="o">(</span>3<span class="o">)]</span>
-⎜   ↳ Virtual core XTEST pointer                <span class="nv">id</span><span class="o">=</span><span class="m">4</span>    <span class="o">[</span>slave  pointer  <span class="o">(</span>2<span class="o">)]</span>
-⎜   ↳ Genius Ergo Mouse                         <span class="nv">id</span><span class="o">=</span><span class="m">8</span>    <span class="o">[</span>slave  pointer  <span class="o">(</span>2<span class="o">)]</span>
-⎣ Virtual core keyboard                     <span class="nv">id</span><span class="o">=</span><span class="m">3</span>    <span class="o">[</span>master keyboard <span class="o">(</span>2<span class="o">)]</span>
-    ↳ Virtual core XTEST keyboard               <span class="nv">id</span><span class="o">=</span><span class="m">5</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-    ↳ Power Button                              <span class="nv">id</span><span class="o">=</span><span class="m">6</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-    ↳ Power Button                              <span class="nv">id</span><span class="o">=</span><span class="m">7</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-    ↳ AT Translated Set <span class="m">2</span> keyboard              <span class="nv">id</span><span class="o">=</span><span class="m">9</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-    ↳ Genius Ergo Mouse                         <span class="nv">id</span><span class="o">=</span><span class="m">10</span>   <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-</pre></div>
-
-
-<p>Moj miš je Genius Ergo Mouse, a njegov <em>id</em> je 8. <em>xinput</em> ima mnogo
-opcija, a nama je interesantna <em>query-state</em> opcija. Pomoću nje možete
-vidjeti status uređaja, tj. u našem slučaju status pritisnutih dugmića. Postoje
-i drugi načini kako da saznate koje je koje dugme, ali je xinput koristan
-jer ga sigurno već imate instaliranog. Dok sam pritisno dugme za naprijed
-na mišu ovo je ispis komande (sa izostavljenim neinteresantnim stvarima):</p>
-<div class="highlight"><pre><span></span>$ xinput query-state 8
-...
-    button<span class="o">[</span>7<span class="o">]=</span>up
-    button<span class="o">[</span>8<span class="o">]=</span>down
-    button<span class="o">[</span>9<span class="o">]=</span>up
-...
-</pre></div>
-
-
-<p>Istu stvar sam ponovio za "nazad" dugmić, i saznao da je broj 9. Sad kad
-znamo koji je broj, možemo koristiti <em>xinput</em> da ih zamjenimo. Prvo
-izlistamo sve dugmiće što miš ima sa:</p>
-<div class="highlight"><pre><span></span>$ xinput get-button-map 8
-<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
-</pre></div>
-
-
-<p>Nakon toga zamjenimo mjesta 8 i 9.</p>
-<div class="highlight"><pre><span></span>$ xinput set-button-map <span class="m">8</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
-</pre></div>
-
-
-<p>Da bi promjena ostala trajna možete staviti gore navedenu komandu da se
-izvrši pri pokretanju X sesije. Meni je draže koristiti Xorg konfiguracioni
-fajl. Ovako izgleda (izostavljene stvari nevezane za miš):</p>
-<div class="highlight"><pre><span></span>Section &quot;InputClass&quot;
-    Identifier &quot;Ergo Mouse&quot;
-    MatchUSBID &quot;0458:0087&quot;
-    Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;
-EndSection
-</pre></div>
-
-
-<p><em>MatchUSBID</em> sam saznao pomoću <em>lsusb</em> i služi za identifikaciju uređaja,
-da se postavke primjene za miš. To je onaj par rječi od 4 slova/cifre poslije
-ID, sa dvotačkom između.</p>
-<div class="highlight"><pre><span></span>$ lsusb
-...
-Bus <span class="m">002</span> Device 002: ID 0458:0087 KYE Systems Corp. <span class="o">(</span>Mouse Systems<span class="o">)</span> Ergo 525V Laser Mouse
-...
-</pre></div>
-
-
-<h3>Dugmić za F5</h3>
-<p>Za mijenjanje funkcije dugmića na mišu sam koristio <em>udev</em> direktno.
-Vjerovatno postoji i drugi način (<em>xbindkeys</em> možda), ali mi se <em>udev</em>
-način činio mnogo "čistijim". Pronašao sam <a href="http://www.vxnick.com/blog/2014/10/binding-extra-mouse-buttons-on-linux/">ovaj</a>
-članak koji objašnjava kako da se izvede sve.</p>
-<p>Pomoću <em>evtest</em> programa možemo saznati <em>scancode</em> dugmića.</p>
-<div class="highlight"><pre><span></span>$ evtest
-...
-Event: <span class="nb">time</span> 1472069345.467695, <span class="nb">type</span> <span class="m">4</span> <span class="o">(</span>EV_MSC<span class="o">)</span>, code <span class="m">4</span> <span class="o">(</span>MSC_SCAN<span class="o">)</span>, value 90006
-Event: <span class="nb">time</span> 1472069345.467695, <span class="nb">type</span> <span class="m">1</span> <span class="o">(</span>EV_KEY<span class="o">)</span>, code <span class="m">63</span> <span class="o">(</span>KEY_F5<span class="o">)</span>, value 1
-Event: <span class="nb">time</span> 1472069345.467695, -------------- SYN_REPORT ------------
-...
-</pre></div>
-
-
-<p><em>Scancode</em> je onaj broj poslije "value", znači za nas je 90006. Opet nam
-je potreban i ID što smo koristili maloprije za Xorg konfiguracioni fajl.
-Na onom gore blogu piše da koristimo <code>keyboard:usb:vXXXXpXXXX*</code>, gdje X-ovi
-predstavljaju naše ID-ove. Međutim nisam imao uspijeha s tim, ali sam našao
-rješenje na <a href="http://martins-prolog.blogspot.ba/2014/09/logitech-g600-in-arch-linux.html">ovom</a>
-blogu. Treba promjeniti u <code>evdev:input:b*vXXXXpXXXX*</code>. Pokušao sam pronaći
-zašto, ali nisam ništa pronašao. Ako neko zna, bilo bi dobro da podijeli.</p>
-<p>Sve podatke sam ubacio u fajl pod <code>/etc/udev/hwdb.d/10-genius-mouse.hwdb</code>.
-Izgleda ovako:</p>
-<div class="highlight"><pre><span></span><span class="n">evdev</span><span class="o">:</span><span class="n">input</span><span class="o">:</span><span class="n">b</span><span class="o">*</span><span class="n">v0458p0087</span><span class="o">*</span>
- <span class="n">KEYBOARD_KEY_90006</span><span class="o">=</span><span class="n">f5</span>
-</pre></div>
-
-
-<p>Posljednji korak je da pokrenete sljedeće komande, da se ažurira i
-aktivira udev baza podataka:</p>
-<div class="highlight"><pre><span></span>udevadm hwdb --update
-udevadm trigger
-</pre></div><p><a href="http://dglava.github.io/ergo525.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+što je horizontalno skrolovanje sa kolutićem. Stvar koja ...</p>
+                <a class="readmore" href="http://dglava.github.io/ergo525.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/ergo525.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -173,31 +154,6 @@ sa GTK3 platformskom temom (<a href="https://bbs.archlinux.org/viewtopic.php?id=
 Platformska tema je zadužena za ikone, postavke fonta i izbornik ...</p>
                 <a class="readmore" href="http://dglava.github.io/qtplatform-style.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/qtplatform-style.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/farmakologija.html" rel="bookmark"
-                           title="Permalink to Farmakologija - Anki špil">Farmakologija - Anki špil</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-07-24T00:00:00+02:00">
-                Objavljeno: Ned, 24 Jul 2016
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/anki.html">anki</a> <a href="http://dglava.github.io/tag/medicina.html">medicina</a> <a href="http://dglava.github.io/tag/farmakologija.html">farmakologija</a> </p>
-</footer><!-- /.post-info -->                <p>Kartice za ponavljanje farmakologije. Uvodni dio o opštoj farmakologiji
-je možda bespotrebno opširan, dok su ostali dijelovi kao hemioterapijska
-sredstva za maligne bolesti poprilično sažeti. Možda ispravim u budućnosti.</p>
-<ul>
-<li>Broj kartica: 660</li>
-<li>Literatura: Farmakologija za 2. razred medicinske škole; Dr. Milenko Milošević
-Dr. Vladislav Varagić; Zavod za udžbenike i nastavna ...</li></ul>
-                <a class="readmore" href="http://dglava.github.io/farmakologija.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/farmakologija.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

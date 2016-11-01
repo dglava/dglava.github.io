@@ -27,7 +27,93 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/farmakologija.html">Farmakologija - Anki špil</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html">Medicinska sestra-tehničar — pitanja i odgovori za stručni ispit</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-11-01T00:00:00+01:00">
+                Objavljeno: Uto, 01 Nov 2016
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/strucni.html">strucni</a> <a href="http://dglava.github.io/tag/medicina.html">medicina</a> </p>
+</footer><!-- /.post-info --><h3>Šta je ovo?</h3>
+<p>Ovo je skup pitanja i odgovora za polaganje stručnog ispita za zanimanje
+medicinska sestra-tehničar. Pitanja su bila ažurna za vrijeme pisanja
+ovod članka, 01 Novembra 2016. godine. Preporučljivo je da se ne uzdate
+u ažurnost ovih pitanja, već da podignete najnovija iz ministarstva
+(što dobijete zajedno sa prijavom).</p>
+<p>Veliki dio odgovora sam uzeo iz zvaničnih knjiga koje su u upotrebi u
+srednjim školama. Odgovore iz pravnog dijela sam preuzeo iz relevantnih
+zakona. Uz svako pitanje je naznačena literatura koja je korištena.</p>
+<h3>Preuzmi pitanja</h3>
+<p><a href="http://dglava.github.io/images/medicinski_dio.pdf"><strong>Medicinski dio</strong></a></p>
+<p><a href="http://dglava.github.io/images/pravni_dio.pdf"><strong>Pravni dio</strong></a></p>
+<p><strong>Napomena:</strong> pitanja i odgovori su moj lični rad;
+ne prihvatam nikakvu odgovornost ni obavezu u vezi s informacijama u
+dokumentu (ovoj stranici).</p>
+<h3>Korisni dodatak</h3>
+<p>Za simulirano ispitivanje, možete koristiti ovu malu Python skriptu.
+Učita pitanja iz fajla i postavi vam 3 medicinska i 1 pravno (kao na
+ispitu). U direktoriju gdje vam skripta, morate imati i 2 tekstualna fajla
+sa pitanjima (<a href="http://dglava.github.io/images/med.txt">med.txt</a> i
+<a href="http://dglava.github.io/images/med.txt">prav.txt</a>).</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">otvori_pitanja</span><span class="p">(</span><span class="n">ime</span><span class="p">):</span>
+    <span class="n">pitanja</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">fajl</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">fajl</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+            <span class="n">pitanja</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="n">fajl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pitanja</span>
+
+<span class="k">def</span> <span class="nf">snimi_pitanja</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="n">pitanja</span><span class="p">):</span>
+    <span class="n">fajl</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pitanja</span><span class="p">:</span>
+        <span class="n">fajl</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="n">fajl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">pitaj</span><span class="p">(</span><span class="n">prva</span><span class="p">,</span> <span class="n">druga</span><span class="p">):</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">druga</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">med1</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
+        <span class="n">med2</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
+        <span class="n">med3</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
+        <span class="n">prav</span> <span class="o">=</span> <span class="n">druga</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">druga</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">druga</span><span class="p">)))</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="n">med1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">input</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">med2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">input</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">med3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">input</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">prav</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">input</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
+
+<span class="n">medicinska</span> <span class="o">=</span> <span class="n">otvori_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">)</span>
+<span class="n">pravna</span> <span class="o">=</span> <span class="n">otvori_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">pitaj</span><span class="p">(</span><span class="n">medicinska</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">,</span> <span class="n">medicinska</span><span class="p">)</span>
+    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">,</span> <span class="n">medicinska</span><span class="p">)</span>
+    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
+</pre></div><p><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/farmakologija.html" rel="bookmark"
+                           title="Permalink to Farmakologija - Anki špil">Farmakologija - Anki špil</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-07-24T00:00:00+02:00">
                 Objavljeno: Ned, 24 Jul 2016
@@ -35,21 +121,16 @@
 
 <p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
 <p>tagovi: <a href="http://dglava.github.io/tag/anki.html">anki</a> <a href="http://dglava.github.io/tag/medicina.html">medicina</a> <a href="http://dglava.github.io/tag/farmakologija.html">farmakologija</a> </p>
-</footer><!-- /.post-info --><p>Kartice za ponavljanje farmakologije. Uvodni dio o opštoj farmakologiji
+</footer><!-- /.post-info -->                <p>Kartice za ponavljanje farmakologije. Uvodni dio o opštoj farmakologiji
 je možda bespotrebno opširan, dok su ostali dijelovi kao hemioterapijska
 sredstva za maligne bolesti poprilično sažeti. Možda ispravim u budućnosti.</p>
 <ul>
 <li>Broj kartica: 660</li>
 <li>Literatura: Farmakologija za 2. razred medicinske škole; Dr. Milenko Milošević
-Dr. Vladislav Varagić; Zavod za udžbenike i nastavna sredstva Beograd 2006. godina</li>
-</ul>
-<p><a href="https://github.com/dglava/anki-medicina"><strong>Preuzmi kolekciju</strong></a></p>
-<p><a href="http://dglava.github.io/medicina-ponavljanje.html"><strong>Glavni članak</strong></a></p><p><a href="http://dglava.github.io/farmakologija.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+Dr. Vladislav Varagić; Zavod za udžbenike i nastavna ...</li></ul>
+                <a class="readmore" href="http://dglava.github.io/farmakologija.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/farmakologija.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -74,32 +155,6 @@ dok je uvodni dio o ćeliji možda previše opširan.</p>
 <li>Literatura: Anatomija i fiziologija za 1 ...</li></ul>
                 <a class="readmore" href="http://dglava.github.io/anatomija-fiziologija.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/anatomija-fiziologija.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/patologija.html" rel="bookmark"
-                           title="Permalink to Patologija - Anki špil">Patologija - Anki špil</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-06-11T00:00:00+02:00">
-                Objavljeno: Sub, 11 Jun 2016
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/patologija.html">patologija</a> <a href="http://dglava.github.io/tag/anki.html">anki</a> <a href="http://dglava.github.io/tag/medicina.html">medicina</a> </p>
-</footer><!-- /.post-info -->                <p>Kartice za ponavljanje patologije su prve dodane u kolekciju.</p>
-<ul>
-<li>Broj kartica: 523</li>
-<li>Literatura: Patologija za 2. razred medicinske škole; Dr. Radoslav Borota;
-Zavod za udžbenike Beograd 2012. godina</li>
-</ul>
-<p><a href="https://github.com/dglava/anki-medicina"><strong>Preuzmi kolekciju</strong></a></p>
-<p><a href="http://dglava.github.io/medicina-ponavljanje.html"><strong>Glavni članak</strong></a></p>
-                <a class="readmore" href="http://dglava.github.io/patologija.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/patologija.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
