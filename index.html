@@ -27,7 +27,83 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html">Medicinska sestra-tehničar — pitanja i odgovori za stručni ispit</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/showsho.html">Automatsko praćenje serija — showsho</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-11-09T00:00:00+01:00">
+                Objavljeno: Sri, 09 Nov 2016
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/serije.html">serije</a> </p>
+</footer><!-- /.post-info --><h3>Zašto?</h3>
+<p>Kad pratite više serija, vremenom postane nepregledno ili nemoguće
+pratiti datume izlaska i statuse. Do skoro sam vodio raspored u
+programu za tabelarni prikaz (LibreOffice Calc) i to je izgledalo
+otprilike kao na slici. Prije svakog preuzimanja epizode sam morao
+ručno provjeravati koja je posljednja epizoda i ručno tražiti
+odakle da preuzmem.</p>
+<p><img alt="slika stare metode" src="http://dglava.github.io/images/showsho1.png" title="Kako proletarijat prati serije" /></p>
+<p>Shvatio sam da je ovo relativno lagano moguće automatizirati i tako
+je nastao "showsho" (varijanta sa manje slova od <em>show shows</em> plus
+merak za izgovoriti).</p>
+<h3>Šovšo</h3>
+<p>U suštini se sastoji iz tri dijela ili koraka koja mora uraditi:
+preuzeti određene informacije o serijama sa interneta, voditi računa
+koja je posljednja epizoda i statusu serije lokalno (bez da zavisi o
+internetu) i preuzimanje torenta. Prve verzije nisu radile prvi korak,
+tj. morao sam ručno snadbijevati informacije o serijama. U suštini je
+to bio JSON fajl, sa imenom serije, datumom kad počinje sezona, koliko
+epizoda ima, itd. To nije bilo optimalno, sa ponekim nedostacima tipa
+pomjerene epizode ili duple su pravile probleme i završavale se ručnim
+preuzimanjem. Tako da sam "malo" (čitaj: sve ponovo napisao) sredio
+stvar i sad je donekle bolje.</p>
+<p><img alt="slika showshoa" src="http://dglava.github.io/images/showsho2.png" title="Kako buržuji prate serije" /></p>
+<p>Sad je samo potrebno snadbiti spisak serija koje da prati, a ostalo će
+ići automatski. Na površini sve izgleda kao da radi i za vrijeme ovog
+pisanja nisam naišao na ijednu problematičnu situaciju. Međutim imam
+osjećaj da je veoma klimavo "iznutra". Nisam zadovoljan kako je izvedeno,
+ali definitivno ne želim više razmišljati kako da popravim (vidi
+<a href="https://xkcd.com/1319/">ovo</a>). Bilo mi je bitno da radi i <em>offline</em>, tj.
+da se ne izgubi u slučaju da nema interneta i da može prikazi podatke
+ako nema interneta. Pri prvom pokretanju, kad ima interneta, snimi
+fajl sa podacima u keš direktoriji (na Linux distribucijama obično u
+~/.cache/showsho). Tokom svakog sljedećeg pokretanja, ukoliko nije
+specifično naznačeno da se ažuriraju podaci sa "-u" zastavom, učita
+keširane podatke. Tako spriječava bespotrebno čekanje da se preuzmu
+podaci tokom svakog pokretanja.</p>
+<p>Jedna promjena koja se desila tokom vremena je vezana za preuzimanje
+epizoda. Prije sam direktno preuzimao torent fajlove. Međutim trenutno
+ne mogu naći pouzdani servis koji kešira torente. Privremeni način rada
+je prikaz magnet linka. Većina emulatora terminala je sposobna da prepozna
+da je link i otvoriće ga u vašem internet pregledniku, a on u vašem
+torent klijentu.</p>
+<p>Podatke o serijama preuzima sa <a href="http://www.tvmaze.com/">TVMaze</a>, a
+podatke o torentima sa <a href="https://en.btdb.in/">btdb.in</a>.</p>
+<p><img alt="još jedna slika showshoa" src="http://dglava.github.io/images/showsho3.png" title="Malo preglednije sa -a zastavom" /></p>
+<p>Potreban je tekstualni fajl sa po jednom serijom na liniji. Zastave
+(<em>flags</em>) su: "-a" da prikaže samo serije koje se trenutno emituju, "-d"
+da preuzme nove epizode, "-u" da ažurira podatke,
+i "-p" da pomjeri sve datume za 1 dan. To je korisno za američke serije,
+jer se one zapravo emituju kad je kod nas dan već završio
+(razlika vremenskih zona).</p>
+<h3>Preuzmi</h3>
+<p>showsho možete preuzeti <a href="https://github.com/dglava/showsho">ovdje</a>.
+Potreban je samo Python, bez dodatnih biblioteka.
+Arch korisnici mogu instalirati pomoću ponuđenog PKGBUILDa. Za ostale
+ima "setup.py" fajl za pokrenuti pomoću Pythona <code>python setup.py install</code>.</p><p><a href="http://dglava.github.io/showsho.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html" rel="bookmark"
+                           title="Permalink to Medicinska sestra-tehničar — pitanja i odgovori za stručni ispit">Medicinska sestra-tehničar — pitanja i odgovori za stručni ispit</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-11-01T00:00:00+01:00">
                 Objavljeno: Uto, 01 Nov 2016
@@ -35,77 +111,15 @@
 
 <p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
 <p>tagovi: <a href="http://dglava.github.io/tag/strucni.html">strucni</a> <a href="http://dglava.github.io/tag/medicina.html">medicina</a> </p>
-</footer><!-- /.post-info --><h3>Šta je ovo?</h3>
+</footer><!-- /.post-info -->                <h3>Šta je ovo?</h3>
 <p>Ovo je skup pitanja i odgovora za polaganje stručnog ispita za zanimanje
 medicinska sestra-tehničar. Pitanja su bila ažurna za vrijeme pisanja
 ovod članka, 01 Novembra 2016. godine. Preporučljivo je da se ne uzdate
 u ažurnost ovih pitanja, već da podignete najnovija iz ministarstva
-(što dobijete zajedno sa prijavom).</p>
-<p>Veliki dio odgovora sam uzeo iz zvaničnih knjiga koje su u upotrebi u
-srednjim školama. Odgovore iz pravnog dijela sam preuzeo iz relevantnih
-zakona. Uz svako pitanje je naznačena literatura koja je korištena.</p>
-<h3>Preuzmi pitanja</h3>
-<p><a href="http://dglava.github.io/images/medicinski_dio.pdf"><strong>Medicinski dio</strong></a></p>
-<p><a href="http://dglava.github.io/images/pravni_dio.pdf"><strong>Pravni dio</strong></a></p>
-<p><strong>Napomena:</strong> pitanja i odgovori su moj lični rad;
-ne prihvatam nikakvu odgovornost ni obavezu u vezi s informacijama u
-dokumentu (ovoj stranici).</p>
-<h3>Korisni dodatak</h3>
-<p>Za simulirano ispitivanje, možete koristiti ovu malu Python skriptu.
-Učita pitanja iz fajla i postavi vam 3 medicinska i 1 pravno (kao na
-ispitu). U direktoriju gdje vam skripta, morate imati i 2 tekstualna fajla
-sa pitanjima (<a href="http://dglava.github.io/images/med.txt">med.txt</a> i
-<a href="http://dglava.github.io/images/med.txt">prav.txt</a>).</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
-<span class="k">def</span> <span class="nf">otvori_pitanja</span><span class="p">(</span><span class="n">ime</span><span class="p">):</span>
-    <span class="n">pitanja</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">fajl</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">fajl</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
-            <span class="n">pitanja</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-    <span class="n">fajl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">pitanja</span>
-
-<span class="k">def</span> <span class="nf">snimi_pitanja</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="n">pitanja</span><span class="p">):</span>
-    <span class="n">fajl</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pitanja</span><span class="p">:</span>
-        <span class="n">fajl</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
-    <span class="n">fajl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">pitaj</span><span class="p">(</span><span class="n">prva</span><span class="p">,</span> <span class="n">druga</span><span class="p">):</span>
-    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">druga</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">med1</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
-        <span class="n">med2</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
-        <span class="n">med3</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
-        <span class="n">prav</span> <span class="o">=</span> <span class="n">druga</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">druga</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">druga</span><span class="p">)))</span>
-
-        <span class="k">print</span><span class="p">(</span><span class="n">med1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">input</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">med2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">input</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">med3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">input</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">prav</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">input</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
-
-<span class="n">medicinska</span> <span class="o">=</span> <span class="n">otvori_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">)</span>
-<span class="n">pravna</span> <span class="o">=</span> <span class="n">otvori_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">pitaj</span><span class="p">(</span><span class="n">medicinska</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">,</span> <span class="n">medicinska</span><span class="p">)</span>
-    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">,</span> <span class="n">medicinska</span><span class="p">)</span>
-    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
-</pre></div><p><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+(što dobijete zajedno sa ...</p>
+                <a class="readmore" href="http://dglava.github.io/drzavni_pitanja_odgovori.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -129,31 +143,6 @@ Prepoznati su svi ekstra dugmići, čak i oni koji nisu radili na Windowsu kao
 što je horizontalno skrolovanje sa kolutićem. Stvar koja ...</p>
                 <a class="readmore" href="http://dglava.github.io/ergo525.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/ergo525.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/qtplatform-style.html" rel="bookmark"
-                           title="Permalink to Bolje ujedinjeni izgledi Qt i GTK programa">Bolje ujedinjeni izgledi Qt i GTK programa</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-08-20T00:00:00+02:00">
-                Objavljeno: Sub, 20 Aug 2016
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/qt.html">qt</a> <a href="http://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/qtplatform-style.html">en</a>
-
-</footer><!-- /.post-info -->                <p>Do sada sam koristio samo GTK2 <em>widget</em> temu (<a href="http://dglava.github.io/qtstyles.html">objašnjeno ovdje</a>)
-za postizanje ujednačenog izgleda desktopa i GTK i Qt programa.
-Bilo je nekoliko problema sa <em>segfaultovanjem</em>, jer GTK2 <em>widget</em> stil nije radio
-sa GTK3 platformskom temom (<a href="https://bbs.archlinux.org/viewtopic.php?id=214147">novom u Qt5.7</a>).
-Platformska tema je zadužena za ikone, postavke fonta i izbornik ...</p>
-                <a class="readmore" href="http://dglava.github.io/qtplatform-style.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/qtplatform-style.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

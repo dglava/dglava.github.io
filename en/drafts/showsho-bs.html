@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Automatsko praćenje serija — showsho</title>
+        <link rel="stylesheet" href="http://dglava.github.io/en/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://dglava.github.io/en/">dglava </a></h1>
+                <nav><ul>
+                    <li><a href="http://dglava.github.io/en/pages/zasto.html">Why</a></li>
+                    <li><a href="http://dglava.github.io/en/category/linux.html">Linux</a></li>
+                    <li><a href="http://dglava.github.io/en/archives.html">Archive</a></li>
+                    <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/en/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="http://dglava.github.io/en/theme/images/lastfm.png"></a></li>
+                    <li><a href="http://dglava.github.io/"><img src="http://dglava.github.io/en/theme/images/bs.png"></a></li>
+                    <li><a href="http://dglava.github.io/en/"><img src="http://dglava.github.io/en/theme/images/en.png"></a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://dglava.github.io/en/drafts/showsho-bs.html" rel="bookmark"
+           title="Permalink to Automatsko praćenje serija — showsho">Automatsko praćenje serija — showsho</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-11-09T00:00:00+01:00">
+                Published: Sri, 09 Nov 2016
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/serije.html">serije</a> </p>
+</footer><!-- /.post-info -->      <h3>Zašto?</h3>
+<p>Kad pratite više serija, vremenom postane nepregledno ili nemoguće
+pratiti datume izlaska i statuse. Do skoro sam vodio raspored u
+programu za tabelarni prikaz (LibreOffice Calc) i to je izgledalo
+otprilike kao na slici. Prije svakog preuzimanja epizode sam morao
+ručno provjeravati koja je posljednja epizoda i ručno tražiti
+odakle da preuzmem.</p>
+<p><img alt="slika stare metode" src="http://dglava.github.io/en/../images/showsho1.png" title="Kako proletarijat prati serije" /></p>
+<p>Shvatio sam da je ovo relativno lagano moguće automatizirati i tako
+je nastao "showsho" (varijanta sa manje slova od <em>show shows</em> plus
+merak za izgovoriti).</p>
+<h3>Šovšo</h3>
+<p>U suštini se sastoji iz tri dijela ili koraka koja mora uraditi:
+preuzeti određene informacije o serijama sa interneta, voditi računa
+koja je posljednja epizoda i statusu serije lokalno (bez da zavisi o
+internetu) i preuzimanje torenta. Prve verzije nisu radile prvi korak,
+tj. morao sam ručno snadbijevati informacije o serijama. U suštini je
+to bio JSON fajl, sa imenom serije, datumom kad počinje sezona, koliko
+epizoda ima, itd. To nije bilo optimalno, sa ponekim nedostacima tipa
+pomjerene epizode ili duple su pravile probleme i završavale se ručnim
+preuzimanjem. Tako da sam "malo" (čitaj: sve ponovo napisao) sredio
+stvar i sad je donekle bolje.</p>
+<p><img alt="slika showshoa" src="http://dglava.github.io/en/../images/showsho2.png" title="Kako buržuji prate serije" /></p>
+<p>Sad je samo potrebno snadbiti spisak serija koje da prati, a ostalo će
+ići automatski. Na površini sve izgleda kao da radi i za vrijeme ovog
+pisanja nisam naišao na ijednu problematičnu situaciju. Međutim imam
+osjećaj da je veoma klimavo "iznutra". Nisam zadovoljan kako je izvedeno,
+ali definitivno ne želim više razmišljati kako da popravim (vidi
+<a href="https://xkcd.com/1319/">ovo</a>). Bilo mi je bitno da radi i <em>offline</em>, tj.
+da se ne izgubi u slučaju da nema interneta i da može prikazi podatke
+ako nema interneta. Pri prvom pokretanju, kad ima interneta, snimi
+fajl sa podacima u keš direktoriji (na Linux distribucijama obično u
+~/.cache/showsho). Tokom svakog sljedećeg pokretanja, ukoliko nije
+specifično naznačeno da se ažuriraju podaci sa "-u" zastavom, učita
+keširane podatke. Tako spriječava bespotrebno čekanje da se preuzmu
+podaci tokom svakog pokretanja.</p>
+<p>Jedna promjena koja se desila tokom vremena je vezana za preuzimanje
+epizoda. Prije sam direktno preuzimao torent fajlove. Međutim trenutno
+ne mogu naći pouzdani servis koji kešira torente. Privremeni način rada
+je prikaz magnet linka. Većina emulatora terminala je sposobna da prepozna
+da je link i otvoriće ga u vašem internet pregledniku, a on u vašem
+torent klijentu.</p>
+<p>Podatke o serijama preuzima sa <a href="http://www.tvmaze.com/">TVMaze</a>, a
+podatke o torentima sa <a href="https://en.btdb.in/">btdb.in</a>.</p>
+<p><img alt="još jedna slika showshoa" src="http://dglava.github.io/en/../images/showsho3.png" title="Malo preglednije sa -a zastavom" /></p>
+<p>Potreban je tekstualni fajl sa po jednom serijom na liniji. Zastave
+(<em>flags</em>) su: "-a" da prikaže samo serije koje se trenutno emituju, "-d"
+da preuzme nove epizode, "-u" da ažurira podatke,
+i "-p" da pomjeri sve datume za 1 dan. To je korisno za američke serije,
+jer se one zapravo emituju kad je kod nas dan već završio
+(razlika vremenskih zona).</p>
+<h3>Preuzmi</h3>
+<p>showsho možete preuzeti <a href="https://github.com/dglava/showsho">ovdje</a>.
+Potreban je samo Python, bez dodatnih biblioteka.
+Arch korisnici mogu instalirati pomoću ponuđenog PKGBUILDa. Za ostale
+ima "setup.py" fajl za pokrenuti pomoću Pythona <code>python setup.py install</code>.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org">Python</a>. Theme: slightly tweaked <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'dglava';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>
