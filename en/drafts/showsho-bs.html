@@ -49,7 +49,9 @@ odakle da preuzmem.</p>
 <p><img alt="slika stare metode" src="http://dglava.github.io/en/../images/showsho1.png" title="Kako proletarijat prati serije" /></p>
 <p>Shvatio sam da je ovo relativno lagano moguće automatizirati i tako
 je nastao "showsho" (varijanta sa manje slova od <em>show shows</em> plus
-merak za izgovoriti).</p>
+merak za izgovoriti). Postoji mnoštvo već postojećih rješenja (npr.
+<a href="http://www.tvoverlord.com/">TVOverlord</a>, ali rade više stvari nego
+što mi lično treba.</p>
 <h3>Šovšo</h3>
 <p>U suštini se sastoji iz tri dijela ili koraka koja mora uraditi:
 preuzeti određene informacije o serijama sa interneta, voditi računa
@@ -67,34 +69,14 @@ ići automatski. Na površini sve izgleda kao da radi i za vrijeme ovog
 pisanja nisam naišao na ijednu problematičnu situaciju. Međutim imam
 osjećaj da je veoma klimavo "iznutra". Nisam zadovoljan kako je izvedeno,
 ali definitivno ne želim više razmišljati kako da popravim (vidi
-<a href="https://xkcd.com/1319/">ovo</a>). Bilo mi je bitno da radi i <em>offline</em>, tj.
-da se ne izgubi u slučaju da nema interneta i da može prikazi podatke
-ako nema interneta. Pri prvom pokretanju, kad ima interneta, snimi
-fajl sa podacima u keš direktoriji (na Linux distribucijama obično u
-~/.cache/showsho). Tokom svakog sljedećeg pokretanja, ukoliko nije
-specifično naznačeno da se ažuriraju podaci sa "-u" zastavom, učita
-keširane podatke. Tako spriječava bespotrebno čekanje da se preuzmu
-podaci tokom svakog pokretanja.</p>
-<p>Jedna promjena koja se desila tokom vremena je vezana za preuzimanje
-epizoda. Prije sam direktno preuzimao torent fajlove. Međutim trenutno
-ne mogu naći pouzdani servis koji kešira torente. Privremeni način rada
-je prikaz magnet linka. Većina emulatora terminala je sposobna da prepozna
-da je link i otvoriće ga u vašem internet pregledniku, a on u vašem
-torent klijentu.</p>
+<a href="https://xkcd.com/1319/">ovo</a>).</p>
 <p>Podatke o serijama preuzima sa <a href="http://www.tvmaze.com/">TVMaze</a>, a
 podatke o torentima sa <a href="https://en.btdb.in/">btdb.in</a>.</p>
 <p><img alt="još jedna slika showshoa" src="http://dglava.github.io/en/../images/showsho3.png" title="Malo preglednije sa -a zastavom" /></p>
-<p>Potreban je tekstualni fajl sa po jednom serijom na liniji. Zastave
-(<em>flags</em>) su: "-a" da prikaže samo serije koje se trenutno emituju, "-d"
-da preuzme nove epizode, "-u" da ažurira podatke,
-i "-p" da pomjeri sve datume za 1 dan. To je korisno za američke serije,
-jer se one zapravo emituju kad je kod nas dan već završio
-(razlika vremenskih zona).</p>
 <h3>Preuzmi</h3>
 <p>showsho možete preuzeti <a href="https://github.com/dglava/showsho">ovdje</a>.
 Potreban je samo Python, bez dodatnih biblioteka.
-Arch korisnici mogu instalirati pomoću ponuđenog PKGBUILDa. Za ostale
-ima "setup.py" fajl za pokrenuti pomoću Pythona <code>python setup.py install</code>.</p>
+Arch korisnici mogu instalirati pomoću ponuđenog PKGBUILDa.</p>
     </div><!-- /.entry-content -->
 
   </article>
