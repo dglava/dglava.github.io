@@ -1,0 +1,169 @@
+# POZADINA
+rounded = 0
+border_width = 2
+border_sides = B
+background_color = #424242 100
+border_color = #666666 100
+#background_color_hover = color opacity
+#border_color_hover = color opacity
+#background_color_pressed = color opacity
+#border_color_pressed = color opacity
+
+rounded = 0
+border_width = 2
+border_sides = B
+background_color = #424242 100
+border_color = #6699CC 100
+#background_color_hover = color opacity
+#border_color_hover = color opacity
+#background_color_pressed = color opacity
+#border_color_pressed = color opacity
+
+# PANEL
+panel_items = T:SC
+panel_monitor = 1
+primary_monitor_first = 1
+panel_position = top center horizontal
+panel_size = 100% 24
+#panel_shrink = 0
+panel_margin = 0 0
+panel_padding = 0 0 0
+font_shadow = 0
+panel_background_id = 1
+wm_menu = 0
+panel_dock = 0
+panel_layer = normal
+strut_policy = follow_size
+#panel_window_name =
+disable_transparency = 0
+mouse_effects = 1
+#mouse_hover_icon_asb = alpha saturation brightness
+#mouse_pressed_icon_asb = alpha saturation brightness
+autohide = 0
+#autohide_show_timeout = 0
+#autohide_hide_timeout = 0
+#autohide_height = 4
+
+# LAUNCHER
+#launcher_item_app = path_to_application
+#launcher_apps_dir = path_to_directory
+#launcher_background_id = integer
+#launcher_icon_background_id = integer
+#launcher_padding = horizontal_padding vertical_padding spacing
+#launcher_icon_size = integer
+#launcher_icon_theme = name_of_theme
+#launcher_icon_theme_override = boolean
+#launcher_icon_asb = alpha
+#launcher_tooltip = boolean
+#startup_notifications = boolean
+
+# TASKBAR
+taskbar_mode = multi_desktop
+taskbar_hide_if_empty = 1
+taskbar_distribute_size = 0
+taskbar_padding = 0 0 0
+taskbar_background_id = 0
+#taskbar_active_background_id = integer
+taskbar_hide_inactive_tasks = 0
+#taskbar_hide_different_monitor = boolean
+#taskbar_always_show_all_desktop_tasks = 1
+taskbar_sort_order = none
+task_align = left
+taskbar_name = 1
+taskbar_name_padding = 2
+taskbar_name_background_id = 0
+taskbar_name_font = DejaVu Sans 10
+taskbar_name_font_color = #DCDCDC 100
+taskbar_name_active_background_id = 0
+taskbar_name_active_font_color = #DCDCDC 100
+
+# TASKS
+task_icon = 1
+task_text = 1
+task_centered = 0
+task_tooltip = 0
+task_maximum_size = 0 0
+task_padding = 2 2 4
+urgent_nb_of_blink = 8
+task_font = DejaVu Sans 10
+task_font_color = #888888 100
+#task_icon_asb = 50 -100 0
+task_background_id = 0
+
+task_active_font_color = #DCDCDC 100
+#task_active_icon_asb = 100 0 0
+task_active_background_id = 2
+
+task_iconified_font_color = #888888 100
+#task_iconified_icon_asb = 50 -100 0
+task_iconified_background_id = 0
+
+task_urgent_font_color = #DCDCDC 100
+#task_urgent_icon_asb = 100 0 0
+task_urgent_background_id = 0
+
+# MOUSE
+mouse_right = toggle
+mouse_left = toggle_iconify
+mouse_middle = close
+mouse_scroll_down = none
+mouse_scroll_up = none
+
+# SYSTEM TRAY
+systray_padding = 6 0 8
+systray_background_id = 0
+systray_sort = ascending
+systray_icon_size = 0
+systray_icon_asb = 100 0 0
+systray_monitor = 1
+
+# CLOCK
+time1_format = %e. %b %H:%M
+#time1_timezone =
+time1_font = DejaVu Sans 10
+#time2_format = %e. %b
+#time2_timezone =
+#time2_font = DejaVu Sans 10
+clock_font_color = #DCDCDC 100
+clock_padding = 6 0
+clock_background_id = 0
+#clock_tooltip =
+#clock_tooltip_timezone =
+clock_lclick_command = gsimplecal
+#clock_rclick_command = none
+#clock_mclick_command = none
+#clock_uwheel_command = none
+#clock_dwheel_command = none
+
+# TOOLTIPS
+#tooltip_padding = horizontal_padding vertical_padding
+#tooltip_show_timeout = float
+#tooltip_hide_timeout = float
+#tooltip_background_id = integer
+#tooltip_font_color = color opacity
+#tooltip_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+
+# BATTERY
+#battery_hide = never
+#battery_low_status = 8
+#battery_low_cmd =
+#bat1_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+#bat2_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+#battery_font_color = color opacity
+#battery_padding = horizontal_padding vertical_padding
+#battery_background_id = integer
+#battery_tooltip_enabled = boolean
+#battery_lclick_command = text
+#battery_rclick_command = text
+#battery_mclick_command = text
+#battery_uwheel_command = text
+#battery_dwheel_command = text
+#ac_connected_cmd = text
+#ac_disconnected_cmd = text
+
+separator = new
+separator_background_id = 0
+separator_color = #666666 100
+separator_style = line
+separator_size = 2
+separator_padding = 0 0

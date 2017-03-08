@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Remove title-bar on maximized Openbox windows</title>
+        <link rel="stylesheet" href="http://dglava.github.io/en/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://dglava.github.io/en/">dglava </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="http://dglava.github.io/en/category/linux.html">Linux</a></li>
+                    <li><a href="http://dglava.github.io/en/archives.html">Archive</a></li>
+                    <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/en/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="http://dglava.github.io/en/theme/images/lastfm.png"></a></li>
+                    <li><a href="http://dglava.github.io/"><img src="http://dglava.github.io/en/theme/images/bs.png"></a></li>
+                    <li><a href="http://dglava.github.io/en/"><img src="http://dglava.github.io/en/theme/images/en.png"></a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://dglava.github.io/en/orcsome.html" rel="bookmark"
+           title="Permalink to Remove title-bar on maximized Openbox windows">Remove title-bar on maximized Openbox windows</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-03-08T00:00:00+01:00">
+                Published: Wed, 08 Mar 2017
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/openbox.html">openbox</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../orcsome.html">bs</a>
+
+</footer><!-- /.post-info -->      <p>I was looking for a way to save some vertical space by hiding the
+title bar of maximized windows with my window manager (Openbox).
+It turned out to be impossible using just standard Openbox settings.</p>
+<p><a href="http://icculus.org/pipermail/openbox/2017-February/009285.html">Asking</a>
+on the Openbox mailing list, I found <a href="https://github.com/baverman/orcsome">Orcsome</a>.
+It's a scripting extension for NETWM compliant window managers
+(Openbox is one of them), which allows you to manipulate windows via
+simple Python scripts.</p>
+<p>All I needed from it was for maximized windows to automatically get
+undecorated, i.e: for them to lose the title bar. Doing so saves some
+vertical space and it looks nicer, especially if the title bar is
+right below the taskbar.</p>
+<p>I installed Orcsome (link to my <a href="https://github.com/dglava/pkgbuilds/blob/master/orcsome-git/PKGBUILD">PKGBUILD</a>
+which builds the latest master from git,
+but it's also in the AUR if you prefer the released versions). I didn't
+even have to consult the documentation and write the script (config file)
+myself. The author and person that responded on the mailing list gave
+me a sample config which does exactly what I needed. I just removed the
+additional keyboard shortcut (I have my own). Save the Python script
+under <code>~/.config/orcsome.rc.py</code>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">orcsome</span> <span class="kn">import</span> <span class="n">get_wm</span>
+
+<span class="n">wm</span> <span class="o">=</span> <span class="n">get_wm</span><span class="p">()</span>
+
+<span class="nd">@wm.on_manage</span>
+<span class="k">def</span> <span class="nf">on_manage</span><span class="p">():</span>
+    <span class="nd">@wm.on_property_change</span><span class="p">(</span><span class="n">wm</span><span class="o">.</span><span class="n">event_window</span><span class="p">,</span> <span class="s1">&#39;_NET_WM_STATE&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">property_was_set</span><span class="p">():</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">wm</span><span class="o">.</span><span class="n">event_window</span>
+        <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">maximized_vert</span> <span class="ow">and</span> <span class="n">w</span><span class="o">.</span><span class="n">maximized_horz</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
+                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
+                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You will also have to start Orcsome with your Openbox session. I did
+it using the standard autostart file in the Openbox config directory.</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'dglava';
+        var disqus_identifier = 'orcsome.html';
+        var disqus_url = 'http://dglava.github.io/en/orcsome.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//dglava.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Powered by <a href="http://getpelican.com/">Pelican</a> and <a href="http://python.org">Python</a>. Theme: slightly tweaked <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'dglava';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

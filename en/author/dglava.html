@@ -14,7 +14,6 @@
         <header id="banner" class="body">
                 <h1><a href="http://dglava.github.io/en/">dglava </a></h1>
                 <nav><ul>
-                    <li><a href="http://dglava.github.io/en/pages/zasto.html">Why</a></li>
                     <li><a href="http://dglava.github.io/en/category/linux.html">Linux</a></li>
                     <li><a href="http://dglava.github.io/en/archives.html">Archive</a></li>
                     <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/en/theme/images/git.png"></a></li>
@@ -26,7 +25,69 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/ergo525.html">Genius Ergo 525 on Linux</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/orcsome.html">Remove title-bar on maximized Openbox windows</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-03-08T00:00:00+01:00">
+                Published: Wed, 08 Mar 2017
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/openbox.html">openbox</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../orcsome.html">bs</a>
+
+</footer><!-- /.post-info --><p>I was looking for a way to save some vertical space by hiding the
+title bar of maximized windows with my window manager (Openbox).
+It turned out to be impossible using just standard Openbox settings.</p>
+<p><a href="http://icculus.org/pipermail/openbox/2017-February/009285.html">Asking</a>
+on the Openbox mailing list, I found <a href="https://github.com/baverman/orcsome">Orcsome</a>.
+It's a scripting extension for NETWM compliant window managers
+(Openbox is one of them), which allows you to manipulate windows via
+simple Python scripts.</p>
+<p>All I needed from it was for maximized windows to automatically get
+undecorated, i.e: for them to lose the title bar. Doing so saves some
+vertical space and it looks nicer, especially if the title bar is
+right below the taskbar.</p>
+<p>I installed Orcsome (link to my <a href="https://github.com/dglava/pkgbuilds/blob/master/orcsome-git/PKGBUILD">PKGBUILD</a>
+which builds the latest master from git,
+but it's also in the AUR if you prefer the released versions). I didn't
+even have to consult the documentation and write the script (config file)
+myself. The author and person that responded on the mailing list gave
+me a sample config which does exactly what I needed. I just removed the
+additional keyboard shortcut (I have my own). Save the Python script
+under <code>~/.config/orcsome.rc.py</code>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">orcsome</span> <span class="kn">import</span> <span class="n">get_wm</span>
+
+<span class="n">wm</span> <span class="o">=</span> <span class="n">get_wm</span><span class="p">()</span>
+
+<span class="nd">@wm.on_manage</span>
+<span class="k">def</span> <span class="nf">on_manage</span><span class="p">():</span>
+    <span class="nd">@wm.on_property_change</span><span class="p">(</span><span class="n">wm</span><span class="o">.</span><span class="n">event_window</span><span class="p">,</span> <span class="s1">&#39;_NET_WM_STATE&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">property_was_set</span><span class="p">():</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">wm</span><span class="o">.</span><span class="n">event_window</span>
+        <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">maximized_vert</span> <span class="ow">and</span> <span class="n">w</span><span class="o">.</span><span class="n">maximized_horz</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
+                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
+                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You will also have to start Orcsome with your Openbox session. I did
+it using the standard autostart file in the Openbox config directory.</p><p><a href="http://dglava.github.io/en/orcsome.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/ergo525.html" rel="bookmark"
+                           title="Permalink to Genius Ergo 525 on Linux">Genius Ergo 525 on Linux</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-08-24T00:00:00+02:00">
                 Published: Wed, 24 Aug 2016
@@ -36,75 +97,14 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/genius-ergo.html">genius ergo</a> <a href="http://dglava.github.io/en/tag/hardware.html">hardware</a> </p>Translations:
         <a href="http://dglava.github.io/en/../ergo525.html">bs</a>
 
-</footer><!-- /.post-info --><p>I'm the owner of a Genius Ergo 525 mouse and I'm satisfied with it. It's
+</footer><!-- /.post-info -->                <p>I'm the owner of a Genius Ergo 525 mouse and I'm satisfied with it. It's
 working great out-of-the-box on Linux, except for two minor issues.
 The first one is the fact that the Forward and Back
 side-buttons are swapped. The second one isn't really an issue, but extra
-functionality which I wanted from the mouse: remapping the middle side button
-to "Refresh".</p>
-<h3>Forward/Back buttons</h3>
-<p>Swapping them to restore the expected functionality was pretty easy. First
-I used <em>xinput</em> to find out the number of available buttons on my mouse.</p>
-<div class="highlight"><pre><span></span>$ xinput get-button-map 8
-<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
-</pre></div>
-
-
-<p>The 8 after "get-button-map" is our device ID, which you can find out by
-running <code>xinput</code> without any arguments. Next you need to find out which
-number our Forward and Back buttons are. Run xinput with the "query-state"
-command while holding down the respective button.</p>
-<div class="highlight"><pre><span></span>$ xinput query-state 8
-...
-    button<span class="o">[</span>7<span class="o">]=</span>up
-    button<span class="o">[</span>8<span class="o">]=</span>down
-    button<span class="o">[</span>9<span class="o">]=</span>up
-...
-</pre></div>
-
-
-<p>To swap the buttons, you can use xinput's "set-button-map" option. Just literally
-swap the 8 and 9 when you're entering the command.</p>
-<div class="highlight"><pre><span></span>$ xinput set-button-map <span class="m">8</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
-</pre></div>
-
-
-<p>To make this behaviour permanent, you can run the above command on every
-login. I didn't like that, since I prefer having a neat Xorg configuration
-file instead. I added this section to my Xorg configuration file and it's
-working as intended. The <code>MatchUSBID</code> ID can be found out from the <code>lsusb</code>
-output. It's the two 4-character words separated by a colon.</p>
-<div class="highlight"><pre><span></span>Section &quot;InputClass&quot;
-    Identifier &quot;Ergo Mouse&quot;
-    MatchUSBID &quot;0458:0087&quot;
-    Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;
-EndSection
-</pre></div>
-
-
-<h3>Binding the other button to "Refresh"</h3>
-<p>I used <em>udev</em> to handle the binding. There's a nice guide on <a href="http://www.vxnick.com/blog/2014/10/binding-extra-mouse-buttons-on-linux/">this</a>
-blog. As explained in there, I used <em>evtest</em> to find out the scancode and
-added it into our udev hwdb file.</p>
-<p>There was one important difference: the blog said to use <code>keyboard:usb:vXXXXpXXXX*</code>,
-but it didn't work for me. I found the solution on <a href="http://martins-prolog.blogspot.ba/2014/09/logitech-g600-in-arch-linux.html">another blog</a>.
-Using <code>evdev:input:b*vXXXXpXXXX*</code> worked perfectly. I don't know why, because
-I can't find any documentation online about that specific syntax.</p>
-<p>Here's how my /etc/udev/hwdb.d/10-genius-mouse.hwdb looks like:</p>
-<div class="highlight"><pre><span></span><span class="n">evdev</span><span class="o">:</span><span class="n">input</span><span class="o">:</span><span class="n">b</span><span class="o">*</span><span class="n">v0458p0087</span><span class="o">*</span>
- <span class="n">KEYBOARD_KEY_90006</span><span class="o">=</span><span class="n">f5</span>
-</pre></div>
-
-
-<p>Finally, you have to run these two commands to update the database:</p>
-<div class="highlight"><pre><span></span>udevadm hwdb --update
-udevadm trigger
-</pre></div><p><a href="http://dglava.github.io/en/ergo525.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+functionality which …</p>
+                <a class="readmore" href="http://dglava.github.io/en/ergo525.html">read more</a>
+<p><a href="http://dglava.github.io/en/ergo525.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -126,34 +126,9 @@ udevadm trigger
 <a href="http://dglava.github.io/en/qtstyles.html">this blog post</a>.
 It worked fine, but it had the disadvantage of not utilizing my system
 icon and font settings, nor using the better GTK2 file dialog (it used
-the awful default Qt file dialog ...</p>
+the awful default Qt file dialog). There …</p>
                 <a class="readmore" href="http://dglava.github.io/en/qtplatform-style.html">read more</a>
 <p><a href="http://dglava.github.io/en/qtplatform-style.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/qtstyles.html" rel="bookmark"
-                           title="Permalink to Keeping the GTK style with Qt 5.7">Keeping the GTK style with Qt 5.7</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-06-25T00:00:00+02:00">
-                Published: Sat, 25 Jun 2016
-        </abbr>
-
-<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>tags: <a href="http://dglava.github.io/en/tag/qt.html">qt</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../qtstyles.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>Since version 5.7, Qt has moved the qtstyle support from <a href="https://github.com/qt/qtbase/commit/899a815414e95da8d9429a4a4f4d7094e49cfc55">qtbase</a>
-to a <a href="https://github.com/qt/qtstyleplugins/commit/102da7d50231fc5723dba6e72340bef3d29471aa">separate repository</a>.
-For the user that means that he can't just simply export <code>QT_STYLE_OVERRIDE=GTK+</code>
-to make Qt applications use the GTK widget style and theme.</p>
-<p>To get the old behaviour back, you need to ...</p>
-                <a class="readmore" href="http://dglava.github.io/en/qtstyles.html">read more</a>
-<p><a href="http://dglava.github.io/en/qtstyles.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

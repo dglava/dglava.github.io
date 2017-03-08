@@ -14,7 +14,6 @@
         <header id="banner" class="body">
                 <h1><a href="http://dglava.github.io/">dglava </a></h1>
                 <nav><ul>
-                    <li><a href="http://dglava.github.io/pages/zasto.html">Zašto</a></li>
                     <li><a href="http://dglava.github.io/category/linux.html">Linux</a></li>
                     <li><a href="http://dglava.github.io/category/stvari.html">Stvari</a></li>
                     <li><a href="http://dglava.github.io/archives.html">Arhiva</a></li>
@@ -27,52 +26,165 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/showsho.html">Automatsko praćenje serija — showsho</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/desktop.html">Moj desktop</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2016-11-09T00:00:00+01:00">
-                Objavljeno: Sri, 09 Nov 2016
+        <abbr class="published" title="2017-03-08T00:00:00+01:00">
+                Objavljeno: Sri, 08 Mar 2017
         </abbr>
 
-<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/serije.html">serije</a> </p>
-</footer><!-- /.post-info --><h3>Zašto?</h3>
-<p>Kad pratite više serija, vremenom postane nepregledno ili nemoguće
-pratiti datume izlaska i statuse. Do skoro sam vodio raspored u
-programu za tabelarni prikaz (LibreOffice Calc) i to je izgledalo
-otprilike kao na slici. Prije svakog preuzimanja epizode sam morao
-ručno provjeravati koja je posljednja epizoda i ručno tražiti
-odakle da preuzmem.</p>
-<p><img alt="slika stare metode" src="http://dglava.github.io/images/showsho1.png" title="Kako proletarijat prati serije" /></p>
-<p>Shvatio sam da je ovo relativno lagano moguće automatizirati i tako
-je nastao "showsho" (varijanta sa manje slova od <em>show shows</em> plus
-merak za izgovoriti). Postoji mnoštvo već postojećih rješenja (npr.
-<a href="http://www.tvoverlord.com/">TVOverlord</a>, ali rade više stvari nego
-što mi lično treba.</p>
-<h3>Šovšo</h3>
-<p>U suštini se sastoji iz tri dijela ili koraka koja mora uraditi:
-preuzeti određene informacije o serijama sa interneta, voditi računa
-koja je posljednja epizoda i statusu serije lokalno (bez da zavisi o
-internetu) i preuzimanje torenta. Prve verzije nisu radile prvi korak,
-tj. morao sam ručno snadbijevati informacije o serijama. U suštini je
-to bio JSON fajl, sa imenom serije, datumom kad počinje sezona, koliko
-epizoda ima, itd. To nije bilo optimalno, sa ponekim nedostacima tipa
-pomjerene epizode ili duple su pravile probleme i završavale se ručnim
-preuzimanjem. Tako da sam "malo" (čitaj: sve ponovo napisao) sredio
-stvar i sad je donekle bolje.</p>
-<p><img alt="slika showshoa" src="http://dglava.github.io/images/showsho2.png" title="Kako buržuji prate serije" /></p>
-<p>Sad je samo potrebno snadbiti spisak serija koje da prati, a ostalo će
-ići automatski. Na površini sve izgleda kao da radi i za vrijeme ovog
-pisanja nisam naišao na ijednu problematičnu situaciju. Međutim imam
-osjećaj da je veoma klimavo "iznutra". Nisam zadovoljan kako je izvedeno,
-ali definitivno ne želim više razmišljati kako da popravim (vidi
-<a href="https://xkcd.com/1319/">ovo</a>).</p>
-<p>Podatke o serijama preuzima sa <a href="http://www.tvmaze.com/">TVMaze</a>, a
-podatke o torentima sa <a href="https://en.btdb.in/">btdb.in</a>.</p>
-<p><img alt="još jedna slika showshoa" src="http://dglava.github.io/images/showsho3.png" title="Malo preglednije sa -a zastavom" /></p>
-<h3>Preuzmi</h3>
-<p>showsho možete preuzeti <a href="https://github.com/dglava/showsho">ovdje</a>.
-Potreban je samo Python, bez dodatnih biblioteka.
-Arch korisnici mogu instalirati pomoću ponuđenog PKGBUILDa.</p><p><a href="http://dglava.github.io/showsho.html#disqus_thread">Komentari</a></p>                </article>
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/tag/desktop.html">desktop</a> </p>
+</footer><!-- /.post-info --><p>Linux distribucije koristim već više od dvije godine (skoro ekskluzivno).
+Većina ljudi mnogo mijenja i isprobava sve distribucije. Mislim
+da je to idiotski, jer to rade iz pogrešnih razloga: misle
+da je izgled ekskluzivan za distribucije. Drugim riječima,
+misle da je izgled sve što čini distribuciju. To
+velika zabluda.
+U suštini postoji samo nekoliko distribucija koje su vrijedne
+korištenja. Sve ostalo je nizvodno smeće i normalna osoba se ne
+bi zamarala s njima.</p>
+<p><strong>Distribuciju definiše:</strong></p>
+<ul>
+<li>
+<p>Menadžer paketa</p>
+</li>
+<li>
+<p>Specifičnosti paketa (graditi sam iz izvora ili gotove "binarne"
+  pakete; koliko odstupa od <em>upstreama</em>, tj. koliko se pečuje)</p>
+</li>
+<li>
+<p>Vrsta izlaska (fiksne verzije ili <em>rolling-release</em>)</p>
+</li>
+<li>
+<p>Politika softvera (samo slobodni softver ili dozvoljava vlasnički)</p>
+</li>
+</ul>
+<p>Sve ostalo je manje-više isto i ne predstavlja razlog za promjenu
+distribucije.</p>
+<p>Koristim <a href="https://www.archlinux.org/">ArchLinux</a> iz nekoliko razloga.
+Mala baza instalacije, no i druge distribucije to nude, što većina ljudi
+nije svjesna, pa misle da je Arch poseban zbog toga. <em>Rolling-release</em>,
+što znači da se paketi ažuriraju kako izlaze i da se ne mora instalirati
+nanovo ili pokrenuti "veliko" ažuriranje s vremena na vrijeme. Paketi
+su uglavnom nepromijenjeni od <em>upstreama</em>, tj. pečuju se samo tamo
+gdje je neophodno. Na vrh toga Pacman je jednostavan menadžer paketa i
+vrlo je jednostavno pakovati sopstvene paketa (pomoću <em>makepkg</em>).</p>
+<h3>Kako izgleda desktop</h3>
+<p>ArchLinux mi je instaliran na dva kompjutera; na desktopu i laptopu.
+Oba su skoro identično konfigurisana, osim pojedinosti za hardver.</p>
+<p><a href="http://dglava.github.io/images/desk1.png"><img src="http://dglava.github.io/images/desk1-thumb.png" /></a>
+<a href="http://dglava.github.io/images/desk2.png"><img src="http://dglava.github.io/images/desk2-thumb.png" /></a>
+<a href="http://dglava.github.io/images/desk3.png"><img src="http://dglava.github.io/images/desk3-thumb.png" /></a></p>
+<h4>Okruženje</h4>
+<p>Upravitelj prozora koji koristim je Openbox. Mnogo funkcija ima prečice na tastaturi,
+tako da skoro nikako ne moram koristiti miš. Koristim četiri radne površine,
+imenovane rimskim brojevima. Od posebnih dodataka koristim Orcsome
+(opisano u <a href="http://dglava.github.io/orcsome.html">ovome članku</a>) koji
+dinamično skriva dekoracije sa maksimiziranih prozora radi uštede prostora.</p>
+<p>Tema je <a href="https://github.com/dglava/pkgbuilds/tree/master/numix-mod-theme">modificirani Numix</a>.</p>
+<p><a href="http://dglava.github.io/files/rc.xml">Konfiguracioni fajl</a> (moguće da je zastario;
+ne držim konfiguracione fajlove na internetu, tako da ne mogu uvijek
+spojiti sa ažurnim verzijama)</p>
+<p><strong>Važnije prečice</strong></p>
+<p><strong>Super + T</strong> — xfce4-terminal<br>
+<strong>Super + W</strong> — firefox<br>
+<strong>Super + F</strong> — nemo<br>
+<strong>Super * I</strong> — ncmpcpp (desktop)<br>
+<strong>Super * I</strong> — ncmpcpp (laptop)  </p>
+<p><strong>Print</strong> — slika desktop (pomoću <em>scrota</em>)<br>
+<strong>Alt + Print</strong> — slika aktivni prozor (pomoću <em>scrota</em>)  </p>
+<p><strong>Super + A</strong> — prikazuje Openbox root meni<br>
+<strong>Super + S</strong> — minimizira trenutni prozor<br>
+<strong>Super + D</strong> — minimizira sve prozore (prikazuje desktop)  </p>
+<p><strong>Alt + TAB</strong> — mijenja kroz otvorene prozore<br>
+<strong>Alt + F4</strong> — gasi prozor  </p>
+<p><strong>Super + PageUp</strong> — maksimizira prozor<br>
+<strong>Super + PageDown</strong> — vraća prozor na početnu veličinu<br>
+<strong>Super * Lijevo/Desno/Gore/Dole</strong> — Šalje prozor uz rub  </p>
+<p><strong>Super + 1/2/3/4</strong> — ide na desktop sa brojem  </p>
+<p><strong>XF86AudioMicMute</strong> — gasi/pali mikrofon<br>
+<strong>XF86TouchpadToggle</strong> — gasi/pali tačped<br>
+<strong>XF86MonBrightnessUp/Down</strong> — smanjuje i povećava svijetlost displeja  </p>
+<p>Programi koji se pokreću pri startu (pomoću Openbox autostart fajla):</p>
+<div class="highlight"><pre><span></span># samo na desktopu, jer koristi Nvidia karticu sa nouveau drajverima
+# radi problema sa v-syncom
+compton --config ~/.config/compton/compton.conf &amp;
+
+# mijenja CAPS LOCK i ESCAPE jer mnogo češće koristim escape
+setxkbmap -option caps:swapescape &amp;
+
+# postavlja pozadinu desktopa
+(nitrogen --restore &amp;&amp; tint2) &amp;
+
+# pokreće prvo mpd pa onda mpdas za skroblanje
+(mpd &amp;&amp; mpdas) &amp;
+
+# ikona za glasnoću i bateriju
+volumeicon &amp;
+cbatticon -i symbolic -l 10 -r 2 &amp;
+
+# vidi članak na blogu o orcsomu
+orcsome &amp;
+
+# bittorrent klijent
+qbittorrent &amp;
+</pre></div>
+
+
+<p>Okruženje iz Openbox environment fajla</p>
+<div class="highlight"><pre><span></span># postavke za lokalizaciju
+#export LANG=en_US.UTF-8
+export LC_CTYPE=bs_BA.UTF-8
+export LC_NUMERIC=bs_BA.UTF-8
+export LC_TIME=bs_BA.UTF-8
+export LC_COLLATE=bs_BA.UTF-8
+export LC_MONETARY=bs_BA.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_PAPER=bs_BA.UTF-8
+export LC_NAME=bs_BA.UTF-8
+export LC_ADDRESS=bs_BA.UTF-8
+export LC_TELEPHONE=bs_BA.UTF-8
+export LC_MEASUREMENT=bs_BA.UTF-8
+export LC_IDENTIFICATION=bs_BA.UTF-8
+
+# ovo eksportujem ovdje jer ako stavim u .bashrc grafički programi
+# neće biti svjesni o njima
+PATH=$PATH:/home/dino/program/bin:$(ruby -rubygems -e &quot;puts Gem.user_dir&quot;)/bin
+
+# vidi članak na blogu o gtk i qt temama i konzistentnom izgledu
+export QT_QPA_PLATFORMTHEME=qt5gtk2
+
+# promjeni zadani direktorij za gimp konfiguraciju
+export GIMP2_DIRECTORY=~/.config/gimp-2.8
+
+#ruby smeće, koristim samo za generaciju GTK tema
+export GEM_HOME=$(ruby -e &#39;print Gem.user_dir&#39;)
+
+# vidi članak na blogu o dbusu i overlay scrollingu
+export GTK_OVERLAY_SCROLLING=0
+dbus-update-activation-environment --systemd --all
+</pre></div>
+
+
+<h4>Alatna traka</h4>
+<p>Alatna traka je tint2. Prikazuje sve radne površine odvojeno, a automatski
+skriva prazne radi uštede prostora. Od internih tint2 dodataka koristim
+samo datum/sat (lijevi klik otvara <em>gsimplecal</em>). U <em>system trayu</em> se
+nalazi <em>applet</em> od <em>NetworkManagera</em> i <em>volumeicona</em>. Zavisno da li je
+laptop u pitanju, koristim i <em>cbatticon</em>.</p>
+<p><a href="http://dglava.github.io/files/tint2rc">Konfiguracioni fajl</a></p>
+<h4>Ostalo</h4>
+<p>Ikone su <a href="http://tiheum.deviantart.com/art/Faenza-Icons-173323228">Faenza</a>.
+Jeste stara, ali je jedna od najneutralnijih i najopširnijih tema koje
+su dostupne.</p>
+<p><a href="https://s32.postimg.org/iig3yuur9/image.png">Pozadinu</a> sam sam napravio,
+koristeći mustre <a href="https://www.toptal.com/designers/subtlepatterns/">odavde</a>.</p>
+<p>Fontovi su iz DejaVu familije. Sans za sve osim terminala, gdje je Mono.</p>
+<p>GTK tema je <a href="https://github.com/dglava/zukitre-6699cc">blago modificirana Zukitre</a>.
+Izmjenio sam <em>highlight</em> boju, kao i tamne dugmiće. Original možete
+pronaći <a href="https://github.com/lassekongo83/zuki-themes">ovdje</a>.</p>
+<p>To su ključne stvari desktopa, ali koristim još i nekoliko sitnica.
+Ako imate pitanja ili želite dodatne konfiguracije za nešto, ostavite komentar.</p><p><a href="http://dglava.github.io/desktop.html#disqus_thread">Komentari</a></p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h3>Drugi članci</h3>
@@ -81,54 +193,56 @@ Arch korisnici mogu instalirati pomoću ponuđenog PKGBUILDa.</p><p><a href="htt
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html" rel="bookmark"
-                           title="Permalink to Medicinska sestra-tehničar — pitanja i odgovori za stručni ispit">Medicinska sestra-tehničar — pitanja i odgovori za stručni ispit</a></h1>
+                    <h1><a href="http://dglava.github.io/orcsome.html" rel="bookmark"
+                           title="Permalink to Ukloni naslovnu traku kod maksimiziranih prozora">Ukloni naslovnu traku kod maksimiziranih prozora</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2016-11-01T00:00:00+01:00">
-                Objavljeno: Uto, 01 Nov 2016
+        <abbr class="published" title="2017-03-08T00:00:00+01:00">
+                Objavljeno: Sri, 08 Mar 2017
         </abbr>
 
-<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/strucni.html">strucni</a> <a href="http://dglava.github.io/tag/medicina.html">medicina</a> </p>
-</footer><!-- /.post-info -->                <h3>Šta je ovo?</h3>
-<p>Ovo je skup pitanja i odgovora za polaganje stručnog ispita za zanimanje
-medicinska sestra-tehničar. Pitanja su bila ažurna za vrijeme pisanja
-ovod članka, 01 Novembra 2016. godine. Preporučljivo je da se ne uzdate
-u ažurnost ovih pitanja, već da podignete najnovija iz ministarstva
-(što dobijete zajedno sa ...</p>
-                <a class="readmore" href="http://dglava.github.io/drzavni_pitanja_odgovori.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/drzavni_pitanja_odgovori.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/openbox.html">openbox</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/orcsome.html">en</a>
+
+</footer><!-- /.post-info -->                <p>Naslovna traka mi je jedino korisna kad pomjeram prozore. Iskreno
+nije potrebna ni tad sa Openboxom, jer je moguće držati ALT
+(po zadanim postavkama) i lijevim klikom pomjerati prozor. Razlog
+zašto nisam potpuno uklonio trake je taj što je na laptopu nezgodno
+držati ALT, dok na desktopu nemam problema.</p>
+<p>Provjerio …</p>
+                <a class="readmore" href="http://dglava.github.io/orcsome.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/orcsome.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="http://dglava.github.io/ergo525.html" rel="bookmark"
-                           title="Permalink to Genius Ergo 525 miš i Linux">Genius Ergo 525 miš i Linux</a></h1>
+                    <h1><a href="http://dglava.github.io/showsho.html" rel="bookmark"
+                           title="Permalink to Automatsko praćenje serija — showsho">Automatsko praćenje serija — showsho</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2016-08-24T00:00:00+02:00">
-                Objavljeno: Sri, 24 Aug 2016
+        <abbr class="published" title="2016-11-09T00:00:00+01:00">
+                Objavljeno: Sri, 09 Nov 2016
         </abbr>
 
-<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/genius-ergo.html">genius ergo</a> <a href="http://dglava.github.io/tag/hardware.html">hardware</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/ergo525.html">en</a>
-
-</footer><!-- /.post-info -->                <p>Ne želim ga ureći, ali me ovaj miš već služi 7 godina. Istina, iz dva puta.
-Kao i većina uređaja na Linuxu, radi dovoljno dobro već nakon priključivanja.
-Prepoznati su svi ekstra dugmići, čak i oni koji nisu radili na Windowsu kao
-što je horizontalno skrolovanje sa kolutićem. Stvar koja ...</p>
-                <a class="readmore" href="http://dglava.github.io/ergo525.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/ergo525.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/serije.html">serije</a> </p>
+</footer><!-- /.post-info -->                <h3>Zašto?</h3>
+<p>Kad pratite više serija, vremenom postane nepregledno ili nemoguće
+pratiti datume izlaska i statuse. Do skoro sam vodio raspored u
+programu za tabelarni prikaz (LibreOffice Calc) i to je izgledalo
+otprilike kao na slici. Prije svakog preuzimanja epizode sam morao
+ručno provjeravati koja je posljednja epizoda i ručno tražiti …</p>
+                <a class="readmore" href="http://dglava.github.io/showsho.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/showsho.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 5
+    Page 1 / 6
         <a href="http://dglava.github.io/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

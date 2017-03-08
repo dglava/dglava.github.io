@@ -14,7 +14,6 @@
         <header id="banner" class="body">
                 <h1><a href="http://dglava.github.io/en/">dglava </a></h1>
                 <nav><ul>
-                    <li><a href="http://dglava.github.io/en/pages/zasto.html">Why</a></li>
                     <li><a href="http://dglava.github.io/en/category/linux.html">Linux</a></li>
                     <li><a href="http://dglava.github.io/en/archives.html">Archive</a></li>
                     <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/en/theme/images/git.png"></a></li>
@@ -45,8 +44,8 @@ to "Refresh".</p>
 <h3>Forward/Back buttons</h3>
 <p>Swapping them to restore the expected functionality was pretty easy. First
 I used <em>xinput</em> to find out the number of available buttons on my mouse.</p>
-<div class="highlight"><pre><span></span>$ xinput get-button-map 8
-<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
+<div class="highlight"><pre><span></span>$ xinput get-button-map <span class="m">8</span>
+<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span>
 </pre></div>
 
 
@@ -54,18 +53,18 @@ I used <em>xinput</em> to find out the number of available buttons on my mouse.<
 running <code>xinput</code> without any arguments. Next you need to find out which
 number our Forward and Back buttons are. Run xinput with the "query-state"
 command while holding down the respective button.</p>
-<div class="highlight"><pre><span></span>$ xinput query-state 8
+<div class="highlight"><pre><span></span>$ xinput query-state <span class="m">8</span>
 ...
-    button<span class="o">[</span>7<span class="o">]=</span>up
-    button<span class="o">[</span>8<span class="o">]=</span>down
-    button<span class="o">[</span>9<span class="o">]=</span>up
+    button<span class="o">[</span><span class="m">7</span><span class="o">]=</span>up
+    button<span class="o">[</span><span class="m">8</span><span class="o">]=</span>down
+    button<span class="o">[</span><span class="m">9</span><span class="o">]=</span>up
 ...
 </pre></div>
 
 
 <p>To swap the buttons, you can use xinput's "set-button-map" option. Just literally
 swap the 8 and 9 when you're entering the command.</p>
-<div class="highlight"><pre><span></span>$ xinput set-button-map <span class="m">8</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
+<div class="highlight"><pre><span></span>$ xinput set-button-map <span class="m">8</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span>
 </pre></div>
 
 

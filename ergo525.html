@@ -14,7 +14,6 @@
         <header id="banner" class="body">
                 <h1><a href="http://dglava.github.io/">dglava </a></h1>
                 <nav><ul>
-                    <li><a href="http://dglava.github.io/pages/zasto.html">Zašto</a></li>
                     <li class="active"><a href="http://dglava.github.io/category/linux.html">Linux</a></li>
                     <li><a href="http://dglava.github.io/category/stvari.html">Stvari</a></li>
                     <li><a href="http://dglava.github.io/archives.html">Arhiva</a></li>
@@ -49,20 +48,20 @@ Prepoznati su svi ekstra dugmići, čak i oni koji nisu radili na Windowsu kao
 učinak su pobrkani dugmići za naprijed i nazad. Osim toga htio sam staviti
 dugmić između "naprijed/nazad" da osvježava stranicu, tj. da se ponaša
 kao da sam pritisno F5 (dugmić označen na slici).</p>
-<p><img alt="Dugme za F5" src="http://dglava.github.io/images/ergo-mis.jpg" title="Dugmić koji funkcioniše kao F5" /></p>
+<p><img alt="Dugme za F5" src="http://dglava.github.io/images/ergo-mis.jpg" title="Dugmić koji funkcioniše kao F5"></p>
 <h3>Pogrešni "naprijed/nazad" dugmići</h3>
 <p>Prvi problem, sa pobrkanim dugmićima, je bilo relativno jednostavno
 riješiti. Pomoću <em>xinput-a</em> možete saznati trenutni raspored dugmića.</p>
 <div class="highlight"><pre><span></span>$ xinput
-⎡ Virtual core pointer                      <span class="nv">id</span><span class="o">=</span><span class="m">2</span>    <span class="o">[</span>master pointer  <span class="o">(</span>3<span class="o">)]</span>
-⎜   ↳ Virtual core XTEST pointer                <span class="nv">id</span><span class="o">=</span><span class="m">4</span>    <span class="o">[</span>slave  pointer  <span class="o">(</span>2<span class="o">)]</span>
-⎜   ↳ Genius Ergo Mouse                         <span class="nv">id</span><span class="o">=</span><span class="m">8</span>    <span class="o">[</span>slave  pointer  <span class="o">(</span>2<span class="o">)]</span>
-⎣ Virtual core keyboard                     <span class="nv">id</span><span class="o">=</span><span class="m">3</span>    <span class="o">[</span>master keyboard <span class="o">(</span>2<span class="o">)]</span>
-    ↳ Virtual core XTEST keyboard               <span class="nv">id</span><span class="o">=</span><span class="m">5</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-    ↳ Power Button                              <span class="nv">id</span><span class="o">=</span><span class="m">6</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-    ↳ Power Button                              <span class="nv">id</span><span class="o">=</span><span class="m">7</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-    ↳ AT Translated Set <span class="m">2</span> keyboard              <span class="nv">id</span><span class="o">=</span><span class="m">9</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
-    ↳ Genius Ergo Mouse                         <span class="nv">id</span><span class="o">=</span><span class="m">10</span>   <span class="o">[</span>slave  keyboard <span class="o">(</span>3<span class="o">)]</span>
+⎡ Virtual core pointer                      <span class="nv">id</span><span class="o">=</span><span class="m">2</span>    <span class="o">[</span>master pointer  <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
+⎜   ↳ Virtual core XTEST pointer                <span class="nv">id</span><span class="o">=</span><span class="m">4</span>    <span class="o">[</span>slave  pointer  <span class="o">(</span><span class="m">2</span><span class="o">)]</span>
+⎜   ↳ Genius Ergo Mouse                         <span class="nv">id</span><span class="o">=</span><span class="m">8</span>    <span class="o">[</span>slave  pointer  <span class="o">(</span><span class="m">2</span><span class="o">)]</span>
+⎣ Virtual core keyboard                     <span class="nv">id</span><span class="o">=</span><span class="m">3</span>    <span class="o">[</span>master keyboard <span class="o">(</span><span class="m">2</span><span class="o">)]</span>
+    ↳ Virtual core XTEST keyboard               <span class="nv">id</span><span class="o">=</span><span class="m">5</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
+    ↳ Power Button                              <span class="nv">id</span><span class="o">=</span><span class="m">6</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
+    ↳ Power Button                              <span class="nv">id</span><span class="o">=</span><span class="m">7</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
+    ↳ AT Translated Set <span class="m">2</span> keyboard              <span class="nv">id</span><span class="o">=</span><span class="m">9</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
+    ↳ Genius Ergo Mouse                         <span class="nv">id</span><span class="o">=</span><span class="m">10</span>   <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
 </pre></div>
 
 
@@ -72,11 +71,11 @@ vidjeti status uređaja, tj. u našem slučaju status pritisnutih dugmića. Post
 i drugi načini kako da saznate koje je koje dugme, ali je xinput koristan
 jer ga sigurno već imate instaliranog. Dok sam pritisno dugme za naprijed
 na mišu ovo je ispis komande (sa izostavljenim neinteresantnim stvarima):</p>
-<div class="highlight"><pre><span></span>$ xinput query-state 8
+<div class="highlight"><pre><span></span>$ xinput query-state <span class="m">8</span>
 ...
-    button<span class="o">[</span>7<span class="o">]=</span>up
-    button<span class="o">[</span>8<span class="o">]=</span>down
-    button<span class="o">[</span>9<span class="o">]=</span>up
+    button<span class="o">[</span><span class="m">7</span><span class="o">]=</span>up
+    button<span class="o">[</span><span class="m">8</span><span class="o">]=</span>down
+    button<span class="o">[</span><span class="m">9</span><span class="o">]=</span>up
 ...
 </pre></div>
 
@@ -84,13 +83,13 @@ na mišu ovo je ispis komande (sa izostavljenim neinteresantnim stvarima):</p>
 <p>Istu stvar sam ponovio za "nazad" dugmić, i saznao da je broj 9. Sad kad
 znamo koji je broj, možemo koristiti <em>xinput</em> da ih zamjenimo. Prvo
 izlistamo sve dugmiće što miš ima sa:</p>
-<div class="highlight"><pre><span></span>$ xinput get-button-map 8
-<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
+<div class="highlight"><pre><span></span>$ xinput get-button-map <span class="m">8</span>
+<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span>
 </pre></div>
 
 
 <p>Nakon toga zamjenimo mjesta 8 i 9.</p>
-<div class="highlight"><pre><span></span>$ xinput set-button-map <span class="m">8</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> 15
+<div class="highlight"><pre><span></span>$ xinput set-button-map <span class="m">8</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span>
 </pre></div>
 
 
@@ -110,7 +109,7 @@ da se postavke primjene za miš. To je onaj par rječi od 4 slova/cifre poslije
 ID, sa dvotačkom između.</p>
 <div class="highlight"><pre><span></span>$ lsusb
 ...
-Bus <span class="m">002</span> Device 002: ID 0458:0087 KYE Systems Corp. <span class="o">(</span>Mouse Systems<span class="o">)</span> Ergo 525V Laser Mouse
+Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class="m">0458</span>:0087 KYE Systems Corp. <span class="o">(</span>Mouse Systems<span class="o">)</span> Ergo 525V Laser Mouse
 ...
 </pre></div>
 
@@ -123,9 +122,9 @@ način činio mnogo "čistijim". Pronašao sam <a href="http://www.vxnick.com/bl
 <p>Pomoću <em>evtest</em> programa možemo saznati <em>scancode</em> dugmića.</p>
 <div class="highlight"><pre><span></span>$ evtest
 ...
-Event: <span class="nb">time</span> 1472069345.467695, <span class="nb">type</span> <span class="m">4</span> <span class="o">(</span>EV_MSC<span class="o">)</span>, code <span class="m">4</span> <span class="o">(</span>MSC_SCAN<span class="o">)</span>, value 90006
-Event: <span class="nb">time</span> 1472069345.467695, <span class="nb">type</span> <span class="m">1</span> <span class="o">(</span>EV_KEY<span class="o">)</span>, code <span class="m">63</span> <span class="o">(</span>KEY_F5<span class="o">)</span>, value 1
-Event: <span class="nb">time</span> 1472069345.467695, -------------- SYN_REPORT ------------
+Event: <span class="nb">time</span> <span class="m">1472069345</span>.467695, <span class="nb">type</span> <span class="m">4</span> <span class="o">(</span>EV_MSC<span class="o">)</span>, code <span class="m">4</span> <span class="o">(</span>MSC_SCAN<span class="o">)</span>, value <span class="m">90006</span>
+Event: <span class="nb">time</span> <span class="m">1472069345</span>.467695, <span class="nb">type</span> <span class="m">1</span> <span class="o">(</span>EV_KEY<span class="o">)</span>, code <span class="m">63</span> <span class="o">(</span>KEY_F5<span class="o">)</span>, value <span class="m">1</span>
+Event: <span class="nb">time</span> <span class="m">1472069345</span>.467695, -------------- SYN_REPORT ------------
 ...
 </pre></div>
 
