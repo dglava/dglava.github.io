@@ -26,7 +26,102 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/lightdm-openbox.html">Lijep prelaz između LightDMa i Openboxa</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/lightdm-jezik.html">Promjeni jezik LightDM Greetera</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-03-20T00:00:00+01:00">
+                Objavljeno: Pon, 20 Mar 2017
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/lightdm.html">lightdm</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/lightdm-jezik.html">en</a>
+
+</footer><!-- /.post-info --><p>Jezik koji koristim na kompjuteru je engleski. To obuhvata jezik
+teksta u svim programima i okruženju. Za sve ostalo, kao što je datum,
+jedinice za mjeru, specifičnosti brojeva, adresa i slično koristim
+bosanski.</p>
+<p>Na Linux distribucijama je jednostavno prilagoditi jezike i standarde.
+Za to se koriste lokali (<em>locales</em>, ne znam tačni prevod na naš) i
+promjenjljive okruženja (<em>environment variables</em>, isti slučaj). Moje
+postavke izgledaju ovako:</p>
+<div class="highlight"><pre><span></span>LANG=en_US.utf8
+LC_CTYPE=bs_BA.UTF-8
+LC_NUMERIC=bs_BA.UTF-8
+LC_TIME=bs_BA.UTF-8
+LC_COLLATE=bs_BA.UTF-8
+LC_MONETARY=bs_BA.UTF-8
+LC_MESSAGES=en_US.UTF-8
+LC_PAPER=bs_BA.UTF-8
+LC_NAME=bs_BA.UTF-8
+LC_ADDRESS=bs_BA.UTF-8
+LC_TELEPHONE=bs_BA.UTF-8
+LC_MEASUREMENT=bs_BA.UTF-8
+LC_IDENTIFICATION=bs_BA.UTF-8
+LC_ALL=
+</pre></div>
+
+
+<p>Koristim engleski za LANG (i LANGUAGE koji nije naveden jer ga nasljeđuje
+od LANG postavke) i za LC_MESSAGES. Sve ostalo koristi bosanske postavke,
+tj bs_BA lokal.</p>
+<p>Globalno, odnosno sistemski mi je eksportovano samo LANG=en_US.UTF-8 u
+<code>/etc/locale.conf</code> fajlu. Znači da je sve na engleskom, osim gdje je
+navedeno drugačije. Nakon toga, svaki korisnik ima svoj <code>locale.conf</code>
+fajl gdje je podešeno za njega. Fajl se nalazi u <code>~/.config/locale.conf</code>,
+a osim njega imam iste vrijednosti eksportovane u Openbox konfiguracionom
+fajlu u <code>~/.config/openbox/environment</code> za grafičko okruženje (postavke
+iz <code>locale.conf</code> se ne pikaju pod Xorgom, ne znam još zašto).</p>
+<h3>LightDM problem</h3>
+<p>Kompjutere koriste i moji roditelji. Nemaju nikakvih problema, čak je
+sve i lakše jer je prevedeno na domaći jezik. Oni umjesto <code>LANG=en_US.UTF-8</code>
+koriste <code>LANG=bs_BA.UTF-8</code>. Također je za njih eksportovano i <code>LANGUAGE=bs:hr:sr</code>.
+GNU gettext programi uzimaju u obzir tu promjenjljivu za postavke o jezicima,
+a prednost naspram korištenju samo <code>LANG=</code> je to što je moguće zadati
+i alternative u slučaju da prevod na jednom jeziku nije dostupan tako da
+se jezici odvoje sa dvotačkom (:).</p>
+<p>LightDMov <em>greeter</em> je međutim ostao na engleskom, jer je engleski
+globalno namješten. Htio sam da im potpuno pružim prevedeno okruženje,
+tako da je i LightDMov greeter trebao biti na domaćem.</p>
+<p>Prvo hakasto rješenje je bilo da kopiram bosanski prevod (koji je za
+vrijeme pisanja ovoga nepotpun), prevedem do kraja i stavim pod engleski
+u <code>/usr/share/locale/en/...</code>. Međutim sjetio sam se boljeg rješenja.</p>
+<h3>Kako sad?</h3>
+<p>LightDM pokreće systemd servis. Systemd je u stanju da proslijedi
+promjenjljive okruženja servisima, i to je nama pogodno.
+Naime programi se mogu privremeno pokrenuti sa određenim okruženjem, npr.
+<code>LANG=de_DE.UTF-8 gimp</code>. To će GIMP pokrenuti na njemačkom jeziku, bez
+da mijenja ikakve trajne postavke.</p>
+<p>Isti princip se može primjeniti i za LightDM, samo što se mora dodati
+systemd servisu. To možemo pomoću service fajla. Najbolji način je da
+se napravi globalni <em>override</em>.</p>
+<p>Možete ručno napraviti direktorij za servis koji želite promjeniti pod
+<code>/etc/systemd/system/</code> zajedno sa fajlom ili koristiti <code>systemctl edit servis</code>.</p>
+<p>Nama treba <code>ENVIRONMENT=</code> postavka. U nju unesemo željenu promjenjljivu.
+Ovako na kraju izgleda moj fajl:</p>
+<div class="highlight"><pre><span></span>$ cat /etc/systemd/system/lightdm.service.d/override.conf 
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Environment</span><span class="o">=</span>
+<span class="nv">Environment</span><span class="o">=</span><span class="s2">&quot;LANG=bs_BA.UTF-8&quot;</span>
+</pre></div>
+
+
+<p>Dva puta je navedeno, a prvi red je prazan. Nisam potpuno siguran, mislim
+da radi i bez praznog reda. Prazni red ima efekat da "očisti" prijašnju
+vrijednost, a u našem slučaju ne može naškoditi (makar ne prema znaju
+tokom pisanja ovog članka).</p><p><a href="http://dglava.github.io/lightdm-jezik.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/lightdm-openbox.html" rel="bookmark"
+                           title="Permalink to Lijep prelaz između LightDMa i Openboxa">Lijep prelaz između LightDMa i Openboxa</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-03-21T00:00:00+01:00">
                 Objavljeno: Pon, 21 Mar 2016
@@ -36,56 +131,16 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/tag/lightdm.html">lightdm</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/lightdm-openbox.html">en</a>
 
-</footer><!-- /.post-info --><p>Jedna stvar koja me je pomalo nervirala je ružni prelaz između displej menadžera,
+</footer><!-- /.post-info -->                <p>Jedna stvar koja me je pomalo nervirala je ružni prelaz između displej menadžera,
 u mom slučaju LightDMa, i desktopa, odnosno Openboxa. Druga desktop okruženja,
 kao naprimjer Xfce, imaju tečan prelaz. Nakon prijavljivanja nestanu elementi
 displej menadžera, pozadina ostane i na kraju se pojave elementi desktopa kao
-što je alatna traka. Sve glatko, jedno za drugim bez ikakvog prekida pozadine.</p>
-<p>Kod Openboxa je situacija malo drugačija. Tokom prelaska, nakratko se pokaže
-crna pozadina prije nego što se uspostavi pozadina desktopa.</p>
-<p>Primjer ružnog prelaza:</p>
-<video width="320" height="240" controls>
-  <source src="http://dglava.github.io/files/login1.webm" type="video/webm">
-</video>
-
-<p>Kao i uvijek, prvo rješenje je bilo hakasto i neidealno. Koristio sam
-<a href="https://github.com/kokoko3k/gopreload">GoPreload</a> da učitam u RAM tokom
-<em>bootovanja</em> sve fajlove koje koristi program za postavljanje pozadine,
-<a href="https://github.com/l3ib/nitrogen">Nitrogen</a>. Prelaz je bio brži, ali je
-crna pozadina još uvijek bljesnula nakratko.</p>
-<h4>Lijepi prelaz</h4>
-<p>Neželjena, crna boja pozadine je zapravo
-<a href="https://github.com/danakj/openbox/blob/d0ba8806689ea80b6a739122aaf8dac81d2a3e5c/data/autostart/openbox-autostart.in#L3-L12">standardna boja desktopa kod Openboxa</a>.
-Prema tome Openbox postavi crnu (zapravo je sivkasta <em>#303030</em>) boju
-pozadine, pa se tek nakon toga postavi pozadinska slika. Da bi se izbjeglo,
-potrebno je spriječiti Openbox da postavi boju <em>X root</em> prozora nakon starta.
-Sve što treba uraditi je izbaciti ili komentarisati dio openbox-autostart fajla:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Set a background color</span>
-<span class="c1">#BG=&quot;&quot;</span>
-<span class="c1">#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=hsetroot</span>
-<span class="c1">#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=esetroot</span>
-<span class="c1">#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=xsetroot</span>
-<span class="c1">#fi</span>
-<span class="c1">#test -z $BG || $BG -solid &quot;#303030&quot;</span>
-</pre></div>
-
-
-<p>Na Archu se taj fajl nalazi u <code>/usr/lib/openbox/openbox-autostart</code>. Kod
-drugih distribucija bi isto trebao biti tu, ako nije pogledajte sa</p>
-<div class="highlight"><pre><span></span>ps x <span class="p">|</span> grep openbox
-</pre></div>
-
-
-<p>gdje se nalazi. To je onaj fajl poslije --startup opcije.</p>
-<p>Sada je prelaz neprimjetan ako koristite istu pozadinu LightDM <em>greetera</em>
-i Openboxove radne površine.</p>
-<video width="320" height="240" controls>
-  <source src="http://dglava.github.io/files/login2.webm" type="video/webm">
-</video><p><a href="http://dglava.github.io/lightdm-openbox.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
+što je alatna traka …</p>
+                <a class="readmore" href="http://dglava.github.io/lightdm-openbox.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/lightdm-openbox.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
         </section><!-- /#extras -->
 
