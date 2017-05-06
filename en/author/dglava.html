@@ -53,9 +53,9 @@ of killing any open mpv instances and then launching our new one.
 After some trial and error and the help of the internet, I settled on this:</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="nv">pid</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>pidof mpv<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>pidof <span class="s2">&quot;mpv&quot;</span><span class="k">)</span>
 
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$pid</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
   <span class="nb">kill</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span>
 <span class="k">fi</span>
 
