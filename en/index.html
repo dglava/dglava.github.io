@@ -25,7 +25,78 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/lightdm-jezik.html">Change LightDM's language (and its greeters)</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/mpv-jedan.html">Single instance of mpv</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-05-06T00:00:00+02:00">
+                Published: Sat, 06 May 2017
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/mpv.html">mpv</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../mpv-jedan.html">bs</a>
+
+</footer><!-- /.post-info --><p><a href="https://mpv.io/">mpv</a> is a pretty cool media player. It's simple and gets
+the job done. I've been using it since I started using Linux distributions.
+I like the simple config and keyboard focus. I even went so far to remove
+all keybindings and only assign those I actually use.
+The only downside it has is the fact that it launches a new instance
+(window) for every file that I open.</p>
+<p>There's a <a href="https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv">script</a>
+in the official mpv repository which is supposed to solve that problem.
+It does indeed reuse the opened instance of mpv, but it appends newly
+opened files to the playlist instead of replacing the currently playing
+video with it. That's the behaviour I desire, so the script isn't really
+useful for me.</p>
+<h3>Hacky solution</h3>
+<p>I figured that I could just use a hacky workaround which consisted
+of killing any open mpv instances and then launching our new one.
+After some trial and error and the help of the internet, I settled on this:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">pid</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>pidof mpv<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$pid</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">kill</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span>
+<span class="k">fi</span>
+
+mpv <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>Save that into a file, make it executable and put it in your $PATH.</p>
+<p>Next we need a <a href="https://standards.freedesktop.org/desktop-entry-spec/latest/">desktop file</a>.
+I slightly tweaked the example provided in the standard specification and
+this is the end result. For <code>Exec=</code> we have to specify the name of our
+above mentioned script.</p>
+<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Version</span><span class="o">=</span><span class="s">1.0</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">mpv Media Player - Single Instance</span>
+<span class="na">Comment</span><span class="o">=</span><span class="s">Run only one instance of mpv</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">mpv_single %f</span>
+<span class="na">Icon</span><span class="o">=</span><span class="s">mpv</span>
+<span class="na">MimeType</span><span class="o">=</span><span class="s">application/ogg;application/x-ogg;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;video/webm;audio/x-flac;audio/x-vorbis+ogg;video/x-ogm+ogg;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;video/mp2t;audio/flac;audio/mp4;</span>
+</pre></div>
+
+
+<p>That's pretty much it. Now all I had to do was associate media files
+with our new <code>mpv Media Player - Single Instance</code> desktop file via my
+file manager and I was set.</p>
+<p>Arch users can use my provided <a href="https://github.com/dglava/pkgbuilds/blob/master/mpv-single-instance/PKGBUILD">PKGBUILD</a>.
+Everyone else can find the Bash script and desktop file <a href="https://github.com/dglava/pkgbuilds/tree/master/mpv-single-instance">here</a>.</p><p><a href="http://dglava.github.io/en/mpv-jedan.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/lightdm-jezik.html" rel="bookmark"
+                           title="Permalink to Change LightDM's language (and its greeters)">Change LightDM's language (and its greeters)</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-03-20T00:00:00+01:00">
                 Published: Mon, 20 Mar 2017
@@ -35,44 +106,14 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/lightdm.html">lightdm</a> </p>Translations:
         <a href="http://dglava.github.io/en/../lightdm-jezik.html">bs</a>
 
-</footer><!-- /.post-info --><p>I found myself in a situation where I needed LightDM (and its greeters)
+</footer><!-- /.post-info -->                <p>I found myself in a situation where I needed LightDM (and its greeters)
 to use a language other than the one defined globally by the <code>LANG</code>
 environment variable. Searching the internet didn't yield any results,
 so I was forced to achieve it with an ugly hack.</p>
-<p>The workaround solution consisted of overwriting the globally set language's
-(in my case English) translation file with my desired language's one.
-I copied the <code>/usr/share/locale/bs/LC_MESSAGES/lightdm-gtk-greeter.mo</code>
-file into <code>/usr/share/locale/en/LC_MESSAGES/lightdm-gtk-greeter.mo</code>.</p>
-<p>That's far from an ideal solution, so I kept searching for something beter
-until I realized that I could do it another way.</p>
-<h3>Systemd way</h3>
-<p>I am starting LightDM as a systemd service. Systemd is able to pass
-environment variables to services and that's exactly what can help us.
-All we have to do is edit LightDM's service file and add the <code>ENVIRONMENT="LANG=bs_BA.UTF-8"</code>
-in there.</p>
-<p>Systemd offers a convenient way to edit service files with <code>systemctl edit lightdm</code>.
-It will automatically create an override file for the service. Alternatively,
-you can do it manually, by creating the appropriately named directory and override file
-in <code>/etc/systemd/system/</code>.</p>
-<p>Here's how my file looks like:</p>
-<div class="highlight"><pre><span></span>$ cat /etc/systemd/system/lightdm.service.d/override.conf 
-<span class="o">[</span>Service<span class="o">]</span>
-<span class="nv">Environment</span><span class="o">=</span>
-<span class="nv">Environment</span><span class="o">=</span><span class="s2">&quot;LANG=bs_BA.UTF-8&quot;</span>
-</pre></div>
-
-
-<p>I have a blank Environment line because it clears an already set
-Environment option. This might not be necessary because there might not
-be an already exported Environment file in the actual LightDM service, but
-I reckon it won't hurt.
-If it does conflict or have any unwanted effects, please let me know in
-the comments.</p><p><a href="http://dglava.github.io/en/lightdm-jezik.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>The workaround solution consisted …</p>
+                <a class="readmore" href="http://dglava.github.io/en/lightdm-jezik.html">read more</a>
+<p><a href="http://dglava.github.io/en/lightdm-jezik.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -99,34 +140,9 @@ It's a scripting extension for NETWM …</p>
                 <a class="readmore" href="http://dglava.github.io/en/orcsome.html">read more</a>
 <p><a href="http://dglava.github.io/en/orcsome.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/ergo525.html" rel="bookmark"
-                           title="Permalink to Genius Ergo 525 on Linux">Genius Ergo 525 on Linux</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-08-24T00:00:00+02:00">
-                Published: Wed, 24 Aug 2016
-        </abbr>
-
-<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>tags: <a href="http://dglava.github.io/en/tag/genius-ergo.html">genius ergo</a> <a href="http://dglava.github.io/en/tag/hardware.html">hardware</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../ergo525.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>I'm the owner of a Genius Ergo 525 mouse and I'm satisfied with it. It's
-working great out-of-the-box on Linux, except for two minor issues.
-The first one is the fact that the Forward and Back
-side-buttons are swapped. The second one isn't really an issue, but extra
-functionality which …</p>
-                <a class="readmore" href="http://dglava.github.io/en/ergo525.html">read more</a>
-<p><a href="http://dglava.github.io/en/ergo525.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 3
+    Page 1 / 4
         <a href="http://dglava.github.io/en/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

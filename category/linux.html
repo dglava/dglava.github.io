@@ -26,7 +26,79 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/lightdm-jezik.html">Promjeni jezik LightDM Greetera</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/mpv-jedan.html">Samo jedan mpv</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-05-06T00:00:00+02:00">
+                Objavljeno: Sub, 06 Maj 2017
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/mpv.html">mpv</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/mpv-jedan.html">en</a>
+
+</footer><!-- /.post-info --><p><a href="https://mpv.io/">mpv</a> je sjajni video plejer dostupan za mnogo operativnih
+sistema, pa tako i za Linux distribucije. Površinski gledano je vrlo
+jednostavan. Bez ikakvog podešavanja reproducira sve moguće fajlove,
+a za konfiguraciju je dostupan ogroman broj opcija koje se mogu
+uključiti putem <em>flagova</em> ili konfiguracionog fajla (što i koristim).</p>
+<p>Sa mog pogleda korištenja ima jednu manu: otvaranje nove instance za
+svaki pokrenuti fajl. Možda je to i logični izbor, ali nakon korištenja
+drugi plejera sam se navikao da svi novi fajlovi budu otvoreni u
+istom prozoru, s tim da se stari fajl prekine, a novi zauzme njegovo mjesto.</p>
+<p>U zvaničnom mpv <a href="https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv">repozitoriju</a>
+postoji jedan fajl, tačnije Python skripta, zvana umpv. Fajlovi pokrenuti
+pomoću nje bivaju dodani u plejlistu i pušteni automatski nakon kraja
+prvog fajla. Međutim to nije funkcionalnost koju ja želim. Ja želim da
+trenutni video bude zamijenjen novim.</p>
+<h3>Hakasto natjeraj mpv da sluša</h3>
+<p>Najlogičniji način da se to uradi je obična shell (koristim Bash) skripta
+koja bi pogledala da li postoji pokrenuti mpv. U slučaju da jeste, ugasila
+bi ga i pokrenula novi mpv.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">pid</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>pidof mpv<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$pid</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">kill</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span>
+<span class="k">fi</span>
+
+mpv <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>To je to što se skripte tiče. Da bi je mogao koristiti u upravljaču
+fajlova (koristim Nemo), trebao mi je i <a href="https://standards.freedesktop.org/desktop-entry-spec/latest/">desktop fajl</a>.
+Kopirao sam primjer pomenut u specifikaciji i izmjenio park ključnih stavki.
+Za <code>Exec=</code> je potrebno staviti ime gore napisane skripte. Ja sam napravio
+paket za moju distribuciju i skripta se zove mpv_single. Desktop fajl
+sam snimio pod imenom <code>mpv-single-instance.desktop</code> i paket ga stavi
+među ostale desktop fajlove.</p>
+<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Version</span><span class="o">=</span><span class="s">1.0</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">mpv Media Player - Single Instance</span>
+<span class="na">Comment</span><span class="o">=</span><span class="s">Run only one instance of mpv</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">mpv_single %f</span>
+<span class="na">Icon</span><span class="o">=</span><span class="s">mpv</span>
+<span class="na">MimeType</span><span class="o">=</span><span class="s">application/ogg;application/x-ogg;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;video/webm;audio/x-flac;audio/x-vorbis+ogg;video/x-ogm+ogg;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;video/mp2t;audio/flac;audio/mp4;</span>
+</pre></div>
+
+
+<p>Arch korisnici mogu koristiti <a href="https://github.com/dglava/pkgbuilds/blob/master/mpv-single-instance/PKGBUILD">ovaj PKGBUILD</a>.
+Ostali mogu skriptu i desktop fajl preuzeti <a href="https://github.com/dglava/pkgbuilds/tree/master/mpv-single-instance">ovdje</a>.</p><p><a href="http://dglava.github.io/mpv-jedan.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/lightdm-jezik.html" rel="bookmark"
+                           title="Permalink to Promjeni jezik LightDM Greetera">Promjeni jezik LightDM Greetera</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-03-20T00:00:00+01:00">
                 Objavljeno: Pon, 20 Mar 2017
@@ -36,84 +108,15 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/lightdm.html">lightdm</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/lightdm-jezik.html">en</a>
 
-</footer><!-- /.post-info --><p>Jezik koji koristim na kompjuteru je engleski. To obuhvata jezik
+</footer><!-- /.post-info -->                <p>Jezik koji koristim na kompjuteru je engleski. To obuhvata jezik
 teksta u svim programima i okruženju. Za sve ostalo, kao što je datum,
 jedinice za mjeru, specifičnosti brojeva, adresa i slično koristim
 bosanski.</p>
 <p>Na Linux distribucijama je jednostavno prilagoditi jezike i standarde.
-Za to se koriste lokali (<em>locales</em>, ne znam tačni prevod na naš) i
-promjenjljive okruženja (<em>environment variables</em>, isti slučaj). Moje
-postavke izgledaju ovako:</p>
-<div class="highlight"><pre><span></span>LANG=en_US.utf8
-LC_CTYPE=bs_BA.UTF-8
-LC_NUMERIC=bs_BA.UTF-8
-LC_TIME=bs_BA.UTF-8
-LC_COLLATE=bs_BA.UTF-8
-LC_MONETARY=bs_BA.UTF-8
-LC_MESSAGES=en_US.UTF-8
-LC_PAPER=bs_BA.UTF-8
-LC_NAME=bs_BA.UTF-8
-LC_ADDRESS=bs_BA.UTF-8
-LC_TELEPHONE=bs_BA.UTF-8
-LC_MEASUREMENT=bs_BA.UTF-8
-LC_IDENTIFICATION=bs_BA.UTF-8
-LC_ALL=
-</pre></div>
-
-
-<p>Koristim engleski za LANG (i LANGUAGE koji nije naveden jer ga nasljeđuje
-od LANG postavke) i za LC_MESSAGES. Sve ostalo koristi bosanske postavke,
-tj bs_BA lokal.</p>
-<p>Globalno, odnosno sistemski mi je eksportovano samo LANG=en_US.UTF-8 u
-<code>/etc/locale.conf</code> fajlu. Znači da je sve na engleskom, osim gdje je
-navedeno drugačije. Nakon toga, svaki korisnik ima svoj <code>locale.conf</code>
-fajl gdje je podešeno za njega. Fajl se nalazi u <code>~/.config/locale.conf</code>,
-a osim njega imam iste vrijednosti eksportovane u Openbox konfiguracionom
-fajlu u <code>~/.config/openbox/environment</code> za grafičko okruženje (postavke
-iz <code>locale.conf</code> se ne pikaju pod Xorgom, ne znam još zašto).</p>
-<h3>LightDM problem</h3>
-<p>Kompjutere koriste i moji roditelji. Nemaju nikakvih problema, čak je
-sve i lakše jer je prevedeno na domaći jezik. Oni umjesto <code>LANG=en_US.UTF-8</code>
-koriste <code>LANG=bs_BA.UTF-8</code>. Također je za njih eksportovano i <code>LANGUAGE=bs:hr:sr</code>.
-GNU gettext programi uzimaju u obzir tu promjenjljivu za postavke o jezicima,
-a prednost naspram korištenju samo <code>LANG=</code> je to što je moguće zadati
-i alternative u slučaju da prevod na jednom jeziku nije dostupan tako da
-se jezici odvoje sa dvotačkom (:).</p>
-<p>LightDMov <em>greeter</em> je međutim ostao na engleskom, jer je engleski
-globalno namješten. Htio sam da im potpuno pružim prevedeno okruženje,
-tako da je i LightDMov greeter trebao biti na domaćem.</p>
-<p>Prvo hakasto rješenje je bilo da kopiram bosanski prevod (koji je za
-vrijeme pisanja ovoga nepotpun), prevedem do kraja i stavim pod engleski
-u <code>/usr/share/locale/en/...</code>. Međutim sjetio sam se boljeg rješenja.</p>
-<h3>Kako sad?</h3>
-<p>LightDM pokreće systemd servis. Systemd je u stanju da proslijedi
-promjenjljive okruženja servisima, i to je nama pogodno.
-Naime programi se mogu privremeno pokrenuti sa određenim okruženjem, npr.
-<code>LANG=de_DE.UTF-8 gimp</code>. To će GIMP pokrenuti na njemačkom jeziku, bez
-da mijenja ikakve trajne postavke.</p>
-<p>Isti princip se može primjeniti i za LightDM, samo što se mora dodati
-systemd servisu. To možemo pomoću service fajla. Najbolji način je da
-se napravi globalni <em>override</em>.</p>
-<p>Možete ručno napraviti direktorij za servis koji želite promjeniti pod
-<code>/etc/systemd/system/</code> zajedno sa fajlom ili koristiti <code>systemctl edit servis</code>.</p>
-<p>Nama treba <code>ENVIRONMENT=</code> postavka. U nju unesemo željenu promjenjljivu.
-Ovako na kraju izgleda moj fajl:</p>
-<div class="highlight"><pre><span></span>$ cat /etc/systemd/system/lightdm.service.d/override.conf 
-<span class="o">[</span>Service<span class="o">]</span>
-<span class="nv">Environment</span><span class="o">=</span>
-<span class="nv">Environment</span><span class="o">=</span><span class="s2">&quot;LANG=bs_BA.UTF-8&quot;</span>
-</pre></div>
-
-
-<p>Dva puta je navedeno, a prvi red je prazan. Nisam potpuno siguran, mislim
-da radi i bez praznog reda. Prazni red ima efekat da "očisti" prijašnju
-vrijednost, a u našem slučaju ne može naškoditi (makar ne prema znaju
-tokom pisanja ovog članka).</p><p><a href="http://dglava.github.io/lightdm-jezik.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+Za to se koriste lokali (<em>locales</em>, ne znam …</p>
+                <a class="readmore" href="http://dglava.github.io/lightdm-jezik.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/lightdm-jezik.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -138,32 +141,6 @@ velika zabluda.
 U …</p>
                 <a class="readmore" href="http://dglava.github.io/desktop.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/desktop.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/orcsome.html" rel="bookmark"
-                           title="Permalink to Ukloni naslovnu traku kod maksimiziranih prozora">Ukloni naslovnu traku kod maksimiziranih prozora</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-03-08T00:00:00+01:00">
-                Objavljeno: Sri, 08 Mar 2017
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/openbox.html">openbox</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/orcsome.html">en</a>
-
-</footer><!-- /.post-info -->                <p>Naslovna traka mi je jedino korisna kad pomjeram prozore. Iskreno
-nije potrebna ni tad sa Openboxom, jer je moguće držati ALT
-(po zadanim postavkama) i lijevim klikom pomjerati prozor. Razlog
-zašto nisam potpuno uklonio trake je taj što je na laptopu nezgodno
-držati ALT, dok na desktopu nemam problema.</p>
-<p>Provjerio …</p>
-                <a class="readmore" href="http://dglava.github.io/orcsome.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/orcsome.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
