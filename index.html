@@ -27,7 +27,72 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/mpv-jedan.html">Samo jedan mpv</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/firefox-dpms.html">Spriječi gašenje monitora pri gledanju videa</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-08-29T00:00:00+02:00">
+                Objavljeno: Uto, 29 Aug 2017
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/firefox.html">firefox</a> <a href="http://dglava.github.io/tag/dpms.html">dpms</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/firefox-dpms.html">en</a>
+
+</footer><!-- /.post-info --><h3>Zašto se gasi</h3>
+<p>Ne koristim nikakve <em>screensavere</em>. Jedina stvar koju imam uključeno
+su DPMS postavke koje zatamnjuju, <em>suspenduju</em> i gase monitor. Pri
+normalnom radu funkcioniše bez problema. Pomjeranjem miša ili pritiskanjem
+dugmeta na tastaturi prestaje. Video plejer mpv također samostalno
+privremeno isključi DPMS postavke dok pušta video.</p>
+<p>Problem nastaje pri gledanju video klipova u Firefoxu, npr. YouTube.
+Firefox ne gasi DPMS gašenje pri puštanju videa. Također mislim da ne emituje
+nikakav znak za zahtijevanje gašenja. Moguće da emituje neku dbus poruku
+upućenu klasičnim screensaverima i drugim koji slušaju, ali nažalost
+ne utiče na DPMS postavke.</p>
+<h3>Zašto se neće gasiti</h3>
+<p>Primjetio sam da se pri puštanju video klipa u Firefoxu pojavi
+"stream" u Pulseaudiju kao na slici.</p>
+<p><a href="http://dglava.github.io/images/firefox-dpms.png"><img src="http://dglava.github.io/images/firefox-dpms.png" width="320" height="162" /></a></p>
+<p>Ideja je bila da pratim Pulseaudio <em>sinkove</em> i provjerim da li ima
+Firefoxa među njima. U slučaju da ima, ugasio bih DPMS postavke. Pri
+ponovnoj provjeri, ukoliko nema Firefoxa, vratio bih postavke.</p>
+<h3>Zašto se ne gasi</h3>
+<p>Napisao sam mali Python programčić koji će provjeravati Pulseaudio
+podatke i tražiti Firefox.</p>
+<p>Prva ideja je bila da nakon svakih određenih sekundi provjerim da
+li postoji Firefox <em>sink</em>. Na sličan način funkcionše <a href="https://github.com/iye/lightsOn">lightsOn</a>.
+Međutim lightsOn detektuje samo Flash video i druge programe. Meni to
+nije potrebno, a potrebno mi je da detektuje HTML5 video jer je Flash
+deprecirano, vlasničko-softver smeće koje ne treba imati instalirano.</p>
+<p>Slučajno sam pronašao <code>pactl subscribe</code>. Pulseaudio emituje razne
+događaje, kao pojavu novih <em>sources</em>, <em>sinks</em> i nama potrebni <em>input sinks</em>.
+To je mnogo bolje rješenje nego periodično provjeravanje.</p>
+<p>Da ne moram hakasto rasčlanjivati (navodno se tako kaže <em>parse</em> na naš)
+ispis od pactl, pronašao sam <a href="https://github.com/mk-fg/python-pulse-control">python-pulse-control</a>.
+On otkriva iste Pulseaudio događaje, samo lakše i čistije.
+Uz pomoć toga nije bilo teško sklepati na brzaka rješenje. Svjestan
+sam da je sam princip veoma hakast i da izvodba rješenja nije perfektna,
+ali za sada radi besprijekorno.</p>
+<p><strong>Preuzmi program <a href="https://github.com/dglava/firefox-dpms">Firefox-DPMS</a>.</strong></p>
+<p>Potreban vam je Python 3, gore navedeni python-pulse-control i naravno
+morate koristiti PulseAudio. Osim toga ne koristi ništa izvan Python
+standardne <em>library</em>.</p>
+<p>Arch Linux korisnici mogu koristiti priloženi PKGBUILD za Firefox-DPMS.
+Trebaće vam python-pulse-control. Imate moj PKGBUILD
+<a href="https://github.com/dglava/pkgbuilds/blob/master/python-pulse-control-git/PKGBUILD">ovdje</a>
+ili ga pronađite u AURu.</p><p><a href="http://dglava.github.io/firefox-dpms.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/mpv-jedan.html" rel="bookmark"
+                           title="Permalink to Samo jedan mpv">Samo jedan mpv</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-05-06T00:00:00+02:00">
                 Objavljeno: Sub, 06 Maj 2017
@@ -37,61 +102,15 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/mpv.html">mpv</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/mpv-jedan.html">en</a>
 
-</footer><!-- /.post-info --><p><a href="https://mpv.io/">mpv</a> je sjajni video plejer dostupan za mnogo operativnih
+</footer><!-- /.post-info -->                <p><a href="https://mpv.io/">mpv</a> je sjajni video plejer dostupan za mnogo operativnih
 sistema, pa tako i za Linux distribucije. Površinski gledano je vrlo
 jednostavan. Bez ikakvog podešavanja reproducira sve moguće fajlove,
 a za konfiguraciju je dostupan ogroman broj opcija koje se mogu
 uključiti putem <em>flagova</em> ili konfiguracionog fajla (što i koristim).</p>
-<p>Sa mog pogleda korištenja ima jednu manu: otvaranje nove instance za
-svaki pokrenuti fajl. Možda je to i logični izbor, ali nakon korištenja
-drugi plejera sam se navikao da svi novi fajlovi budu otvoreni u
-istom prozoru, s tim da se stari fajl prekine, a novi zauzme njegovo mjesto.</p>
-<p>U zvaničnom mpv <a href="https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv">repozitoriju</a>
-postoji jedan fajl, tačnije Python skripta, zvana umpv. Fajlovi pokrenuti
-pomoću nje bivaju dodani u plejlistu i pušteni automatski nakon kraja
-prvog fajla. Međutim to nije funkcionalnost koju ja želim. Ja želim da
-trenutni video bude zamijenjen novim.</p>
-<h3>Hakasto natjeraj mpv da sluša</h3>
-<p>Najlogičniji način da se to uradi je obična shell (koristim Bash) skripta
-koja bi pogledala da li postoji pokrenuti mpv. U slučaju da jeste, ugasila
-bi ga i pokrenula novi mpv.</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>pidof mpv<span class="k">)</span>
-
-<span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nb">kill</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span>
-<span class="k">fi</span>
-
-mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-</pre></div>
-
-
-<p>To je to što se skripte tiče. Da bi je mogao koristiti u upravljaču
-fajlova (koristim Nemo), trebao mi je i <a href="https://standards.freedesktop.org/desktop-entry-spec/latest/">desktop fajl</a>.
-Kopirao sam primjer pomenut u specifikaciji i izmjenio park ključnih stavki.
-Za <code>Exec=</code> je potrebno staviti ime gore napisane skripte. Ja sam napravio
-paket za moju distribuciju i skripta se zove mpv_single. Desktop fajl
-sam snimio pod imenom <code>mpv-single-instance.desktop</code> i paket ga stavi
-među ostale desktop fajlove.</p>
-<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
-<span class="na">Version</span><span class="o">=</span><span class="s">1.0</span>
-<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">mpv Media Player - Single Instance</span>
-<span class="na">Comment</span><span class="o">=</span><span class="s">Run only one instance of mpv</span>
-<span class="na">Exec</span><span class="o">=</span><span class="s">mpv_single %f</span>
-<span class="na">Icon</span><span class="o">=</span><span class="s">mpv</span>
-<span class="na">MimeType</span><span class="o">=</span><span class="s">application/ogg;application/x-ogg;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;video/webm;audio/x-flac;audio/x-vorbis+ogg;video/x-ogm+ogg;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;video/mp2t;audio/flac;audio/mp4;</span>
-</pre></div>
-
-
-<p>Arch korisnici mogu koristiti <a href="https://github.com/dglava/pkgbuilds/blob/master/mpv-single-instance/PKGBUILD">ovaj PKGBUILD</a>.
-Ostali mogu skriptu i desktop fajl preuzeti <a href="https://github.com/dglava/pkgbuilds/tree/master/mpv-single-instance">ovdje</a>.</p><p><a href="http://dglava.github.io/mpv-jedan.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>Sa mog …</p>
+                <a class="readmore" href="http://dglava.github.io/mpv-jedan.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/mpv-jedan.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -117,31 +136,6 @@ bosanski.</p>
 Za to se koriste lokali (<em>locales</em>, ne znam …</p>
                 <a class="readmore" href="http://dglava.github.io/lightdm-jezik.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/lightdm-jezik.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/desktop.html" rel="bookmark"
-                           title="Permalink to Moj desktop">Moj desktop</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-03-08T00:00:00+01:00">
-                Objavljeno: Sri, 08 Mar 2017
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/tag/desktop.html">desktop</a> </p>
-</footer><!-- /.post-info -->                <p>Linux distribucije koristim već više od dvije godine (skoro ekskluzivno).
-Većina ljudi mnogo mijenja i isprobava sve distribucije. Mislim
-da je to idiotski, jer to rade iz pogrešnih razloga: misle
-da je izgled ekskluzivan za distribucije. Drugim riječima,
-misle da je izgled sve što čini distribuciju. To
-velika zabluda.
-U …</p>
-                <a class="readmore" href="http://dglava.github.io/desktop.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/desktop.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

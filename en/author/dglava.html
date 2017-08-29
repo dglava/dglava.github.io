@@ -26,7 +26,57 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/mpv-jedan.html">Single instance of mpv</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/firefox-dpms.html">Prevent screen blanking when watching videos in Firefox</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-08-29T00:00:00+02:00">
+                Published: Tue, 29 Aug 2017
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/firefox.html">firefox</a> <a href="http://dglava.github.io/en/tag/dpms.html">dpms</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../firefox-dpms.html">bs</a>
+
+</footer><!-- /.post-info --><p>Watching videos on YouTube always proved to be problematic because
+my DPMS settings would kick in and the screen would turn off. Firefox
+didn't suspend them automatically when it detected HTML5 video playback.
+That's a feature that would be great. Not just in Firefox. But instead
+if there was a standard way that programs could signal that they
+want any screen blankings mechanisms to suspend. I think something
+similar exists with dbus and screensaver implementations like
+xscreensaver. None of them affects DPMS settings though. Since I
+only use them, because it's more "low-level" and present doesn't
+need additional software running in the background, it doesn't work for me.</p>
+<p>Programs which accomplished something similar existed, like <a href="https://github.com/iye/lightsOn">lightsOn</a>.
+However they didn't work how I wanted them. For example lightsOn checks
+for activity periodically and only does Flash video (not HTML5 video).</p>
+<h3>My solution</h3>
+<p>I noticed that Pulseaudio creates streams for each sound source (see
+picture below of Pavucontrol).</p>
+<p><a href="http://dglava.github.io/en/../images/firefox-dpms.png"><img src="http://dglava.github.io/en/../images/firefox-dpms.png" width="320" height="162" /></a></p>
+<p>That gave me the idea to utilize that to figure out if Firefox is playing
+back video. If it is, there should be an audio stream together with it.
+Shortly after that, I discovered via <code>pactl subscribe</code> that PulseAudio
+emits events for certain things, like new streams appearing. I could
+leverage that and trigger DPMS setting changes with that.</p>
+<p>I wrote a Python script utilizing the <a href="https://github.com/mk-fg/python-pulse-control">python-pulse-control</a>
+library. It allows one to monitor the PulseAudio events.</p>
+<p><strong>Download <a href="https://github.com/dglava/firefox-dpms">Firefox-DPMS</a></strong></p>
+<p>Arch Linux users can use the included PKGBUILD. You will need python-pulse-control.
+You can use my PKGBUILD from <a href="https://github.com/dglava/pkgbuilds/blob/master/python-pulse-control-git/PKGBUILD">here</a>
+or the one from the AUR.</p><p><a href="http://dglava.github.io/en/firefox-dpms.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/mpv-jedan.html" rel="bookmark"
+                           title="Permalink to Single instance of mpv">Single instance of mpv</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-05-06T00:00:00+02:00">
                 Published: Sat, 06 May 2017
@@ -36,60 +86,14 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/mpv.html">mpv</a> </p>Translations:
         <a href="http://dglava.github.io/en/../mpv-jedan.html">bs</a>
 
-</footer><!-- /.post-info --><p><a href="https://mpv.io/">mpv</a> is a pretty cool media player. It's simple and gets
+</footer><!-- /.post-info -->                <p><a href="https://mpv.io/">mpv</a> is a pretty cool media player. It's simple and gets
 the job done. I've been using it since I started using Linux distributions.
 I like the simple config and keyboard focus. I even went so far to remove
 all keybindings and only assign those I actually use.
-The only downside it has is the fact that it launches a new instance
-(window) for every file that I open.</p>
-<p>There's a <a href="https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv">script</a>
-in the official mpv repository which is supposed to solve that problem.
-It does indeed reuse the opened instance of mpv, but it appends newly
-opened files to the playlist instead of replacing the currently playing
-video with it. That's the behaviour I desire, so the script isn't really
-useful for me.</p>
-<h3>Hacky solution</h3>
-<p>I figured that I could just use a hacky workaround which consisted
-of killing any open mpv instances and then launching our new one.
-After some trial and error and the help of the internet, I settled on this:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>pidof <span class="s2">&quot;mpv&quot;</span><span class="k">)</span>
-
-<span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nb">kill</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span>
-<span class="k">fi</span>
-
-mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-</pre></div>
-
-
-<p>Save that into a file, make it executable and put it in your $PATH.</p>
-<p>Next we need a <a href="https://standards.freedesktop.org/desktop-entry-spec/latest/">desktop file</a>.
-I slightly tweaked the example provided in the standard specification and
-this is the end result. For <code>Exec=</code> we have to specify the name of our
-above mentioned script.</p>
-<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
-<span class="na">Version</span><span class="o">=</span><span class="s">1.0</span>
-<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">mpv Media Player - Single Instance</span>
-<span class="na">Comment</span><span class="o">=</span><span class="s">Run only one instance of mpv</span>
-<span class="na">Exec</span><span class="o">=</span><span class="s">mpv_single %f</span>
-<span class="na">Icon</span><span class="o">=</span><span class="s">mpv</span>
-<span class="na">MimeType</span><span class="o">=</span><span class="s">application/ogg;application/x-ogg;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;video/webm;audio/x-flac;audio/x-vorbis+ogg;video/x-ogm+ogg;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;video/mp2t;audio/flac;audio/mp4;</span>
-</pre></div>
-
-
-<p>That's pretty much it. Now all I had to do was associate media files
-with our new <code>mpv Media Player - Single Instance</code> desktop file via my
-file manager and I was set.</p>
-<p>Arch users can use my provided <a href="https://github.com/dglava/pkgbuilds/blob/master/mpv-single-instance/PKGBUILD">PKGBUILD</a>.
-Everyone else can find the Bash script and desktop file <a href="https://github.com/dglava/pkgbuilds/tree/master/mpv-single-instance">here</a>.</p><p><a href="http://dglava.github.io/en/mpv-jedan.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+The only …</p>
+                <a class="readmore" href="http://dglava.github.io/en/mpv-jedan.html">read more</a>
+<p><a href="http://dglava.github.io/en/mpv-jedan.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -114,32 +118,6 @@ so I was forced to achieve it with an ugly hack.</p>
 <p>The workaround solution consisted …</p>
                 <a class="readmore" href="http://dglava.github.io/en/lightdm-jezik.html">read more</a>
 <p><a href="http://dglava.github.io/en/lightdm-jezik.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/orcsome.html" rel="bookmark"
-                           title="Permalink to Remove title-bar on maximized Openbox windows">Remove title-bar on maximized Openbox windows</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-03-08T00:00:00+01:00">
-                Published: Wed, 08 Mar 2017
-        </abbr>
-
-<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>tags: <a href="http://dglava.github.io/en/tag/openbox.html">openbox</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../orcsome.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>I was looking for a way to save some vertical space by hiding the
-title bar of maximized windows with my window manager (Openbox).
-It turned out to be impossible using just standard Openbox settings.</p>
-<p><a href="http://icculus.org/pipermail/openbox/2017-February/009285.html">Asking</a>
-on the Openbox mailing list, I found <a href="https://github.com/baverman/orcsome">Orcsome</a>.
-It's a scripting extension for NETWM …</p>
-                <a class="readmore" href="http://dglava.github.io/en/orcsome.html">read more</a>
-<p><a href="http://dglava.github.io/en/orcsome.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
