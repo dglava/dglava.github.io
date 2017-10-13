@@ -36,6 +36,10 @@
         <abbr class="published" title="2017-03-20T00:00:00+01:00">
                 Published: Mon, 20 Mar 2017
         </abbr>
+        <br />
+        <abbr class="modified" title="2017-10-13T00:00:00+02:00">
+                Modified: Fri, 13 Oct 2017
+        </abbr>
 
 <p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
 <p>tags: <a href="http://dglava.github.io/en/tag/lightdm.html">lightdm</a> </p>Translations:
@@ -52,6 +56,7 @@ file into <code>/usr/share/locale/en/LC_MESSAGES/lightdm-gtk-greeter.mo</code>.<
 <p>That's far from an ideal solution, so I kept searching for something beter
 until I realized that I could do it another way.</p>
 <h3>Systemd way</h3>
+<p><strong>This is a slightly hacky way. See below for a better solution</strong></p>
 <p>I am starting LightDM as a systemd service. Systemd is able to pass
 environment variables to services and that's exactly what can help us.
 All we have to do is edit LightDM's service file and add the <code>ENVIRONMENT="LANG=bs_BA.UTF-8"</code>
@@ -74,6 +79,23 @@ be an already exported Environment file in the actual LightDM service, but
 I reckon it won't hurt.
 If it does conflict or have any unwanted effects, please let me know in
 the comments.</p>
+<h3>LightDM greeter way</h3>
+<p>Running your greeter with a different language is better than running
+LightDM, since it seems that the session inherits the variable from
+LightDM which can lead to ugliness down the road.</p>
+<p>Create a new desktop file in the directory where LightDM sources the
+available greeters, usually in /usr/share/xgreeters. Then just modify
+the <code>Exec=</code> line to start <code>lightdm-gtk-greeter</code> with a different language
+using environment variables. After that modify your lightdm.conf file
+and specify your new greeter to be used with the <code>greeter-session=</code>
+option.</p>
+<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">LightDM GTK+ Greeter</span>
+<span class="na">Comment</span><span class="o">=</span><span class="s">This runs the GTK+ greeter, it should only be run from LightDM</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">env LANGUAGE=bs lightdm-gtk-greeter</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">X-Ubuntu-Gettext-Domain</span><span class="o">=</span><span class="s">lightdm</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <div class="comments">
       <div id="disqus_thread"></div>

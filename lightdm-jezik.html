@@ -37,6 +37,10 @@
         <abbr class="published" title="2017-03-20T00:00:00+01:00">
                 Objavljeno: Pon, 20 Mar 2017
         </abbr>
+        <br />
+        <abbr class="modified" title="2017-10-13T00:00:00+02:00">
+                Ažurirano: Pet, 13 Okt 2017
+        </abbr>
 
 <p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
 <p>tagovi: <a href="http://dglava.github.io/tag/lightdm.html">lightdm</a> </p>Prevodi:
@@ -92,6 +96,7 @@ tako da je i LightDMov greeter trebao biti na domaćem.</p>
 vrijeme pisanja ovoga nepotpun), prevedem do kraja i stavim pod engleski
 u <code>/usr/share/locale/en/...</code>. Međutim sjetio sam se boljeg rješenja.</p>
 <h3>Kako sad?</h3>
+<p><strong>Napomena: ovo je stari, lošiji način. Vidi dole za bolje i čistije riješenje</strong></p>
 <p>LightDM pokreće systemd servis. Systemd je u stanju da proslijedi
 promjenjljive okruženja servisima, i to je nama pogodno.
 Naime programi se mogu privremeno pokrenuti sa određenim okruženjem, npr.
@@ -115,6 +120,30 @@ Ovako na kraju izgleda moj fajl:</p>
 da radi i bez praznog reda. Prazni red ima efekat da "očisti" prijašnju
 vrijednost, a u našem slučaju ne može naškoditi (makar ne prema znaju
 tokom pisanja ovog članka).</p>
+<h3>Kako sad, ali stvarno?</h3>
+<p>Ukratko: samo pokrenuti LightDM-GTK-Greeter sa drugim jezikom. Razlog
+tome je što ako pokrećemo LightDM, sesija naslijedi <em>environment variable</em>
+i to može dovesti to problema naknadno.</p>
+<p>LightDM saznaje koji su mu greeteri dostupni preko desktop fajlova,
+obično u <code>/usr/share/xgreeters</code>. Kopirao sam fajl od LightDM-GTK-Greetera
+i izmjenio <code>Exec=</code> liniju. Koristio sam <code>env</code> program koji pokreće
+programe u modifikovanom okruženju, tj. sa drugim <em>environment variables</em>.
+Nakon toga potrebno je samo LightDMu reći da koristi naš novi <em>greeter</em>
+navođenjem toga u njegovom konfiguracionom fajlu sa <code>greeter-session</code>
+opcijom.</p>
+<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">LightDM GTK+ Greeter</span>
+<span class="na">Comment</span><span class="o">=</span><span class="s">This runs the GTK+ greeter, it should only be run from LightDM</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">env LANGUAGE=bs lightdm-gtk-greeter</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">X-Ubuntu-Gettext-Domain</span><span class="o">=</span><span class="s">lightdm</span>
+</pre></div>
+
+
+<p>Vjerovatno je <code>env</code> bespotreban i radilo bi i jednostavno sa <code>Exec=LANGUAGE=bs lightdm-gtk-greeter</code>,
+ali sam prelijen da isprobam, jer ovako već radi.</p>
+<p>Arch Linux korisnici mogu koristiti moj <a href="https://github.com/dglava/pkgbuilds/tree/master/lightdm-gtk-greeter-bs">PKGBUILD</a>
+da instaliraju modifikovani desktop fajl.</p>
     </div><!-- /.entry-content -->
     <div class="comments">
       <div id="disqus_thread"></div>
