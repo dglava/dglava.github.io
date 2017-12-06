@@ -27,7 +27,65 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/firefox-dpms.html">Spriječi gašenje monitora pri gledanju videa</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/toggle-touch.html">Upali i ugasi tačped</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-12-06T00:00:00+01:00">
+                Objavljeno: Sri, 06 Dec 2017
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/touchpad.html">touchpad</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/toggle-touch.html">en</a>
+
+</footer><!-- /.post-info --><p>Na laptopu ima obilježeno dugme za promjenu statusa tačpeda. To je
+zapravo <em>XF86TouchpadToggle</em> dugme i samo po sebi je beskorisno. Većina
+desktop okruženja ima podešeno da pri njegovom pritiskanju pokrene neki
+program i da promjeni status tačpeda. Koristim Openbox i pošto on to nema
+u svom sastavu, niti je u njegovom obimu zadataka, morao sam "ručno"
+riješiti problem.</p>
+<h3>Riješenje</h3>
+<p>Za promjenu statusa tačpeda, kao i svih drugih unosnih uređaja, koristan
+je <em>xinput</em>. Sklepao sam malu Bash skriptu koja provjerava status
+tačpeda i ako je on upaljen, gasi ga i obrnuto.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+
+<span class="nv">id</span><span class="o">=</span><span class="k">$(</span>xinput <span class="p">|</span> grep -i touchpad <span class="p">|</span> cut -f <span class="m">2</span> <span class="p">|</span> cut -d <span class="s2">&quot;=&quot;</span> -f <span class="m">2</span><span class="k">)</span>
+
+<span class="k">if</span> xinput list-props <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span> <span class="p">|</span> grep -q <span class="s2">&quot;Device Enabled.*1</span>$<span class="s2">&quot;</span><span class="p">;</span> <span class="k">then</span>
+  xinput disable <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
+  notify-send <span class="s2">&quot;Touchpad turned OFF&quot;</span> --icon<span class="o">=</span>input-touchpad
+<span class="k">else</span>
+  xinput <span class="nb">enable</span> <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
+  notify-send <span class="s2">&quot;Touchpad turned ON&quot;</span> --icon<span class="o">=</span>input-touchpad
+<span class="k">fi</span>
+</pre></div>
+
+
+<h3>Malo urednije riješenje</h3>
+<p>Na početku sam gore navedenu stvar držao u "lokalnom" direktoriju
+gdje držim male, korisne skripte. Podesio sam Openboxov konfiguracioni
+fajl da pri pritisku <em>XF86TouchpadToggle</em> dugmeta pokrene taj skript.
+Radilo je super dok nisam primjetio jednu manu: radilo je samo za mene.
+Pošto isti Openbox konfiguracioni fajl kopiram i za druge korisnike,
+pri pritisku dugmeta je izbacivalo grešku da ne može naći <em>toggle-touch</em>
+program jer se nalazio u mom HOME direktoriju.</p>
+<p>Riješenje je bilo pomjeriti skriptu u standardni <code>/usr/bin/</code> da bude
+koristan svim korisnicima. Da stvar bude još čistija, spakirao sam ga
+za svoju distribuciju radi lakšeg instaliranja.</p>
+<p>Korisnici ArchLinuxa mogu preuzeti PKGBUILD <a href="https://github.com/dglava/pkgbuilds/tree/master/toggle-touch">ovdje</a>.</p><p><a href="http://dglava.github.io/toggle-touch.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/firefox-dpms.html" rel="bookmark"
+                           title="Permalink to Spriječi gašenje monitora pri gledanju videa">Spriječi gašenje monitora pri gledanju videa</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-08-29T00:00:00+02:00">
                 Objavljeno: Uto, 29 Aug 2017
@@ -37,54 +95,16 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/firefox.html">firefox</a> <a href="http://dglava.github.io/tag/dpms.html">dpms</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/firefox-dpms.html">en</a>
 
-</footer><!-- /.post-info --><h3>Zašto se gasi</h3>
+</footer><!-- /.post-info -->                <h3>Zašto se gasi</h3>
 <p>Ne koristim nikakve <em>screensavere</em>. Jedina stvar koju imam uključeno
 su DPMS postavke koje zatamnjuju, <em>suspenduju</em> i gase monitor. Pri
 normalnom radu funkcioniše bez problema. Pomjeranjem miša ili pritiskanjem
 dugmeta na tastaturi prestaje. Video plejer mpv također samostalno
 privremeno isključi DPMS postavke dok pušta video.</p>
-<p>Problem nastaje pri gledanju video klipova u Firefoxu, npr. YouTube.
-Firefox ne gasi DPMS gašenje pri puštanju videa. Također mislim da ne emituje
-nikakav znak za zahtijevanje gašenja. Moguće da emituje neku dbus poruku
-upućenu klasičnim screensaverima i drugim koji slušaju, ali nažalost
-ne utiče na DPMS postavke.</p>
-<h3>Zašto se neće gasiti</h3>
-<p>Primjetio sam da se pri puštanju video klipa u Firefoxu pojavi
-"stream" u Pulseaudiju kao na slici.</p>
-<p><a href="http://dglava.github.io/images/firefox-dpms.png"><img src="http://dglava.github.io/images/firefox-dpms.png" width="320" height="162" /></a></p>
-<p>Ideja je bila da pratim Pulseaudio <em>sinkove</em> i provjerim da li ima
-Firefoxa među njima. U slučaju da ima, ugasio bih DPMS postavke. Pri
-ponovnoj provjeri, ukoliko nema Firefoxa, vratio bih postavke.</p>
-<h3>Zašto se ne gasi</h3>
-<p>Napisao sam mali Python programčić koji će provjeravati Pulseaudio
-podatke i tražiti Firefox.</p>
-<p>Prva ideja je bila da nakon svakih određenih sekundi provjerim da
-li postoji Firefox <em>sink</em>. Na sličan način funkcionše <a href="https://github.com/iye/lightsOn">lightsOn</a>.
-Međutim lightsOn detektuje samo Flash video i druge programe. Meni to
-nije potrebno, a potrebno mi je da detektuje HTML5 video jer je Flash
-deprecirano, vlasničko-softver smeće koje ne treba imati instalirano.</p>
-<p>Slučajno sam pronašao <code>pactl subscribe</code>. Pulseaudio emituje razne
-događaje, kao pojavu novih <em>sources</em>, <em>sinks</em> i nama potrebni <em>input sinks</em>.
-To je mnogo bolje rješenje nego periodično provjeravanje.</p>
-<p>Da ne moram hakasto rasčlanjivati (navodno se tako kaže <em>parse</em> na naš)
-ispis od pactl, pronašao sam <a href="https://github.com/mk-fg/python-pulse-control">python-pulse-control</a>.
-On otkriva iste Pulseaudio događaje, samo lakše i čistije.
-Uz pomoć toga nije bilo teško sklepati na brzaka rješenje. Svjestan
-sam da je sam princip veoma hakast i da izvodba rješenja nije perfektna,
-ali za sada radi besprijekorno.</p>
-<p><strong>Preuzmi program <a href="https://github.com/dglava/firefox-dpms">Firefox-DPMS</a>.</strong></p>
-<p>Potreban vam je Python 3, gore navedeni python-pulse-control i naravno
-morate koristiti PulseAudio. Osim toga ne koristi ništa izvan Python
-standardne <em>library</em>.</p>
-<p>Arch Linux korisnici mogu koristiti priloženi PKGBUILD za Firefox-DPMS.
-Trebaće vam python-pulse-control. Imate moj PKGBUILD
-<a href="https://github.com/dglava/pkgbuilds/blob/master/python-pulse-control-git/PKGBUILD">ovdje</a>
-ili ga pronađite u AURu.</p><p><a href="http://dglava.github.io/firefox-dpms.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>Problem nastaje pri …</p>
+                <a class="readmore" href="http://dglava.github.io/firefox-dpms.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/firefox-dpms.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -110,36 +130,6 @@ uključiti putem <em>flagova</em> ili konfiguracionog fajla (što i koristim).</
 <p>Sa mog …</p>
                 <a class="readmore" href="http://dglava.github.io/mpv-jedan.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/mpv-jedan.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/lightdm-jezik.html" rel="bookmark"
-                           title="Permalink to Promjeni jezik LightDM Greetera">Promjeni jezik LightDM Greetera</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-03-20T00:00:00+01:00">
-                Objavljeno: Pon, 20 Mar 2017
-        </abbr>
-        <br />
-        <abbr class="modified" title="2017-10-13T00:00:00+02:00">
-                Ažurirano: Pet, 13 Okt 2017
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/lightdm.html">lightdm</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/lightdm-jezik.html">en</a>
-
-</footer><!-- /.post-info -->                <p>Jezik koji koristim na kompjuteru je engleski. To obuhvata jezik
-teksta u svim programima i okruženju. Za sve ostalo, kao što je datum,
-jedinice za mjeru, specifičnosti brojeva, adresa i slično koristim
-bosanski.</p>
-<p>Na Linux distribucijama je jednostavno prilagoditi jezike i standarde.
-Za to se koriste lokali (<em>locales</em>, ne znam …</p>
-                <a class="readmore" href="http://dglava.github.io/lightdm-jezik.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/lightdm-jezik.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

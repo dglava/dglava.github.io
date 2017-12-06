@@ -26,7 +26,60 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/firefox-dpms.html">Prevent screen blanking when watching videos in Firefox</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/toggle-touch.html">Quickly turn touchpad on and off</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-12-06T00:00:00+01:00">
+                Published: Wed, 06 Dec 2017
+        </abbr>
+
+<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>tags: <a href="http://dglava.github.io/en/tag/touchpad.html">touchpad</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../toggle-touch.html">bs</a>
+
+</footer><!-- /.post-info --><p>My laptop has a button to toggle the touchpad on and off. It's an
+<em>XF86TouchpadToggle</em> button and on its own it's useless, since you need
+something to bind it to do something. Most desktop environments have
+an utility which listen to keyboard presses and then toggles the touchpad.
+Since I'm using self-assembled environment I don't have anything like that.</p>
+<p>Therefore I wrote a little abstraction script utilizing <em>xinput</em>. Xinput
+can print information about all X devices, but also change their options.
+Of course it can also disable a device and that's what we're going to use.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+
+<span class="nv">id</span><span class="o">=</span><span class="k">$(</span>xinput <span class="p">|</span> grep -i touchpad <span class="p">|</span> cut -f <span class="m">2</span> <span class="p">|</span> cut -d <span class="s2">&quot;=&quot;</span> -f <span class="m">2</span><span class="k">)</span>
+
+<span class="k">if</span> xinput list-props <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span> <span class="p">|</span> grep -q <span class="s2">&quot;Device Enabled.*1</span>$<span class="s2">&quot;</span><span class="p">;</span> <span class="k">then</span>
+  xinput disable <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
+  notify-send <span class="s2">&quot;Touchpad turned OFF&quot;</span> --icon<span class="o">=</span>input-touchpad
+<span class="k">else</span>
+  xinput <span class="nb">enable</span> <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
+  notify-send <span class="s2">&quot;Touchpad turned ON&quot;</span> --icon<span class="o">=</span>input-touchpad
+<span class="k">fi</span>
+</pre></div>
+
+
+<h3>Pretty solution</h3>
+<p>I kept this script in a local <em>bin</em> directory and then bound the button via
+Openbox's settings to run the script. This worked, until I tried to run
+it in a different user's session. It didn't work because the script was
+in my HOME directory.</p>
+<p>That's when I decided to package it neatly for my distribution.
+ArchLinux users can use <a href="https://github.com/dglava/pkgbuilds/tree/master/toggle-touch">this PKGBUILD</a>.
+After you install it, an executable named <code>toggle-touch</code> should be available
+and then just bind a key to run it.</p><p><a href="http://dglava.github.io/en/toggle-touch.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/firefox-dpms.html" rel="bookmark"
+                           title="Permalink to Prevent screen blanking when watching videos in Firefox">Prevent screen blanking when watching videos in Firefox</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-08-29T00:00:00+02:00">
                 Published: Tue, 29 Aug 2017
@@ -36,39 +89,14 @@
 <p>tags: <a href="http://dglava.github.io/en/tag/firefox.html">firefox</a> <a href="http://dglava.github.io/en/tag/dpms.html">dpms</a> </p>Translations:
         <a href="http://dglava.github.io/en/../firefox-dpms.html">bs</a>
 
-</footer><!-- /.post-info --><p>Watching videos on YouTube always proved to be problematic because
+</footer><!-- /.post-info -->                <p>Watching videos on YouTube always proved to be problematic because
 my DPMS settings would kick in and the screen would turn off. Firefox
 didn't suspend them automatically when it detected HTML5 video playback.
 That's a feature that would be great. Not just in Firefox. But instead
-if there was a standard way that programs could signal that they
-want any screen blankings mechanisms to suspend. I think something
-similar exists with dbus and screensaver implementations like
-xscreensaver. None of them affects DPMS settings though. Since I
-only use them, because it's more "low-level" and present doesn't
-need additional software running in the background, it doesn't work for me.</p>
-<p>Programs which accomplished something similar existed, like <a href="https://github.com/iye/lightsOn">lightsOn</a>.
-However they didn't work how I wanted them. For example lightsOn checks
-for activity periodically and only does Flash video (not HTML5 video).</p>
-<h3>My solution</h3>
-<p>I noticed that Pulseaudio creates streams for each sound source (see
-picture below of Pavucontrol).</p>
-<p><a href="http://dglava.github.io/en/../images/firefox-dpms.png"><img src="http://dglava.github.io/en/../images/firefox-dpms.png" width="320" height="162" /></a></p>
-<p>That gave me the idea to utilize that to figure out if Firefox is playing
-back video. If it is, there should be an audio stream together with it.
-Shortly after that, I discovered via <code>pactl subscribe</code> that PulseAudio
-emits events for certain things, like new streams appearing. I could
-leverage that and trigger DPMS setting changes with that.</p>
-<p>I wrote a Python script utilizing the <a href="https://github.com/mk-fg/python-pulse-control">python-pulse-control</a>
-library. It allows one to monitor the PulseAudio events.</p>
-<p><strong>Download <a href="https://github.com/dglava/firefox-dpms">Firefox-DPMS</a></strong></p>
-<p>Arch Linux users can use the included PKGBUILD. You will need python-pulse-control.
-You can use my PKGBUILD from <a href="https://github.com/dglava/pkgbuilds/blob/master/python-pulse-control-git/PKGBUILD">here</a>
-or the one from the AUR.</p><p><a href="http://dglava.github.io/en/firefox-dpms.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+if there was a …</p>
+                <a class="readmore" href="http://dglava.github.io/en/firefox-dpms.html">read more</a>
+<p><a href="http://dglava.github.io/en/firefox-dpms.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -93,35 +121,6 @@ all keybindings and only assign those I actually use.
 The only …</p>
                 <a class="readmore" href="http://dglava.github.io/en/mpv-jedan.html">read more</a>
 <p><a href="http://dglava.github.io/en/mpv-jedan.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/lightdm-jezik.html" rel="bookmark"
-                           title="Permalink to Change LightDM's language (and its greeters)">Change LightDM's language (and its greeters)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-03-20T00:00:00+01:00">
-                Published: Mon, 20 Mar 2017
-        </abbr>
-        <br />
-        <abbr class="modified" title="2017-10-13T00:00:00+02:00">
-                Modified: Fri, 13 Oct 2017
-        </abbr>
-
-<p>In <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>tags: <a href="http://dglava.github.io/en/tag/lightdm.html">lightdm</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../lightdm-jezik.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>I found myself in a situation where I needed LightDM (and its greeters)
-to use a language other than the one defined globally by the <code>LANG</code>
-environment variable. Searching the internet didn't yield any results,
-so I was forced to achieve it with an ugly hack.</p>
-<p>The workaround solution consisted …</p>
-                <a class="readmore" href="http://dglava.github.io/en/lightdm-jezik.html">read more</a>
-<p><a href="http://dglava.github.io/en/lightdm-jezik.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
