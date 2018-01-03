@@ -27,7 +27,38 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/toggle-touch.html">Upali i ugasi tačped</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/weight-oil.html">Our Weight in Oil; Matt Elliott</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-01-03T00:00:00+01:00">
+                Objavljeno: Sri, 03 Jan 2018
+        </abbr>
+
+<p>Pod <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>tagovi: <a href="http://dglava.github.io/tag/tabulatura.html">tabulatura</a> <a href="http://dglava.github.io/tag/gitara.html">gitara</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/weight-oil.html">en</a>
+
+</footer><!-- /.post-info --><p>Tabulatura/partitura za 
+<a href="https://www.youtube.com/watch?v=SVDz1ZNMYis">Matt Elliott - Our Weight in Oil</a>.</p>
+<p>Nije perfektno, ali je kostur pjesme tu. Pjesma je u e-molu. Mislim da
+na albumskoj verziji idu dvije gitare, možda čak i više gitara. Meni zvuči
+neusklađeno, slobodno, što pjesmu čini trun lepšravijom pored tromosti.
+Navedeni su i akordi za pratnju, po osjećaju, ali mislim da može malo
+sofisticiranije.</p>
+<p>Ispod je PNG slika. Klikni <a href="http://dglava.github.io/files/weight-oil.pdf">ovdje</a> za PDF.</p>
+<p><a href="http://dglava.github.io/images/weight-oil.png"><img src="http://dglava.github.io/images/weight-oil.png" width="195" height="232" /></a></p><p><a href="http://dglava.github.io/weight-oil.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/toggle-touch.html" rel="bookmark"
+                           title="Permalink to Upali i ugasi tačped">Upali i ugasi tačped</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-12-06T00:00:00+01:00">
                 Objavljeno: Sri, 06 Dec 2017
@@ -41,51 +72,14 @@
 <p>tagovi: <a href="http://dglava.github.io/tag/touchpad.html">touchpad</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/toggle-touch.html">en</a>
 
-</footer><!-- /.post-info --><p>Na laptopu ima obilježeno dugme za promjenu statusa tačpeda. To je
+</footer><!-- /.post-info -->                <p>Na laptopu ima obilježeno dugme za promjenu statusa tačpeda. To je
 zapravo <em>XF86TouchpadToggle</em> dugme i samo po sebi je beskorisno. Većina
 desktop okruženja ima podešeno da pri njegovom pritiskanju pokrene neki
 program i da promjeni status tačpeda. Koristim Openbox i pošto on to nema
-u svom sastavu, niti je u njegovom obimu zadataka, morao sam "ručno"
-riješiti problem.</p>
-<h3>Riješenje</h3>
-<p>Za promjenu statusa tačpeda, kao i svih drugih unosnih uređaja, koristan
-je <em>xinput</em>. Sklepao sam malu Bash skriptu koja provjerava status
-tačpeda i ako je on upaljen, gasi ga i obrnuto.</p>
-<p><strong>Mala izmjena:</strong>
-Lookbehind regex je lijepše riješenje od dvostrukog "cut".</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
-
-<span class="c1"># ružno</span>
-<span class="c1"># id=$(xinput | grep -i touchpad | cut -f 2 | cut -d &quot;=&quot; -f 2)</span>
-<span class="nv">id</span><span class="o">=</span><span class="k">$(</span>xinput <span class="p">|</span> grep -i touchpad <span class="p">|</span> grep -oP <span class="s2">&quot;(?&lt;=id=)\d*&quot;</span><span class="k">)</span>
-
-<span class="k">if</span> xinput list-props <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span> <span class="p">|</span> grep -q <span class="s2">&quot;Device Enabled.*1</span>$<span class="s2">&quot;</span><span class="p">;</span> <span class="k">then</span>
-  xinput disable <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
-  notify-send <span class="s2">&quot;Touchpad turned OFF&quot;</span> --icon<span class="o">=</span>input-touchpad
-<span class="k">else</span>
-  xinput <span class="nb">enable</span> <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
-  notify-send <span class="s2">&quot;Touchpad turned ON&quot;</span> --icon<span class="o">=</span>input-touchpad
-<span class="k">fi</span>
-</pre></div>
-
-
-<h3>Malo urednije riješenje</h3>
-<p>Na početku sam gore navedenu stvar držao u "lokalnom" direktoriju
-gdje držim male, korisne skripte. Podesio sam Openboxov konfiguracioni
-fajl da pri pritisku <em>XF86TouchpadToggle</em> dugmeta pokrene taj skript.
-Radilo je super dok nisam primjetio jednu manu: radilo je samo za mene.
-Pošto isti Openbox konfiguracioni fajl kopiram i za druge korisnike,
-pri pritisku dugmeta je izbacivalo grešku da ne može naći <em>toggle-touch</em>
-program jer se nalazio u mom HOME direktoriju.</p>
-<p>Riješenje je bilo pomjeriti skriptu u standardni <code>/usr/bin/</code> da bude
-koristan svim korisnicima. Da stvar bude još čistija, spakirao sam ga
-za svoju distribuciju radi lakšeg instaliranja.</p>
-<p>Korisnici ArchLinuxa mogu preuzeti PKGBUILD <a href="https://github.com/dglava/pkgbuilds/tree/master/toggle-touch">ovdje</a>.</p><p><a href="http://dglava.github.io/toggle-touch.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+u svom sastavu, niti je u …</p>
+                <a class="readmore" href="http://dglava.github.io/toggle-touch.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/toggle-touch.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -113,35 +107,9 @@ privremeno isključi DPMS postavke dok pušta video.</p>
                 <a class="readmore" href="http://dglava.github.io/firefox-dpms.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/firefox-dpms.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/mpv-jedan.html" rel="bookmark"
-                           title="Permalink to Samo jedan mpv">Samo jedan mpv</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-05-06T00:00:00+02:00">
-                Objavljeno: Sub, 06 Maj 2017
-        </abbr>
-
-<p>Pod <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>tagovi: <a href="http://dglava.github.io/tag/mpv.html">mpv</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/mpv-jedan.html">en</a>
-
-</footer><!-- /.post-info -->                <p><a href="https://mpv.io/">mpv</a> je sjajni video plejer dostupan za mnogo operativnih
-sistema, pa tako i za Linux distribucije. Površinski gledano je vrlo
-jednostavan. Bez ikakvog podešavanja reproducira sve moguće fajlove,
-a za konfiguraciju je dostupan ogroman broj opcija koje se mogu
-uključiti putem <em>flagova</em> ili konfiguracionog fajla (što i koristim).</p>
-<p>Sa mog …</p>
-                <a class="readmore" href="http://dglava.github.io/mpv-jedan.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/mpv-jedan.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 7
+    Page 1 / 8
         <a href="http://dglava.github.io/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
