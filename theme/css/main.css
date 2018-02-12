@@ -16,7 +16,7 @@
 /***** Global *****/
 /* Body */
 body {
-    background: #F5F4EF;
+    background: #c2c2a3;
     color: #000305;
     font-size: 87.5%; /* Base font size: 14px */
     font-family: sans-serif;
@@ -49,15 +49,12 @@ hr { border: 2px solid #EEEEEE; }
 a {outline: 0;}
 a img {border: 0px; text-decoration: none;}
 a:link, a:visited {
-    color: #476b6b;
+    color: #2e2e1f;
     padding: 0 1px;
     text-decoration: underline;
 }
 a:hover, a:active {
-    background-color: #476b6b;
-    color: #fff;
     text-decoration: none;
-    text-shadow: 1px 1px 1px #333;
 }
 
 h1 a:hover {
@@ -167,17 +164,12 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
         margin: 0 0 .6em .2em;
         text-decoration: none;
     }
-    #banner h1 a:hover, #banner h1 a:active {
-        background: none;
-        color: #476b6b;
-        text-shadow: none;
-    }
 
     #banner h1 strong {font-size: 0.36em; font-weight: normal;}
 
     /* Main Nav */
     #banner nav {
-        background: #000305;
+        background: rgba(0, 0, 0, 0.1);
         font-size: 1.143em;
         height: 40px;
         line-height: 30px;
@@ -185,17 +177,13 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
         padding: 0;
         text-align: center;
         width: 800px;
-
-        border-radius: 5px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
     }
 
     #banner nav ul {list-style: none; margin: 0 auto; width: 800px;}
     #banner nav li {float: left; display: inline; margin: 0;}
 
     #banner nav a:link, #banner nav a:visited {
-        color: #fff;
+        color: #000305;
         display: inline-block;
         height: 30px;
         padding: 5px 1.5em;
@@ -203,19 +191,9 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     }
     #banner nav a:hover, #banner nav a:active,
     #banner nav .active a:link, #banner nav .active a:visited {
-        background: #476b6b;
+        background: #000305;
         color: #fff;
         text-shadow: none !important;
-    }
-
-    #banner nav li:first-child a {
-        border-top-left-radius: 5px;
-        -moz-border-radius-topleft: 5px;
-        -webkit-border-top-left-radius: 5px;
-
-        border-bottom-left-radius: 5px;
-        -moz-border-radius-bottomleft: 5px;
-        -webkit-border-bottom-left-radius: 5px;
     }
 
 /*
@@ -227,10 +205,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     overflow: hidden;
     padding: 20px;
     width: 760px;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
 }
 
 #featured figure {
@@ -252,14 +226,10 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 *****************/
 #content {
     background: #fff;
-    margin-bottom: 2em;
+    margin-bottom: none;
     overflow: hidden;
     padding: 20px 20px;
     width: 760px;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
 }
 
 /*
@@ -338,17 +308,13 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     About
 *****************/
 #about {
-    background: #fff;
+    background: rgba(0, 0, 0, 0.1);
     font-style: normal;
-    margin-bottom: 2em;
+    margin-bottom: none;
     overflow: hidden;
-    padding: 20px;
+    padding: 10px 20px;
     text-align: left;
     width: 760px;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
 }
 
 #about .primary {float: left; width: 165px;}
@@ -362,7 +328,10 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 /*
     Footer
 *****************/
-#contentinfo {padding-bottom: 2em; text-align: right;}
+#contentinfo {padding-bottom: none; text-align: right;}
+address#about{
+    text-align: center;
+}
 
 /***** Sections *****/
 /* Blog */
@@ -405,10 +374,6 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
         font-style: normal;
         margin: 2em 0;
         padding: 10px 20px 15px 20px;
-
-        border-radius: 5px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
     }
 
     #about-author strong {
@@ -428,10 +393,6 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
         font-style: normal;
         margin: 0;
         padding: 15px 20px;
-
-        border-radius: 5px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
     }
     #comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
 
