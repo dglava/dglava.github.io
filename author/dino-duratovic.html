@@ -23,7 +23,53 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/youll-have-to-swim.html">You'll Have to Swim</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/desktop-terminal.html">Desktop fajl i emulator terminala problemi</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-03-01T00:00:00+01:00">
+                Objavljeno: Čet, 01 Mar 2018
+        </abbr>
+
+<p>Pod: <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>Tagovi: <a href="http://dglava.github.io/tag/terminal.html">terminal</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/desktop-terminal.html">en</a>
+
+</footer><!-- /.post-info --><p>Imao sam problema kod otvaranja tekstualni fajlova u Vimu iz fajl
+menadžera (Neme). Jednostavno se ništa nije dešavalo nakon klikova
+na fajl.</p>
+<p>Između pojave problema i konačnog razumijevanja prošlo je dosta
+vremena. Pošto je prilično dosadno za objasniti ovo je otprilike tok:
+problem otvaranja, ne znam zašto, hakasto rješenje pomoću vlastitog
+desktop fajla koji pokreće fajl u Vimu u emulatoru terminala, propadanje
+hakastog rješenja jer Archov Vim paket dobija desktop fajl, shvatanje
+problema nakon svega.</p>
+<h3>Najčistije hakasto rješenje za tuđu grešku</h3>
+<p>Ispostavilo se da je na kraju lanca Glib. Problem leži u striktno
+zadanoj <a href="https://gitlab.gnome.org/GNOME/glib/blob/master/gio/gdesktopappinfo.c#L2476">listi emulatora terminala</a>.
+Ako je u desktop fajlu prisutno <code>Terminal=yes</code>, koristi se jedan od tih
+emulatora terminala za otvaranje programa. U slučaju da nijedan od navedenih
+emulatora terminala nije instaliran, ništa neće biti otvoreno.</p>
+<p>Fiksno navođenje par emulatora terminala je pomalo čudno i postoji
+<a href="https://bugzilla.gnome.org/show_bug.cgi?id=627943">prijava greške</a>,
+ali izgleda trenutno i nakon više godina nije došlo do rješenja.</p>
+<p>Privremeno, najlakše, bez potrebe pečovanja Gliba rješenje je napraviti
+<em>symlink</em> za gnome-terminal koji pokazuje na emulator terminala koji
+ja koristim.</p>
+<p><code>ln -s /usr/bin/xfce4-terminal /usr/bin/gnome-terminal</code></p>
+<p>Nadam se da će osoba koja održava Glib pronaći univerzalno prihvatljivo
+rješenje da ovo nije potrebno u budućnosti.</p><p><a href="http://dglava.github.io/desktop-terminal.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/youll-have-to-swim.html" rel="bookmark"
+                           title="Permalink to You'll Have to Swim">You'll Have to Swim</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-02-11T00:00:00+01:00">
                 Objavljeno: Ned, 11 Feb 2018
@@ -33,22 +79,14 @@
 <p>Tagovi: <a href="http://dglava.github.io/tag/tablature.html">tablature</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/youll-have-to-swim.html">en</a>
 
-</footer><!-- /.post-info --><p>Tablatura/partitura za
+</footer><!-- /.post-info -->                <p>Tablatura/partitura za
 <a href="https://www.youtube.com/watch?v=emIu2foc6FM">Clann Zú - You'll Have To Swim</a>.</p>
 <p>Dok sam zapisivao, spustio sam 6. žicu za četiri polustepena na C za
 sviranje bas linije. Kod ove verzije je bas linija, koju uopšte ne svira gitara
-na albumu, pomjerena za oktavu naviše. To je za uvod, koji je jedini dio
-gdje sam poprilično siguran da je ispravan.</p>
-<p>Ostali dijelovi su otprilike, pogotovo dio od 02:38. Kao i obično,
-suština je tu. Samo treba prilagoditi načinu izvedbe (autentična album
-verzija na električnoj ili akustični aranžman).</p>
-<p>Klikni na sliku za PNG verziju, a klikni <a href="http://dglava.github.io/files/youll-have-to-swim.pdf">ovjde za PDF</a>.</p>
-<p><a href="http://dglava.github.io/images/youll-have-to-swim.png"><img src="http://dglava.github.io/images/youll-have-to-swim.png" width="196" height="334" /></a></p><p><a href="http://dglava.github.io/youll-have-to-swim.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+na albumu, pomjerena za oktavu naviše. To je za uvod, koji je jedini dio …</p>
+                <a class="readmore" href="http://dglava.github.io/youll-have-to-swim.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/youll-have-to-swim.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -73,32 +111,6 @@ djelu. Ima se utisak da polako dolazi u fokus, da bi na kraju opet nestao.</p>
 <p>Spusti 6. žicu na D. Ne …</p>
                 <a class="readmore" href="http://dglava.github.io/descending.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/descending.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/plumes.html" rel="bookmark"
-                           title="Permalink to Des plumes dans la tête">Des plumes dans la tête</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-01-04T00:00:00+01:00">
-                Objavljeno: Čet, 04 Jan 2018
-        </abbr>
-
-<p>Pod: <a href="http://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>Tagovi: <a href="http://dglava.github.io/tag/tablature.html">tablature</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/plumes.html">en</a>
-
-</footer><!-- /.post-info -->                <p>Tablatura/partitura za
-<a href="https://www.youtube.com/watch?v=BKQ3JZWrZjM">Sylvain Chauveau - Des plumes dans la tête</a>.</p>
-<p>Muzika za <em>Des plumes dan la tête</em> je dragulj. Na albumu se nalaze 2
-varijacije. Ovo je kako ja sviram prvu na gitari.
-Dole je PNG, a za PDF klikni <a href="http://dglava.github.io/files/plumes.pdf">ovdje</a>.</p>
-<p><a href="http://dglava.github.io/images/plumes.png"><img src="http://dglava.github.io/images/plumes.png" width="200" height="202" /></a></p>
-                <a class="readmore" href="http://dglava.github.io/plumes.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/plumes.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

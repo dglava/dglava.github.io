@@ -11,7 +11,6 @@
 /* Imports */
 @import url("reset.css");
 @import url("pygment.css");
-@import url("typogrify.css");
 
 /***** Global *****/
 /* Body */
@@ -100,7 +99,18 @@ dl {margin: 0 0 1.5em 0;}
 dt {font-weight: bold;}
 dd {margin-left: 1.5em;}
 
-pre{background-color:  rgb(238, 238, 238); padding: 10px; margin: 10px; overflow: auto;}
+pre {
+    background-color: #eee;
+    padding: 10px;
+    margin: 10px;
+    overflow: auto;
+}
+
+code {
+    color: #000305;
+    background-color: #eee;
+    padding: .1em .5em;
+}
 
 /* Quotes */
 blockquote {

@@ -23,7 +23,53 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/toggle-touch.html">Upali i ugasi tačped</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/desktop-terminal.html">Desktop fajl i emulator terminala problemi</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-03-01T00:00:00+01:00">
+                Objavljeno: Čet, 01 Mar 2018
+        </abbr>
+
+<p>Pod: <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
+<p>Tagovi: <a href="http://dglava.github.io/tag/terminal.html">terminal</a> </p>Prevodi:
+        <a href="http://dglava.github.io/en/desktop-terminal.html">en</a>
+
+</footer><!-- /.post-info --><p>Imao sam problema kod otvaranja tekstualni fajlova u Vimu iz fajl
+menadžera (Neme). Jednostavno se ništa nije dešavalo nakon klikova
+na fajl.</p>
+<p>Između pojave problema i konačnog razumijevanja prošlo je dosta
+vremena. Pošto je prilično dosadno za objasniti ovo je otprilike tok:
+problem otvaranja, ne znam zašto, hakasto rješenje pomoću vlastitog
+desktop fajla koji pokreće fajl u Vimu u emulatoru terminala, propadanje
+hakastog rješenja jer Archov Vim paket dobija desktop fajl, shvatanje
+problema nakon svega.</p>
+<h3>Najčistije hakasto rješenje za tuđu grešku</h3>
+<p>Ispostavilo se da je na kraju lanca Glib. Problem leži u striktno
+zadanoj <a href="https://gitlab.gnome.org/GNOME/glib/blob/master/gio/gdesktopappinfo.c#L2476">listi emulatora terminala</a>.
+Ako je u desktop fajlu prisutno <code>Terminal=yes</code>, koristi se jedan od tih
+emulatora terminala za otvaranje programa. U slučaju da nijedan od navedenih
+emulatora terminala nije instaliran, ništa neće biti otvoreno.</p>
+<p>Fiksno navođenje par emulatora terminala je pomalo čudno i postoji
+<a href="https://bugzilla.gnome.org/show_bug.cgi?id=627943">prijava greške</a>,
+ali izgleda trenutno i nakon više godina nije došlo do rješenja.</p>
+<p>Privremeno, najlakše, bez potrebe pečovanja Gliba rješenje je napraviti
+<em>symlink</em> za gnome-terminal koji pokazuje na emulator terminala koji
+ja koristim.</p>
+<p><code>ln -s /usr/bin/xfce4-terminal /usr/bin/gnome-terminal</code></p>
+<p>Nadam se da će osoba koja održava Glib pronaći univerzalno prihvatljivo
+rješenje da ovo nije potrebno u budućnosti.</p><p><a href="http://dglava.github.io/desktop-terminal.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/toggle-touch.html" rel="bookmark"
+                           title="Permalink to Upali i ugasi tačped">Upali i ugasi tačped</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-12-06T00:00:00+01:00">
                 Objavljeno: Sri, 06 Dec 2017
@@ -37,51 +83,14 @@
 <p>Tagovi: <a href="http://dglava.github.io/tag/touchpad.html">touchpad</a> </p>Prevodi:
         <a href="http://dglava.github.io/en/toggle-touch.html">en</a>
 
-</footer><!-- /.post-info --><p>Na laptopu ima obilježeno dugme za promjenu statusa tačpeda. To je
+</footer><!-- /.post-info -->                <p>Na laptopu ima obilježeno dugme za promjenu statusa tačpeda. To je
 zapravo <em>XF86TouchpadToggle</em> dugme i samo po sebi je beskorisno. Većina
 desktop okruženja ima podešeno da pri njegovom pritiskanju pokrene neki
 program i da promjeni status tačpeda. Koristim Openbox i pošto on to nema
-u svom sastavu, niti je u njegovom obimu zadataka, morao sam "ručno"
-riješiti problem.</p>
-<h3>Riješenje</h3>
-<p>Za promjenu statusa tačpeda, kao i svih drugih unosnih uređaja, koristan
-je <em>xinput</em>. Sklepao sam malu Bash skriptu koja provjerava status
-tačpeda i ako je on upaljen, gasi ga i obrnuto.</p>
-<p><strong>Mala izmjena:</strong>
-Lookbehind regex je lijepše riješenje od dvostrukog "cut".</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
-
-<span class="c1"># ružno</span>
-<span class="c1"># id=$(xinput | grep -i touchpad | cut -f 2 | cut -d &quot;=&quot; -f 2)</span>
-<span class="nv">id</span><span class="o">=</span><span class="k">$(</span>xinput <span class="p">|</span> grep -i touchpad <span class="p">|</span> grep -oP <span class="s2">&quot;(?&lt;=id=)\d*&quot;</span><span class="k">)</span>
-
-<span class="k">if</span> xinput list-props <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span> <span class="p">|</span> grep -q <span class="s2">&quot;Device Enabled.*1</span>$<span class="s2">&quot;</span><span class="p">;</span> <span class="k">then</span>
-  xinput disable <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
-  notify-send <span class="s2">&quot;Touchpad turned OFF&quot;</span> --icon<span class="o">=</span>input-touchpad
-<span class="k">else</span>
-  xinput <span class="nb">enable</span> <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
-  notify-send <span class="s2">&quot;Touchpad turned ON&quot;</span> --icon<span class="o">=</span>input-touchpad
-<span class="k">fi</span>
-</pre></div>
-
-
-<h3>Malo urednije riješenje</h3>
-<p>Na početku sam gore navedenu stvar držao u "lokalnom" direktoriju
-gdje držim male, korisne skripte. Podesio sam Openboxov konfiguracioni
-fajl da pri pritisku <em>XF86TouchpadToggle</em> dugmeta pokrene taj skript.
-Radilo je super dok nisam primjetio jednu manu: radilo je samo za mene.
-Pošto isti Openbox konfiguracioni fajl kopiram i za druge korisnike,
-pri pritisku dugmeta je izbacivalo grešku da ne može naći <em>toggle-touch</em>
-program jer se nalazio u mom HOME direktoriju.</p>
-<p>Riješenje je bilo pomjeriti skriptu u standardni <code>/usr/bin/</code> da bude
-koristan svim korisnicima. Da stvar bude još čistija, spakirao sam ga
-za svoju distribuciju radi lakšeg instaliranja.</p>
-<p>Korisnici ArchLinuxa mogu preuzeti PKGBUILD <a href="https://github.com/dglava/pkgbuilds/tree/master/toggle-touch">ovdje</a>.</p><p><a href="http://dglava.github.io/toggle-touch.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+u svom sastavu, niti je u …</p>
+                <a class="readmore" href="http://dglava.github.io/toggle-touch.html">pročitaj više</a>
+<p><a href="http://dglava.github.io/toggle-touch.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -108,32 +117,6 @@ privremeno isključi DPMS postavke dok pušta video.</p>
 <p>Problem nastaje pri …</p>
                 <a class="readmore" href="http://dglava.github.io/firefox-dpms.html">pročitaj više</a>
 <p><a href="http://dglava.github.io/firefox-dpms.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/mpv-jedan.html" rel="bookmark"
-                           title="Permalink to Samo jedan mpv">Samo jedan mpv</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-05-06T00:00:00+02:00">
-                Objavljeno: Sub, 06 Maj 2017
-        </abbr>
-
-<p>Pod: <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>Tagovi: <a href="http://dglava.github.io/tag/mpv.html">mpv</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/mpv-jedan.html">en</a>
-
-</footer><!-- /.post-info -->                <p><a href="https://mpv.io/">mpv</a> je sjajni video plejer dostupan za mnogo operativnih
-sistema, pa tako i za Linux distribucije. Površinski gledano je vrlo
-jednostavan. Bez ikakvog podešavanja reproducira sve moguće fajlove,
-a za konfiguraciju je dostupan ogroman broj opcija koje se mogu
-uključiti putem <em>flagova</em> ili konfiguracionog fajla (što i koristim).</p>
-<p>Sa mog …</p>
-                <a class="readmore" href="http://dglava.github.io/mpv-jedan.html">pročitaj više</a>
-<p><a href="http://dglava.github.io/mpv-jedan.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
