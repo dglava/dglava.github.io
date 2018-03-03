@@ -171,9 +171,10 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     #banner h1 {font-size: 3.571em; line-height: 0;}
     #banner h1 a:link, #banner h1 a:visited {
         color: #fff;
-        display: block;
-        font-weight: bold;
-        margin: 0 0 .6em .2em;
+        background-color: rgba(0, 0, 0, .1);
+        font-weight: lighter;
+        margin: 0;
+        padding: 0 .2em;
         text-decoration: none;
     }
 
@@ -181,7 +182,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
     /* Main Nav */
     #banner nav {
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.2);
         font-size: 1.143em;
         height: 40px;
         line-height: 30px;
