@@ -15,7 +15,7 @@
 /* Body */
 body {
     background: #fff;
-    background-image: url("../images/pozadina.jpg");
+    /*background-image: url("../images/pozadina.jpg");*/
     background-repeat: no-repeat;
     background-size: contain;
     color: #000305;

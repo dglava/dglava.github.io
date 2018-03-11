@@ -8,6 +8,18 @@
 </head>
 
 <body id="index" class="home">
+        <script>
+        let bg = ["theme/images/p0.jpg",
+                  "theme/images/p1.jpg",
+                  "theme/images/p2.jpg",
+                  "theme/images/p3.jpg",
+                  "theme/images/p4.jpg",
+                  "theme/images/p5.jpg",
+                  "theme/images/p6.jpg"
+                 ];
+        let day = new Date().getDay();
+        document.getElementById("index").style.backgroundImage = "url(" + bg[day] + ")";
+        </script>
         <header id="banner" class="body">
                 <h1><a href="http://dglava.github.io/">dinoglava </a></h1>
                 <nav><ul>
