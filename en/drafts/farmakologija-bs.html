@@ -9,23 +9,15 @@
 
 <body id="index" class="home">
         <script>
-        let bg = ["theme/images/p0.jpg",
-                  "theme/images/p1.jpg",
-                  "theme/images/p2.jpg",
-                  "theme/images/p3.jpg",
-                  "theme/images/p4.jpg",
-                  "theme/images/p5.jpg",
-                  "theme/images/p6.jpg"
-                 ];
         let day = new Date().getDay();
-        document.getElementById("index").style.backgroundImage = "url(" + bg[day] + ")";
+        document.getElementById("index").style.backgroundImage = "url(theme/images/p" + day + ".jpg)";
         </script>
         <header id="banner" class="body">
                 <h1><a href="http://dglava.github.io/en/">dinoglava </a></h1>
                 <nav><ul>
                     <li><a href="http://dglava.github.io/en/category/linux.html">Linux</a></li>
                     <li><a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></li>
-                    <li><a href="http://dglava.github.io/en/archives.html">Archive</a></li>
+                    <li><a href="http://dglava.github.io/en/archives.html">Arhiva</a></li>
                     <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/en/theme/images/git.png"></a></li>
                     <li><a href="http://www.last.fm/user/dinoglava"><img src="http://dglava.github.io/en/theme/images/lastfm.png"></a></li>
                     <li><a href="http://dglava.github.io/"><img src="http://dglava.github.io/en/theme/images/bs.png"></a></li>
@@ -67,7 +59,7 @@ Dr. Vladislav Varagić; Zavod za udžbenike i nastavna sredstva Beograd 2006. go
 
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Website made with <a href="http://getpelican.com/">Pelican</a>. Theme: slightly tweaked <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>.
+                Stranica koristi <a href="http://getpelican.com/">Pelican</a>. Tema: blago izmjenjena <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 
