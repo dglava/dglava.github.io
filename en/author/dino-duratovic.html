@@ -27,7 +27,64 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/desktop-terminal.html">Desktop file and terminal emulator issues</a></h1>
+                    <h1 class="entry-title"><a href="http://dglava.github.io/en/roche.html">Roche</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-05-27T20:29:00+02:00">
+                Published: Sun, 27 May 2018
+        </abbr>
+
+<p>In: <a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="http://dglava.github.io/en/tag/tabs.html">tabs</a> <a href="http://dglava.github.io/en/tag/sheet-music.html">sheet-music</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../roche.html">bs</a>
+
+</footer><!-- /.post-info --><p>Tabs/sheet-music for <a href="https://www.youtube.com/watch?v=j2RP1bUy3B4">Sébastien Tellier - Roche</a>.</p>
+<p>Sometimes I wonder how this one would have turned out had it been on
+his first album instead of Sexuality. There's a certain melancholic
+tone to this, which is just enough to prevent it from being cheesy
+trash. I adore it.</p>
+<p>The same chord progression goes on throughout the song. This is how
+I play it on the guitar.</p>
+<p>For now there's just a PNG image. I might add the PDF later, together
+with the lyrics and chords above.</p>
+<p><a href="http://dglava.github.io/en/../images/roche.png"><img src="http://dglava.github.io/en/../images/roche.png" width="419" height="143" /></a></p><p><a href="http://dglava.github.io/en/roche.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/apple-tree.html" rel="bookmark"
+                           title="Permalink to Apple Tree">Apple Tree</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-27T20:20:00+02:00">
+                Published: Sun, 27 May 2018
+        </abbr>
+
+<p>In: <a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="http://dglava.github.io/en/tag/tabs.html">tabs</a> <a href="http://dglava.github.io/en/tag/sheet-music.html">sheet-music</a> </p>Translations:
+        <a href="http://dglava.github.io/en/../apple-tree.html">bs</a>
+
+</footer><!-- /.post-info -->                <p>Tabs/sheet-music for <a href="https://www.youtube.com/watch?v=EoDaTWaxBZE">Declan de Barra - Apple Tree</a>.</p>
+<p>The album version has a solid delay effect slapped on, but it sounds
+equally nice without it. I've left out the Irish part with the tremollo
+picking because I haven't figured it out yet.</p>
+<p>This time there's just a PNG image. I …</p>
+                <a class="readmore" href="http://dglava.github.io/en/apple-tree.html">read more</a>
+<p><a href="http://dglava.github.io/en/apple-tree.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://dglava.github.io/en/desktop-terminal.html" rel="bookmark"
+                           title="Permalink to Desktop file and terminal emulator issues">Desktop file and terminal emulator issues</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-01T00:00:00+01:00">
                 Published: Thu, 01 Mar 2018
@@ -37,88 +94,16 @@
 <p>Tags: <a href="http://dglava.github.io/en/tag/terminal.html">terminal</a> </p>Translations:
         <a href="http://dglava.github.io/en/../desktop-terminal.html">bs</a>
 
-</footer><!-- /.post-info --><p>I've had problems with opening text files with my text editor that's
+</footer><!-- /.post-info -->                <p>I've had problems with opening text files with my text editor that's
 running inside a terminal emulator (Vim) from inside my file manager.
 Nothing was happening after double clicking a file in my file manager (Nemo).</p>
-<p>A lot of time has passed between the time I became aware of that problem
-and now when I definitely found out why it was happening. Since it's
-pretty boring and menial, here's the general gist: problem discovery,
-no idea why it's happening, ugly hacky solution by specifying the
-terminal emulator to open Vim and the file inside the desktop file,
-the hacky solution not working because my distribution packaged Vim's 
-desktop file which was overwriting mine, figuring the problem out.</p>
-<h3>The cleanest hacky solution for someone else's mistake</h3>
-<p>Turns out that Glib was responsible for it. The problem lies in the fact
-that Glib hardcodes certain <a href="https://gitlab.gnome.org/GNOME/glib/blob/master/gio/gdesktopappinfo.c#L2476">terminal emulators</a>
-which are used to open the program if the desktop file contains a
-<code>Terminal=yes</code> line. If none of the hardcoded terminals is available,
-it fails.</p>
-<p>That behaviour is kind of disappointing and there's a <a href="https://bugzilla.gnome.org/show_bug.cgi?id=627943">bug report</a>,
-but it doesn't look like it will be resolved soon.</p>
-<p>A hopefully temporary solution is to just create a symlink which points
-gnome-terminal to your terminal emulator.</p>
-<p><code>ln -s /usr/bin/xfce4-terminal /usr/bin/gnome-terminal</code></p>
-<p>Let's hope that the Glib people find a way to solve this properly and that they
-settle for a way which would allow us to reliably set a default terminal
-emulator system wide.</p><p><a href="http://dglava.github.io/en/desktop-terminal.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/youll-have-to-swim.html" rel="bookmark"
-                           title="Permalink to You'll Have to Swim">You'll Have to Swim</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-02-11T00:00:00+01:00">
-                Published: Sun, 11 Feb 2018
-        </abbr>
-
-<p>In: <a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="http://dglava.github.io/en/tag/tabs.html">tabs</a> <a href="http://dglava.github.io/en/tag/sheet-music.html">sheet-music</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../youll-have-to-swim.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>Tabs/sheet-music for
-<a href="https://www.youtube.com/watch?v=emIu2foc6FM">Clann Zú - You'll Have To Swim</a>.</p>
-<p>While I was transcribing this, I had the 6th string dropped down by 4
-half-steps to C. That way I could play the proper bassline, but this tab
-has the bassline transposed one octave up, so you can play it on …</p>
-                <a class="readmore" href="http://dglava.github.io/en/youll-have-to-swim.html">read more</a>
-<p><a href="http://dglava.github.io/en/youll-have-to-swim.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://dglava.github.io/en/descending.html" rel="bookmark"
-                           title="Permalink to Descending">Descending</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-01-05T00:00:00+01:00">
-                Published: Fri, 05 Jan 2018
-        </abbr>
-
-<p>In: <a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="http://dglava.github.io/en/tag/tabs.html">tabs</a> <a href="http://dglava.github.io/en/tag/sheet-music.html">sheet-music</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../descending.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>Tabs for <a href="https://www.youtube.com/watch?v=MaF8A9nZ2Ac">Aereogramme - Descending</a>.</p>
-<p>At first I disliked the noise on the left channel during the first part
-of the song. It doesn't grow on you over time, but you learn to appreciate
-its roughness in terms of the complete picture. Everything is slowly
-coming into focus and when it …</p>
-                <a class="readmore" href="http://dglava.github.io/en/descending.html">read more</a>
-<p><a href="http://dglava.github.io/en/descending.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+<p>A lot of time has passed between the time I became aware of that …</p>
+                <a class="readmore" href="http://dglava.github.io/en/desktop-terminal.html">read more</a>
+<p><a href="http://dglava.github.io/en/desktop-terminal.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 6
+    Page 1 / 7
         <a href="http://dglava.github.io/en/author/dino-duratovic2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
