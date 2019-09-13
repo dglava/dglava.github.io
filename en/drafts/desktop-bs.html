@@ -34,7 +34,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2017-03-08T00:00:00+01:00">
+        <abbr class="published" title="2017-03-08T00:00:00+00:00">
                 Published: Sri, 08 Mar 2017
         </abbr>
 
@@ -78,17 +78,17 @@ vrlo je jednostavno pakovati sopstvene pakete (pomoću <em>makepkg</em>).</p>
 <h3>Kako izgleda desktop</h3>
 <p>ArchLinux mi je instaliran na dva kompjutera; na desktopu i laptopu.
 Oba su skoro identično konfigurisana, osim pojedinosti za hardver.</p>
-<p><a href="http://dglava.github.io/en/../images/desk1.png"><img src="http://dglava.github.io/en/../images/desk1.png" width="320" height="256" /></a>
-<a href="http://dglava.github.io/en/../images/desk2.png"><img src="http://dglava.github.io/en/../images/desk2.png" width="320" height="256" /></a>
-<a href="http://dglava.github.io/en/../images/desk3.png"><img src="http://dglava.github.io/en/../images/desk3.png" width="320" height="256" /></a></p>
+<p><a href="http://dglava.github.io/en/images/desk1.png"><img src="http://dglava.github.io/en/images/desk1.png" width="320" height="256" /></a>
+<a href="http://dglava.github.io/en/images/desk2.png"><img src="http://dglava.github.io/en/images/desk2.png" width="320" height="256" /></a>
+<a href="http://dglava.github.io/en/images/desk3.png"><img src="http://dglava.github.io/en/images/desk3.png" width="320" height="256" /></a></p>
 <h4>Okruženje</h4>
 <p>Upravitelj prozora koji koristim je Openbox. Mnogo funkcija ima prečice na tastaturi,
 tako da skoro nikako ne moram koristiti miš. Koristim četiri radne površine,
 imenovane rimskim brojevima. Od posebnih dodataka koristim Orcsome
-(opisano u <a href="http://dglava.github.io/en/../orcsome.html">ovome članku</a>) koji
+(opisano u <a href="http://dglava.github.io/en/Linux/2017-03-08_orcsome_bs.md">ovome članku</a>) koji
 dinamično skriva dekoracije sa maksimiziranih prozora radi uštede prostora.</p>
 <p>Tema je <a href="https://github.com/dglava/pkgbuilds/tree/master/numix-mod-theme">modificirani Numix</a>.</p>
-<p><a href="http://dglava.github.io/en/../files/rc.xml">Konfiguracioni fajl</a> (moguće da je zastario;
+<p><a href="http://dglava.github.io/en/files/rc.xml">Konfiguracioni fajl</a> (moguće da je zastario;
 ne držim konfiguracione fajlove na internetu, tako da ne mogu uvijek
 spojiti sa ažurnim verzijama)</p>
 <p><strong>Važnije prečice</strong></p>
@@ -113,63 +113,63 @@ spojiti sa ažurnim verzijama)</p>
 <strong>XF86TouchpadToggle</strong> — gasi/pali tačped<br>
 <strong>XF86MonBrightnessUp/Down</strong> — smanjuje i povećava svijetlost displeja  </p>
 <p>Programi koji se pokreću pri startu (pomoću Openbox autostart fajla):</p>
-<div class="highlight"><pre><span></span># samo na desktopu, jer koristi Nvidia karticu sa nouveau drajverima
-# radi problema sa v-syncom
-compton --config ~/.config/compton/compton.conf &amp;
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">samo</span> <span class="n">na</span> <span class="n">desktopu</span><span class="p">,</span> <span class="n">jer</span> <span class="n">koristi</span> <span class="n">Nvidia</span> <span class="n">karticu</span> <span class="n">sa</span> <span class="n">nouveau</span> <span class="n">drajverima</span>
+<span class="o">#</span> <span class="n">radi</span> <span class="n">problema</span> <span class="n">sa</span> <span class="n">v</span><span class="o">-</span><span class="n">syncom</span>
+<span class="n">compton</span> <span class="c1">--config ~/.config/compton/compton.conf &amp;</span>
 
-# mijenja CAPS LOCK i ESCAPE jer mnogo češće koristim escape
-setxkbmap -option caps:swapescape &amp;
+<span class="o">#</span> <span class="n">mijenja</span> <span class="n">CAPS</span> <span class="k">LOCK</span> <span class="n">i</span> <span class="k">ESCAPE</span> <span class="n">jer</span> <span class="n">mnogo</span> <span class="err">č</span><span class="n">ešće</span> <span class="n">koristim</span> <span class="k">escape</span>
+<span class="n">setxkbmap</span> <span class="o">-</span><span class="k">option</span> <span class="n">caps</span><span class="p">:</span><span class="n">swapescape</span> <span class="o">&amp;</span>
 
-# postavlja pozadinu desktopa
-(nitrogen --restore &amp;&amp; tint2) &amp;
+<span class="o">#</span> <span class="n">postavlja</span> <span class="n">pozadinu</span> <span class="n">desktopa</span>
+<span class="p">(</span><span class="n">nitrogen</span> <span class="c1">--restore &amp;&amp; tint2) &amp;</span>
 
-# pokreće prvo mpd pa onda mpdas za skroblanje
-(mpd &amp;&amp; mpdas) &amp;
+<span class="o">#</span> <span class="n">pokreće</span> <span class="n">prvo</span> <span class="n">mpd</span> <span class="n">pa</span> <span class="n">onda</span> <span class="n">mpdas</span> <span class="n">za</span> <span class="n">skroblanje</span>
+<span class="p">(</span><span class="n">mpd</span> <span class="o">&amp;&amp;</span> <span class="n">mpdas</span><span class="p">)</span> <span class="o">&amp;</span>
 
-# ikona za glasnoću i bateriju
-volumeicon &amp;
-cbatticon -i symbolic -l 10 -r 2 &amp;
+<span class="o">#</span> <span class="n">ikona</span> <span class="n">za</span> <span class="n">glasnoću</span> <span class="n">i</span> <span class="n">bateriju</span>
+<span class="n">volumeicon</span> <span class="o">&amp;</span>
+<span class="n">cbatticon</span> <span class="o">-</span><span class="n">i</span> <span class="n">symbolic</span> <span class="o">-</span><span class="n">l</span> <span class="mi">10</span> <span class="o">-</span><span class="n">r</span> <span class="mi">2</span> <span class="o">&amp;</span>
 
-# vidi članak na blogu o orcsomu
-orcsome &amp;
+<span class="o">#</span> <span class="n">vidi</span> <span class="err">č</span><span class="n">lanak</span> <span class="n">na</span> <span class="n">blogu</span> <span class="n">o</span> <span class="n">orcsomu</span>
+<span class="n">orcsome</span> <span class="o">&amp;</span>
 
-# bittorrent klijent
-qbittorrent &amp;
+<span class="o">#</span> <span class="n">bittorrent</span> <span class="n">klijent</span>
+<span class="n">qbittorrent</span> <span class="o">&amp;</span>
 </pre></div>
 
 
 <p>Okruženje iz Openbox environment fajla</p>
-<div class="highlight"><pre><span></span># postavke za lokalizaciju
-#export LANG=en_US.UTF-8
-export LC_CTYPE=bs_BA.UTF-8
-export LC_NUMERIC=bs_BA.UTF-8
-export LC_TIME=bs_BA.UTF-8
-export LC_COLLATE=bs_BA.UTF-8
-export LC_MONETARY=bs_BA.UTF-8
-export LC_MESSAGES=en_US.UTF-8
-export LC_PAPER=bs_BA.UTF-8
-export LC_NAME=bs_BA.UTF-8
-export LC_ADDRESS=bs_BA.UTF-8
-export LC_TELEPHONE=bs_BA.UTF-8
-export LC_MEASUREMENT=bs_BA.UTF-8
-export LC_IDENTIFICATION=bs_BA.UTF-8
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">postavke</span> <span class="n">za</span> <span class="n">lokalizaciju</span>
+<span class="o">#</span><span class="n">export</span> <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_CTYPE</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_NUMERIC</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_TIME</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_COLLATE</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_MONETARY</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_MESSAGES</span><span class="o">=</span><span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_PAPER</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_NAME</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_ADDRESS</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_TELEPHONE</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_MEASUREMENT</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">export</span> <span class="n">LC_IDENTIFICATION</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
 
-# ovo eksportujem ovdje jer ako stavim u .bashrc grafički programi
-# neće biti svjesni o njima
-PATH=$PATH:/home/dino/program/bin:$(ruby -rubygems -e &quot;puts Gem.user_dir&quot;)/bin
+<span class="o">#</span> <span class="n">ovo</span> <span class="n">eksportujem</span> <span class="n">ovdje</span> <span class="n">jer</span> <span class="n">ako</span> <span class="n">stavim</span> <span class="n">u</span> <span class="p">.</span><span class="n">bashrc</span> <span class="n">grafički</span> <span class="n">programi</span>
+<span class="o">#</span> <span class="n">neće</span> <span class="n">biti</span> <span class="n">svjesni</span> <span class="n">o</span> <span class="n">njima</span>
+<span class="n">PATH</span><span class="o">=</span><span class="err">$</span><span class="n">PATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">dino</span><span class="o">/</span><span class="n">program</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="err">$</span><span class="p">(</span><span class="n">ruby</span> <span class="o">-</span><span class="n">rubygems</span> <span class="o">-</span><span class="n">e</span> <span class="ss">&quot;puts Gem.user_dir&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">bin</span>
 
-# vidi članak na blogu o gtk i qt temama i konzistentnom izgledu
-export QT_QPA_PLATFORMTHEME=qt5gtk2
+<span class="o">#</span> <span class="n">vidi</span> <span class="err">č</span><span class="n">lanak</span> <span class="n">na</span> <span class="n">blogu</span> <span class="n">o</span> <span class="n">gtk</span> <span class="n">i</span> <span class="n">qt</span> <span class="n">temama</span> <span class="n">i</span> <span class="n">konzistentnom</span> <span class="n">izgledu</span>
+<span class="n">export</span> <span class="n">QT_QPA_PLATFORMTHEME</span><span class="o">=</span><span class="n">qt5gtk2</span>
 
-# promjeni zadani direktorij za gimp konfiguraciju
-export GIMP2_DIRECTORY=~/.config/gimp-2.8
+<span class="o">#</span> <span class="n">promjeni</span> <span class="n">zadani</span> <span class="n">direktorij</span> <span class="n">za</span> <span class="n">gimp</span> <span class="n">konfiguraciju</span>
+<span class="n">export</span> <span class="n">GIMP2_DIRECTORY</span><span class="o">=~/</span><span class="p">.</span><span class="n">config</span><span class="o">/</span><span class="n">gimp</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">8</span>
 
-#ruby smeće, koristim samo za generaciju GTK tema
-export GEM_HOME=$(ruby -e &#39;print Gem.user_dir&#39;)
+<span class="o">#</span><span class="n">ruby</span> <span class="n">smeće</span><span class="p">,</span> <span class="n">koristim</span> <span class="n">samo</span> <span class="n">za</span> <span class="n">generaciju</span> <span class="n">GTK</span> <span class="n">tema</span>
+<span class="n">export</span> <span class="n">GEM_HOME</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;print Gem.user_dir&#39;</span><span class="p">)</span>
 
-# vidi članak na blogu o dbusu i overlay scrollingu
-export GTK_OVERLAY_SCROLLING=0
-dbus-update-activation-environment --systemd --all
+<span class="o">#</span> <span class="n">vidi</span> <span class="err">č</span><span class="n">lanak</span> <span class="n">na</span> <span class="n">blogu</span> <span class="n">o</span> <span class="n">dbusu</span> <span class="n">i</span> <span class="k">overlay</span> <span class="n">scrollingu</span>
+<span class="n">export</span> <span class="n">GTK_OVERLAY_SCROLLING</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">dbus</span><span class="o">-</span><span class="k">update</span><span class="o">-</span><span class="n">activation</span><span class="o">-</span><span class="n">environment</span> <span class="c1">--systemd --all</span>
 </pre></div>
 
 
@@ -179,7 +179,7 @@ skriva prazne radi uštede prostora. Od internih tint2 dodataka koristim
 samo datum/sat (lijevi klik otvara <em>gsimplecal</em>). U <em>system trayu</em> se
 nalazi <em>applet</em> od <em>NetworkManagera</em> i <em>volumeicona</em>. Zavisno da li je
 laptop u pitanju, koristim i <em>cbatticon</em>.</p>
-<p><a href="http://dglava.github.io/en/../files/tint2rc">Konfiguracioni fajl</a></p>
+<p><a href="http://dglava.github.io/en/files/tint2rc">Konfiguracioni fajl</a></p>
 <h4>Ostalo</h4>
 <p>Ikone su <a href="http://tiheum.deviantart.com/art/Faenza-Icons-173323228">Faenza</a>.
 Jeste stara, ali je jedna od najneutralnijih i najopširnijih tema koje

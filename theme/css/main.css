@@ -27,12 +27,12 @@ body {
 }
 
 /* Headings */
-h1 {font-size: 2em }
-h2 {font-size: 1.571em} /* 22px */
-h3 {font-size: 1.429em} /* 20px */
-h4 {font-size: 1.286em} /* 18px */
-h5 {font-size: 1.143em} /* 16px */
-h6 {font-size: 1em}     /* 14px */
+h1 {font-size: 2em; color: #2e2e1f}
+h2 {font-size: 1.571em; color: #2e2e1f} /* 22px */
+h3 {font-size: 1.429em; color: #2e2e1f} /* 20px */
+h4 {font-size: 1.286em; color: #2e2e1f} /* 18px */
+h5 {font-size: 1.143em; color: #2e2e1f} /* 16px */
+h6 {font-size: 1em; color: #2e2e1f}     /* 14px */
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
@@ -226,9 +226,6 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     width: 248px;
 }
 #featured figure img {display: block; float: right;}
-
-#featured h2 {color: #476b6b; font-size: 1.714em; margin-bottom: 0.333em;}
-#featured h3 {font-size: 1.429em; margin-bottom: .5em;}
 
 #featured h3 a:link, #featured h3 a:visited {color: #000305; text-decoration: none;}
 #featured h3 a:hover, #featured h3 a:active {color: #fff;}

@@ -1,0 +1,131 @@
+1. Prijem bolesnika u bolnicu
+2. Primopredaja dužnosti
+3. Proces zdravstvene njege
+4. Utvrđivanje potreba za zdravstvenom njegom
+5. Planiranje zdravstvene njege
+6. Provođenje zdravstvene njege
+7. Evaluacija zdravstvene njege
+8. Važnost održavanja lične higijene
+9. Održavanje lične higijene nepokretnih bolesnika
+10. Zadaci medicinske sestre/tehničara u sprečavanju dekubitusa
+11. Zadaci medicinske sestre/tehničara i postupci sa bolesnikom koji ima dekubitus
+12. Zadaci medicinske sestre/tehničara pri spriječavanju tromboflebitisa
+13. Sterilizacija
+14. Intravenska primjena lijeka
+15. Transfuzija krvi
+16. Njega umirućeg bolesnika
+17. Postupak sa umrlim
+18. Vitalni znaci
+19. Preoperativna priprema bolesnika
+20. Postoperativna njega bolesnika
+21. Vještačka ishrana (nazogastrična sonda, gastrostoma, rektalna hranljiva klizma)
+22. Organizacija posjete bolesnicima
+23. Priprema bolesnika za rektoskopiju
+24. EKG tehnika uzimanja
+25. Zdravstvena njega komatoznog bolesnika [*]
+26. Priprema bolesnika i bolesničke sobe [*]
+27. Klizma
+28. Kateterizacija
+29. Inzulin i način aplikacije
+30. Sterilizacija, vrste
+31. Sterilizacija, kontrola
+32. Uloga medicinske sestre/tehničara kod sterilizacije [*]
+33. Krvarenje, vrste krvarenja prema vrsti krvnog suda
+34. Krvarenje, vrste krvarenja prema sredini
+35. Uloga medicinske sestre/tehničara kod zaustavljanja krvarenja
+36. Intrahospitalne infekcije
+37. Prevencija intrahospitalnih infekcija
+38. Uloga medicinske sestre/tehničara u prevenciji intrahospitalnih infekcija
+39. Ulazna vrata infekcije
+40. Hidrične infekcije
+41. Prevencija hidričnih infekcija
+42. Postupak sa bolesnikom oboljelim od hidrične infekcije [*]
+43. Imobilizacija, vrste imobilizacije
+44. Uloga medicinske sestre/tehničara pri imobilizaciji [*]
+45. Dezinfekcija, vrste
+46. Dezinsekcija
+47. Deratizacija
+48. Dezinficijensi
+49. Uzorkovanje hrane na terenu [*]
+50. Uzorkovanje vode na terenu [*]
+51. Porodična medicina-definicija, sestrinski proces u porodičnoj medicini
+52. Rad medicinske sestre/tehničara u porodičnoj medicini
+53. Rad medicinske sestre/tehničara u intervenciji porodične medicine
+54. Edukaciona uloga medicinara u timu porodične medicine
+55. Tim porodične medicine
+56. Znaci smrti
+57. Postupak sa lešom umrlog
+58. Promjena donjeg čaršafa kod nepokretnog pacijenta
+59. Uloga medicinske sestre/tehničara kod transfuzije
+60. Transfuzija, krvni ćelijski elementi
+61. Lumbalna punkcija, uloga medicinara
+62. Pleuralna punkcija, uloga medicinske sestre/tehničara
+63. Davanje inzulina
+64. Diabetes melitus, liječenje
+65. Uloga medicinske sestre/tehničara u edukaciji pacijenta oboljelog od dijabetes melitusa
+66. Uloga medicinske sestre/tehničara prilikom prijema bolesnika u bolnicu
+67. Uloga medicinske sestre/tehničara prilikom dolaska pacijenta u ambulantu
+68. Uloga medicinske sestre/tehničara u bolesničkoj sobi bolnice
+69. Evidencije u porodičnoj medicini
+70. Prevencija akutnih alergijskih reakcija
+71. Znaci, simptomi, terapija alergije na lijekove
+72. Uloga medicinske sestre/tehničara u zajednici
+73. Klizma za čišćenje — postupak medicinske sestre/tehničara
+74. Izdavanje, aplikacija i čuvanje narkotika
+75. Sprječavanje i suzbijanje zaraznih bolesti
+76. Ishrana i njega bubrežnih bolesnika
+77. Ishrana i njega srčanih bolesnika
+78. Ishrana bolesnika koji boluju od hipertenzije
+79. Ishrana i njega oboljelog od šećerne bolesti
+80. Priprema bolesnika za ultrazvučnu dijagnostiku
+81. Priprema bolesnika za kompjuteriziranu tomografiju
+82. Izlučevine
+83. Migracije i zdravstveni problemi vezani za migracije [*]
+84. Uloga medicinske sestre/tehničara u preoperativnoj pripremi pacijenta
+85. Uloga medicinske sestre/tehničara u postoperativnoj njezi pacijenta
+86. Krvni pritisak kao vitalni znak
+87. Tjelesna temperatura kao vitalni znak
+88. Puls kao vitalni znak
+89. Respiracije kao vitalni znak
+90. Postupak reanimacije unesrećenog
+91. Organizacija rada u stanici hitne medicinske pomoći [*]
+92. Uloga medicinske sestre/tehničara u timu hitne medicinske pomoći
+93. Prelomi i vrste preloma
+94. Uloga medicinske sestre/tehničara u zbrinjavanju prijeloma
+95. Načini imobilizacije
+96. Uzimanje krvi za dijagnostičke pretrage
+97. Uzimanje urina za dijagnostičke pretrage
+98. Uzimanje stolice za dijagnostičke pretrage
+99. Uzimanje brisa nosa i grla
+100. Uzimanje brisa rane
+101. Kompresivni zavoj
+102. Endemija
+103. Epidemija
+104. Pandemija
+105. Uloga medicinske sestre/tehničara u ispiranju vanjskog zvukovoda
+106. Kateterizacija mokraćne bešike
+107. Dekubitusi, znaci dekubitusa i zbrinjavanje
+108. Predilekciona mjesa na tijelu za nastanak dekubitusa, prevencija
+109. Liječenje dekubitusa
+110. Načini mjerenja tjelesne temperature
+111. Čuvanje sterilnog materijala [*]
+112. Podjela hranljivih materija
+113. Važnost proteina za organizam
+114. Važnost ugljenih hidrata za organizam
+115. Važnost masnoća za organizam
+116. Značaj pregleda urina
+117. Značaj pregleda stolice
+118. Postupak sa psihotično nemirnim bolesnikom
+119. Podjela vitamina
+120. Zdravstveno vaspitni rad u ambulanti porodične medicine
+121. Opekotine i stepeni opekotina
+122. Uloga medicinske sestre/tehničara u liječenju opekotina
+123. Njega bolesnika oboljelog od žutice
+124. Njega bolesnika oboljelog od meningitisa
+125. Njega bolesnika oboljelog od kolitisa
+126. Simptomi i znaci trovanja hranom, uzročnici
+127. Uloga medicinske sestre/tehničara kod trovanja hranom
+128. Načini primjene lijekova
+129. Primjena načela asepse i antisepse
+130. Uloga medicinske sestre/tehničara u imunizaciji
+131. Hladni lanac imunizacije [*]

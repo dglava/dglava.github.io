@@ -29,7 +29,7 @@
                 <article>
                     <h1 class="entry-title"><a href="http://dglava.github.io/ergo525.html">Genius Ergo 525 miš i Linux</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2016-08-24T00:00:00+02:00">
+        <abbr class="published" title="2016-08-24T00:00:00+00:00">
                 Objavljeno: Sri, 24 Aug 2016
         </abbr>
 
@@ -92,11 +92,11 @@ izlistamo sve dugmiće što miš ima sa:</p>
 <p>Da bi promjena ostala trajna možete staviti gore navedenu komandu da se
 izvrši pri pokretanju X sesije. Meni je draže koristiti Xorg konfiguracioni
 fajl. Ovako izgleda (izostavljene stvari nevezane za miš):</p>
-<div class="highlight"><pre><span></span>Section &quot;InputClass&quot;
-    Identifier &quot;Ergo Mouse&quot;
-    MatchUSBID &quot;0458:0087&quot;
-    Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;
-EndSection
+<div class="highlight"><pre><span></span><span class="n">Section</span> <span class="ss">&quot;InputClass&quot;</span>
+    <span class="n">Identifier</span> <span class="ss">&quot;Ergo Mouse&quot;</span>
+    <span class="n">MatchUSBID</span> <span class="ss">&quot;0458:0087&quot;</span>
+    <span class="k">Option</span> <span class="ss">&quot;ButtonMapping&quot;</span> <span class="ss">&quot;1 2 3 4 5 6 7 9 8 10&quot;</span>
+<span class="n">EndSection</span>
 </pre></div>
 
 
@@ -141,8 +141,8 @@ Izgleda ovako:</p>
 
 <p>Posljednji korak je da pokrenete sljedeće komande, da se ažurira i
 aktivira udev baza podataka:</p>
-<div class="highlight"><pre><span></span>udevadm hwdb --update
-udevadm trigger
+<div class="highlight"><pre><span></span><span class="n">udevadm</span> <span class="n">hwdb</span> <span class="c1">--update</span>
+<span class="n">udevadm</span> <span class="k">trigger</span>
 </pre></div><p><a href="http://dglava.github.io/ergo525.html#disqus_thread">Komentari</a></p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">

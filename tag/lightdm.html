@@ -29,11 +29,11 @@
                 <article>
                     <h1 class="entry-title"><a href="http://dglava.github.io/lightdm-jezik.html">Promjeni jezik LightDM Greetera</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2017-03-20T00:00:00+01:00">
+        <abbr class="published" title="2017-03-20T00:00:00+00:00">
                 Objavljeno: Pon, 20 Mar 2017
         </abbr>
         <br />
-        <abbr class="modified" title="2017-10-13T00:00:00+02:00">
+        <abbr class="modified" title="2017-10-13T00:00:00+00:00">
                 Ažurirano: Pet, 13 Okt 2017
         </abbr>
 
@@ -49,20 +49,20 @@ bosanski.</p>
 Za to se koriste lokali (<em>locales</em>, ne znam tačni prevod na naš) i
 promjenjljive okruženja (<em>environment variables</em>, isti slučaj). Moje
 postavke izgledaju ovako:</p>
-<div class="highlight"><pre><span></span>LANG=en_US.utf8
-LC_CTYPE=bs_BA.UTF-8
-LC_NUMERIC=bs_BA.UTF-8
-LC_TIME=bs_BA.UTF-8
-LC_COLLATE=bs_BA.UTF-8
-LC_MONETARY=bs_BA.UTF-8
-LC_MESSAGES=en_US.UTF-8
-LC_PAPER=bs_BA.UTF-8
-LC_NAME=bs_BA.UTF-8
-LC_ADDRESS=bs_BA.UTF-8
-LC_TELEPHONE=bs_BA.UTF-8
-LC_MEASUREMENT=bs_BA.UTF-8
-LC_IDENTIFICATION=bs_BA.UTF-8
-LC_ALL=
+<div class="highlight"><pre><span></span><span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="p">.</span><span class="n">utf8</span>
+<span class="n">LC_CTYPE</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_NUMERIC</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_TIME</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_COLLATE</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_MONETARY</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_MESSAGES</span><span class="o">=</span><span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_PAPER</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_NAME</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_ADDRESS</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_TELEPHONE</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_MEASUREMENT</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_IDENTIFICATION</span><span class="o">=</span><span class="n">bs_BA</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">LC_ALL</span><span class="o">=</span>
 </pre></div>
 
 
@@ -104,10 +104,10 @@ se napravi globalni <em>override</em>.</p>
 <code>/etc/systemd/system/</code> zajedno sa fajlom ili koristiti <code>systemctl edit servis</code>.</p>
 <p>Nama treba <code>ENVIRONMENT=</code> postavka. U nju unesemo željenu promjenjljivu.
 Ovako na kraju izgleda moj fajl:</p>
-<div class="highlight"><pre><span></span>$ cat /etc/systemd/system/lightdm.service.d/override.conf 
-<span class="o">[</span>Service<span class="o">]</span>
-<span class="nv">Environment</span><span class="o">=</span>
-<span class="nv">Environment</span><span class="o">=</span><span class="s2">&quot;LANG=bs_BA.UTF-8&quot;</span>
+<div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="n">lightdm</span><span class="p">.</span><span class="n">service</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">override</span><span class="p">.</span><span class="n">conf</span><span class="w"> </span>
+<span class="o">[</span><span class="n">Service</span><span class="o">]</span><span class="w"></span>
+<span class="n">Environment</span><span class="o">=</span><span class="w"></span>
+<span class="n">Environment</span><span class="o">=</span><span class="ss">&quot;LANG=bs_BA.UTF-8&quot;</span><span class="w"></span>
 </pre></div>
 
 
@@ -153,7 +153,7 @@ da instaliraju modifikovani desktop fajl.</p><p><a href="http://dglava.github.io
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2016-03-21T00:00:00+01:00">
+        <abbr class="published" title="2016-03-21T00:00:00+00:00">
                 Objavljeno: Pon, 21 Mar 2016
         </abbr>
 

@@ -34,11 +34,11 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2017-03-20T00:00:00+01:00">
+        <abbr class="published" title="2017-03-20T00:00:00+00:00">
                 Published: Mon, 20 Mar 2017
         </abbr>
         <br />
-        <abbr class="modified" title="2017-10-13T00:00:00+02:00">
+        <abbr class="modified" title="2017-10-13T00:00:00+00:00">
                 Modified: Fri, 13 Oct 2017
         </abbr>
 
@@ -67,10 +67,10 @@ It will automatically create an override file for the service. Alternatively,
 you can do it manually, by creating the appropriately named directory and override file
 in <code>/etc/systemd/system/</code>.</p>
 <p>Here's how my file looks like:</p>
-<div class="highlight"><pre><span></span>$ cat /etc/systemd/system/lightdm.service.d/override.conf 
-<span class="o">[</span>Service<span class="o">]</span>
-<span class="nv">Environment</span><span class="o">=</span>
-<span class="nv">Environment</span><span class="o">=</span><span class="s2">&quot;LANG=bs_BA.UTF-8&quot;</span>
+<div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="n">lightdm</span><span class="p">.</span><span class="n">service</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">override</span><span class="p">.</span><span class="n">conf</span><span class="w"> </span>
+<span class="o">[</span><span class="n">Service</span><span class="o">]</span><span class="w"></span>
+<span class="n">Environment</span><span class="o">=</span><span class="w"></span>
+<span class="n">Environment</span><span class="o">=</span><span class="ss">&quot;LANG=bs_BA.UTF-8&quot;</span><span class="w"></span>
 </pre></div>
 
 

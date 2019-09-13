@@ -34,11 +34,11 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2016-05-09T00:00:00+02:00">
+        <abbr class="published" title="2016-05-09T00:00:00+00:00">
                 Published: Mon, 09 May 2016
         </abbr>
         <br />
-        <abbr class="modified" title="2016-09-07T00:00:00+02:00">
+        <abbr class="modified" title="2016-09-07T00:00:00+00:00">
                 Modified: Wed, 07 Sep 2016
         </abbr>
 
@@ -51,7 +51,6 @@
 That means that this ugly hack isn't required any longer. To disable the
 fading all you have to do is change the value to "false" using xconf-query:</p>
 <p><code>xfconf-query -c xfce4-notifyd -p /do-fadeout -n -t bool -s false</code></p>
-<hr>
 <hr>
 <p>Whoever is using xfce4-notifyd with a compositor has probably noticed
 that there's an independent fade-out going on for every notification pop-up.

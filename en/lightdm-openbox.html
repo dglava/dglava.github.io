@@ -34,7 +34,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2016-03-21T00:00:00+01:00">
+        <abbr class="published" title="2016-03-21T00:00:00+00:00">
                 Published: Mon, 21 Mar 2016
         </abbr>
 
@@ -47,7 +47,7 @@ and Openbox is kind of annoying. A gray background pops up shortly before
 the desktop wallpaper gets drawn (assuming you use a wallpaper).</p>
 <p>The ugly transition in action:</p>
 <video width="320" height="240" controls>
-  <source src="http://dglava.github.io/en/../files/login1.webm" type="video/webm">
+  <source src="http://dglava.github.io/en/files/login1.webm" type="video/webm">
 </video>
 
 <p>Digging around, I found out that Openbox actually
@@ -55,30 +55,30 @@ the desktop wallpaper gets drawn (assuming you use a wallpaper).</p>
 to set the background color. To get rid of that ugly, temporary background
 during logging in, all you have to do is either delete or comment out the lines
 in Openbox's autostart bash script.</p>
-<div class="highlight"><pre><span></span># Set a background color
-#BG=&quot;&quot;
-#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then
-#  BG=hsetroot
-#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then
-#  BG=esetroot
-#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then
-#  BG=xsetroot
-#fi
-#test -z $BG || $BG -solid &quot;#303030&quot;
+<div class="highlight"><pre><span></span># <span class="nv">Set</span> <span class="nv">a</span> <span class="nv">background</span> <span class="nv">color</span>
+#<span class="nv">BG</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+#<span class="k">if</span> <span class="nv">which</span> <span class="nv">hsetroot</span> <span class="o">&gt;/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">null</span> <span class="mi">2</span><span class="o">&gt;/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">null</span><span class="c1">; then</span>
+#  <span class="nv">BG</span><span class="o">=</span><span class="nv">hsetroot</span>
+#<span class="nv">elif</span> <span class="nv">which</span> <span class="nv">esetroot</span> <span class="o">&gt;/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">null</span> <span class="mi">2</span><span class="o">&gt;/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">null</span><span class="c1">; then</span>
+#  <span class="nv">BG</span><span class="o">=</span><span class="nv">esetroot</span>
+#<span class="nv">elif</span> <span class="nv">which</span> <span class="nv">xsetroot</span> <span class="o">&gt;/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">null</span> <span class="mi">2</span><span class="o">&gt;/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">null</span><span class="c1">; then</span>
+#  <span class="nv">BG</span><span class="o">=</span><span class="nv">xsetroot</span>
+#<span class="nv">fi</span>
+#<span class="nv">test</span> <span class="o">-</span><span class="nv">z</span> <span class="mh">$B</span><span class="nv">G</span> <span class="o">||</span> <span class="mh">$B</span><span class="nv">G</span> <span class="o">-</span><span class="nv">solid</span> <span class="s2">&quot;</span><span class="s">#303030</span><span class="s2">&quot;</span>
 </pre></div>
 
 
 <p>On Arch, the file you have to edit is <code>/usr/lib/openbox/openbox-autostart</code>.
 Other distributions probably keep it in the same place, but you can find the
 autostart's file location by checking the output of</p>
-<div class="highlight"><pre><span></span>ps x | grep openbox
+<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="n">x</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">openbox</span>
 </pre></div>
 
 
 <p>Finally, the transition should be smooth now, especially if your display manager's
 background is the same as your desktop background.</p>
 <video width="320" height="240" controls>
-  <source src="http://dglava.github.io/en/../files/login2.webm" type="video/webm">
+  <source src="http://dglava.github.io/en/files/login2.webm" type="video/webm">
 </video>
     </div><!-- /.entry-content -->
     <div class="comments">
