@@ -170,7 +170,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     #banner h1 {font-size: 3.571em; line-height: 0;}
     #banner h1 a:link, #banner h1 a:visited {
         color: #fff;
-        background-color: rgba(0, 0, 0, .1);
+        background-color: rgba(0, 0, 0, 0.6);
         font-weight: lighter;
         margin: 0;
         padding: 0 .2em;
@@ -181,7 +181,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
     /* Main Nav */
     #banner nav {
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.6);
         font-size: 1.143em;
         height: 40px;
         line-height: 30px;

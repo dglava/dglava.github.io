@@ -27,12 +27,12 @@ body {
 }
 
 /* Headings */
-h1 {font-size: 2em }
-h2 {font-size: 1.571em} /* 22px */
-h3 {font-size: 1.429em} /* 20px */
-h4 {font-size: 1.286em} /* 18px */
-h5 {font-size: 1.143em} /* 16px */
-h6 {font-size: 1em}     /* 14px */
+h1 {font-size: 2em; color: #2e2e1f}
+h2 {font-size: 1.571em; color: #2e2e1f} /* 22px */
+h3 {font-size: 1.429em; color: #2e2e1f} /* 20px */
+h4 {font-size: 1.286em; color: #2e2e1f} /* 18px */
+h5 {font-size: 1.143em; color: #2e2e1f} /* 16px */
+h6 {font-size: 1em; color: #2e2e1f}     /* 14px */
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
@@ -170,7 +170,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     #banner h1 {font-size: 3.571em; line-height: 0;}
     #banner h1 a:link, #banner h1 a:visited {
         color: #fff;
-        background-color: rgba(0, 0, 0, .1);
+        background-color: rgba(0, 0, 0, 0.6);
         font-weight: lighter;
         margin: 0;
         padding: 0 .2em;
@@ -181,7 +181,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
     /* Main Nav */
     #banner nav {
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.6);
         font-size: 1.143em;
         height: 40px;
         line-height: 30px;
