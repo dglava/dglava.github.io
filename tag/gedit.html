@@ -3,40 +3,40 @@
 <head>
         <meta charset="utf-8" />
         <title>dinoglava - gedit</title>
-        <link rel="stylesheet" href="http://dglava.github.io/theme/css/main.css" />
-        <link rel="shortcut icon" type="image/png" href="http://dglava.github.io/theme/images/favicon.png">
+        <link rel="stylesheet" href="https://dglava.github.io/theme/css/main.css" />
+        <link rel="shortcut icon" type="image/png" href="https://dglava.github.io/theme/images/favicon.png">
 </head>
 
 <body id="index" class="home">
         <script>
         let day = new Date().getDay();
-        document.getElementById("index").style.backgroundImage = "url(http://dglava.github.io/theme/images/p" + day + ".jpg)";
+        document.getElementById("index").style.backgroundImage = "url(https://dglava.github.io/theme/images/p" + day + ".jpg)";
         </script>
         <header id="banner" class="body">
-                <h1><a href="http://dglava.github.io/">dinoglava </a></h1>
+                <h1><a href="https://dglava.github.io/">dinoglava </a></h1>
                 <nav><ul>
-                    <li><a href="http://dglava.github.io/category/linux.html">Linux</a></li>
-                    <li><a href="http://dglava.github.io/category/stvari.html">Stvari</a></li>
-                    <li><a href="http://dglava.github.io/archives.html">Arhiva</a></li>
-                    <li><a href="http://dglava.github.io/pages/o-bs, en.html">O</a></li>
-                    <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/theme/images/git.png"></a></li>
-                    <li><a href="http://www.last.fm/user/dinoglava"><img src="http://dglava.github.io/theme/images/lastfm.png"></a></li>
-                    <li><a href="http://dglava.github.io/"><img src="http://dglava.github.io/theme/images/bs.png"></a></li>
-                    <li><a href="http://dglava.github.io/en/"><img src="http://dglava.github.io/theme/images/en.png"></a></li>
+                    <li><a href="https://dglava.github.io/category/linux.html">Linux</a></li>
+                    <li><a href="https://dglava.github.io/category/stvari.html">Stvari</a></li>
+                    <li><a href="https://dglava.github.io/archives.html">Arhiva</a></li>
+                    <li><a href="https://dglava.github.io/pages/o-bs, en.html">O</a></li>
+                    <li><a href="https://github.com/dglava"><img src="https://dglava.github.io/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="https://dglava.github.io/theme/images/lastfm.png"></a></li>
+                    <li><a href="https://dglava.github.io/"><img src="https://dglava.github.io/theme/images/bs.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/"><img src="https://dglava.github.io/theme/images/en.png"></a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/gedit-dbus-overlay.html">Gedit, OverlayScrolling i DBus</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/gedit-dbus-overlay.html">Gedit, OverlayScrolling i DBus</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2016-03-18T00:00:00+00:00">
                 Objavljeno: Pet, 18 Mar 2016
         </abbr>
 
-<p>Pod: <a href="http://dglava.github.io/category/linux.html">Linux</a></p>
-<p>Tagovi: <a href="http://dglava.github.io/tag/gedit.html">gedit</a> <a href="http://dglava.github.io/tag/dbus.html">dbus</a> <a href="http://dglava.github.io/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
-        <a href="http://dglava.github.io/en/gedit-dbus-overlay.html">en</a>
+<p>Pod: <a href="https://dglava.github.io/category/linux.html">Linux</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/gedit.html">gedit</a> <a href="https://dglava.github.io/tag/dbus.html">dbus</a> <a href="https://dglava.github.io/tag/openbox.html">openbox</a> <a href="https://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
+        <a href="https://dglava.github.io/en/gedit-dbus-overlay.html">en</a>
 
 </footer><!-- /.post-info --><p>Tamo negdje oko 3.16 verzije, GTK3 je dobio nove <em>scroll barove</em>, odnosno
 novu funkciju. Sada se automatski skrivaju i pokazuju, zavisno od toga
@@ -57,7 +57,7 @@ Otvarajući Gedit i tekstualni fajl iz Thunara, skrol trake su se skrivale.
 GTK_OVERLAY_SCROLLING je bio eksportovan uspiješno; <em>printenv | grep GTK_OVERLAY</em>
 ga je prikazivao. Zašto su se skrivale zavisno od načina otvoranja mi
 nije bilo jasno.</p>
-<p><img alt="gedit1.png" src="http://dglava.github.io/images/gedit1.png" title="Gedit prikriva red"></p>
+<p><img alt="gedit1.png" src="https://dglava.github.io/images/gedit1.png" title="Gedit prikriva red"></p>
 <p>Pošto koristim Openbox upravljač prozora, <em>environment variable</em> su
 eksportovane u <em>.config/openbox/environment</em> fajlu. Prvo, privremeno i
 neprihvatljivo rješenje je bilo eksportovanje GTK_OVERLAY_SCROLLING
@@ -88,7 +88,7 @@ nakon pokretanja Openboxa, odnosno environment fajla. Dodao sam ovo:</p>
 
 <p>u openbox/environment fajl i Gedit i skrol trake se ponašaju normalno.
 Ovo sam naravno skužio nakon što sam prestao koristiti Gedit.</p>
-<p><img alt="gedit2.png" src="http://dglava.github.io/images/gedit2.png" title="Gedit sa non-stop vidljivim skrol trakama"></p><p><a href="http://dglava.github.io/gedit-dbus-overlay.html#disqus_thread">Komentari</a></p>                </article>
+<p><img alt="gedit2.png" src="https://dglava.github.io/images/gedit2.png" title="Gedit sa non-stop vidljivim skrol trakama"></p><p><a href="https://dglava.github.io/gedit-dbus-overlay.html#disqus_thread">Komentari</a></p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
         </section><!-- /#extras -->

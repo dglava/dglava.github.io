@@ -3,32 +3,32 @@
 <head>
         <meta charset="utf-8" />
         <title>dinoglava - firefox</title>
-        <link rel="stylesheet" href="http://dglava.github.io/en/theme/css/main.css" />
-        <link rel="shortcut icon" type="image/png" href="http://dglava.github.io/en/theme/images/favicon.png">
+        <link rel="stylesheet" href="https://dglava.github.io/en/theme/css/main.css" />
+        <link rel="shortcut icon" type="image/png" href="https://dglava.github.io/en/theme/images/favicon.png">
 </head>
 
 <body id="index" class="home">
         <script>
         let day = new Date().getDay();
-        document.getElementById("index").style.backgroundImage = "url(http://dglava.github.io/en/theme/images/p" + day + ".jpg)";
+        document.getElementById("index").style.backgroundImage = "url(https://dglava.github.io/en/theme/images/p" + day + ".jpg)";
         </script>
         <header id="banner" class="body">
-                <h1><a href="http://dglava.github.io/en/">dinoglava </a></h1>
+                <h1><a href="https://dglava.github.io/en/">dinoglava </a></h1>
                 <nav><ul>
-                    <li><a href="http://dglava.github.io/en/category/linux.html">Linux</a></li>
-                    <li><a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></li>
-                    <li><a href="http://dglava.github.io/en/archives.html">Archive</a></li>
-                    <li><a href="http://dglava.github.io/en/pages/o-bs, en.html">O</a></li>
-                    <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/en/theme/images/git.png"></a></li>
-                    <li><a href="http://www.last.fm/user/dinoglava"><img src="http://dglava.github.io/en/theme/images/lastfm.png"></a></li>
-                    <li><a href="http://dglava.github.io/"><img src="http://dglava.github.io/en/theme/images/bs.png"></a></li>
-                    <li><a href="http://dglava.github.io/en/"><img src="http://dglava.github.io/en/theme/images/en.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/category/linux.html">Linux</a></li>
+                    <li><a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></li>
+                    <li><a href="https://dglava.github.io/en/archives.html">Archive</a></li>
+                    <li><a href="https://dglava.github.io/en/pages/o-bs, en.html">O</a></li>
+                    <li><a href="https://github.com/dglava"><img src="https://dglava.github.io/en/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="https://dglava.github.io/en/theme/images/lastfm.png"></a></li>
+                    <li><a href="https://dglava.github.io/"><img src="https://dglava.github.io/en/theme/images/bs.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/"><img src="https://dglava.github.io/en/theme/images/en.png"></a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/firefox-dpms.html">Prevent screen blanking when watching videos in Firefox</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/firefox-dpms.html">Prevent screen blanking when watching videos in Firefox</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2017-08-29T00:00:00+00:00">
                 Published: Tue, 29 Aug 2017
@@ -38,9 +38,9 @@
                 Modified: Tue, 26 Dec 2017
         </abbr>
 
-<p>In: <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>Tags: <a href="http://dglava.github.io/en/tag/firefox.html">firefox</a> <a href="http://dglava.github.io/en/tag/dpms.html">dpms</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../firefox-dpms.html">bs</a>
+<p>In: <a href="https://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/firefox.html">firefox</a> <a href="https://dglava.github.io/en/tag/dpms.html">dpms</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../firefox-dpms.html">bs</a>
 
 </footer><!-- /.post-info --><p>Watching videos on YouTube always proved to be problematic because
 my DPMS settings would kick in and the screen would turn off. Firefox
@@ -58,7 +58,7 @@ for activity periodically and only does Flash video (not HTML5 video).</p>
 <h3>My solution</h3>
 <p>I noticed that Pulseaudio creates streams for each sound source (see
 picture below of Pavucontrol).</p>
-<p><a href="http://dglava.github.io/en/images/firefox-dpms.png"><img src="http://dglava.github.io/en/images/firefox-dpms.png" width="320" height="162" /></a></p>
+<p><a href="https://dglava.github.io/en/images/firefox-dpms.png"><img src="https://dglava.github.io/en/images/firefox-dpms.png" width="320" height="162" /></a></p>
 <p>That gave me the idea to utilize that to figure out if Firefox is playing
 back video. If it is, there should be an audio stream together with it.
 Shortly after that, I discovered via <code>pactl subscribe</code> that PulseAudio
@@ -69,7 +69,7 @@ library. It allows one to monitor the PulseAudio events.</p>
 <p><strong>Download <a href="https://github.com/dglava/firefox-dpms">Firefox-DPMS</a></strong></p>
 <p>Arch Linux users can use the included PKGBUILD. You will need python-pulse-control.
 You can use my PKGBUILD from <a href="https://github.com/dglava/pkgbuilds/blob/master/python-pulse-control-git/PKGBUILD">here</a>
-or the one from the AUR.</p><p><a href="http://dglava.github.io/en/firefox-dpms.html#disqus_thread">Comments</a></p>                </article>
+or the one from the AUR.</p><p><a href="https://dglava.github.io/en/firefox-dpms.html#disqus_thread">Comments</a></p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
         </section><!-- /#extras -->

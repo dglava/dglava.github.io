@@ -3,40 +3,40 @@
 <head>
         <meta charset="utf-8" />
         <title>dinoglava - gedit</title>
-        <link rel="stylesheet" href="http://dglava.github.io/en/theme/css/main.css" />
-        <link rel="shortcut icon" type="image/png" href="http://dglava.github.io/en/theme/images/favicon.png">
+        <link rel="stylesheet" href="https://dglava.github.io/en/theme/css/main.css" />
+        <link rel="shortcut icon" type="image/png" href="https://dglava.github.io/en/theme/images/favicon.png">
 </head>
 
 <body id="index" class="home">
         <script>
         let day = new Date().getDay();
-        document.getElementById("index").style.backgroundImage = "url(http://dglava.github.io/en/theme/images/p" + day + ".jpg)";
+        document.getElementById("index").style.backgroundImage = "url(https://dglava.github.io/en/theme/images/p" + day + ".jpg)";
         </script>
         <header id="banner" class="body">
-                <h1><a href="http://dglava.github.io/en/">dinoglava </a></h1>
+                <h1><a href="https://dglava.github.io/en/">dinoglava </a></h1>
                 <nav><ul>
-                    <li><a href="http://dglava.github.io/en/category/linux.html">Linux</a></li>
-                    <li><a href="http://dglava.github.io/en/category/stvari.html">Stvari</a></li>
-                    <li><a href="http://dglava.github.io/en/archives.html">Archive</a></li>
-                    <li><a href="http://dglava.github.io/en/pages/o-bs, en.html">O</a></li>
-                    <li><a href="https://github.com/dglava"><img src="http://dglava.github.io/en/theme/images/git.png"></a></li>
-                    <li><a href="http://www.last.fm/user/dinoglava"><img src="http://dglava.github.io/en/theme/images/lastfm.png"></a></li>
-                    <li><a href="http://dglava.github.io/"><img src="http://dglava.github.io/en/theme/images/bs.png"></a></li>
-                    <li><a href="http://dglava.github.io/en/"><img src="http://dglava.github.io/en/theme/images/en.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/category/linux.html">Linux</a></li>
+                    <li><a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></li>
+                    <li><a href="https://dglava.github.io/en/archives.html">Archive</a></li>
+                    <li><a href="https://dglava.github.io/en/pages/o-bs, en.html">O</a></li>
+                    <li><a href="https://github.com/dglava"><img src="https://dglava.github.io/en/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="https://dglava.github.io/en/theme/images/lastfm.png"></a></li>
+                    <li><a href="https://dglava.github.io/"><img src="https://dglava.github.io/en/theme/images/bs.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/"><img src="https://dglava.github.io/en/theme/images/en.png"></a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://dglava.github.io/en/gedit-dbus-overlay.html">Gedit, OverlayScrolling and DBus</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/gedit-dbus-overlay.html">Gedit, OverlayScrolling and DBus</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2016-03-18T00:00:00+00:00">
                 Published: Fri, 18 Mar 2016
         </abbr>
 
-<p>In: <a href="http://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>Tags: <a href="http://dglava.github.io/en/tag/gedit.html">gedit</a> <a href="http://dglava.github.io/en/tag/dbus.html">dbus</a> <a href="http://dglava.github.io/en/tag/openbox.html">openbox</a> <a href="http://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
-        <a href="http://dglava.github.io/en/../gedit-dbus-overlay.html">bs</a>
+<p>In: <a href="https://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/gedit.html">gedit</a> <a href="https://dglava.github.io/en/tag/dbus.html">dbus</a> <a href="https://dglava.github.io/en/tag/openbox.html">openbox</a> <a href="https://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../gedit-dbus-overlay.html">bs</a>
 
 </footer><!-- /.post-info --><p>GTK3's overlay scrollbars can be quite annoying. Especially if the theme
 you're using isn't keeping up with the latest changes and is barely functional.
@@ -47,7 +47,7 @@ how a GTK3 application was started, that it either respected that environment
 variable or not. Opening a text file from my file manager with Gedit seemed
 to disregard it. The scrollbars would still autohide and what's even worse:
 cover up a line.</p>
-<p><img alt="gedit1.png" src="http://dglava.github.io/en/images/gedit1.png" title="Scrollbars covering up a line"></p>
+<p><img alt="gedit1.png" src="https://dglava.github.io/en/images/gedit1.png" title="Scrollbars covering up a line"></p>
 <p>Running Gedit from my terminal worked and the scrollbars were always visible.
 After a lot of troubleshooting I have figured out why it was happening.</p>
 <p>Every time I opened a file through the file manager, Gedit was started via Dbus
@@ -66,7 +66,7 @@ exported through Openbox's environment file after its start. To do that, run:</p
 
 <p>after your Openbox session starts. I have it inside my openbox/environment file.
 Of course I figured this out after I stopped using Gedit.</p>
-<p><img alt="gedit2.png" src="http://dglava.github.io/en/images/gedit2.png" title="Scrollbars aren't covering the line"></p><p><a href="http://dglava.github.io/en/gedit-dbus-overlay.html#disqus_thread">Comments</a></p>                </article>
+<p><img alt="gedit2.png" src="https://dglava.github.io/en/images/gedit2.png" title="Scrollbars aren't covering the line"></p><p><a href="https://dglava.github.io/en/gedit-dbus-overlay.html#disqus_thread">Comments</a></p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
         </section><!-- /#extras -->
