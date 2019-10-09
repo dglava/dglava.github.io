@@ -38,6 +38,10 @@
         <abbr class="published" title="2017-05-06T00:00:00+00:00">
                 Published: Sat, 06 May 2017
         </abbr>
+        <br />
+        <abbr class="modified" title="2019-10-09T00:00:00+00:00">
+                Modified: Wed, 09 Oct 2019
+        </abbr>
 
 <p>In: <a href="https://dglava.github.io/en/category/linux.html">Linux</a></p>
 <p>Tags: <a href="https://dglava.github.io/en/tag/mpv.html">mpv</a> </p>Translations:
@@ -61,13 +65,8 @@ of killing any open mpv instances and then launching our new one.
 After some trial and error and the help of the internet, I settled on this:</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>pidof <span class="s2">&quot;mpv&quot;</span><span class="k">)</span>
-
-<span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nb">kill</span> <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span>
-<span class="k">fi</span>
-
-mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+pkill -x mpv
+mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;@1&quot;</span>
 </pre></div>
 
 
@@ -81,7 +80,7 @@ above mentioned script.</p>
 <span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
 <span class="na">Name</span><span class="o">=</span><span class="s">mpv Media Player - Single Instance</span>
 <span class="na">Comment</span><span class="o">=</span><span class="s">Run only one instance of mpv</span>
-<span class="na">Exec</span><span class="o">=</span><span class="s">mpv_single %f</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">mpv-single %F</span>
 <span class="na">Icon</span><span class="o">=</span><span class="s">mpv</span>
 <span class="na">MimeType</span><span class="o">=</span><span class="s">application/ogg;application/x-ogg;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;video/webm;audio/x-flac;audio/x-vorbis+ogg;video/x-ogm+ogg;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;video/mp2t;audio/flac;audio/mp4;</span>
 </pre></div>
