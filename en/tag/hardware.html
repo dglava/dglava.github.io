@@ -82,11 +82,11 @@ login. I didn't like that, since I prefer having a neat Xorg configuration
 file instead. I added this section to my Xorg configuration file and it's
 working as intended. The <code>MatchUSBID</code> ID can be found out from the <code>lsusb</code>
 output. It's the two 4-character words separated by a colon.</p>
-<div class="highlight"><pre><span></span><span class="n">Section</span> <span class="ss">&quot;InputClass&quot;</span>
-    <span class="n">Identifier</span> <span class="ss">&quot;Ergo Mouse&quot;</span>
-    <span class="n">MatchUSBID</span> <span class="ss">&quot;0458:0087&quot;</span>
-    <span class="k">Option</span> <span class="ss">&quot;ButtonMapping&quot;</span> <span class="ss">&quot;1 2 3 4 5 6 7 9 8 10&quot;</span>
-<span class="n">EndSection</span>
+<div class="highlight"><pre><span></span><span class="err">Section &quot;InputClass&quot;</span>
+<span class="err">    Identifier &quot;Ergo Mouse&quot;</span>
+<span class="err">    MatchUSBID &quot;0458:0087&quot;</span>
+<span class="err">    Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;</span>
+<span class="err">EndSection</span>
 </pre></div>
 
 
@@ -105,8 +105,8 @@ I can't find any documentation online about that specific syntax.</p>
 
 
 <p>Finally, you have to run these two commands to update the database:</p>
-<div class="highlight"><pre><span></span><span class="n">udevadm</span> <span class="n">hwdb</span> <span class="c1">--update</span>
-<span class="n">udevadm</span> <span class="k">trigger</span>
+<div class="highlight"><pre><span></span><span class="err">udevadm hwdb --update</span>
+<span class="err">udevadm trigger</span>
 </pre></div><p><a href="https://dglava.github.io/en/ergo525.html#disqus_thread">Comments</a></p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
