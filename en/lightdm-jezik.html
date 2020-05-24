@@ -68,10 +68,9 @@ It will automatically create an override file for the service. Alternatively,
 you can do it manually, by creating the appropriately named directory and override file
 in <code>/etc/systemd/system/</code>.</p>
 <p>Here's how my file looks like:</p>
-<div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="n">lightdm</span><span class="p">.</span><span class="n">service</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">override</span><span class="p">.</span><span class="n">conf</span><span class="w"> </span>
-<span class="o">[</span><span class="n">Service</span><span class="o">]</span><span class="w"></span>
-<span class="n">Environment</span><span class="o">=</span><span class="w"></span>
-<span class="n">Environment</span><span class="o">=</span><span class="ss">&quot;LANG=bs_BA.UTF-8&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span>[Service]
+Environment=
+Environment=&quot;LANG=bs_BA.UTF-8&quot;
 </pre></div>
 
 
@@ -91,12 +90,12 @@ the <code>Exec=</code> line to start <code>lightdm-gtk-greeter</code> with a dif
 using environment variables. After that modify your lightdm.conf file
 and specify your new greeter to be used with the <code>greeter-session=</code>
 option.</p>
-<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">LightDM GTK+ Greeter</span>
-<span class="na">Comment</span><span class="o">=</span><span class="s">This runs the GTK+ greeter, it should only be run from LightDM</span>
-<span class="na">Exec</span><span class="o">=</span><span class="s">env LANGUAGE=bs lightdm-gtk-greeter</span>
-<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
-<span class="na">X-Ubuntu-Gettext-Domain</span><span class="o">=</span><span class="s">lightdm</span>
+<div class="highlight"><pre><span></span>[Desktop Entry]
+Name=LightDM GTK+ Greeter
+Comment=This runs the GTK+ greeter, it should only be run from LightDM
+Exec=env LANGUAGE=bs lightdm-gtk-greeter
+Type=Application
+X-Ubuntu-Gettext-Domain=lightdm
 </pre></div>
     </div><!-- /.entry-content -->
     <div class="comments">

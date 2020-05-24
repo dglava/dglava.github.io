@@ -55,20 +55,20 @@ bosanski.</p>
 Za to se koriste lokali (<em>locales</em>, ne znam tačni prevod na naš) i
 promjenjljive okruženja (<em>environment variables</em>, isti slučaj). Moje
 postavke izgledaju ovako:</p>
-<div class="highlight"><pre><span></span><span class="err">LANG=en_US.utf8</span>
-<span class="err">LC_CTYPE=bs_BA.UTF-8</span>
-<span class="err">LC_NUMERIC=bs_BA.UTF-8</span>
-<span class="err">LC_TIME=bs_BA.UTF-8</span>
-<span class="err">LC_COLLATE=bs_BA.UTF-8</span>
-<span class="err">LC_MONETARY=bs_BA.UTF-8</span>
-<span class="err">LC_MESSAGES=en_US.UTF-8</span>
-<span class="err">LC_PAPER=bs_BA.UTF-8</span>
-<span class="err">LC_NAME=bs_BA.UTF-8</span>
-<span class="err">LC_ADDRESS=bs_BA.UTF-8</span>
-<span class="err">LC_TELEPHONE=bs_BA.UTF-8</span>
-<span class="err">LC_MEASUREMENT=bs_BA.UTF-8</span>
-<span class="err">LC_IDENTIFICATION=bs_BA.UTF-8</span>
-<span class="err">LC_ALL=</span>
+<div class="highlight"><pre><span></span>LANG=en_US.utf8
+LC_CTYPE=bs_BA.UTF-8
+LC_NUMERIC=bs_BA.UTF-8
+LC_TIME=bs_BA.UTF-8
+LC_COLLATE=bs_BA.UTF-8
+LC_MONETARY=bs_BA.UTF-8
+LC_MESSAGES=en_US.UTF-8
+LC_PAPER=bs_BA.UTF-8
+LC_NAME=bs_BA.UTF-8
+LC_ADDRESS=bs_BA.UTF-8
+LC_TELEPHONE=bs_BA.UTF-8
+LC_MEASUREMENT=bs_BA.UTF-8
+LC_IDENTIFICATION=bs_BA.UTF-8
+LC_ALL=
 </pre></div>
 
 
@@ -110,10 +110,9 @@ se napravi globalni <em>override</em>.</p>
 <code>/etc/systemd/system/</code> zajedno sa fajlom ili koristiti <code>systemctl edit servis</code>.</p>
 <p>Nama treba <code>ENVIRONMENT=</code> postavka. U nju unesemo željenu promjenjljivu.
 Ovako na kraju izgleda moj fajl:</p>
-<div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="n">lightdm</span><span class="p">.</span><span class="n">service</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">override</span><span class="p">.</span><span class="n">conf</span><span class="w"> </span>
-<span class="o">[</span><span class="n">Service</span><span class="o">]</span><span class="w"></span>
-<span class="n">Environment</span><span class="o">=</span><span class="w"></span>
-<span class="n">Environment</span><span class="o">=</span><span class="ss">&quot;LANG=bs_BA.UTF-8&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span>[Service]
+Environment=
+Environment=&quot;LANG=bs_BA.UTF-8&quot;
 </pre></div>
 
 
@@ -132,12 +131,12 @@ programe u modifikovanom okruženju, tj. sa drugim <em>environment variables</em
 Nakon toga potrebno je samo LightDMu reći da koristi naš novi <em>greeter</em>
 navođenjem toga u njegovom konfiguracionom fajlu sa <code>greeter-session</code>
 opcijom.</p>
-<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">LightDM GTK+ Greeter</span>
-<span class="na">Comment</span><span class="o">=</span><span class="s">This runs the GTK+ greeter, it should only be run from LightDM</span>
-<span class="na">Exec</span><span class="o">=</span><span class="s">env LANGUAGE=bs lightdm-gtk-greeter</span>
-<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
-<span class="na">X-Ubuntu-Gettext-Domain</span><span class="o">=</span><span class="s">lightdm</span>
+<div class="highlight"><pre><span></span>[Desktop Entry]
+Name=LightDM GTK+ Greeter
+Comment=This runs the GTK+ greeter, it should only be run from LightDM
+Exec=env LANGUAGE=bs lightdm-gtk-greeter
+Type=Application
+X-Ubuntu-Gettext-Domain=lightdm
 </pre></div>
 
 

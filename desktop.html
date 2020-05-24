@@ -136,28 +136,28 @@ systemctl --user start user-graphical.target
 <p>Okruženje iz Openbox environment fajla</p>
 <div class="highlight"><pre><span></span>$ cat ~/.config/openbox/environment
 
-<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
-<span class="nb">export</span> <span class="nv">LC_CTYPE</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_NUMERIC</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_TIME</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_COLLATE</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_MONETARY</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_MESSAGES</span><span class="o">=</span>en_US.UTF-8
-<span class="nb">export</span> <span class="nv">LC_PAPER</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_NAME</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_ADDRESS</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_TELEPHONE</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_MEASUREMENT</span><span class="o">=</span>bs_BA.UTF-8
-<span class="nb">export</span> <span class="nv">LC_IDENTIFICATION</span><span class="o">=</span>bs_BA.UTF-8
+export LANG=en_US.UTF-8
+export LC_CTYPE=bs_BA.UTF-8
+export LC_NUMERIC=bs_BA.UTF-8
+export LC_TIME=bs_BA.UTF-8
+export LC_COLLATE=bs_BA.UTF-8
+export LC_MONETARY=bs_BA.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_PAPER=bs_BA.UTF-8
+export LC_NAME=bs_BA.UTF-8
+export LC_ADDRESS=bs_BA.UTF-8
+export LC_TELEPHONE=bs_BA.UTF-8
+export LC_MEASUREMENT=bs_BA.UTF-8
+export LC_IDENTIFICATION=bs_BA.UTF-8
 
-<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/dino/program/bin
+PATH=$PATH:/home/dino/program/bin
 
-<span class="c1"># vidi članak na blogu o gtk i qt temama i konzistentnom izgledu</span>
-<span class="nb">export</span> <span class="nv">QT_QPA_PLATFORMTHEME</span><span class="o">=</span>qt5gtk2
-<span class="c1"># vidi članak na blogu o dbusu i overlay scrollingu</span>
-<span class="nb">export</span> <span class="nv">GTK_OVERLAY_SCROLLING</span><span class="o">=</span><span class="m">0</span>
-<span class="c1"># za Qemu da bih win7 VM imao zvuk</span>
-<span class="nb">export</span> <span class="nv">QEMU_AUDIO_DRV</span><span class="o">=</span>pa
+# vidi članak na blogu o gtk i qt temama i konzistentnom izgledu
+export QT_QPA_PLATFORMTHEME=qt5gtk2
+# vidi članak na blogu o dbusu i overlay scrollingu
+export GTK_OVERLAY_SCROLLING=0
+# za Qemu da bih win7 VM imao zvuk
+export QEMU_AUDIO_DRV=pa
 </pre></div>
 
 

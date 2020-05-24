@@ -67,22 +67,22 @@ Prema tome Openbox postavi crnu (zapravo je sivkasta <em>#303030</em>) boju
 pozadine, pa se tek nakon toga postavi pozadinska slika. Da bi se izbjeglo,
 potrebno je spriječiti Openbox da postavi boju <em>X root</em> prozora nakon starta.
 Sve što treba uraditi je izbaciti ili komentarisati dio openbox-autostart fajla:</p>
-<div class="highlight"><pre><span></span><span class="err"># Set a background color</span>
-<span class="err">#BG=&quot;&quot;</span>
-<span class="err">#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="err">#  BG=hsetroot</span>
-<span class="err">#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="err">#  BG=esetroot</span>
-<span class="err">#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="err">#  BG=xsetroot</span>
-<span class="err">#fi</span>
-<span class="err">#test -z $BG || $BG -solid &quot;#303030&quot;</span>
+<div class="highlight"><pre><span></span><span class="c1"># Set a background color</span>
+<span class="c1">#BG=&quot;&quot;</span>
+<span class="c1">#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
+<span class="c1">#  BG=hsetroot</span>
+<span class="c1">#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then</span>
+<span class="c1">#  BG=esetroot</span>
+<span class="c1">#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
+<span class="c1">#  BG=xsetroot</span>
+<span class="c1">#fi</span>
+<span class="c1">#test -z $BG || $BG -solid &quot;#303030&quot;</span>
 </pre></div>
 
 
 <p>Na Archu se taj fajl nalazi u <code>/usr/lib/openbox/openbox-autostart</code>. Kod
 drugih distribucija bi isto trebao biti tu, ako nije pogledajte sa</p>
-<div class="highlight"><pre><span></span><span class="err">ps x | grep openbox</span>
+<div class="highlight"><pre><span></span>ps x | grep openbox
 </pre></div>
 
 

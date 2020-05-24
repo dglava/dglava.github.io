@@ -56,15 +56,15 @@ kao da sam pritisno F5 (dugmić označen na slici).</p>
 <p>Prvi problem, sa pobrkanim dugmićima, je bilo relativno jednostavno
 riješiti. Pomoću <em>xinput-a</em> možete saznati trenutni raspored dugmića.</p>
 <div class="highlight"><pre><span></span>$ xinput
-⎡ Virtual core pointer                      <span class="nv">id</span><span class="o">=</span><span class="m">2</span>    <span class="o">[</span>master pointer  <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
-⎜   ↳ Virtual core XTEST pointer                <span class="nv">id</span><span class="o">=</span><span class="m">4</span>    <span class="o">[</span>slave  pointer  <span class="o">(</span><span class="m">2</span><span class="o">)]</span>
-⎜   ↳ Genius Ergo Mouse                         <span class="nv">id</span><span class="o">=</span><span class="m">8</span>    <span class="o">[</span>slave  pointer  <span class="o">(</span><span class="m">2</span><span class="o">)]</span>
-⎣ Virtual core keyboard                     <span class="nv">id</span><span class="o">=</span><span class="m">3</span>    <span class="o">[</span>master keyboard <span class="o">(</span><span class="m">2</span><span class="o">)]</span>
-    ↳ Virtual core XTEST keyboard               <span class="nv">id</span><span class="o">=</span><span class="m">5</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
-    ↳ Power Button                              <span class="nv">id</span><span class="o">=</span><span class="m">6</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
-    ↳ Power Button                              <span class="nv">id</span><span class="o">=</span><span class="m">7</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
-    ↳ AT Translated Set <span class="m">2</span> keyboard              <span class="nv">id</span><span class="o">=</span><span class="m">9</span>    <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
-    ↳ Genius Ergo Mouse                         <span class="nv">id</span><span class="o">=</span><span class="m">10</span>   <span class="o">[</span>slave  keyboard <span class="o">(</span><span class="m">3</span><span class="o">)]</span>
+⎡ Virtual core pointer                      id=2    [master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer                id=4    [slave  pointer  (2)]
+⎜   ↳ Genius Ergo Mouse                         id=8    [slave  pointer  (2)]
+⎣ Virtual core keyboard                     id=3    [master keyboard (2)]
+    ↳ Virtual core XTEST keyboard               id=5    [slave  keyboard (3)]
+    ↳ Power Button                              id=6    [slave  keyboard (3)]
+    ↳ Power Button                              id=7    [slave  keyboard (3)]
+    ↳ AT Translated Set 2 keyboard              id=9    [slave  keyboard (3)]
+    ↳ Genius Ergo Mouse                         id=10   [slave  keyboard (3)]
 </pre></div>
 
 
@@ -74,11 +74,11 @@ vidjeti status uređaja, tj. u našem slučaju status pritisnutih dugmića. Post
 i drugi načini kako da saznate koje je koje dugme, ali je xinput koristan
 jer ga sigurno već imate instaliranog. Dok sam pritisno dugme za naprijed
 na mišu ovo je ispis komande (sa izostavljenim neinteresantnim stvarima):</p>
-<div class="highlight"><pre><span></span>$ xinput query-state <span class="m">8</span>
+<div class="highlight"><pre><span></span>$ xinput query-state 8
 ...
-    button<span class="o">[</span><span class="m">7</span><span class="o">]=</span>up
-    button<span class="o">[</span><span class="m">8</span><span class="o">]=</span>down
-    button<span class="o">[</span><span class="m">9</span><span class="o">]=</span>up
+    button[7]=up
+    button[8]=down
+    button[9]=up
 ...
 </pre></div>
 
@@ -86,24 +86,24 @@ na mišu ovo je ispis komande (sa izostavljenim neinteresantnim stvarima):</p>
 <p>Istu stvar sam ponovio za "nazad" dugmić, i saznao da je broj 9. Sad kad
 znamo koji je broj, možemo koristiti <em>xinput</em> da ih zamjenimo. Prvo
 izlistamo sve dugmiće što miš ima sa:</p>
-<div class="highlight"><pre><span></span>$ xinput get-button-map <span class="m">8</span>
-<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span>
+<div class="highlight"><pre><span></span>$ xinput get-button-map 8
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
 </pre></div>
 
 
 <p>Nakon toga zamjenimo mjesta 8 i 9.</p>
-<div class="highlight"><pre><span></span>$ xinput set-button-map <span class="m">8</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span>
+<div class="highlight"><pre><span></span>$ xinput set-button-map 8 1 2 3 4 5 6 7 9 8 10 11 12 13 14 15
 </pre></div>
 
 
 <p>Da bi promjena ostala trajna možete staviti gore navedenu komandu da se
 izvrši pri pokretanju X sesije. Meni je draže koristiti Xorg konfiguracioni
 fajl. Ovako izgleda (izostavljene stvari nevezane za miš):</p>
-<div class="highlight"><pre><span></span><span class="err">Section &quot;InputClass&quot;</span>
-<span class="err">    Identifier &quot;Ergo Mouse&quot;</span>
-<span class="err">    MatchUSBID &quot;0458:0087&quot;</span>
-<span class="err">    Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;</span>
-<span class="err">EndSection</span>
+<div class="highlight"><pre><span></span>Section &quot;InputClass&quot;
+    Identifier &quot;Ergo Mouse&quot;
+    MatchUSBID &quot;0458:0087&quot;
+    Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;
+EndSection
 </pre></div>
 
 
@@ -112,7 +112,7 @@ da se postavke primjene za miš. To je onaj par rječi od 4 slova/cifre poslije
 ID, sa dvotačkom između.</p>
 <div class="highlight"><pre><span></span>$ lsusb
 ...
-Bus <span class="m">002</span> Device <span class="m">002</span>: ID <span class="m">0458</span>:0087 KYE Systems Corp. <span class="o">(</span>Mouse Systems<span class="o">)</span> Ergo 525V Laser Mouse
+Bus 002 Device 002: ID 0458:0087 KYE Systems Corp. (Mouse Systems) Ergo 525V Laser Mouse
 ...
 </pre></div>
 
@@ -125,9 +125,9 @@ način činio mnogo "čistijim". Pronašao sam <a href="http://www.vxnick.com/bl
 <p>Pomoću <em>evtest</em> programa možemo saznati <em>scancode</em> dugmića.</p>
 <div class="highlight"><pre><span></span>$ evtest
 ...
-Event: <span class="nb">time</span> <span class="m">1472069345</span>.467695, <span class="nb">type</span> <span class="m">4</span> <span class="o">(</span>EV_MSC<span class="o">)</span>, code <span class="m">4</span> <span class="o">(</span>MSC_SCAN<span class="o">)</span>, value <span class="m">90006</span>
-Event: <span class="nb">time</span> <span class="m">1472069345</span>.467695, <span class="nb">type</span> <span class="m">1</span> <span class="o">(</span>EV_KEY<span class="o">)</span>, code <span class="m">63</span> <span class="o">(</span>KEY_F5<span class="o">)</span>, value <span class="m">1</span>
-Event: <span class="nb">time</span> <span class="m">1472069345</span>.467695, -------------- SYN_REPORT ------------
+Event: time 1472069345.467695, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90006
+Event: time 1472069345.467695, type 1 (EV_KEY), code 63 (KEY_F5), value 1
+Event: time 1472069345.467695, -------------- SYN_REPORT ------------
 ...
 </pre></div>
 
@@ -141,15 +141,15 @@ blogu. Treba promjeniti u <code>evdev:input:b*vXXXXpXXXX*</code>. Pokušao sam p
 zašto, ali nisam ništa pronašao. Ako neko zna, bilo bi dobro da podijeli.</p>
 <p>Sve podatke sam ubacio u fajl pod <code>/etc/udev/hwdb.d/10-genius-mouse.hwdb</code>.
 Izgleda ovako:</p>
-<div class="highlight"><pre><span></span><span class="n">evdev</span><span class="o">:</span><span class="n">input</span><span class="o">:</span><span class="n">b</span><span class="o">*</span><span class="n">v0458p0087</span><span class="o">*</span>
- <span class="n">KEYBOARD_KEY_90006</span><span class="o">=</span><span class="n">f5</span>
+<div class="highlight"><pre><span></span>evdev:input:b*v0458p0087*
+ KEYBOARD_KEY_90006=f5
 </pre></div>
 
 
 <p>Posljednji korak je da pokrenete sljedeće komande, da se ažurira i
 aktivira udev baza podataka:</p>
-<div class="highlight"><pre><span></span><span class="err">udevadm hwdb --update</span>
-<span class="err">udevadm trigger</span>
+<div class="highlight"><pre><span></span>udevadm hwdb --update
+udevadm trigger
 </pre></div><p><a href="https://dglava.github.io/ergo525.html#disqus_thread">Komentari</a></p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">

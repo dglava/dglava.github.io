@@ -69,17 +69,17 @@ Ovo je dovoljno za željenu funkciju (preuzeto direktno od autora sa
 
 <span class="n">wm</span> <span class="o">=</span> <span class="n">get_wm</span><span class="p">()</span>
 
-<span class="nd">@wm.on_manage</span>
+<span class="nd">@wm</span><span class="o">.</span><span class="n">on_manage</span>
 <span class="k">def</span> <span class="nf">on_manage</span><span class="p">():</span>
-    <span class="nd">@wm.on_property_change</span><span class="p">(</span><span class="n">wm</span><span class="o">.</span><span class="n">event_window</span><span class="p">,</span> <span class="s1">&#39;_NET_WM_STATE&#39;</span><span class="p">)</span>
+    <span class="nd">@wm</span><span class="o">.</span><span class="n">on_property_change</span><span class="p">(</span><span class="n">wm</span><span class="o">.</span><span class="n">event_window</span><span class="p">,</span> <span class="s1">&#39;_NET_WM_STATE&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">property_was_set</span><span class="p">():</span>
         <span class="n">w</span> <span class="o">=</span> <span class="n">wm</span><span class="o">.</span><span class="n">event_window</span>
         <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">maximized_vert</span> <span class="ow">and</span> <span class="n">w</span><span class="o">.</span><span class="n">maximized_horz</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
-                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
-                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 

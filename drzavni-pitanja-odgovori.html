@@ -62,50 +62,50 @@ Učita pitanja iz fajla i postavi vam 3 medicinska i 1 pravno (kao na
 ispitu). U direktoriju gdje vam skripta, morate imati i 2 tekstualna fajla
 sa pitanjima (<a href="https://dglava.github.io/files/med.txt">med.txt</a> i
 <a href="https://dglava.github.io/files/med.txt">prav.txt</a>).</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight"><pre><span></span>import random
 
-<span class="k">def</span> <span class="nf">otvori_pitanja</span><span class="p">(</span><span class="n">ime</span><span class="p">):</span>
-    <span class="n">pitanja</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">fajl</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">fajl</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
-            <span class="n">pitanja</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-    <span class="n">fajl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">pitanja</span>
+def otvori_pitanja(ime):
+    pitanja = []
+    fajl = open(ime, &quot;r&quot;)
+    for l in fajl:
+        if not l.startswith(&quot;#&quot;):
+            pitanja.append(l.strip())
+    fajl.close()
+    return pitanja
 
-<span class="k">def</span> <span class="nf">snimi_pitanja</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="n">pitanja</span><span class="p">):</span>
-    <span class="n">fajl</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ime</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pitanja</span><span class="p">:</span>
-        <span class="n">fajl</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
-    <span class="n">fajl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+def snimi_pitanja(ime, pitanja):
+    fajl = open(ime, &quot;w&quot;)
+    for p in pitanja:
+        fajl.write(&quot;{}\n&quot;.format(p))
+    fajl.close()
 
-<span class="k">def</span> <span class="nf">pitaj</span><span class="p">(</span><span class="n">prva</span><span class="p">,</span> <span class="n">druga</span><span class="p">):</span>
-    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">druga</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">med1</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
-        <span class="n">med2</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
-        <span class="n">med3</span> <span class="o">=</span> <span class="n">prva</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">prva</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">prva</span><span class="p">)))</span>
-        <span class="n">prav</span> <span class="o">=</span> <span class="n">druga</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">druga</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">druga</span><span class="p">)))</span>
+def pitaj(prva, druga):
+    while len(druga) &gt; 0:
+        med1 = prva.pop(prva.index(random.choice(prva)))
+        med2 = prva.pop(prva.index(random.choice(prva)))
+        med3 = prva.pop(prva.index(random.choice(prva)))
+        prav = druga.pop(druga.index(random.choice(druga)))
 
-        <span class="k">print</span><span class="p">(</span><span class="n">med1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">input</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">med2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">input</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">med3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">input</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">prav</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">input</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
+        print(med1, end=&quot;&quot;)
+        input()
+        print(med2, end=&quot;&quot;)
+        input()
+        print(med3, end=&quot;&quot;)
+        input()
+        print(prav, end=&quot;&quot;)
+        input()
+        print(&quot;------&quot;)
 
-<span class="n">medicinska</span> <span class="o">=</span> <span class="n">otvori_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">)</span>
-<span class="n">pravna</span> <span class="o">=</span> <span class="n">otvori_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">pitaj</span><span class="p">(</span><span class="n">medicinska</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">,</span> <span class="n">medicinska</span><span class="p">)</span>
-    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;med.txt&quot;</span><span class="p">,</span> <span class="n">medicinska</span><span class="p">)</span>
-    <span class="n">snimi_pitanja</span><span class="p">(</span><span class="s2">&quot;prav.txt&quot;</span><span class="p">,</span> <span class="n">pravna</span><span class="p">)</span>
+medicinska = otvori_pitanja(&quot;med.txt&quot;)
+pravna = otvori_pitanja(&quot;prav.txt&quot;)
+try:
+    pitaj(medicinska, pravna)
+except KeyboardInterrupt:
+    snimi_pitanja(&quot;med.txt&quot;, medicinska)
+    snimi_pitanja(&quot;prav.txt&quot;, pravna)
+else:
+    snimi_pitanja(&quot;med.txt&quot;, medicinska)
+    snimi_pitanja(&quot;prav.txt&quot;, pravna)
 </pre></div>
     </div><!-- /.entry-content -->
     <div class="comments">
