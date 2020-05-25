@@ -63,7 +63,7 @@ bi ga i pokrenula novi mpv.</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 pkill -x mpv
-mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;@1&quot;</span>
+mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
 </pre></div>
 
 
