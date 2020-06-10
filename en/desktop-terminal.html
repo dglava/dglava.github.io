@@ -38,6 +38,10 @@
         <abbr class="published" title="2018-03-01T00:00:00+00:00">
                 Published: Thu, 01 Mar 2018
         </abbr>
+        <br />
+        <abbr class="modified" title="2020-06-10T00:00:00+00:00">
+                Modified: Wed, 10 Jun 2020
+        </abbr>
 
 <p>In: <a href="https://dglava.github.io/en/category/linux.html">Linux</a></p>
 <p>Tags: <a href="https://dglava.github.io/en/tag/terminal.html">terminal</a> </p>Translations:
@@ -55,15 +59,20 @@ the hacky solution not working because my distribution packaged Vim's
 desktop file which was overwriting mine, figuring the problem out.</p>
 <h3>The cleanest hacky solution for someone else's mistake</h3>
 <p>Turns out that Glib was responsible for it. The problem lies in the fact
-that Glib hardcodes certain <a href="https://gitlab.gnome.org/GNOME/glib/blob/master/gio/gdesktopappinfo.c#L2476">terminal emulators</a>
+that Glib hardcodes certain <a href="https://gitlab.gnome.org/GNOME/glib/blob/master/gio/gdesktopappinfo.c">terminal emulators</a>
 which are used to open the program if the desktop file contains a
 <code>Terminal=yes</code> line. If none of the hardcoded terminals is available,
 it fails.</p>
-<p>That behaviour is kind of disappointing and there's a <a href="https://bugzilla.gnome.org/show_bug.cgi?id=627943">bug report</a>,
+<p>That behaviour is kind of disappointing and there's a <a href="https://gitlab.gnome.org/GNOME/glib/-/issues/338">bug report</a>,
 but it doesn't look like it will be resolved soon.</p>
 <p>A hopefully temporary solution is to just create a symlink which points
 gnome-terminal to your terminal emulator.</p>
-<p><code>ln -s /usr/bin/xfce4-terminal /usr/bin/gnome-terminal</code></p>
+<p><code>ln -s YOUR-TERMINAL-EMULATOR /usr/bin/gnome-terminal</code></p>
+<p><strong>Update</strong><br>
+<a href="https://gitlab.gnome.org/GNOME/glib/-/commit/292cb2cb1be223ac334d2f14e8d64bc34a2d6ea0">This</a>
+commit added support for xfce4-terminal, which I'm using. Therefore I don't
+need to apply this fix anymore. If your terminal emulator isn't on the list,
+then it's still useful.</p>
 <p>Let's hope that the Glib people find a way to solve this properly and that they
 settle for a way which would allow us to reliably set a default terminal
 emulator system wide.</p>

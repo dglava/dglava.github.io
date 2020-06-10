@@ -38,6 +38,10 @@
         <abbr class="published" title="2018-03-01T00:00:00+00:00">
                 Objavljeno: Čet, 01 Mar 2018
         </abbr>
+        <br />
+        <abbr class="modified" title="2020-06-10T00:00:00+00:00">
+                Ažurirano: Sri, 10 Jun 2020
+        </abbr>
 
 <p>Pod: <a href="https://dglava.github.io/category/linux.html">Linux</a></p>
 <p>Tagovi: <a href="https://dglava.github.io/tag/terminal.html">terminal</a> </p>Prevodi:
@@ -54,17 +58,22 @@ hakastog rješenja jer Archov Vim paket dobija desktop fajl, shvatanje
 problema nakon svega.</p>
 <h3>Najčistije hakasto rješenje za tuđu grešku</h3>
 <p>Ispostavilo se da je na kraju lanca Glib. Problem leži u striktno
-zadanoj <a href="https://gitlab.gnome.org/GNOME/glib/blob/master/gio/gdesktopappinfo.c#L2476">listi emulatora terminala</a>.
+zadanoj <a href="https://gitlab.gnome.org/GNOME/glib/blob/master/gio/gdesktopappinfo.c">listi emulatora terminala</a>.
 Ako je u desktop fajlu prisutno <code>Terminal=yes</code>, koristi se jedan od tih
 emulatora terminala za otvaranje programa. U slučaju da nijedan od navedenih
 emulatora terminala nije instaliran, ništa neće biti otvoreno.</p>
 <p>Fiksno navođenje par emulatora terminala je pomalo čudno i postoji
-<a href="https://bugzilla.gnome.org/show_bug.cgi?id=627943">prijava greške</a>,
+<a href="https://gitlab.gnome.org/GNOME/glib/-/issues/338">prijava greške</a>,
 ali izgleda trenutno i nakon više godina nije došlo do rješenja.</p>
 <p>Privremeno, najlakše, bez potrebe pečovanja Gliba rješenje je napraviti
 <em>symlink</em> za gnome-terminal koji pokazuje na emulator terminala koji
 ja koristim.</p>
-<p><code>ln -s /usr/bin/xfce4-terminal /usr/bin/gnome-terminal</code></p>
+<p><code>ln -s VAŠ-EMULATOR /usr/bin/gnome-terminal</code></p>
+<p><strong>Ažuriranje</strong><br>
+Nakon dodavanja <a href="https://gitlab.gnome.org/GNOME/glib/-/commit/292cb2cb1be223ac334d2f14e8d64bc34a2d6ea0">ovog</a>
+je xfce4-terminal uvršten u listu i nije potrebno koristiti gore navedeno
+rješenje. Ako koristite neki emulator terminala što nije na spisku,
+i dalje je korisno koristiti symlink rješenje.</p>
 <p>Nadam se da će osoba koja održava Glib pronaći univerzalno prihvatljivo
 rješenje da ovo nije potrebno u budućnosti.</p>
     </div><!-- /.entry-content -->
