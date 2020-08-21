@@ -65,11 +65,11 @@ trenutni video bude zamijenjen novim.</p>
 <p>Najlogičniji način da se to uradi je obična shell (koristim Bash) skripta
 koja bi pogledala da li postoji pokrenuti mpv. U slučaju da jeste, ugasila
 bi ga i pokrenula novi mpv.</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 pkill -x mpv
 mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>To je to što se skripte tiče. Da bi je mogao koristiti u upravljaču
@@ -79,7 +79,7 @@ Za <code>Exec=</code> je potrebno staviti ime gore napisane skripte. Ja sam napr
 paket za moju distribuciju i skripta se zove mpv-single. Desktop fajl
 sam snimio pod imenom <code>mpv-single-instance.desktop</code> i paket ga stavi
 među ostale desktop fajlove.</p>
-<div class="highlight"><pre><span></span>[Desktop Entry]
+<div class="highlight"><pre><span></span><code>[Desktop Entry]
 Version=1.0
 Type=Application
 Name=mpv Media Player - Single Instance
@@ -87,7 +87,7 @@ Comment=Run only one instance of mpv
 Exec=mpv-single %F
 Icon=mpv
 MimeType=application/ogg;application/x-ogg;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;video/webm;audio/x-flac;audio/x-vorbis+ogg;video/x-ogm+ogg;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;video/mp2t;audio/flac;audio/mp4;
-</pre></div>
+</code></pre></div>
 
 
 <p>Arch korisnici mogu koristiti <a href="https://github.com/dglava/pkgbuilds/blob/master/mpv-single-instance/PKGBUILD">ovaj PKGBUILD</a>.

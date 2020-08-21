@@ -63,11 +63,11 @@ useful for me.</p>
 <p>I figured that I could just use a hacky workaround which consisted
 of killing any open mpv instances and then launching our new one.
 After some trial and error and the help of the internet, I settled on this:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 pkill -x mpv
 mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;@1&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Save that into a file, make it executable and put it in your $PATH.</p>
@@ -75,7 +75,7 @@ mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&
 I slightly tweaked the example provided in the standard specification and
 this is the end result. For <code>Exec=</code> we have to specify the name of our
 above mentioned script.</p>
-<div class="highlight"><pre><span></span>[Desktop Entry]
+<div class="highlight"><pre><span></span><code>[Desktop Entry]
 Version=1.0
 Type=Application
 Name=mpv Media Player - Single Instance
@@ -83,7 +83,7 @@ Comment=Run only one instance of mpv
 Exec=mpv-single %F
 Icon=mpv
 MimeType=application/ogg;application/x-ogg;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;video/webm;audio/x-flac;audio/x-vorbis+ogg;video/x-ogm+ogg;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;video/mp2t;audio/flac;audio/mp4;
-</pre></div>
+</code></pre></div>
 
 
 <p>That's pretty much it. Now all I had to do was associate media files

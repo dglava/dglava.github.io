@@ -124,17 +124,17 @@ Nakon pokretanja Openboxa iz LightDM, pokreće se grafički systemd
 target, a gore navedeni servisi se automatski pokreću jer ovise o njemu.
 To mi se čini čistijim rješenjem.</p>
 <p>Pomoću gore navedenih stvari sam uspio smanjiti Openbox autostart fajl na:</p>
-<div class="highlight"><pre><span></span>$ cat ~/.config/openbox/autostart
+<div class="highlight"><pre><span></span><code>$ cat ~/.config/openbox/autostart
 
 nitrogen --restore
 setxkbmap -option caps:swapescape
 systemctl --user import-environment
 systemctl --user start user-graphical.target
-</pre></div>
+</code></pre></div>
 
 
 <p>Okruženje iz Openbox environment fajla</p>
-<div class="highlight"><pre><span></span>$ cat ~/.config/openbox/environment
+<div class="highlight"><pre><span></span><code>$ cat ~/.config/openbox/environment
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=bs_BA.UTF-8
@@ -158,7 +158,7 @@ export QT_QPA_PLATFORMTHEME=qt5gtk2
 export GTK_OVERLAY_SCROLLING=0
 # za Qemu da bih win7 VM imao zvuk
 export QEMU_AUDIO_DRV=pa
-</pre></div>
+</code></pre></div>
 
 
 <h4>Alatna traka</h4>

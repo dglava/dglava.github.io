@@ -68,7 +68,7 @@ myself. The author and person that responded on the mailing list gave
 me a sample config which does exactly what I needed. I just removed the
 additional keyboard shortcut (I have my own). Save the Python script
 under <code>~/.config/orcsome/rc.py</code>:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">orcsome</span> <span class="kn">import</span> <span class="n">get_wm</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">orcsome</span> <span class="kn">import</span> <span class="n">get_wm</span>
 
 <span class="n">wm</span> <span class="o">=</span> <span class="n">get_wm</span><span class="p">()</span>
 
@@ -83,7 +83,7 @@ under <code>~/.config/orcsome/rc.py</code>:</p>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
                 <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>You will also have to start Orcsome with your Openbox session. I did

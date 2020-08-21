@@ -57,7 +57,7 @@ can print information about all X devices, but also change their options.
 Of course it can also disable a device and that's what we're going to use.</p>
 <p><strong>Little update:</strong>
 A lookbehind regex replaces the two "cut" calls.</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/bash</span>
 
 <span class="c1"># worse way</span>
 <span class="c1"># id=$(xinput | grep -i touchpad | cut -f 2 | cut -d &quot;=&quot; -f 2)</span>
@@ -70,7 +70,7 @@ A lookbehind regex replaces the two "cut" calls.</p>
   xinput <span class="nb">enable</span> <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
   notify-send <span class="s2">&quot;Touchpad turned ON&quot;</span> --icon<span class="o">=</span>input-touchpad
 <span class="k">fi</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Pretty solution</h3>

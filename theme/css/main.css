@@ -161,7 +161,7 @@ aside, nav, article, figure {
 }
 
 /***** Layout *****/
-.body {clear: both; margin: 0 auto; width: 800px;}
+.body {clear: both; margin: 0 auto; width: 920px;}
 img.right, figure.right {float: right; margin: 0 0 2em 2em;}
 img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
@@ -195,10 +195,10 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
         margin: 0 auto 0 auto;
         padding: 0;
         text-align: center;
-        width: 800px;
+        width: 920px;
     }
 
-    #banner nav ul {list-style: none; margin: 0 auto; width: 800px; padding: 0;}
+    #banner nav ul {list-style: none; margin: 0 auto; width: 920px; padding: 0;}
     #banner nav li {float: left; display: inline; margin: 0;}
 
     #banner nav a:link, #banner nav a:visited {
@@ -223,7 +223,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     margin-bottom: 0.5em;
     overflow: hidden;
     padding: 20px;
-    width: 760px;
+    width: 880px;
 }
 
 #featured figure {
@@ -244,8 +244,8 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     background: #fff;
     margin-bottom: none;
     overflow: hidden;
-    padding: 20px 20px;
-    width: 760px;
+    padding: 0px 20px;
+    width: 880px;
 }
 
 /*
@@ -282,7 +282,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     overflow: hidden;
     padding: 10px 20px;
     text-align: left;
-    width: 760px;
+    width: 880px;
 }
 
 #about .primary {float: left; width: 165px;}
@@ -306,7 +306,6 @@ address#about{
 .hentry {
     display: block;
     clear: both;
-    border-bottom: 1px solid #eee;
     padding: 0;
 }
 li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
@@ -331,8 +330,8 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
         left: 10px;
         position: relative;
         float: left;
-        top: 0.5em;
-        width: 190px;
+        top: 0px;
+        width: 260px;
     }
 
     /* About the Author */

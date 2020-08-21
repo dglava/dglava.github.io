@@ -60,7 +60,7 @@ kao da sam pritisno F5 (dugmić označen na slici).</p>
 <h3>Pogrešni "naprijed/nazad" dugmići</h3>
 <p>Prvi problem, sa pobrkanim dugmićima, je bilo relativno jednostavno
 riješiti. Pomoću <em>xinput-a</em> možete saznati trenutni raspored dugmića.</p>
-<div class="highlight"><pre><span></span>$ xinput
+<div class="highlight"><pre><span></span><code>$ xinput
 ⎡ Virtual core pointer                      id=2    [master pointer  (3)]
 ⎜   ↳ Virtual core XTEST pointer                id=4    [slave  pointer  (2)]
 ⎜   ↳ Genius Ergo Mouse                         id=8    [slave  pointer  (2)]
@@ -70,7 +70,7 @@ riješiti. Pomoću <em>xinput-a</em> možete saznati trenutni raspored dugmića.
     ↳ Power Button                              id=7    [slave  keyboard (3)]
     ↳ AT Translated Set 2 keyboard              id=9    [slave  keyboard (3)]
     ↳ Genius Ergo Mouse                         id=10   [slave  keyboard (3)]
-</pre></div>
+</code></pre></div>
 
 
 <p>Moj miš je Genius Ergo Mouse, a njegov <em>id</em> je 8. <em>xinput</em> ima mnogo
@@ -79,47 +79,47 @@ vidjeti status uređaja, tj. u našem slučaju status pritisnutih dugmića. Post
 i drugi načini kako da saznate koje je koje dugme, ali je xinput koristan
 jer ga sigurno već imate instaliranog. Dok sam pritisno dugme za naprijed
 na mišu ovo je ispis komande (sa izostavljenim neinteresantnim stvarima):</p>
-<div class="highlight"><pre><span></span>$ xinput query-state 8
+<div class="highlight"><pre><span></span><code>$ xinput query-state 8
 ...
     button[7]=up
     button[8]=down
     button[9]=up
 ...
-</pre></div>
+</code></pre></div>
 
 
 <p>Istu stvar sam ponovio za "nazad" dugmić, i saznao da je broj 9. Sad kad
 znamo koji je broj, možemo koristiti <em>xinput</em> da ih zamjenimo. Prvo
 izlistamo sve dugmiće što miš ima sa:</p>
-<div class="highlight"><pre><span></span>$ xinput get-button-map 8
+<div class="highlight"><pre><span></span><code>$ xinput get-button-map 8
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-</pre></div>
+</code></pre></div>
 
 
 <p>Nakon toga zamjenimo mjesta 8 i 9.</p>
-<div class="highlight"><pre><span></span>$ xinput set-button-map 8 1 2 3 4 5 6 7 9 8 10 11 12 13 14 15
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ xinput set-button-map 8 1 2 3 4 5 6 7 9 8 10 11 12 13 14 15
+</code></pre></div>
 
 
 <p>Da bi promjena ostala trajna možete staviti gore navedenu komandu da se
 izvrši pri pokretanju X sesije. Meni je draže koristiti Xorg konfiguracioni
 fajl. Ovako izgleda (izostavljene stvari nevezane za miš):</p>
-<div class="highlight"><pre><span></span>Section &quot;InputClass&quot;
+<div class="highlight"><pre><span></span><code>Section &quot;InputClass&quot;
     Identifier &quot;Ergo Mouse&quot;
     MatchUSBID &quot;0458:0087&quot;
     Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;
 EndSection
-</pre></div>
+</code></pre></div>
 
 
 <p><em>MatchUSBID</em> sam saznao pomoću <em>lsusb</em> i služi za identifikaciju uređaja,
 da se postavke primjene za miš. To je onaj par rječi od 4 slova/cifre poslije
 ID, sa dvotačkom između.</p>
-<div class="highlight"><pre><span></span>$ lsusb
+<div class="highlight"><pre><span></span><code>$ lsusb
 ...
 Bus 002 Device 002: ID 0458:0087 KYE Systems Corp. (Mouse Systems) Ergo 525V Laser Mouse
 ...
-</pre></div>
+</code></pre></div>
 
 
 <h3>Dugmić za F5</h3>
@@ -128,13 +128,13 @@ Vjerovatno postoji i drugi način (<em>xbindkeys</em> možda), ali mi se <em>ude
 način činio mnogo "čistijim". Pronašao sam <a href="http://www.vxnick.com/blog/2014/10/binding-extra-mouse-buttons-on-linux/">ovaj</a>
 članak koji objašnjava kako da se izvede sve.</p>
 <p>Pomoću <em>evtest</em> programa možemo saznati <em>scancode</em> dugmića.</p>
-<div class="highlight"><pre><span></span>$ evtest
+<div class="highlight"><pre><span></span><code>$ evtest
 ...
 Event: time 1472069345.467695, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90006
 Event: time 1472069345.467695, type 1 (EV_KEY), code 63 (KEY_F5), value 1
 Event: time 1472069345.467695, -------------- SYN_REPORT ------------
 ...
-</pre></div>
+</code></pre></div>
 
 
 <p><em>Scancode</em> je onaj broj poslije "value", znači za nas je 90006. Opet nam
@@ -146,16 +146,16 @@ blogu. Treba promjeniti u <code>evdev:input:b*vXXXXpXXXX*</code>. Pokušao sam p
 zašto, ali nisam ništa pronašao. Ako neko zna, bilo bi dobro da podijeli.</p>
 <p>Sve podatke sam ubacio u fajl pod <code>/etc/udev/hwdb.d/10-genius-mouse.hwdb</code>.
 Izgleda ovako:</p>
-<div class="highlight"><pre><span></span>evdev:input:b*v0458p0087*
+<div class="highlight"><pre><span></span><code>evdev:input:b*v0458p0087*
  KEYBOARD_KEY_90006=f5
-</pre></div>
+</code></pre></div>
 
 
 <p>Posljednji korak je da pokrenete sljedeće komande, da se ažurira i
 aktivira udev baza podataka:</p>
-<div class="highlight"><pre><span></span>udevadm hwdb --update
+<div class="highlight"><pre><span></span><code>udevadm hwdb --update
 udevadm trigger
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <div class="comments">
       <div id="disqus_thread"></div>

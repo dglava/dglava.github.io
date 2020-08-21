@@ -55,7 +55,7 @@ bosanski.</p>
 Za to se koriste lokali (<em>locales</em>, ne znam tačni prevod na naš) i
 promjenjljive okruženja (<em>environment variables</em>, isti slučaj). Moje
 postavke izgledaju ovako:</p>
-<div class="highlight"><pre><span></span>LANG=en_US.utf8
+<div class="highlight"><pre><span></span><code>LANG=en_US.utf8
 LC_CTYPE=bs_BA.UTF-8
 LC_NUMERIC=bs_BA.UTF-8
 LC_TIME=bs_BA.UTF-8
@@ -69,7 +69,7 @@ LC_TELEPHONE=bs_BA.UTF-8
 LC_MEASUREMENT=bs_BA.UTF-8
 LC_IDENTIFICATION=bs_BA.UTF-8
 LC_ALL=
-</pre></div>
+</code></pre></div>
 
 
 <p>Koristim engleski za LANG (i LANGUAGE koji nije naveden jer ga nasljeđuje
@@ -110,10 +110,10 @@ se napravi globalni <em>override</em>.</p>
 <code>/etc/systemd/system/</code> zajedno sa fajlom ili koristiti <code>systemctl edit servis</code>.</p>
 <p>Nama treba <code>ENVIRONMENT=</code> postavka. U nju unesemo željenu promjenjljivu.
 Ovako na kraju izgleda moj fajl:</p>
-<div class="highlight"><pre><span></span>[Service]
+<div class="highlight"><pre><span></span><code>[Service]
 Environment=
 Environment=&quot;LANG=bs_BA.UTF-8&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p>Dva puta je navedeno, a prvi red je prazan. Nisam potpuno siguran, mislim
@@ -131,13 +131,13 @@ programe u modifikovanom okruženju, tj. sa drugim <em>environment variables</em
 Nakon toga potrebno je samo LightDMu reći da koristi naš novi <em>greeter</em>
 navođenjem toga u njegovom konfiguracionom fajlu sa <code>greeter-session</code>
 opcijom.</p>
-<div class="highlight"><pre><span></span>[Desktop Entry]
+<div class="highlight"><pre><span></span><code>[Desktop Entry]
 Name=LightDM GTK+ Greeter
 Comment=This runs the GTK+ greeter, it should only be run from LightDM
 Exec=env LANGUAGE=bs lightdm-gtk-greeter
 Type=Application
 X-Ubuntu-Gettext-Domain=lightdm
-</pre></div>
+</code></pre></div>
 
 
 <p>Vjerovatno je <code>env</code> bespotreban i radilo bi i jednostavno sa <code>Exec=LANGUAGE=bs lightdm-gtk-greeter</code>,

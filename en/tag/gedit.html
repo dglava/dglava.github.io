@@ -33,6 +33,10 @@
         <abbr class="published" title="2016-03-18T00:00:00+00:00">
                 Published: Fri, 18 Mar 2016
         </abbr>
+        <br />
+        <abbr class="modified" title="2019-03-12T23:33:42+00:00">
+                Modified: Tue, 12 Mar 2019
+        </abbr>
 
 <p>In: <a href="https://dglava.github.io/en/category/linux.html">Linux</a></p>
 <p>Tags: <a href="https://dglava.github.io/en/tag/gedit.html">gedit</a> <a href="https://dglava.github.io/en/tag/dbus.html">dbus</a> <a href="https://dglava.github.io/en/tag/openbox.html">openbox</a> <a href="https://dglava.github.io/en/tag/gtk.html">gtk</a> </p>Translations:
@@ -60,8 +64,8 @@ That's why it was unaware of the variable upon opening Gedit via Dbus activation
 post on Reddit. However, instead of just exporting that one variable, it's
 probably better to make Dbus aware of all the new environment variables
 exported through Openbox's environment file after its start. To do that, run:</p>
-<div class="highlight"><pre><span></span>dbus-update-activation-environment --systemd --all
-</pre></div>
+<div class="highlight"><pre><span></span><code>dbus-update-activation-environment --systemd --all
+</code></pre></div>
 
 
 <p>after your Openbox session starts. I have it inside my openbox/environment file.

@@ -38,6 +38,10 @@
         <abbr class="published" title="2017-03-08T00:00:00+00:00">
                 Objavljeno: Sri, 08 Mar 2017
         </abbr>
+        <br />
+        <abbr class="modified" title="2020-05-25T00:36:40.068906+00:00">
+                Ažurirano: Pon, 25 Maj 2020
+        </abbr>
 
 <p>Pod: <a href="https://dglava.github.io/category/linux.html">Linux</a></p>
 <p>Tagovi: <a href="https://dglava.github.io/tag/openbox.html">openbox</a> </p>Prevodi:
@@ -65,7 +69,7 @@ imate u <a href="https://aur.archlinux.org/packages/orcsome/">AURu</a>.</p>
 (dekoriranje) prozora pri makzimiziranju i ostalim stanjima prozora.
 Ovo je dovoljno za željenu funkciju (preuzeto direktno od autora sa
 <em>mailing liste</em>):</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">orcsome</span> <span class="kn">import</span> <span class="n">get_wm</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">orcsome</span> <span class="kn">import</span> <span class="n">get_wm</span>
 
 <span class="n">wm</span> <span class="o">=</span> <span class="n">get_wm</span><span class="p">()</span>
 
@@ -80,7 +84,7 @@ Ovo je dovoljno za željenu funkciju (preuzeto direktno od autora sa
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
                 <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Fajl sam snimio pod <code>~/.config/orcsome/rc.py</code> i stavio da se Orcsome

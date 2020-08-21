@@ -68,10 +68,10 @@ It will automatically create an override file for the service. Alternatively,
 you can do it manually, by creating the appropriately named directory and override file
 in <code>/etc/systemd/system/</code>.</p>
 <p>Here's how my file looks like:</p>
-<div class="highlight"><pre><span></span>[Service]
+<div class="highlight"><pre><span></span><code>[Service]
 Environment=
 Environment=&quot;LANG=bs_BA.UTF-8&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p>I have a blank Environment line because it clears an already set
@@ -90,13 +90,13 @@ the <code>Exec=</code> line to start <code>lightdm-gtk-greeter</code> with a dif
 using environment variables. After that modify your lightdm.conf file
 and specify your new greeter to be used with the <code>greeter-session=</code>
 option.</p>
-<div class="highlight"><pre><span></span>[Desktop Entry]
+<div class="highlight"><pre><span></span><code>[Desktop Entry]
 Name=LightDM GTK+ Greeter
 Comment=This runs the GTK+ greeter, it should only be run from LightDM
 Exec=env LANGUAGE=bs lightdm-gtk-greeter
 Type=Application
 X-Ubuntu-Gettext-Domain=lightdm
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <div class="comments">
       <div id="disqus_thread"></div>

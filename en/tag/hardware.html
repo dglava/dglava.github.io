@@ -53,28 +53,28 @@ to "Refresh".</p>
 <h3>Forward/Back buttons</h3>
 <p>Swapping them to restore the expected functionality was pretty easy. First
 I used <em>xinput</em> to find out the number of available buttons on my mouse.</p>
-<div class="highlight"><pre><span></span>$ xinput get-button-map 8
+<div class="highlight"><pre><span></span><code>$ xinput get-button-map 8
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-</pre></div>
+</code></pre></div>
 
 
 <p>The 8 after "get-button-map" is our device ID, which you can find out by
 running <code>xinput</code> without any arguments. Next you need to find out which
 number our Forward and Back buttons are. Run xinput with the "query-state"
 command while holding down the respective button.</p>
-<div class="highlight"><pre><span></span>$ xinput query-state 8
+<div class="highlight"><pre><span></span><code>$ xinput query-state 8
 ...
     button[7]=up
     button[8]=down
     button[9]=up
 ...
-</pre></div>
+</code></pre></div>
 
 
 <p>To swap the buttons, you can use xinput's "set-button-map" option. Just literally
 swap the 8 and 9 when you're entering the command.</p>
-<div class="highlight"><pre><span></span>$ xinput set-button-map 8 1 2 3 4 5 6 7 9 8 10 11 12 13 14 15
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ xinput set-button-map 8 1 2 3 4 5 6 7 9 8 10 11 12 13 14 15
+</code></pre></div>
 
 
 <p>To make this behaviour permanent, you can run the above command on every
@@ -82,12 +82,12 @@ login. I didn't like that, since I prefer having a neat Xorg configuration
 file instead. I added this section to my Xorg configuration file and it's
 working as intended. The <code>MatchUSBID</code> ID can be found out from the <code>lsusb</code>
 output. It's the two 4-character words separated by a colon.</p>
-<div class="highlight"><pre><span></span>Section &quot;InputClass&quot;
+<div class="highlight"><pre><span></span><code>Section &quot;InputClass&quot;
     Identifier &quot;Ergo Mouse&quot;
     MatchUSBID &quot;0458:0087&quot;
     Option &quot;ButtonMapping&quot; &quot;1 2 3 4 5 6 7 9 8 10&quot;
 EndSection
-</pre></div>
+</code></pre></div>
 
 
 <h3>Binding the other button to "Refresh"</h3>
@@ -99,15 +99,15 @@ but it didn't work for me. I found the solution on <a href="http://martins-prolo
 Using <code>evdev:input:b*vXXXXpXXXX*</code> worked perfectly. I don't know why, because
 I can't find any documentation online about that specific syntax.</p>
 <p>Here's how my /etc/udev/hwdb.d/10-genius-mouse.hwdb looks like:</p>
-<div class="highlight"><pre><span></span>evdev:input:b*v0458p0087*
+<div class="highlight"><pre><span></span><code>evdev:input:b*v0458p0087*
  KEYBOARD_KEY_90006=f5
-</pre></div>
+</code></pre></div>
 
 
 <p>Finally, you have to run these two commands to update the database:</p>
-<div class="highlight"><pre><span></span>udevadm hwdb --update
+<div class="highlight"><pre><span></span><code>udevadm hwdb --update
 udevadm trigger
-</pre></div><p><a href="https://dglava.github.io/en/ergo525.html#disqus_thread">Comments</a></p>                </article>
+</code></pre></div><p><a href="https://dglava.github.io/en/ergo525.html#disqus_thread">Comments</a></p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
         </section><!-- /#extras -->

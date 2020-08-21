@@ -33,6 +33,10 @@
         <abbr class="published" title="2016-03-18T00:00:00+00:00">
                 Objavljeno: Pet, 18 Mar 2016
         </abbr>
+        <br />
+        <abbr class="modified" title="2019-03-12T23:33:42+00:00">
+                Ažurirano: Uto, 12 Mar 2019
+        </abbr>
 
 <p>Pod: <a href="https://dglava.github.io/category/linux.html">Linux</a></p>
 <p>Tagovi: <a href="https://dglava.github.io/tag/gedit.html">gedit</a> <a href="https://dglava.github.io/tag/dbus.html">dbus</a> <a href="https://dglava.github.io/tag/openbox.html">openbox</a> <a href="https://dglava.github.io/tag/gtk.html">gtk</a> </p>Prevodi:
@@ -66,8 +70,8 @@ fajlove svakuda, tako da sam dalje tražio.</p>
 <p>Drugo, prihvatljivije rješenje
 sam našao u <a href="https://www.reddit.com/r/gnome/comments/37bp1r/how_do_i_disable_316s_overlay_scrollbars/">ovoj</a>
 dretvi na Redditu. Dodavanje</p>
-<div class="highlight"><pre><span></span>gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.UpdateActivationEnvironment <span class="s1">&#39;{&quot;GTK_OVERLAY_SCROLLING&quot;: &quot;0&quot;}&#39;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.UpdateActivationEnvironment <span class="s1">&#39;{&quot;GTK_OVERLAY_SCROLLING&quot;: &quot;0&quot;}&#39;</span>
+</code></pre></div>
 
 
 <p>u Openboxov environment fajl je radilo, trake su bile vidljive uvijek.
@@ -82,8 +86,8 @@ se Openboxov environment fajl izvršava nakon što se Dbus pokrene i preuzme
 postavljene promjenjljive.</p>
 <p>Konačno, najčistije rješenje je ponovno importovanje promjenjljivih u Dbus sesiju
 nakon pokretanja Openboxa, odnosno environment fajla. Dodao sam ovo:</p>
-<div class="highlight"><pre><span></span>dbus-update-activation-environment --systemd --all<span class="sb">`</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>dbus-update-activation-environment --systemd --all<span class="sb">`</span>
+</code></pre></div>
 
 
 <p>u openbox/environment fajl i Gedit i skrol trake se ponašaju normalno.
