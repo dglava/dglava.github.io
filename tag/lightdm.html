@@ -66,7 +66,6 @@ LC_IDENTIFICATION=bs_BA.UTF-8
 LC_ALL=
 </code></pre></div>
 
-
 <p>Koristim engleski za LANG (i LANGUAGE koji nije naveden jer ga nasljeđuje
 od LANG postavke) i za LC_MESSAGES. Sve ostalo koristi bosanske postavke,
 tj bs_BA lokal.</p>
@@ -110,7 +109,6 @@ Environment=
 Environment=&quot;LANG=bs_BA.UTF-8&quot;
 </code></pre></div>
 
-
 <p>Dva puta je navedeno, a prvi red je prazan. Nisam potpuno siguran, mislim
 da radi i bez praznog reda. Prazni red ima efekat da "očisti" prijašnju
 vrijednost, a u našem slučaju ne može naškoditi (makar ne prema znaju
@@ -133,7 +131,6 @@ Exec=env LANGUAGE=bs lightdm-gtk-greeter
 Type=Application
 X-Ubuntu-Gettext-Domain=lightdm
 </code></pre></div>
-
 
 <p>Vjerovatno je <code>env</code> bespotreban i radilo bi i jednostavno sa <code>Exec=LANGUAGE=bs lightdm-gtk-greeter</code>,
 ali sam prelijen da isprobam, jer ovako već radi.</p>

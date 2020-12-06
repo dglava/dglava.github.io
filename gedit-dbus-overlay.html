@@ -74,7 +74,6 @@ dretvi na Redditu. Dodavanje</p>
 <div class="highlight"><pre><span></span><code>gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.UpdateActivationEnvironment <span class="s1">&#39;{&quot;GTK_OVERLAY_SCROLLING&quot;: &quot;0&quot;}&#39;</span>
 </code></pre></div>
 
-
 <p>u Openboxov environment fajl je radilo, trake su bile vidljive uvijek.
 Gdbus call je bio nagovještaj za konačno rješenje problema.</p>
 <h4>Zašto se dešavalo</h4>
@@ -89,7 +88,6 @@ postavljene promjenjljive.</p>
 nakon pokretanja Openboxa, odnosno environment fajla. Dodao sam ovo:</p>
 <div class="highlight"><pre><span></span><code>dbus-update-activation-environment --systemd --all<span class="sb">`</span>
 </code></pre></div>
-
 
 <p>u openbox/environment fajl i Gedit i skrol trake se ponašaju normalno.
 Ovo sam naravno skužio nakon što sam prestao koristiti Gedit.</p>

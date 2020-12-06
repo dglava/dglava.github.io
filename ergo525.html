@@ -72,7 +72,6 @@ riješiti. Pomoću <em>xinput-a</em> možete saznati trenutni raspored dugmića.
     ↳ Genius Ergo Mouse                         id=10   [slave  keyboard (3)]
 </code></pre></div>
 
-
 <p>Moj miš je Genius Ergo Mouse, a njegov <em>id</em> je 8. <em>xinput</em> ima mnogo
 opcija, a nama je interesantna <em>query-state</em> opcija. Pomoću nje možete
 vidjeti status uređaja, tj. u našem slučaju status pritisnutih dugmića. Postoje
@@ -87,7 +86,6 @@ na mišu ovo je ispis komande (sa izostavljenim neinteresantnim stvarima):</p>
 ...
 </code></pre></div>
 
-
 <p>Istu stvar sam ponovio za "nazad" dugmić, i saznao da je broj 9. Sad kad
 znamo koji je broj, možemo koristiti <em>xinput</em> da ih zamjenimo. Prvo
 izlistamo sve dugmiće što miš ima sa:</p>
@@ -95,11 +93,9 @@ izlistamo sve dugmiće što miš ima sa:</p>
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
 </code></pre></div>
 
-
 <p>Nakon toga zamjenimo mjesta 8 i 9.</p>
 <div class="highlight"><pre><span></span><code>$ xinput set-button-map 8 1 2 3 4 5 6 7 9 8 10 11 12 13 14 15
 </code></pre></div>
-
 
 <p>Da bi promjena ostala trajna možete staviti gore navedenu komandu da se
 izvrši pri pokretanju X sesije. Meni je draže koristiti Xorg konfiguracioni
@@ -111,7 +107,6 @@ fajl. Ovako izgleda (izostavljene stvari nevezane za miš):</p>
 EndSection
 </code></pre></div>
 
-
 <p><em>MatchUSBID</em> sam saznao pomoću <em>lsusb</em> i služi za identifikaciju uređaja,
 da se postavke primjene za miš. To je onaj par rječi od 4 slova/cifre poslije
 ID, sa dvotačkom između.</p>
@@ -120,7 +115,6 @@ ID, sa dvotačkom između.</p>
 Bus 002 Device 002: ID 0458:0087 KYE Systems Corp. (Mouse Systems) Ergo 525V Laser Mouse
 ...
 </code></pre></div>
-
 
 <h3>Dugmić za F5</h3>
 <p>Za mijenjanje funkcije dugmića na mišu sam koristio <em>udev</em> direktno.
@@ -136,7 +130,6 @@ Event: time 1472069345.467695, -------------- SYN_REPORT ------------
 ...
 </code></pre></div>
 
-
 <p><em>Scancode</em> je onaj broj poslije "value", znači za nas je 90006. Opet nam
 je potreban i ID što smo koristili maloprije za Xorg konfiguracioni fajl.
 Na onom gore blogu piše da koristimo <code>keyboard:usb:vXXXXpXXXX*</code>, gdje X-ovi
@@ -149,7 +142,6 @@ Izgleda ovako:</p>
 <div class="highlight"><pre><span></span><code>evdev:input:b*v0458p0087*
  KEYBOARD_KEY_90006=f5
 </code></pre></div>
-
 
 <p>Posljednji korak je da pokrenete sljedeće komande, da se ažurira i
 aktivira udev baza podataka:</p>
