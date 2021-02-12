@@ -28,7 +28,59 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/falcon-briefing.html">Falcon BMS briefing to smartphone/tablet</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/x52-detent.html">Logitech X52 afterburner detent</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-02-12T00:00:00+00:00">
+                Published: Fri, 12 Feb 2021
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../x52-detent.html">bs</a>
+
+</footer><!-- /.post-info --><p>I have a Logitech X52 Pro HOTAS. It comes with 2 detents by default, one
+at 25% and the other at 75%. Since the 25% was messing with the fine-control
+at the lower end, I decided to <a href="https://www.youtube.com/watch?v=3TrDCO-FMBI">remove them.</a></p>
+<p>The downside to that was that I no longer had the afterburner detent. It's really
+useful because you can without effort go to mil-power. Without one I am
+constantly sliding into AB and trying to find the sweetspot of mil-power.</p>
+<p>Other HOTAS setups have solutions for that, for example <a href="https://youtu.be/prQldBxFs00">this neat one for the X65</a>.
+There's nothing for the X52 though. I tried applying solutions found for other HOTAS.
+Solutions which didn't permanently modify the throttle. I tried magnets,
+some thermoplastic molded into custom shapes and this <a href="https://imgur.com/a/YK5A9">zipper storage bag</a>
+solution. It didn't work, because it was too rigid and wouldn't give in
+being pushed into the plastic enclosure and would just slide off, taking
+the tape with it.</p>
+<h3>The solution</h3>
+<p>After weeks of trying to come up with something, I tried using double-sided
+tape which I ordered for my attempts with magnets. It worked. Why? Because
+the tape had a spongy layer which provided physical feedback, but eventually
+caved in and got pushed down. I think using anything spongy would do the trick,
+but I liked the extra adhesive properties of the tape which prevented it
+from ripping off.</p>
+<p><a href="https://dglava.github.io/en/images/detent1.jpg"><img src="https://dglava.github.io/en/images/detent1.jpg" class="sredina" width="426" height="240" /></a></p>
+<p>The needed materials were: double sided tape (I used Tesa Powerbond Extra Strong)
+or something spongy, regular tape and scissors.</p>
+<p><a href="https://dglava.github.io/en/images/detent2.jpg"><img src="https://dglava.github.io/en/images/detent2.jpg" class="sredina" width="426" height="240" /></a></p>
+<p>Here's a video of it in action. I adjusted the AB zone in Falcon BMS and
+now it's pretty easy going to mil-power. With a slight push one enters
+the AB zone.</p>
+<video class="sredina" width="426" height="240" controls>
+  <source src="https://dglava.github.io/en/files/detent480.mp4" type="video/webm">
+</video><p><a href="https://dglava.github.io/en/x52-detent.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/falcon-briefing.html" rel="bookmark"
+                           title="Permalink to Falcon BMS briefing to smartphone/tablet">Falcon BMS briefing to smartphone/tablet</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-01-29T00:00:00+00:00">
                 Published: Fri, 29 Jan 2021
@@ -38,43 +90,13 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
         <a href="https://dglava.github.io/en/../falcon-briefing.html">bs</a>
 
-</footer><!-- /.post-info --><p>If you've played Falcon BMS (or other flight sims), you know how convenient
+</footer><!-- /.post-info -->                <p>If you've played Falcon BMS (or other flight sims), you know how convenient
 it is to have all the flight information, basically the briefing, displayed
 on a device (real pilots use kneeboards). Before I started doing it this
-way, I used to just take a picture of the briefing with my phone, which
-was a pretty ghetto solution. Now I've found a cleaner way to display
-the actual briefing file.</p>
-<p>It boils down to: run a HTTP server serving the directory where the briefing
-files get saved and then open the page with a web browser on your phone/tablet.
-For maximum convenience the HTTP server should run automatically when you start
-Falcon BMS.</p>
-<p>On Linux distributions, I'd just use the Python HTTP server module
-(<code>python -m http.server</code> inside the desired directory). For Windows you can
-probably find plenty of simple HTTP servers and I used <a href="https://sourceforge.net/projects/miniweb/">MiniWeb</a>.</p>
-<p>Then you can create a small Batch file to start it alongside Falcon BMS.</p>
-<div class="highlight"><pre><span></span><code>@ECHO OFF
-start &quot;Briefing&quot; &quot;C:\location_of_miniweb\miniweb.exe&quot; -r &quot;C:\Program Files\Falcon BMS 4.35\User\Briefings&quot;
-start /b &quot;&quot; &quot;C:\Program Files\Falcon BMS 4.34\Bin\x64\Falcon BMS.exe&quot;
-</code></pre></div>
-
-<p>You can change a few options for the briefings in the Falcon BMS config editor.
-You need to check the "Briefing Output to File" option for obvious reasons.
-I turned off the "Append new Briefings" options, because I want a separate file
-for each mission. You also probably want to turn on the "HTML Briefings" options
-to get a prettier output.</p>
-<p>Run the game, go to your campaign, open the Briefing screen and hit the "Print"
-button in the upper right corner. Then open a web browser on your phone
-and navigate to the address you're serving the page at (example: 192.168.1.100:8000).
-Click on a file with the briefing and you should have a really neat display
-of all the useful information for the mission.</p>
-<p>Apart from the HTTP server, I also run all the other utilities together
-with the Batch file above: OpenTrack for headtracking and VoiceMacro
-for voice commands.</p><p><a href="https://dglava.github.io/en/falcon-briefing.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+way, I used to just take a picture of the briefing with …</p>
+                <a class="readmore" href="https://dglava.github.io/en/falcon-briefing.html">read more</a>
+<p><a href="https://dglava.github.io/en/falcon-briefing.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -101,35 +123,9 @@ it a half-step up.</p>
                 <a class="readmore" href="https://dglava.github.io/en/nightmares.html">read more</a>
 <p><a href="https://dglava.github.io/en/nightmares.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/en/roche.html" rel="bookmark"
-                           title="Permalink to Roche">Roche</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-05-27T20:29:00+00:00">
-                Published: Sun, 27 May 2018
-        </abbr>
-
-<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="https://dglava.github.io/en/tag/tabs.html">tabs</a> <a href="https://dglava.github.io/en/tag/sheet-music.html">sheet-music</a> </p>Translations:
-        <a href="https://dglava.github.io/en/../roche.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>Tabs/sheet-music for <a href="https://www.youtube.com/watch?v=j2RP1bUy3B4">Sébastien Tellier - Roche</a>.</p>
-<p>Sometimes I wonder how this one would have turned out had it been on
-his first album instead of Sexuality. There's a certain melancholic
-tone to this, which is just enough to prevent it from being cheesy
-trash. I adore it.</p>
-<p>The same chord …</p>
-                <a class="readmore" href="https://dglava.github.io/en/roche.html">read more</a>
-<p><a href="https://dglava.github.io/en/roche.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 7
+    Page 1 / 8
         <a href="https://dglava.github.io/en/author/dino-duratovic2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

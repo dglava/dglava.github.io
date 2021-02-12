@@ -28,7 +28,60 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/falcon-briefing.html">Falcon BMS briefing na mobilnom/tabletu</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/x52-detent.html">Logitech X52 prepreka za forsaž</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-02-12T00:00:00+00:00">
+                Objavljeno: Pet, 12 Feb 2021
+        </abbr>
+
+<p>Pod: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/falcon.html">falcon</a> </p>Prevodi:
+        <a href="https://dglava.github.io/en/x52-detent.html">en</a>
+
+</footer><!-- /.post-info --><p>Imam Logitech X52 Pro <a href="https://en.wikipedia.org/wiki/HOTAS">HOTAS</a>. Po fabričkim
+postavkama posjeduje prepreke (<em>detents</em>) kod 25% i 75% na <em>throttle-u</em> (ne znam
+našu riječ za throttle, ako neko zna neka napiše). Prepreka na 75% je donekle
+korisna, ali je zato ona na 25%, barem za mene, beskorisna. Spriječava
+fina podešavanja u svojoj okolini, što je frustrirajuće npr. tokom slijetanja.
+<a href="https://www.youtube.com/watch?v=3TrDCO-FMBI">Postoji način</a> kako se mogu
+ukloniti obe prepreke. To sam uradio, da bi nakon nekog vremena shvatio da je
+75% prepreka bila korisna za <a href="https://en.wikipedia.org/wiki/Afterburner">forsaž</a>.
+Bez nekog fizičkog <em>feedbacka</em> se konstantno dešava da nehotično upalim
+forsaž. Također je nemoguće sa sigurnošću otići na <em>military-power</em> (još jedna
+riječ kojoj ne znam prevod na naš. U suštini 100% snage mlaznog motora).</p>
+<p>Tražio sam dugo na internetu riješenja. Drugi HOTAS imaju sjajna mala riješenja
+tipa <a href="https://youtu.be/prQldBxFs00">ovog</a>, za X52 ne postoji gotovo riješenje. 
+Pokušao sam s magnetima, sa uobličenom termoplastikom, no ništa nije uspijelo.
+Naišao sam na <a href="https://imgur.com/a/YK5A9">ideju s uzvišenjem</a>. Problem je bio u previsokom
+uzvišenju, pa sam odustao od te ideje. Nakon par mjeseci sam naišao na
+obostrano ljepljivu traku (koju sam kupio za ideju s magnetima). Uspijelo je.</p>
+<p><a href="https://dglava.github.io/images/detent1.jpg"><img src="https://dglava.github.io/images/detent1.jpg" class="sredina" width="426" height="240" /></a></p>
+<p>Fazon je u tome što je traka od spužvastog materijala, pa se može spljoštiti
+po potrebi. Također je ljepljiva, što pretpostavljam doprinosi stabilnošću. Sa
+onim gore uzvišenjem od kesica je problem bio što nisam uspio s običnom
+ljepljivom trakom zalijepiti bez da se odlijepi pri upotrebi.</p>
+<p>Potreban materijal: obostrana ljepljiva traka (ja sam koristio Tesa Powerbond
+Extra Strong) ili nešto spužvasto, obična ljepljiva traka i makaze.</p>
+<p><a href="https://dglava.github.io/images/detent2.jpg"><img src="https://dglava.github.io/images/detent2.jpg" class="sredina" width="426" height="240" /></a></p>
+<p>Evo video kako izgleda u akciji. Podesio sam u Falcon BMS mjesto gdje
+forsaž počinje i sad imam osjećaj kad je upaljen. Potrebno je malo jače
+gurnuti da bi se prepreka zaobišla.</p>
+<video class="sredina" width="426" height="240" controls>
+  <source src="https://dglava.github.io/files/detent480.mp4" type="video/webm">
+</video><p><a href="https://dglava.github.io/x52-detent.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/falcon-briefing.html" rel="bookmark"
+                           title="Permalink to Falcon BMS briefing na mobilnom/tabletu">Falcon BMS briefing na mobilnom/tabletu</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-01-29T00:00:00+00:00">
                 Objavljeno: Pet, 29 Jan 2021
@@ -38,37 +91,16 @@
 <p>Tagovi: <a href="https://dglava.github.io/tag/falcon.html">falcon</a> </p>Prevodi:
         <a href="https://dglava.github.io/en/falcon-briefing.html">en</a>
 
-</footer><!-- /.post-info --><p>Ako ste igrali Falcon BMS (ili druge simulatore) znate koliko je korisno
+</footer><!-- /.post-info -->                <p>Ako ste igrali Falcon BMS (ili druge simulatore) znate koliko je korisno
 imati informacije o letu uvijek pristupačne. Pravi piloti koriste sveske
 svezane oko noge. Mi možemo koristiti mobilni/tablet i sačuvati dosta
 papira. Ja sam prije primitivno uslikao s mobilnim <em>Briefing</em> stranicu u igri.
-Bolji način je eksportovati <em>Briefing</em> fajl i otvoriti ga na mobilnom.</p>
-<p>U suštini radi ovako: HTTP server koji servira direktorij u kojem se nalaze
-<em>Briefing</em> fajlovi, koji onda otvorimo pomoću internet preglednika na mobilnom.</p>
-<p>Na Linux distribucijama je jednostavno s Pythonom servirati direktorij
-(<code>python -m http.server</code>). Pošto mi je overkill na Windowsu instalirati
-samo Python zbog toga, našao sam <a href="https://sourceforge.net/projects/miniweb/">MiniWeb</a>.
-Naravno možete koristiti koji god HTTP server hoćete, ali je ovaj pogodan jer je
-minimalističan.</p>
-<p>Nakon toga napravite jednostavni Batch fajl u kojem pokrećete server zajedno
-s Falcon BMS igrom.</p>
-<div class="highlight"><pre><span></span><code>@ECHO OFF
-start &quot;Briefing&quot; &quot;C:\locakija_miniweba\miniweb.exe&quot; -r &quot;C:\Program Files\Falcon BMS 4.35\User\Briefings&quot;
-start /b &quot;&quot; &quot;C:\Program Files\Falcon BMS 4.34\Bin\x64\Falcon BMS.exe&quot;
-</code></pre></div>
-
-<p>U Falcon BMS postavkama imate par opcija za brifinge. Najbitnije je da
-izaberete "Briefing output to File", što je logično. Osim toga ja koristim
-"Append new Briefings" opciju, jer želim imati zaseban fajl za svaku misiju.
-Također predlažem "HTML Briefings" opciju za ljepši izgled.</p>
-<p>Pokrenite igru (preko Batch fajla), otvorite kampanju, pa onda <em>Briefing</em>
-prozor i kliknite <em>Print</em> u gornjem desnom uglu. To će snimiti fajl u
-direktorij (obično <code>Falcon BMS 4.35\User\Briefings</code>). Otvorite u internet
-pregledniku adresu gdje HTTP servira (npr. http://192.168.1.100:8000), piše u prozoru
-MiniWeb programa). Kliknite na fajl koji vam treba i to je to.</p>
-<p>Osim HTTP servera ja u Batch fajlu pokrećem i ostale stvari koje su korisne:
-Opentrack za praćenje pokreta glave i VoiceMacro za glasovne komande.</p><p><a href="https://dglava.github.io/falcon-briefing.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
+Bolji način je eksportovati <em>Briefing …</em></p>
+                <a class="readmore" href="https://dglava.github.io/falcon-briefing.html">pročitaj više</a>
+<p><a href="https://dglava.github.io/falcon-briefing.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
         </section><!-- /#extras -->
 
