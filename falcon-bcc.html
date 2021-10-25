@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+        <meta charset="utf-8" />
+        <title>Nasumična postavka kokpita u Falcon BMS</title>
+        <link rel="stylesheet" href="https://dglava.github.io/theme/css/main.css" />
+        <link rel="shortcut icon" type="image/png" href="https://dglava.github.io/theme/images/favicon.png">
+</head>
+
+<body id="index" class="home">
+        <script>
+        let day = new Date().getDay();
+        document.getElementById("index").style.backgroundImage = "url(https://dglava.github.io/theme/images/p" + day + ".jpg)";
+        </script>
+        <header id="banner" class="body">
+                <h1><a href="https://dglava.github.io/">dinoglava </a></h1>
+                <nav><ul>
+                    <li><a href="https://dglava.github.io/category/linux.html">Linux</a></li>
+                    <li><a href="https://dglava.github.io/category/stvari.html">Stvari</a></li>
+                    <li><a href="https://dglava.github.io/archives.html">Arhiva</a></li>
+                    <li><a href="https://dglava.github.io/pages/o-bs, en.html">O</a></li>
+                    <li><a href="https://github.com/dglava"><img src="https://dglava.github.io/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="https://dglava.github.io/theme/images/lastfm.png"></a></li>
+                    <li><a href="https://dglava.github.io/"><img src="https://dglava.github.io/theme/images/bs.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/"><img src="https://dglava.github.io/theme/images/en.png"></a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://dglava.github.io/falcon-bcc.html" rel="bookmark"
+           title="Permalink to Nasumična postavka kokpita u Falcon BMS">Nasumična postavka kokpita u Falcon BMS</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-10-25T00:00:00+00:00">
+                Objavljeno: Pon, 25 Okt 2021
+        </abbr>
+
+<p>Pod: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/falcon.html">falcon</a> </p>Prevodi:
+        <a href="https://dglava.github.io/en/falcon-bcc.html">en</a>
+
+</footer><!-- /.post-info -->      <p>Nakon dosta provedenog vremena paleći F16 u Falcon BMS cijela
+procedura se svede na klikanje i okretanje dugmića bez mnogo razmišljanja.
+Provjere su nepotrebne jer su uvijek u istom stanju. Pitao sam se zašto
+Falcon BMS ne nudi opciju da se to uvijek nalazi u nasumičnom stanju pri
+ulasku u kokpit.</p>
+<p><a href="https://forum.falcon-bms.com/post/299025">Odgovor sam dobio ovdje.</a>
+Navodno nije realistično, jer posada na zemlji namjesti avion i prije nego
+pilot uđe u njega. Nakon što sam vidio da ta funkcija neće biti ubačena,
+odlučio sam se da vidim je li moguće da sam napravim to.</p>
+<p>Prva pomisao je bila da jednostavno napravim programčić koji će poslati
+komande igri tipa "pomjeri prekidač X" i to nasumično. Ispostavilo se
+da Falcon BMS ne nudi nekakav API kojim bi se mogle slati komande.
+Znači da bi morao napraviti hakasto riješenje.</p>
+<p>Tako je i bilo. Napravio sam <a href="https://github.com/dglava/falcon-bcc">Falcon-BCC</a>,
+mali programčić napisan u Pythonu koji nakon što pomjerite CMDS panel
+u avionu na <em>STBY</em> nasumično podesi veliki broj stvari u avionu.</p>
+<p>Funkcioniše tako što pročita <em>keyfile</em> i onda pošalje tipke na tastaturi
+koje su povezane za svako dugme, prekidač i ostalo. Nakon dosta letova
+i nekoliko ispravki sam prilično zadovoljan s radom, s unutrašnjosti
+ne. Koristio sam <a href="https://github.com/nmeier/simscript">Falcon BMS <em>shared memory</em> čitač</a>
+od nmeiera. Uz njegovu pomoć sam dodao nove stavke, koje su bile potrebne
+da omoguće solidan rad programa. Također sam imao problema s slanjem
+tipaka tastature bez <a href="https://stackoverflow.com/a/23468236">korištenja dodatnih biblioteka</a>.Stby
+Najveći problem sam imao oko čitanja <em>FalconSharedMemoryAreaString</em>. Uz
+pomoć toga bi mogao automatski izvući lokaciju <em>keyfilea</em> koji se koristi
+i ne bi bilo potrebno ručno unijeti njegovu lokaciju. <a href="https://github.com/nmeier/simscript/issues/4">Nažalost moje
+programersko znanje</a> nije
+dovoljno dobro da bih to uspio.</p>
+<p>No, sve u svemu sam zadovoljan jer je sad manje monotono i sve one <em>čekliste</em>
+imaju smisla. Sad vam se npr. može desiti da pokušate izbaciti toplinske
+protiv-mjere, ali bez uspijeha, da bi skontali da je <em>JETT</em> prekidač
+ostao uključen i vi izbacile sve nakon polijetanja (desilo mi se).</p>
+<p><a href="https://github.com/dglava/falcon-bcc/archive/refs/heads/master.zip"><strong>Preuzmi Falcon-BCC</strong></a></p>
+<video width="640" height="360" controls>
+  <source src="https://dglava.github.io/files/falcon-bcc.mp4" type="video/webm">
+</video>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'dglava';
+        var disqus_identifier = 'falcon-bcc.html';
+        var disqus_url = 'https://dglava.github.io/falcon-bcc.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//dglava.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Stranica koristi <a href="http://getpelican.com/">Pelican</a>. Tema: blago izmjenjena <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'dglava';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

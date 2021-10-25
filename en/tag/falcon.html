@@ -28,7 +28,58 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/falcon-briefing-novi.html">Falcon briefings the easier way</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/falcon-bcc.html">Randomize the cockpit in Falcon BMS</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-10-25T00:00:00+00:00">
+                Published: Mon, 25 Oct 2021
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../falcon-bcc.html">bs</a>
+
+</footer><!-- /.post-info --><p>After some time the routine startup of the F16 in Falcon BMS turns
+into a mindless flipping and switching. The problem is that there's no
+need to verify that a switch is in the correct position according
+to a check-list because you know that it is (fixed by the game). I was
+wondering if there's a way to randomize it.</p>
+<p><a href="https://forum.falcon-bms.com/post/299025">I've gotten my answer pretty quickly</a>.
+Apparently it's unrealistic to have it randomized, because the ground
+crew sets it up in always the same way. Since it wasn't going to be
+added officially in the game, I had to solve it myself.</p>
+<p>At first I thought I could just send certain commands like "flip this
+switch" via some kind of API. But Falcon BMS lacks such a thing, so I had
+to resort to a more hacky solution in the form of <a href="https://github.com/dglava/falcon-bcc">Falcon-BCC</a>.</p>
+<p>It works by reading the keyfile and then sending the proper keyboard
+keystrokes. After trying it out for some time and a few fixes, I'm pretty
+content with its state, but not with its insides. I used
+<a href="https://github.com/nmeier/simscript">nmeier's great Python implementation</a>
+for reading the Falcon BMS shared memory. I also had to find a
+<a href="https://stackoverflow.com/a/23468236">simple way of sending keystrokes without using an additional library</a>.
+The biggest problem and one where <a href="https://github.com/nmeier/simscript/issues/4">I haven't found a solution for</a>
+yet was reading the <em>FalconSharedMemoryAreaString</em> content and getting the keyfile
+programatically instead of having to enter it manually.</p>
+<p>I'm pretty happy with it in general though and I use it every time I play.
+Just make sure to use those check-lists now or else you might find yourself
+out of flares because you forgot to check that the JETT switch on the CMDS
+panel is off.</p>
+<p><a href="https://github.com/dglava/falcon-bcc/archive/refs/heads/master.zip"><strong>Download Falcon-BCC</strong></a></p>
+<video width="640" height="360" controls>
+  <source src="https://dglava.github.io/en/files/falcon-bcc.mp4" type="video/webm">
+</video><p><a href="https://dglava.github.io/en/falcon-bcc.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/falcon-briefing-novi.html" rel="bookmark"
+                           title="Permalink to Falcon briefings the easier way">Falcon briefings the easier way</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-03-13T00:00:00+00:00">
                 Published: Sat, 13 Mar 2021
@@ -38,28 +89,17 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
         <a href="https://dglava.github.io/en/../falcon-briefing-novi.html">bs</a>
 
-</footer><!-- /.post-info --><p>The <a href="https://dglava.github.io/en/falcon-briefing.html">earlier article</a>
+</footer><!-- /.post-info -->                <p>The <a href="https://dglava.github.io/en/falcon-briefing.html">earlier article</a>
 about viewing Falcon BMS briefings on your smartphone showed a convenient
 way to view briefings in your smartphone or tablet. Well, it wasn't convenient
 enough for me, so I decided to write a small utility to make it... more
 convenient.</p>
 <p><strong><a href="https://github.com/dglava/falcon-briefing">Download link</a></strong></p>
 <p><img alt="How it looks like" src="https://raw.githubusercontent.com/dglava/falcon-briefing/master/media/video.gif"></p>
-<p>Basically, it's a Python script which runs an HTTP server and watches
-the briefing directory for new files, renames them and makes them available
-for viewing in a web browser. Renaming them always to the same name makes
-it possible to create a shortcut on your smartphone's homescreen and open
-the briefing with one tap. </p>
-<p>Mind the <strong>NOTE</strong> in the README about using the precompiled, single-file
-executable and the malware warning. I do use it, because for some weird
-reason I find running it that way more convenient on Windows compared to running the script
-directly via Python. I guess it's "the Windows way". Serves me right for
-using evil proprietary software like Windows, eh.</p><p><a href="https://dglava.github.io/en/falcon-briefing-novi.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>Basically, it's a Python script …</p>
+                <a class="readmore" href="https://dglava.github.io/en/falcon-briefing-novi.html">read more</a>
+<p><a href="https://dglava.github.io/en/falcon-briefing-novi.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -84,31 +124,11 @@ at the lower end, I decided to <a href="https://www.youtube.com/watch?v=3TrDCO-F
                 <a class="readmore" href="https://dglava.github.io/en/x52-detent.html">read more</a>
 <p><a href="https://dglava.github.io/en/x52-detent.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/en/falcon-briefing.html" rel="bookmark"
-                           title="Permalink to Falcon BMS briefing to smartphone/tablet">Falcon BMS briefing to smartphone/tablet</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-01-29T00:00:00+00:00">
-                Published: Fri, 29 Jan 2021
-        </abbr>
-
-<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
-        <a href="https://dglava.github.io/en/../falcon-briefing.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>If you've played Falcon BMS (or other flight sims), you know how convenient
-it is to have all the flight information, basically the briefing, displayed
-on a device (real pilots use kneeboards). Before I started doing it this
-way, I used to just take a picture of the briefing with …</p>
-                <a class="readmore" href="https://dglava.github.io/en/falcon-briefing.html">read more</a>
-<p><a href="https://dglava.github.io/en/falcon-briefing.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="https://dglava.github.io/en/tag/falcon2.html">&raquo;</a>
+</p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
         </section><!-- /#extras -->

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Randomize the cockpit in Falcon BMS</title>
+        <link rel="stylesheet" href="https://dglava.github.io/en/theme/css/main.css" />
+        <link rel="shortcut icon" type="image/png" href="https://dglava.github.io/en/theme/images/favicon.png">
+</head>
+
+<body id="index" class="home">
+        <script>
+        let day = new Date().getDay();
+        document.getElementById("index").style.backgroundImage = "url(https://dglava.github.io/en/theme/images/p" + day + ".jpg)";
+        </script>
+        <header id="banner" class="body">
+                <h1><a href="https://dglava.github.io/en/">dinoglava </a></h1>
+                <nav><ul>
+                    <li><a href="https://dglava.github.io/en/category/linux.html">Linux</a></li>
+                    <li><a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></li>
+                    <li><a href="https://dglava.github.io/en/archives.html">Archive</a></li>
+                    <li><a href="https://dglava.github.io/en/pages/o-bs, en.html">O</a></li>
+                    <li><a href="https://github.com/dglava"><img src="https://dglava.github.io/en/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="https://dglava.github.io/en/theme/images/lastfm.png"></a></li>
+                    <li><a href="https://dglava.github.io/"><img src="https://dglava.github.io/en/theme/images/bs.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/"><img src="https://dglava.github.io/en/theme/images/en.png"></a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://dglava.github.io/en/falcon-bcc.html" rel="bookmark"
+           title="Permalink to Randomize the cockpit in Falcon BMS">Randomize the cockpit in Falcon BMS</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-10-25T00:00:00+00:00">
+                Published: Mon, 25 Oct 2021
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../falcon-bcc.html">bs</a>
+
+</footer><!-- /.post-info -->      <p>After some time the routine startup of the F16 in Falcon BMS turns
+into a mindless flipping and switching. The problem is that there's no
+need to verify that a switch is in the correct position according
+to a check-list because you know that it is (fixed by the game). I was
+wondering if there's a way to randomize it.</p>
+<p><a href="https://forum.falcon-bms.com/post/299025">I've gotten my answer pretty quickly</a>.
+Apparently it's unrealistic to have it randomized, because the ground
+crew sets it up in always the same way. Since it wasn't going to be
+added officially in the game, I had to solve it myself.</p>
+<p>At first I thought I could just send certain commands like "flip this
+switch" via some kind of API. But Falcon BMS lacks such a thing, so I had
+to resort to a more hacky solution in the form of <a href="https://github.com/dglava/falcon-bcc">Falcon-BCC</a>.</p>
+<p>It works by reading the keyfile and then sending the proper keyboard
+keystrokes. After trying it out for some time and a few fixes, I'm pretty
+content with its state, but not with its insides. I used
+<a href="https://github.com/nmeier/simscript">nmeier's great Python implementation</a>
+for reading the Falcon BMS shared memory. I also had to find a
+<a href="https://stackoverflow.com/a/23468236">simple way of sending keystrokes without using an additional library</a>.
+The biggest problem and one where <a href="https://github.com/nmeier/simscript/issues/4">I haven't found a solution for</a>
+yet was reading the <em>FalconSharedMemoryAreaString</em> content and getting the keyfile
+programatically instead of having to enter it manually.</p>
+<p>I'm pretty happy with it in general though and I use it every time I play.
+Just make sure to use those check-lists now or else you might find yourself
+out of flares because you forgot to check that the JETT switch on the CMDS
+panel is off.</p>
+<p><a href="https://github.com/dglava/falcon-bcc/archive/refs/heads/master.zip"><strong>Download Falcon-BCC</strong></a></p>
+<video width="640" height="360" controls>
+  <source src="https://dglava.github.io/en/files/falcon-bcc.mp4" type="video/webm">
+</video>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'dglava';
+        var disqus_identifier = 'falcon-bcc.html';
+        var disqus_url = 'https://dglava.github.io/en/falcon-bcc.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//dglava.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Made with <a href="http://getpelican.com/">Pelican</a>. Theme: slightly modified <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'dglava';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>
