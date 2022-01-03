@@ -63,21 +63,22 @@ myself. The author and person that responded on the mailing list gave
 me a sample config which does exactly what I needed. I just removed the
 additional keyboard shortcut (I have my own). Save the Python script
 under <code>~/.config/orcsome/rc.py</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">orcsome</span> <span class="kn">import</span> <span class="n">get_wm</span>
+<div class="highlight"><pre><span></span><code>:::python
+from orcsome import get_wm
 
-<span class="n">wm</span> <span class="o">=</span> <span class="n">get_wm</span><span class="p">()</span>
+wm = get_wm()
 
-<span class="nd">@wm</span><span class="o">.</span><span class="n">on_manage</span>
-<span class="k">def</span> <span class="nf">on_manage</span><span class="p">():</span>
-    <span class="nd">@wm</span><span class="o">.</span><span class="n">on_property_change</span><span class="p">(</span><span class="n">wm</span><span class="o">.</span><span class="n">event_window</span><span class="p">,</span> <span class="s1">&#39;_NET_WM_STATE&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">property_was_set</span><span class="p">():</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">wm</span><span class="o">.</span><span class="n">event_window</span>
-        <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">maximized_vert</span> <span class="ow">and</span> <span class="n">w</span><span class="o">.</span><span class="n">maximized_horz</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
-                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">decorated</span><span class="p">:</span>
-                <span class="n">wm</span><span class="o">.</span><span class="n">set_window_state</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">decorate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+@wm.on_manage
+def on_manage():
+    @wm.on_property_change(wm.event_window, &#39;_NET_WM_STATE&#39;)
+    def property_was_set():
+        w = wm.event_window
+        if w.maximized_vert and w.maximized_horz:
+            if w.decorated:
+                wm.set_window_state(w, decorate=False)
+        else:
+            if not w.decorated:
+                wm.set_window_state(w, decorate=True)
 </code></pre></div>
 
 <p>You will also have to start Orcsome with your Openbox session. I did
@@ -138,7 +139,7 @@ the desktop wallpaper gets drawn (assuming you use a wallpaper).</p>
 you're using isn't keeping up with the latest changes and is barely functional.
 Fortunately, there's an easy way to disable them by using the GTK_OVERLAY_SCROLLING
 environment variable.</p>
-<p>My Openbox environment had some trouble with that. I noticed that depending …</p>
+<p>My Openbox environment had some trouble with that. I noticed …</p>
                 <a class="readmore" href="https://dglava.github.io/en/gedit-dbus-overlay.html">read more</a>
 <p><a href="https://dglava.github.io/en/gedit-dbus-overlay.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>

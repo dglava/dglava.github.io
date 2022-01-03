@@ -52,19 +52,20 @@ can print information about all X devices, but also change their options.
 Of course it can also disable a device and that's what we're going to use.</p>
 <p><strong>Little update:</strong>
 A lookbehind regex replaces the two "cut" calls.</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/bash</span>
+<div class="highlight"><pre><span></span><code>:::bash
+#!/usr/bin/bash
 
-<span class="c1"># worse way</span>
-<span class="c1"># id=$(xinput | grep -i touchpad | cut -f 2 | cut -d &quot;=&quot; -f 2)</span>
-<span class="nv">id</span><span class="o">=</span><span class="k">$(</span>xinput <span class="p">|</span> grep -i touchpad <span class="p">|</span> grep -oP <span class="s2">&quot;(?&lt;=id=)\d*&quot;</span><span class="k">)</span>
+# worse way
+# id=$(xinput | grep -i touchpad | cut -f 2 | cut -d &quot;=&quot; -f 2)
+id=$(xinput | grep -i touchpad | grep -oP &quot;(?&lt;=id=)\d*&quot;)
 
-<span class="k">if</span> xinput list-props <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span> <span class="p">|</span> grep -q <span class="s2">&quot;Device Enabled.*1</span>$<span class="s2">&quot;</span><span class="p">;</span> <span class="k">then</span>
-  xinput disable <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
-  notify-send <span class="s2">&quot;Touchpad turned OFF&quot;</span> --icon<span class="o">=</span>input-touchpad
-<span class="k">else</span>
-  xinput <span class="nb">enable</span> <span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
-  notify-send <span class="s2">&quot;Touchpad turned ON&quot;</span> --icon<span class="o">=</span>input-touchpad
-<span class="k">fi</span>
+if xinput list-props &quot;$id&quot; | grep -q &quot;Device Enabled.*1$&quot;; then
+  xinput disable &quot;$id&quot;
+  notify-send &quot;Touchpad turned OFF&quot; --icon=input-touchpad
+else
+  xinput enable &quot;$id&quot;
+  notify-send &quot;Touchpad turned ON&quot; --icon=input-touchpad
+fi
 </code></pre></div>
 
 <h3>Pretty solution</h3>

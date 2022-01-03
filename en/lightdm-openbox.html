@@ -56,16 +56,17 @@ the desktop wallpaper gets drawn (assuming you use a wallpaper).</p>
 to set the background color. To get rid of that ugly, temporary background
 during logging in, all you have to do is either delete or comment out the lines
 in Openbox's autostart bash script.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Set a background color</span>
-<span class="c1">#BG=&quot;&quot;</span>
-<span class="c1">#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=hsetroot</span>
-<span class="c1">#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=esetroot</span>
-<span class="c1">#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then</span>
-<span class="c1">#  BG=xsetroot</span>
-<span class="c1">#fi</span>
-<span class="c1">#test -z $BG || $BG -solid &quot;#303030&quot;</span>
+<div class="highlight"><pre><span></span><code>:::bash
+# Set a background color
+#BG=&quot;&quot;
+#if which hsetroot &gt;/dev/null 2&gt;/dev/null; then
+#  BG=hsetroot
+#elif which esetroot &gt;/dev/null 2&gt;/dev/null; then
+#  BG=esetroot
+#elif which xsetroot &gt;/dev/null 2&gt;/dev/null; then
+#  BG=xsetroot
+#fi
+#test -z $BG || $BG -solid &quot;#303030&quot;
 </code></pre></div>
 
 <p>On Arch, the file you have to edit is <code>/usr/lib/openbox/openbox-autostart</code>.

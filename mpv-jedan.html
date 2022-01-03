@@ -65,10 +65,11 @@ trenutni video bude zamijenjen novim.</p>
 <p>Najlogičniji način da se to uradi je obična shell (koristim Bash) skripta
 koja bi pogledala da li postoji pokrenuti mpv. U slučaju da jeste, ugasila
 bi ga i pokrenula novi mpv.</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code>:::bash
+#!/bin/bash
 
 pkill -x mpv
-mpv --player-operation-mode<span class="o">=</span>pseudo-gui <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+mpv --player-operation-mode=pseudo-gui &quot;$@&quot;
 </code></pre></div>
 
 <p>To je to što se skripte tiče. Da bi je mogao koristiti u upravljaču
