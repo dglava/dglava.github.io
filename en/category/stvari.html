@@ -28,7 +28,39 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/falcon-bcc.html">Randomize the cockpit in Falcon BMS</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/the-beachland-ballroom.html">The Beachland Ballroom</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2022-12-17T00:00:00+00:00">
+                Published: Sat, 17 Dec 2022
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/tabs.html">tabs</a> <a href="https://dglava.github.io/en/tag/sheet-music.html">sheet-music</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../the-beachland-ballroom.html">bs</a>
+
+</footer><!-- /.post-info --><p>I know exactly what kind of feelings this song evokes, but I can't
+describe it. Peristent, thumping, determined, powerfull and desperate.</p>
+<p>The first part is in E major, the second one in D major. The tempo is
+around 90 bpm. It's an incredibly simple song to play. The first part
+only has you playing a F# power chord; the second part a D-B-F#-A
+powerchord progression. It doesn't take away from the impact the song has.</p>
+<p>I usually play along to this with a backing track. I can upload it if there's
+interest.</p>
+<p>Click <a href="https://dglava.github.io/en/files/the-beachland-ballroom.pdf">here</a> for a PDF version.</p>
+<p><a href="https://dglava.github.io/en/images/the-beachland-ballroom.png"><img src="https://dglava.github.io/en/images/the-beachland-ballroom-min.png"/></a></p><p><a href="https://dglava.github.io/en/the-beachland-ballroom.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/falcon-bcc.html" rel="bookmark"
+                           title="Permalink to Randomize the cockpit in Falcon BMS">Randomize the cockpit in Falcon BMS</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-10-25T00:00:00+00:00">
                 Published: Mon, 25 Oct 2021
@@ -38,40 +70,13 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
         <a href="https://dglava.github.io/en/../falcon-bcc.html">bs</a>
 
-</footer><!-- /.post-info --><p>After some time the routine startup of the F16 in Falcon BMS turns
+</footer><!-- /.post-info -->                <p>After some time the routine startup of the F16 in Falcon BMS turns
 into a mindless flipping and switching. The problem is that there's no
 need to verify that a switch is in the correct position according
-to a check-list because you know that it is (fixed by the game). I was
-wondering if there's a way to randomize it.</p>
-<p><a href="https://forum.falcon-bms.com/post/299025">I've gotten my answer pretty quickly</a>.
-Apparently it's unrealistic to have it randomized, because the ground
-crew sets it up in always the same way. Since it wasn't going to be
-added officially in the game, I had to solve it myself.</p>
-<p>At first I thought I could just send certain commands like "flip this
-switch" via some kind of API. But Falcon BMS lacks such a thing, so I had
-to resort to a more hacky solution in the form of <a href="https://github.com/dglava/falcon-bcc">Falcon-BCC</a>.</p>
-<p>It works by reading the keyfile and then sending the proper keyboard
-keystrokes. After trying it out for some time and a few fixes, I'm pretty
-content with its state, but not with its insides. I used
-<a href="https://github.com/nmeier/simscript">nmeier's great Python implementation</a>
-for reading the Falcon BMS shared memory. I also had to find a
-<a href="https://stackoverflow.com/a/23468236">simple way of sending keystrokes without using an additional library</a>.
-The biggest problem and one where <a href="https://github.com/nmeier/simscript/issues/4">I haven't found a solution for</a>
-yet was reading the <em>FalconSharedMemoryAreaString</em> content and getting the keyfile
-programatically instead of having to enter it manually.</p>
-<p>I'm pretty happy with it in general though and I use it every time I play.
-Just make sure to use those check-lists now or else you might find yourself
-out of flares because you forgot to check that the JETT switch on the CMDS
-panel is off.</p>
-<p><a href="https://github.com/dglava/falcon-bcc/archive/refs/heads/master.zip"><strong>Download Falcon-BCC</strong></a></p>
-<video width="640" height="360" controls>
-  <source src="https://dglava.github.io/en/files/falcon-bcc.mp4" type="video/webm">
-</video><p><a href="https://dglava.github.io/en/falcon-bcc.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+to a check-list because you know that it is (fixed by the game …</p>
+                <a class="readmore" href="https://dglava.github.io/en/falcon-bcc.html">read more</a>
+<p><a href="https://dglava.github.io/en/falcon-bcc.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -99,30 +104,6 @@ convenient.</p>
 <p>Basically, it's a Python script …</p>
                 <a class="readmore" href="https://dglava.github.io/en/falcon-briefing-novi.html">read more</a>
 <p><a href="https://dglava.github.io/en/falcon-briefing-novi.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/en/x52-detent.html" rel="bookmark"
-                           title="Permalink to Logitech X52 afterburner detent">Logitech X52 afterburner detent</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-02-12T00:00:00+00:00">
-                Published: Fri, 12 Feb 2021
-        </abbr>
-
-<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
-        <a href="https://dglava.github.io/en/../x52-detent.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>I have a Logitech X52 Pro HOTAS. It comes with 2 detents by default, one
-at 25% and the other at 75%. Since the 25% was messing with the fine-control
-at the lower end, I decided to <a href="https://www.youtube.com/watch?v=3TrDCO-FMBI">remove them.</a></p>
-<p>The downside to that was that I no longer had the …</p>
-                <a class="readmore" href="https://dglava.github.io/en/x52-detent.html">read more</a>
-<p><a href="https://dglava.github.io/en/x52-detent.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

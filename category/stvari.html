@@ -28,7 +28,46 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/falcon-bcc.html">Nasumična postavka kokpita u Falcon BMS</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/the-beachland-ballroom.html">The Beachland Ballroom</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2022-12-17T00:00:00+00:00">
+                Objavljeno: Sub, 17 Dec 2022
+        </abbr>
+
+<p>Pod: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/tablature.html">tablature</a> </p>Prevodi:
+        <a href="https://dglava.github.io/en/the-beachland-ballroom.html">en</a>
+
+</footer><!-- /.post-info --><p>Znam tačno kakav osjećaj ova pjesma budi, ali ga ne znam opisati. Uporno,
+udarno, odlučno, snažno, očajno. Prvi dio je u E duru, drugi u D duru,
+tempo oko 90 bpm. U suštini je nevjerovatno prosto i lagano svirati;
+F# <em>power chord</em> u prvom dijelu i D-B-F#-A progresija u drugom (sve
+<em>powerchordovi</em><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>). Sve to ne umanjuje uticaj koji pjesma ima.</p>
+<p>Ja obično sviram uz <em>backing track</em>. Ako ima interesa, mogu ga podijeliti.</p>
+<p>Klikni <a href="https://dglava.github.io/files/the-beachland-ballroom.pdf">ovdje</a> za PDF verziju.</p>
+<p><a href="https://dglava.github.io/images/the-beachland-ballroom.png"><img src="https://dglava.github.io/images/the-beachland-ballroom-min.png"/></a></p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Ako neko zna naš pravi naziv za <em>powerchord</em>, tj. osnovni ton i čista kvinta,
+neka mi slobodno napiše da mogu ispravno koristiti naziv).&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div><p><a href="https://dglava.github.io/the-beachland-ballroom.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/falcon-bcc.html" rel="bookmark"
+                           title="Permalink to Nasumična postavka kokpita u Falcon BMS">Nasumična postavka kokpita u Falcon BMS</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-10-25T00:00:00+00:00">
                 Objavljeno: Pon, 25 Okt 2021
@@ -38,47 +77,14 @@
 <p>Tagovi: <a href="https://dglava.github.io/tag/falcon.html">falcon</a> </p>Prevodi:
         <a href="https://dglava.github.io/en/falcon-bcc.html">en</a>
 
-</footer><!-- /.post-info --><p>Nakon dosta provedenog vremena paleći F16 u Falcon BMS cijela
+</footer><!-- /.post-info -->                <p>Nakon dosta provedenog vremena paleći F16 u Falcon BMS cijela
 procedura se svede na klikanje i okretanje dugmića bez mnogo razmišljanja.
 Provjere su nepotrebne jer su uvijek u istom stanju. Pitao sam se zašto
 Falcon BMS ne nudi opciju da se to uvijek nalazi u nasumičnom stanju pri
-ulasku u kokpit.</p>
-<p><a href="https://forum.falcon-bms.com/post/299025">Odgovor sam dobio ovdje.</a>
-Navodno nije realistično, jer posada na zemlji namjesti avion i prije nego
-pilot uđe u njega. Nakon što sam vidio da ta funkcija neće biti ubačena,
-odlučio sam se da vidim je li moguće da sam napravim to.</p>
-<p>Prva pomisao je bila da jednostavno napravim programčić koji će poslati
-komande igri tipa "pomjeri prekidač X" i to nasumično. Ispostavilo se
-da Falcon BMS ne nudi nekakav API kojim bi se mogle slati komande.
-Znači da bi morao napraviti hakasto riješenje.</p>
-<p>Tako je i bilo. Napravio sam <a href="https://github.com/dglava/falcon-bcc">Falcon-BCC</a>,
-mali programčić napisan u Pythonu koji nakon što pomjerite CMDS panel
-u avionu na <em>STBY</em> nasumično podesi veliki broj stvari u avionu.</p>
-<p>Funkcioniše tako što pročita <em>keyfile</em> i onda pošalje tipke na tastaturi
-koje su povezane za svako dugme, prekidač i ostalo. Nakon dosta letova
-i nekoliko ispravki sam prilično zadovoljan s radom, s unutrašnjosti
-ne. Koristio sam <a href="https://github.com/nmeier/simscript">Falcon BMS <em>shared memory</em> čitač</a>
-od nmeiera. Uz njegovu pomoć sam dodao nove stavke, koje su bile potrebne
-da omoguće solidan rad programa. Također sam imao problema s slanjem
-tipki tastature bez <a href="https://stackoverflow.com/a/23468236">korištenja dodatnih biblioteka</a>.
-Najveći problem sam imao oko čitanja <em>FalconSharedMemoryAreaString</em>. Uz
-pomoć toga bi mogao automatski izvući lokaciju <em>keyfilea</em> koji se koristi
-i ne bi bilo potrebno ručno unijeti njegovu lokaciju. <a href="https://github.com/nmeier/simscript/issues/4">Nažalost moje
-programersko znanje</a> nije
-dovoljno dobro da bih to uspio.</p>
-<p>No, sve u svemu sam zadovoljan jer je sad manje monotono i sve one <em>čekliste</em>
-imaju smisla. Sad vam se npr. može desiti da pokušate izbaciti toplinske
-protiv-mjere, ali bez uspijeha, da bi skontali da je <em>JETT</em> prekidač
-ostao uključen i vi izbacile sve nakon polijetanja (desilo mi se).</p>
-<p><a href="https://github.com/dglava/falcon-bcc/archive/refs/heads/master.zip"><strong>Preuzmi Falcon-BCC</strong></a></p>
-<video width="640" height="360" controls>
-  <source src="https://dglava.github.io/files/falcon-bcc.mp4" type="video/webm">
-</video><p><a href="https://dglava.github.io/falcon-bcc.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+ulasku u …</p>
+                <a class="readmore" href="https://dglava.github.io/falcon-bcc.html">pročitaj više</a>
+<p><a href="https://dglava.github.io/falcon-bcc.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -106,34 +112,9 @@ pomoć u Pythonu.</p>
                 <a class="readmore" href="https://dglava.github.io/falcon-briefing-novi.html">pročitaj više</a>
 <p><a href="https://dglava.github.io/falcon-briefing-novi.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/x52-detent.html" rel="bookmark"
-                           title="Permalink to Logitech X52 prepreka za forsaž">Logitech X52 prepreka za forsaž</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-02-12T00:00:00+00:00">
-                Objavljeno: Pet, 12 Feb 2021
-        </abbr>
-
-<p>Pod: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>Tagovi: <a href="https://dglava.github.io/tag/falcon.html">falcon</a> </p>Prevodi:
-        <a href="https://dglava.github.io/en/x52-detent.html">en</a>
-
-</footer><!-- /.post-info -->                <p>Imam Logitech X52 Pro <a href="https://en.wikipedia.org/wiki/HOTAS">HOTAS</a>. Po fabričkim
-postavkama posjeduje prepreke (<em>detents</em>) kod 25% i 75% na <em>throttle-u</em> (ne znam
-našu riječ za throttle, ako neko zna neka napiše). Prepreka na 75% je donekle
-korisna, ali je zato ona na 25%, barem za mene, beskorisna. Spriječava
-fina podešavanja u svojoj okolini …</p>
-                <a class="readmore" href="https://dglava.github.io/x52-detent.html">pročitaj više</a>
-<p><a href="https://dglava.github.io/x52-detent.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Stranica 1 / 7
+    Stranica 1 / 8
         <a href="https://dglava.github.io/category/stvari2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
