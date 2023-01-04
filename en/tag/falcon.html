@@ -28,7 +28,87 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/falcon-bcc.html">Randomize the cockpit in Falcon BMS</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/x52-detent2.html">Software AB detent for X52 Pro in Falcon BMS</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-04-01T00:00:00+00:00">
+                Published: Sat, 01 Apr 2023
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../x52-detent2.html">bs</a>
+
+</footer><!-- /.post-info --><p>I have already mentioned my <a href="https://dglava.github.io/en/x52-detent.html">problem regarding the afterburner detent
+on my X52 Pro HOTAS</a>.
+After some time, the makeshift solution with the tape starts to wear off
+and becomes unreliable. A software solution seemed like a better idea.</p>
+<h3>How to set it up</h3>
+<p>First you need to download and install some additional software:</p>
+<ol>
+<li><a href="https://github.com/jshafer817/vJoy">VJoy</a> - creates virtual joysticks.
+  <strong>Note:</strong> there are multiple VJoy versions. Look for them online if the
+  one above isn't working for you.</li>
+<li><a href="http://whitemagic.github.io/JoystickGremlin/">JoystickGremlin</a> - will
+  be used to map our real X52 to the virtual one created by VJoy.</li>
+<li><em>optional:</em> <a href="https://vigem.org/projects/HidHide/">HIDHide</a> - will hide
+  our real X52 Pro inside Windows, to make using our virtual joystick more convenient.</li>
+</ol>
+<p>Basically, we'll create a virtual joystick that has all the buttons that
+our real X52 Pro has, except for a slight modification to the throttle.
+We will adjust the throttle so it only goes up to 99%. We will use the
+slider on the X52 to move it to 100%, thereby engaging the afterburner.</p>
+<p>Add all of your buttons and axes that you have on the X52 Pro (or other
+HOTAS) and map them to the virtual one. Use basic <em>Remap</em> functions for that.</p>
+<p><img src="https://dglava.github.io/en/images/detent-a1.png"/></p>
+<p>After that, we'll also add a <em>Response Curve</em> to our Z axis (throttle axis).
+Adjust the bottom-left point, so that the Y value goes to -0,990. That's
+the maximum position (no idea why it's reversed).</p>
+<p><img src="https://dglava.github.io/en/images/detent-a2.png"/></p>
+<p>Next up we add a <em>Macro</em> for the slider axis. Under <em>Action</em> we define
+that the slider moves the virtual throttle (Z axis) to 100% (i.e. up to -1,000).
+That's the level at which we want our AB to kick in.</p>
+<p><img src="https://dglava.github.io/en/images/detent-a3.png"/></p>
+<p>Use the <em>Condition</em> tab to fine-tune the engaging of the AB. We set it
+up so that it only moves the throttle to 100% if we're already close to the maximum
+point (from -1,000 to -0,950). That prevents the virtual throttle going to
+100% if we push the slider up if our real throttle position is somewhere
+in the middle for example.</p>
+<p><img src="https://dglava.github.io/en/images/detent-a4.png"/></p>
+<p><em>Virtual Button</em> can also be used to further fine-tune the selectivity.
+If you set it up like on the picture, it will only activate if you move
+the slider up from below almost all the way up. That way the virtual
+throttle won't move to 100% if you move leave the slider all the way
+forward and move your real throttle all the way forward. You need to move
+the slider back and then again all the way forward. This prevents accidental
+AB engagements if you forgot to move the slider back and go into mil-power.</p>
+<p><img src="https://dglava.github.io/en/images/detent-a5.png"/></p>
+<p>Next we have to set up Falcon BMS itself. Pick your VJoy joystick and
+move your throttle all the way up. You'll see how it's almost all the
+way up. Set the AB detent position at this position (see picture of the
+green line and the throttle being just below it).</p>
+<p><img src="https://dglava.github.io/en/images/detent-b.png"/></p>
+<p>When you move the slider all the way up now, you'll notice the throttle
+moving past the green detent position. That means you're in AB now (see picture below).</p>
+<p><img src="https://dglava.github.io/en/images/detent-c.png"/></p>
+<p>That's it. Now you have the whole throttle range for mil-power and you
+can precisely engage the AB by moving the slider up.</p>
+<p>You might ask yourself why I just didn't share my profile. It's because
+it contains the GUID of my X52 Pro and yours might be different and you
+might use less or more buttons than I do (I use 39, since Falcon BMS
+supports more than just 32 DX buttons now).</p><p><a href="https://dglava.github.io/en/x52-detent2.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/falcon-bcc.html" rel="bookmark"
+                           title="Permalink to Randomize the cockpit in Falcon BMS">Randomize the cockpit in Falcon BMS</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-10-25T00:00:00+00:00">
                 Published: Mon, 25 Oct 2021
@@ -38,40 +118,13 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
         <a href="https://dglava.github.io/en/../falcon-bcc.html">bs</a>
 
-</footer><!-- /.post-info --><p>After some time the routine startup of the F16 in Falcon BMS turns
+</footer><!-- /.post-info -->                <p>After some time the routine startup of the F16 in Falcon BMS turns
 into a mindless flipping and switching. The problem is that there's no
 need to verify that a switch is in the correct position according
-to a check-list because you know that it is (fixed by the game). I was
-wondering if there's a way to randomize it.</p>
-<p><a href="https://forum.falcon-bms.com/post/299025">I've gotten my answer pretty quickly</a>.
-Apparently it's unrealistic to have it randomized, because the ground
-crew sets it up in always the same way. Since it wasn't going to be
-added officially in the game, I had to solve it myself.</p>
-<p>At first I thought I could just send certain commands like "flip this
-switch" via some kind of API. But Falcon BMS lacks such a thing, so I had
-to resort to a more hacky solution in the form of <a href="https://github.com/dglava/falcon-bcc">Falcon-BCC</a>.</p>
-<p>It works by reading the keyfile and then sending the proper keyboard
-keystrokes. After trying it out for some time and a few fixes, I'm pretty
-content with its state, but not with its insides. I used
-<a href="https://github.com/nmeier/simscript">nmeier's great Python implementation</a>
-for reading the Falcon BMS shared memory. I also had to find a
-<a href="https://stackoverflow.com/a/23468236">simple way of sending keystrokes without using an additional library</a>.
-The biggest problem and one where <a href="https://github.com/nmeier/simscript/issues/4">I haven't found a solution for</a>
-yet was reading the <em>FalconSharedMemoryAreaString</em> content and getting the keyfile
-programatically instead of having to enter it manually.</p>
-<p>I'm pretty happy with it in general though and I use it every time I play.
-Just make sure to use those check-lists now or else you might find yourself
-out of flares because you forgot to check that the JETT switch on the CMDS
-panel is off.</p>
-<p><a href="https://github.com/dglava/falcon-bcc/archive/refs/heads/master.zip"><strong>Download Falcon-BCC</strong></a></p>
-<video width="640" height="360" controls>
-  <source src="https://dglava.github.io/en/files/falcon-bcc.mp4" type="video/webm">
-</video><p><a href="https://dglava.github.io/en/falcon-bcc.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+to a check-list because you know that it is (fixed by the game …</p>
+                <a class="readmore" href="https://dglava.github.io/en/falcon-bcc.html">read more</a>
+<p><a href="https://dglava.github.io/en/falcon-bcc.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -99,30 +152,6 @@ convenient.</p>
 <p>Basically, it's a Python script …</p>
                 <a class="readmore" href="https://dglava.github.io/en/falcon-briefing-novi.html">read more</a>
 <p><a href="https://dglava.github.io/en/falcon-briefing-novi.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/en/x52-detent.html" rel="bookmark"
-                           title="Permalink to Logitech X52 afterburner detent">Logitech X52 afterburner detent</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-02-12T00:00:00+00:00">
-                Published: Fri, 12 Feb 2021
-        </abbr>
-
-<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
-        <a href="https://dglava.github.io/en/../x52-detent.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>I have a Logitech X52 Pro HOTAS. It comes with 2 detents by default, one
-at 25% and the other at 75%. Since the 25% was messing with the fine-control
-at the lower end, I decided to <a href="https://www.youtube.com/watch?v=3TrDCO-FMBI">remove them.</a></p>
-<p>The downside to that was that I no longer had the …</p>
-                <a class="readmore" href="https://dglava.github.io/en/x52-detent.html">read more</a>
-<p><a href="https://dglava.github.io/en/x52-detent.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
