@@ -66,7 +66,7 @@ fajlove svakuda, tako da sam dalje tražio.</p>
 <p>Drugo, prihvatljivije rješenje
 sam našao u <a href="https://www.reddit.com/r/gnome/comments/37bp1r/how_do_i_disable_316s_overlay_scrollbars/">ovoj</a>
 dretvi na Redditu. Dodavanje</p>
-<div class="highlight"><pre><span></span><code>gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus --method org.freedesktop.DBus.UpdateActivationEnvironment <span class="s1">&#39;{&quot;GTK_OVERLAY_SCROLLING&quot;: &quot;0&quot;}&#39;</span>
+<div class="highlight"><pre><span></span><code>gdbus<span class="w"> </span>call<span class="w"> </span>--session<span class="w"> </span>--dest<span class="w"> </span>org.freedesktop.DBus<span class="w"> </span>--object-path<span class="w"> </span>/org/freedesktop/DBus<span class="w"> </span>--method<span class="w"> </span>org.freedesktop.DBus.UpdateActivationEnvironment<span class="w"> </span><span class="s1">&#39;{&quot;GTK_OVERLAY_SCROLLING&quot;: &quot;0&quot;}&#39;</span>
 </code></pre></div>
 
 <p>u Openboxov environment fajl je radilo, trake su bile vidljive uvijek.
@@ -81,7 +81,7 @@ se Openboxov environment fajl izvršava nakon što se Dbus pokrene i preuzme
 postavljene promjenjljive.</p>
 <p>Konačno, najčistije rješenje je ponovno importovanje promjenjljivih u Dbus sesiju
 nakon pokretanja Openboxa, odnosno environment fajla. Dodao sam ovo:</p>
-<div class="highlight"><pre><span></span><code>dbus-update-activation-environment --systemd --all<span class="sb">`</span>
+<div class="highlight"><pre><span></span><code>dbus-update-activation-environment<span class="w"> </span>--systemd<span class="w"> </span>--all<span class="sb">`</span>
 </code></pre></div>
 
 <p>u openbox/environment fajl i Gedit i skrol trake se ponašaju normalno.

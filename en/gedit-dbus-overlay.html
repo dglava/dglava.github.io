@@ -65,7 +65,7 @@ That's why it was unaware of the variable upon opening Gedit via Dbus activation
 post on Reddit. However, instead of just exporting that one variable, it's
 probably better to make Dbus aware of all the new environment variables
 exported through Openbox's environment file after its start. To do that, run:</p>
-<div class="highlight"><pre><span></span><code>dbus-update-activation-environment --systemd --all
+<div class="highlight"><pre><span></span><code>dbus-update-activation-environment<span class="w"> </span>--systemd<span class="w"> </span>--all
 </code></pre></div>
 
 <p>after your Openbox session starts. I have it inside my openbox/environment file.
