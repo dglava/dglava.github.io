@@ -28,7 +28,29 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/x52-detent2.html">Software AB detent for X52 Pro in Falcon BMS</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/kao-lmr-bs, en.html">Kao lmr</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-06-05T00:00:00+00:00">
+                Published: Mon 05 June 2023
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/muzika.html">muzika</a> </p>
+</footer><!-- /.post-info --><p><audio controls class="sredina" src="https://dglava.github.io/en/files/kao-lmr.ogg" type="audio/ogg" /></p>
+<p><img class="sredina" src="https://dglava.github.io/en/images/kao-lmr.jpg" /></p><p><a href="https://dglava.github.io/en/kao-lmr-bs, en.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/x52-detent2.html" rel="bookmark"
+                           title="Permalink to Software AB detent for X52 Pro in Falcon BMS">Software AB detent for X52 Pro in Falcon BMS</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2023-01-04T00:00:00+00:00">
                 Published: Wed, 04 Jan 2023
@@ -38,69 +60,15 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/falcon.html">falcon</a> </p>Translations:
         <a href="https://dglava.github.io/en/../x52-detent2.html">bs</a>
 
-</footer><!-- /.post-info --><p>I have already mentioned my <a href="https://dglava.github.io/en/x52-detent.html">problem regarding the afterburner detent
+</footer><!-- /.post-info -->                <p>I have already mentioned my <a href="https://dglava.github.io/en/x52-detent.html">problem regarding the afterburner detent
 on my X52 Pro HOTAS</a>.
 After some time, the makeshift solution with the tape starts to wear off
 and becomes unreliable. A software solution seemed like a better idea.</p>
 <h3>How to set it up</h3>
-<p>First you need to download and install some additional software:</p>
-<ol>
-<li><a href="https://github.com/jshafer817/vJoy">VJoy</a> - creates virtual joysticks.
-  <strong>Note:</strong> there are multiple VJoy versions. Look for them online if the
-  one above isn't working for you.</li>
-<li><a href="http://whitemagic.github.io/JoystickGremlin/">JoystickGremlin</a> - will
-  be used to map our real X52 to the virtual one created by VJoy.</li>
-<li><em>optional:</em> <a href="https://vigem.org/projects/HidHide/">HIDHide</a> - will hide
-  our real X52 Pro inside Windows, to make using our virtual joystick more convenient.</li>
-</ol>
-<p>Basically, we'll create a virtual joystick that has all the buttons that
-our real X52 Pro has, except for a slight modification to the throttle.
-We will adjust the throttle so it only goes up to 99%. We will use the
-slider on the X52 to move it to 100%, thereby engaging the afterburner.</p>
-<p>Add all of your buttons and axes that you have on the X52 Pro (or other
-HOTAS) and map them to the virtual one. Use basic <em>Remap</em> functions for that.</p>
-<p><a href="https://dglava.github.io/en/images/detent-a1.png"><img src="https://dglava.github.io/en/images/detent-a1.png" width="50%" height="50%"/></a></p>
-<p>After that, we'll also add a <em>Response Curve</em> to our Z axis (throttle axis).
-Adjust the bottom-left point, so that the Y value goes to -0,990. That's
-the maximum position (no idea why it's reversed).</p>
-<p><a href="https://dglava.github.io/en/images/detent-a2.png"><img src="https://dglava.github.io/en/images/detent-a2.png" width="50%" height="50%"/></a></p>
-<p>Next up we add a <em>Macro</em> for the slider axis. Under <em>Action</em> we define
-that the slider moves the virtual throttle (Z axis) to 100% (i.e. up to -1,000).
-That's the level at which we want our AB to kick in.</p>
-<p><a href="https://dglava.github.io/en/images/detent-a3.png"><img src="https://dglava.github.io/en/images/detent-a3.png" width="50%" height="50%"/></a></p>
-<p>Use the <em>Condition</em> tab to fine-tune the engaging of the AB. We set it
-up so that it only moves the throttle to 100% if we're already close to the maximum
-point (from -1,000 to -0,950). That prevents the virtual throttle going to
-100% if we push the slider up if our real throttle position is somewhere
-in the middle for example.</p>
-<p><a href="https://dglava.github.io/en/images/detent-a4.png"><img src="https://dglava.github.io/en/images/detent-a4.png" width="50%" height="50%"/></a></p>
-<p><em>Virtual Button</em> can also be used to further fine-tune the selectivity.
-If you set it up like on the picture, it will only activate if you move
-the slider up from below almost all the way up. That way the virtual
-throttle won't move to 100% if you move leave the slider all the way
-forward and move your real throttle all the way forward. You need to move
-the slider back and then again all the way forward. This prevents accidental
-AB engagements if you forgot to move the slider back and go into mil-power.</p>
-<p><a href="https://dglava.github.io/en/images/detent-a5.png"><img src="https://dglava.github.io/en/images/detent-a5.png" width="50%" height="50%"/></a></p>
-<p>Next we have to set up Falcon BMS itself. Pick your VJoy joystick and
-move your throttle all the way up. You'll see how it's almost all the
-way up. Set the AB detent position at this position (see picture of the
-green line and the throttle being just below it).</p>
-<p><a href="https://dglava.github.io/en/images/detent-b.png"><img src="https://dglava.github.io/en/images/detent-b.png" width="50%" height="50%"/></a></p>
-<p>When you move the slider all the way up now, you'll notice the throttle
-moving past the green detent position. That means you're in AB now (see picture below).</p>
-<p><a href="https://dglava.github.io/en/images/detent-c.png"><img src="https://dglava.github.io/en/images/detent-c.png" width="50%" height="50%"/></a></p>
-<p>That's it. Now you have the whole throttle range for mil-power and you
-can precisely engage the AB by moving the slider up.</p>
-<p>You might ask yourself why I just didn't share my profile. It's because
-it contains the GUID of my X52 Pro and yours might be different and you
-might use less or more buttons than I do (I use 39, since Falcon BMS
-supports more than just 32 DX buttons now).</p><p><a href="https://dglava.github.io/en/x52-detent2.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>First you need to download and …</p>
+                <a class="readmore" href="https://dglava.github.io/en/x52-detent2.html">read more</a>
+<p><a href="https://dglava.github.io/en/x52-detent2.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -130,31 +98,6 @@ Idles moment.</p>
 in D major (not sure …</p>
                 <a class="readmore" href="https://dglava.github.io/en/when-the-lights-come-on.html">read more</a>
 <p><a href="https://dglava.github.io/en/when-the-lights-come-on.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/en/the-beachland-ballroom.html" rel="bookmark"
-                           title="Permalink to The Beachland Ballroom">The Beachland Ballroom</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-12-17T20:20:00+00:00">
-                Published: Sat, 17 Dec 2022
-        </abbr>
-
-<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="https://dglava.github.io/en/tag/tabs.html">tabs</a> <a href="https://dglava.github.io/en/tag/sheet-music.html">sheet-music</a> </p>Translations:
-        <a href="https://dglava.github.io/en/../the-beachland-ballroom.html">bs</a>
-
-</footer><!-- /.post-info -->                <p>I know exactly what kind of feelings this song evokes, but I can't
-describe it. Peristent, thumping, determined, powerfull and desperate.</p>
-<p><a href="https://www.youtube.com/watch?v=t7aktt5cDqs">Idles - The Beachland Ballroom</a></p>
-<p>The first part is in E major, the second one in D major. The tempo is
-around 90 bpm. It's an incredibly simple song to …</p>
-                <a class="readmore" href="https://dglava.github.io/en/the-beachland-ballroom.html">read more</a>
-<p><a href="https://dglava.github.io/en/the-beachland-ballroom.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

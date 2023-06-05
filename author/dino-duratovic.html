@@ -28,7 +28,29 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/x52-detent2.html">Softverska prepreka za forsaž na Logitechovom X52 Pro u Falcon BMS</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/kao-lmr-bs, en.html">Kao lmr</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-06-05T00:00:00+00:00">
+                Objavljeno: Mon 05 June 2023
+        </abbr>
+
+<p>Pod: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/muzika.html">muzika</a> </p>
+</footer><!-- /.post-info --><p><audio controls class="sredina" src="https://dglava.github.io/files/kao-lmr.ogg" type="audio/ogg" /></p>
+<p><img class="sredina" src="https://dglava.github.io/images/kao-lmr.jpg" /></p><p><a href="https://dglava.github.io/kao-lmr-bs, en.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/x52-detent2.html" rel="bookmark"
+                           title="Permalink to Softverska prepreka za forsaž na Logitechovom X52 Pro u Falcon BMS">Softverska prepreka za forsaž na Logitechovom X52 Pro u Falcon BMS</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2023-01-04T00:00:00+00:00">
                 Objavljeno: Sri, 04 Jan 2023
@@ -38,81 +60,16 @@
 <p>Tagovi: <a href="https://dglava.github.io/tag/falcon.html">falcon</a> </p>Prevodi:
         <a href="https://dglava.github.io/en/x52-detent2.html">en</a>
 
-</footer><!-- /.post-info --><p>Već sam spominjao problem oko <a href="https://dglava.github.io/x52-detent.html">prepreke za forsaž u Falcon BMSu tokom
+</footer><!-- /.post-info -->                <p>Već sam spominjao problem oko <a href="https://dglava.github.io/x52-detent.html">prepreke za forsaž u Falcon BMSu tokom
 korištenja Logitechovog X52 Pro HOTASa</a>.
 Problem je što se nakon izvjesnog vremena "izliže" gumena prepreka i
 izgubi na precisnosti. Novo, bolje riješenje je softversko; uz pomoć
 JoystickGremlina i VJoya.</p>
 <h3>Kako postaviti</h3>
-<p>Prvo što morate uraditi je skinuti dodatne programe: </p>
-<ul>
-<li>
-<p><a href="https://github.com/jshafer817/vJoy">VJoy</a> - pravi virtuelne džojstike. Naš pravi džojstik (HOTAS) ćemo "prevesti"
-  u virtuelni kojeg VJoy napravi. <strong>Napomena:</strong> ima više VJoy instalacija/verzija
-  na internetu. Gore linkovani nije najnoviji. Ako vam taj ne radi, probajte
-  neke od drugih.</p>
-</li>
-<li>
-<p><a href="http://whitemagic.github.io/JoystickGremlin/">JoystickGremlin</a> - služi
-  za mapiranje virtuelnog džojstika i nudi dodatne
-  funkcije koje ćemo iskoristiti za postavljanje softverske prepreke.</p>
-</li>
-<li>
-<p><em>opcionalno:</em> <a href="https://vigem.org/projects/HidHide/">HIDHide</a> - služi
-  da sakrije naš X52 u Windowsu, tj. da nam olakša korištenje
-  virtuelnog džojstika.</p>
-</li>
-</ul>
-<p>U suštini ćemo urediti virtuelni džojstik, koji ima sve identične dugmiće
-i osovine kao naš pravi X52 Pro, osim male izmjene na <em>throttle</em>. Njega
-ćemo podesiti da kad gurnemo pravi do kraja, on registruje samo 99% na
-virtuelnom. Nakon što gurnemo <em>slider</em> na X52, on će virtuelni gurnuti
-na 100% i u tom trenutko se pali forsaž u Falconu.</p>
-<p>Dodajte sve dugmiće i osovine što imate na X52 i dodijelite ih virtuelnom
-džojstiku.</p>
-<p>Za Z-osovinu (<em>throttle</em>) ćemo urediti i <em>response curve</em>. Dodamo običnu
-<em>Remap</em> funkciju i dodijelimo je virtuelnom džojstiku.</p>
-<p><a href="https://dglava.github.io/images/detent-a1.png"><img src="https://dglava.github.io/images/detent-a1.png" width="50%" height="50%"/></a></p>
-<p>Nakon toga dodajemo <em>Response Curve</em> i podešavamo donju-lijevu tačku,
-maksimalnu poziciju (ne znam zašto je obrnuto), da Y ide do -0,990.</p>
-<p><a href="https://dglava.github.io/images/detent-a2.png"><img src="https://dglava.github.io/images/detent-a2.png" width="50%" height="50%"/></a></p>
-<p>Sljedeće dodajemo <em>Macro</em> za osovinu od slajdera. Pod <em>Action</em> definišemo
-da slajder pomjera virtuelnu Z osovinu (<em>throttle</em>) do 100% (tj. do -1,000)
-što će biti nivo odakle se pali forsaž.</p>
-<p><a href="https://dglava.github.io/images/detent-a3.png"><img src="https://dglava.github.io/images/detent-a3.png" width="50%" height="50%"/></a></p>
-<p><em>Condition</em> tab koristimo da pomjeranje slajdera podesimo da bude malo selektivnije,
-tj. da se jedino pomjera do 100% ako je virtuelni <em>throttle</em> već približno
-gurnut naprijed (od -1,000 do -0,950). To spriječava da guranje slajdera
-naprijed ne upali forsaž ako nam je throttle recimo na 50%.</p>
-<p><a href="https://dglava.github.io/images/detent-a4.png"><img src="https://dglava.github.io/images/detent-a4.png" width="50%" height="50%"/></a></p>
-<p><em>Virtual Button</em> tab koristimo da još usavršimo selektivnost: kad ga
-podesimo kao na slici, on će se aktivirati jedino ako slajder guramo naprijed
-do kraja ili skoro do kraja. Npr. je slajder već maksimalno naprijed,
-a vi gurnete <em>throttle</em> do kraja, neće upaliti forsaž, već slajder
-morate vraiti nazad i gurnuti opet.</p>
-<p><a href="https://dglava.github.io/images/detent-a5.png"><img src="https://dglava.github.io/images/detent-a5.png" width="50%" height="50%"/></a></p>
-<p>Sljedeće podešavanje je u Falcon BMSu. Izaberite svoj VJoy džojstik
-i gurnite <em>throttle</em> skroz naprijed. Vidjećete kao na slici da se zaustavi
-trun ispred maksimuma (naših podešeni 99% ili -0,950).</p>
-<p><a href="https://dglava.github.io/images/detent-b.png"><img src="https://dglava.github.io/images/detent-b.png" width="50%" height="50%"/></a></p>
-<p>Tu kliknemo lijevim klikom i postavimo <em>detent</em> za forsaž. Ako sad
-gurnemo slajder naprijed, <em>throttle</em> će se pomjeriti do kraja (malo
-iznad zelene crtice, vidi sliku) i to je nivo gdje se pali forsaž.</p>
-<p><a href="https://dglava.github.io/images/detent-c.png"><img src="https://dglava.github.io/images/detent-c.png" width="50%" height="50%"/></a></p>
-<p>To je to. Sad imamo komplet raspon X52 Pro <em>throttle</em>-a za <em>mil-power</em>
-i možemo uživati u precisnosti. Ako želimo uključiti <em>afterburner</em>, pomjerimo
-slajder do kraja. Letio sam dosta misija ovako i mogu reći da nakon početnih
-par letova pređe u naviku i ne predstavlja nikakav problem.</p>
-<p>Pitanje je: zašto sam objasnio proceduru umjesto postavljanja svog
-profila? Jer profil sadrži GUID mog X52 Pro i mislim da se svaki put mijenja,
-tako da ako ga želite koristiti kod sebe morate promjeniti GUID. Također
-ovako možete podesiti i druge HOTASe, ne samo X52 Pro. Napraviti
-svoj profil je mnogo lakše.</p><p><a href="https://dglava.github.io/x52-detent2.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>Prvo što morate uraditi je skinuti dodatne …</p>
+                <a class="readmore" href="https://dglava.github.io/x52-detent2.html">pročitaj više</a>
+<p><a href="https://dglava.github.io/x52-detent2.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -142,30 +99,6 @@ barem za mene.</p>
 D duru (D, G, F#, A, C …</p>
                 <a class="readmore" href="https://dglava.github.io/when-the-lights-come-on.html">pročitaj više</a>
 <p><a href="https://dglava.github.io/when-the-lights-come-on.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/the-beachland-ballroom.html" rel="bookmark"
-                           title="Permalink to The Beachland Ballroom">The Beachland Ballroom</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-12-17T20:20:00+00:00">
-                Objavljeno: Sub, 17 Dec 2022
-        </abbr>
-
-<p>Pod: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>Tagovi: <a href="https://dglava.github.io/tag/tablature.html">tablature</a> </p>Prevodi:
-        <a href="https://dglava.github.io/en/the-beachland-ballroom.html">en</a>
-
-</footer><!-- /.post-info -->                <p>Znam tačno kakav osjećaj ova pjesma budi, ali ga ne znam opisati. Uporno,
-udarno, odlučno, snažno, očajno. Prvi dio je u E duru, drugi u D duru,
-tempo oko 90 bpm. U suštini je nevjerovatno prosto i lagano svirati;
-F# <em>power chord</em> u prvom dijelu i D-B-F#-A progresija u …</p>
-                <a class="readmore" href="https://dglava.github.io/the-beachland-ballroom.html">pročitaj više</a>
-<p><a href="https://dglava.github.io/the-beachland-ballroom.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
