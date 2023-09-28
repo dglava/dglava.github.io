@@ -28,7 +28,29 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/maas.html">Modular Ableton Amp Sim</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/sporo-bs, en.html">sporo</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-09-28T00:00:00+00:00">
+                Objavljeno: Čet 28 Septembar 2023
+        </abbr>
+
+<p>Kategorija: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/muzika.html">muzika</a> </p>
+</footer><!-- /.post-info --><p><audio controls class="slika" src="https://dglava.github.io/files/sporo.ogg" type="audio/ogg" /></p>
+<p><img class="slika" src="https://dglava.github.io/images/sporo.jpg" /></p><p><a href="https://dglava.github.io/sporo-bs, en.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/maas.html" rel="bookmark"
+                           title="Permalink to Modular Ableton Amp Sim">Modular Ableton Amp Sim</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2023-09-10T00:00:00+00:00">
                 Objavljeno: Ned, 10 Sep 2023
@@ -38,80 +60,15 @@
 <p>Tagovi: <a href="https://dglava.github.io/tag/ableton.html">ableton</a> </p>Prevodi:
         <a href="https://dglava.github.io/en/maas.html">en</a>
 
-</footer><!-- /.post-info --><h2>Frustracija sa Bias FX2</h2>
+</footer><!-- /.post-info -->                <h2>Frustracija sa Bias FX2</h2>
 <p>Što više koristim Bias FX 2 simulator pojačala za gitaru, sve više
 sam frustriran sa interfejsom. Koristi neku grozotu baziranu na
 Chromiumu i veoma je spor. Otvaranje interfejsa prvo učitava podatke tj.
 prijavljuje se na njihov server. Ponekad sa čak i 30 sekundi čekanja. Navigacija
-unutar interfejsa je manje iritantna, ali me frustrira MIDI mapiranje i podešavanje.
-Uglavnom zbog nepostojanja imenovanih parametara,
-pa tako morate nagađati šta je pod parametrom 1, šta pod 2, itd.</p>
-<p>Ableton Live me je oduševio sa načinom korištenja. Sve opcije efekata
-i uređaja koji su na traci, dostupni su na dnu ekrana i mogu su jednostavno
-uređivati. Nema potrebe za otvaranjem prozora. Koliko bi moćno bilo
-kad bi VST <em>plug-ini</em> mogli tako raditi...</p>
-<h2>Modular Ableton Amp Sim</h2>
-<p>Ideja je da koristiti što više samostalnih efekata i uređaja, grupisati
-ih i manipulisati na klasik i pregledan Ableton Live način. Na slici
-dole možete vidjeti kako izgleda konačno riješenje.</p>
-<p><img class="sredina" src="https://dglava.github.io/images/maas-1.png" /></p>
-<p>Sve je moguće zbog nekoliko svojstava što nam Ableton Live nudi. Prvenstveno
-su to <em>Macro</em> kontrole. One nam omogućavaju da mapiramo izvjesne parametre
-na njih i grupišemo ih na pristupačno mjesto. Također je korisna opcija
-lanaca (<em>chains</em>), kao i uopšteno moćno manipulisanje parametrima unutar
-Ableton Live.</p>
-<p>MAAS (Modular Ableton Amp Sim) se sastoji od pojačala, zvučnika i efekata.</p>
-<h2>Amp - Pojačalo</h2>
-<p>Za pojačalo koristim <a href="https://www.neuralampmodeler.com/">Neural Amp Modeler</a>.
-To je slobodni program uz
-pomoć kojeg se mogu napraviti profili pojačala za gitaru i dijeliti s drugima.
-Rezultati znaju biti sjajni, dostignu čak i kvalitet Bias FX2 i drugih
-tipa od Neural DSP, Amplitube, Guitar Rig. Ljudi dijele svoja pojačala
-sa drugima i već postoji veliki broj veoma impresivnih zvukova. Još jedna
-prednost je što je "lagan", tj. daje nam samo simulaciju pojačala.
-Postoji mogućnost korištenja IRa (<em>impulse response</em>) unutar NAM-a, ali
-korištenje drugog riješenja je mnogo prikladnije za naš cilj.</p>
-<p>Unutar <em>Effects racka</em> imamo lance (<em>chains</em>), svaki sa jednom instancom
-NAM-a (vidi broj 1). Za <em>Amp</em> makro (vidi broj 2) povežemo <em>Chain Selector</em>
-koji će birati koja instanca NAM-a radi. Da izbjegnemo više NAM-a aktivnih
-u isto vrijeme, također povežemo dugme za paljenje/gašenje efekta za <em>Amp</em> makro.
-Potrebno je mapirati raspon od lanca, npr. za <em>Bassman 50</em> je od 0 do 24 (vidi broj 3).</p>
-<p>Parametri za <em>Input</em>, <em>Output</em>, <em>equalizer</em> i njegove  postavke povezani
-za po jedan makro (vidi broj 2).</p>
-<p>Na kraju šta preostaje, je da napravimo Makro varijacije i snimimo ih (vidi broj 4).
-Tako s jednim klikom na ime pojačala možemo učitati postavke za jedno.</p>
-<p><a href="https://dglava.github.io/images/maas-2.png"><img src="https://dglava.github.io/images/maas-2.png" class="slika" /></a></p>
-<h2>Cab - Zvučnici</h2>
-<p>Za simulaciju kabineta za zvučnike koristim <a href="https://www.igniteamps.com/#nadir">NadIR</a>. On omogućava
-da učitamo svoje <em>impulse response</em> fajlove. Zajedno sa pojačalom čini jednu cijelinu.
-Možete naravno koristiti i druge programe za učitavanje <em>impulse response</em> fajlova,
-čak Ableton Live ima svoj: Hybrid Reverb. No on je nažalost dostupan
-samo u Suite verziji.</p>
-<p>Kao kod pojačala, imamo više instanci NadIR-a,
-svaka u svom lancu (vidi broj 1). Svaki lanac ima svoj raspon,
-i makro je mapiran na njega iz istog razloga kao kod pojačala: da izbjegnemo
-da svaka instanca NadIR-a radi u isto vrijeme. Oni su mapirani na Cab makro (vidi brojeve 2).
-Osim toga, mapirani su i parametri za <em>high-pass</em> i <em>low-pass</em> unutar NadIR-a.</p>
-<p>Na kraju, kao i kod pojačala, svaki zvučnik je snimljen kao makro varijacija za
-jednostavno biranje (vidi broj 3).</p>
-<p><a href="https://dglava.github.io/images/maas-3.png"><img src="https://dglava.github.io/images/maas-3.png" class="slika" /></a></p>
-<h2>Efekti</h2>
-<p>Velika prednost MAAS pristupa je ta što su efekti i njihove postavke
-također vidljivi na prvu u donjoj traci. Neki od korisnih su <em>EQ</em> na početku,
-sa <em>high-pass</em> filterom, kompresor, <em>overdrive</em> efekat, <em>reverb</em>, i sve
-ostalo što vam bude potrebno.</p>
-<hr>
-
-<p>To je osnova MAAS-a. Svakako možete dodavati još više pojačala, zvučnika (IR),
-efekata. Nažalost ne mogu podijeliti kompletni svoj MAAS zbog licensi
-modela pojačala, pogotovo <em>impulse response</em> fajlova. No, možete skinuti
-"kostur" i ubaciti NAM pojačala koja ste sami skinuli i ubaciti vaše IR fajlove.</p>
-<p><a href="https://dglava.github.io/files/MAAS.adg"><strong>Preuzmi Ableton Live Pack</strong></a></p><p><a href="https://dglava.github.io/maas.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+unutar …</p>
+                <a class="readmore" href="https://dglava.github.io/maas.html">pročitaj više</a>
+<p><a href="https://dglava.github.io/maas.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -135,30 +92,6 @@ modela pojačala, pogotovo <em>impulse response</em> fajlova. No, možete skinut
 <p><img class="slika" src="https://dglava.github.io/images/gradi.jpg" /></p>
                 <a class="readmore" href="https://dglava.github.io/gradi-bs, en.html">pročitaj više</a>
 <p><a href="https://dglava.github.io/gradi-bs, en.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/lagana-gitara-bs, en.html" rel="bookmark"
-                           title="Permalink to lagana gitara">lagana gitara</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-08-07T00:00:00+00:00">
-                Objavljeno: Mon 07 August 2023
-        </abbr>
-        <br />
-        <abbr class="modified" title="2023-09-05T00:00:00+00:00">
-                Ažurirano: Tue 05 September 2023
-        </abbr>
-
-<p>Kategorija: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>Tagovi: <a href="https://dglava.github.io/tag/muzika.html">muzika</a> </p>
-</footer><!-- /.post-info -->                <p><audio controls class="slika" src="https://dglava.github.io/files/lagana-gitara.ogg" type="audio/ogg" /></p>
-<p><img class="slika" src="https://dglava.github.io/images/lagana-gitara.jpg" /></p>
-                <a class="readmore" href="https://dglava.github.io/lagana-gitara-bs, en.html">pročitaj više</a>
-<p><a href="https://dglava.github.io/lagana-gitara-bs, en.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

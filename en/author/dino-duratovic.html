@@ -28,7 +28,29 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/maas.html">Modular Ableton Amp Sim</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/sporo-bs, en.html">sporo</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-09-28T00:00:00+00:00">
+                Published: Čet 28 Septembar 2023
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/muzika.html">muzika</a> </p>
+</footer><!-- /.post-info --><p><audio controls class="slika" src="https://dglava.github.io/en/files/sporo.ogg" type="audio/ogg" /></p>
+<p><img class="slika" src="https://dglava.github.io/en/images/sporo.jpg" /></p><p><a href="https://dglava.github.io/en/sporo-bs, en.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/maas.html" rel="bookmark"
+                           title="Permalink to Modular Ableton Amp Sim">Modular Ableton Amp Sim</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2023-09-10T00:00:00+00:00">
                 Published: Sun, 10 Sep 2023
@@ -38,80 +60,14 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/ableton.html">ableton</a> </p>Translations:
         <a href="https://dglava.github.io/en/../maas.html">bs</a>
 
-</footer><!-- /.post-info --><h2>Frustration with Bias FX2</h2>
+</footer><!-- /.post-info -->                <h2>Frustration with Bias FX2</h2>
 <p>The more I use Bias FX 2, the guitar amp sim, the more frustrated I become
 with its UI. It's using some awful Chromium based interface that's incredibly
 slow. The mere opening sometimes takes a minute, because it has to sign
-into the service every time you open it. For every instance you have
-in your project. Another annoying thing is the lack of named parameters,
-i.e. you can't see, at least in Ableton Live, the name of the parameter
-you've mapped, but only a single number.</p>
-<p>Ableton Live has been eye-opening with its way of interacting with it and
-using it. All the effects and instruments are available from a convenient
-bar on the bottom part of the UI. If only all VST plug-ins had that feature
-(apparently there are wrappers for some plug-ins).</p>
-<h2>Modular Ableton Amp Sim</h2>
-<p>The core idea behind MAAS (Modular Ableton Amp Sim) is using a bunch of
-standalone effects and instruments, grouping them and manipulating them
-in the classic Ableton Live way. Here's a picture of how that looks like.</p>
-<p><img class="sredina" src="https://dglava.github.io/en/images/maas-1.png" /></p>
-<p>All that is possible because of a few features Ableton Live has. Mostly
-it's due to the Macro controls. They allow us to map certain parameters
-to them and group them conveniently. Chains are also useful and the general
-ease of manipulating with options inside effects and instruments.</p>
-<p>MAAS (Modular Ableton Amp Sim) consists of an amp, cab and effects.</p>
-<h2>Amp</h2>
-<p>For our amp, we're using <a href="https://www.neuralampmodeler.com/">Neural Amp Modeler</a>
-It is a free software
-amp simulator for guitars. You can make profiles of your amps and share
-them with others. The quality of amps ranges from okay to "on the same level
-as Neural DSP, Amplitube, Guitar Rig and Bias FX". Another reason why NAM
-is great for our cause, is because it's lightweight.</p>
-<p>Inside an effects rack we have chains, each with an instance of NAM (see number
-1). To the Amp macro (see number 2) we can connect the chain selector which
-is going to choose the instance of NAM that's active. That alone won't
-be enough, so we also need to map the Amp macro to the on/off switch
-of the instance. We use the chain's length as a reference for that. For example,
-the Bassman 50 amp has its from 0 to 24 (see number 3).</p>
-<p>The parameters for Input, Output and Equalizer with its settings are also
-mapped to a Macro each (see number 2).</p>
-<p>At the end we just have to create Macro variations and save them as 
-presets (see number 4). Now we can pick an amp with just 1 click.</p>
-<p><a href="https://dglava.github.io/en/images/maas-2.png"><img src="https://dglava.github.io/en/images/maas-2.png" class="slika" /></a></p>
-<h2>Cab</h2>
-<p>We are using <a href="https://www.igniteamps.com/#nadir">NadIR</a> for our cab sims.
-It allows us to load our impulse response files. Together with the
-amp part, they form our complete guitar amp. Of course you can use other
-programs that can load impulse response files. Ableton Live even has its
-own: the Hybrid Reverb. It's only available in the Suite version though.</p>
-<p>Just like with the amp, we've got multiple instances of NadIR, each
-in its own chain (see number 1). Each chain also has its range and
-a macro mapped to it. As with the amp, we want to avoid having multiple
-instances active at the same time. The chains are mapped to the Cab
-macro (see number 2). Besides that, the parameters for high-pass and
-low-pass are also mapped for NadIR.</p>
-<p>At the end, just like with the amp part, we create Macro variations
-and save them (see number 3).</p>
-<p><a href="https://dglava.github.io/en/images/maas-3.png"><img src="https://dglava.github.io/en/images/maas-3.png" class="slika" /></a></p>
-<h2>Effects</h2>
-<p>Another advantage of the MAAS approach is that all the effects and
-their settings are visible on the first glance in the lower bar.
-Some useful effects to have there can be equalizers, compressors,
-overdrive, reverb and anything you can think of. Mind the placements
-of the effect thoughl, since it can have a huge impact on the sound
-depending on where you place it (before or after the amps).</p>
-<hr>
-
-<p>Those are the basics of MAAS. Of course you can keep adding more
-amps, cabs, effects. Unfortunately I can't share my complete preset
-due to licensing issues with the amps and IRs. I can however upload
-the basic skeleton, which you can then populate with your own files.</p>
-<p><a href="https://dglava.github.io/en/files/MAAS.adg"><strong>Download Ableton Live Rack</strong></a></p><p><a href="https://dglava.github.io/en/maas.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+into the service every time …</p>
+                <a class="readmore" href="https://dglava.github.io/en/maas.html">read more</a>
+<p><a href="https://dglava.github.io/en/maas.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -135,30 +91,6 @@ the basic skeleton, which you can then populate with your own files.</p>
 <p><img class="slika" src="https://dglava.github.io/en/images/gradi.jpg" /></p>
                 <a class="readmore" href="https://dglava.github.io/en/gradi-bs, en.html">read more</a>
 <p><a href="https://dglava.github.io/en/gradi-bs, en.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/en/lagana-gitara-bs, en.html" rel="bookmark"
-                           title="Permalink to lagana gitara">lagana gitara</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-08-07T00:00:00+00:00">
-                Published: Mon 07 August 2023
-        </abbr>
-        <br />
-        <abbr class="modified" title="2023-09-05T00:00:00+00:00">
-                Modified: Tue 05 September 2023
-        </abbr>
-
-<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="https://dglava.github.io/en/tag/muzika.html">muzika</a> </p>
-</footer><!-- /.post-info -->                <p><audio controls class="slika" src="https://dglava.github.io/en/files/lagana-gitara.ogg" type="audio/ogg" /></p>
-<p><img class="slika" src="https://dglava.github.io/en/images/lagana-gitara.jpg" /></p>
-                <a class="readmore" href="https://dglava.github.io/en/lagana-gitara-bs, en.html">read more</a>
-<p><a href="https://dglava.github.io/en/lagana-gitara-bs, en.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
