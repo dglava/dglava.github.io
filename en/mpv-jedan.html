@@ -63,8 +63,7 @@ useful for me.</p>
 <p>I figured that I could just use a hacky workaround which consisted
 of killing any open mpv instances and then launching our new one.
 After some trial and error and the help of the internet, I settled on this:</p>
-<div class="highlight"><pre><span></span><code>:::bash
-#!/bin/bash
+<div class="highlight"><pre><span></span><code>#!/bin/bash
 
 pkill -x mpv
 mpv --player-operation-mode=pseudo-gui &quot;@1&quot;
