@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+        <meta charset="utf-8" />
+        <title>EZDrummer 3 multi-izlazi u Ableton Live</title>
+        <link rel="stylesheet" href="https://dglava.github.io/theme/css/main.css" />
+        <link rel="shortcut icon" type="image/png" href="https://dglava.github.io/theme/images/favicon.png">
+</head>
+
+<body id="index" class="home">
+        <script>
+        let day = new Date().getDay();
+        document.getElementById("index").style.backgroundImage = "url(https://dglava.github.io/theme/images/p" + day + ".jpg)";
+        </script>
+        <header id="banner" class="body">
+                <h1><a href="https://dglava.github.io/">dinoglava </a></h1>
+                <nav><ul>
+                    <li><a href="https://dglava.github.io/category/linux.html">Linux</a></li>
+                    <li><a href="https://dglava.github.io/category/stvari.html">Stvari</a></li>
+                    <li><a href="https://dglava.github.io/archives.html">Arhiva</a></li>
+                    <li><a href="https://dglava.github.io/pages/o.html">O</a></li>
+                    <li><a href="https://github.com/dglava"><img src="https://dglava.github.io/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="https://dglava.github.io/theme/images/lastfm.png"></a></li>
+                    <li><a href="https://dglava.github.io/"><img src="https://dglava.github.io/theme/images/bs.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/"><img src="https://dglava.github.io/theme/images/en.png"></a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://dglava.github.io/ezd3-ableton.html" rel="bookmark"
+           title="Permalink to EZDrummer 3 multi-izlazi u Ableton Live">EZDrummer 3 multi-izlazi u Ableton Live</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2024-05-10T00:00:00+00:00">
+                Objavljeno: Pet, 10 Maj 2024
+        </abbr>
+
+<p>Kategorija: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/ableton.html">ableton</a> <a href="https://dglava.github.io/tag/ezd3.html">ezd3</a> </p>Prevodi:
+        <a href="https://dglava.github.io/en/ezd3-ableton.html">en</a>
+
+</footer><!-- /.post-info -->      <p>Multipli izlazi su korisni za korištenje raznih efekata i manipulacija
+na samo izvjesnim dijelovima bubnja. Pod multiplim izlazima podrazumijevam
+svaki (virtuelni) mikrofon iz <em>EZDrummera</em> na zasebnoj traci. U suštini
+kao što bi se stvarni bubnjevi idealno snimali sa više mikrofona. Ako
+se koristi <em>Original mix</em> iz EZDrummera, isto je kao da miksate
+"sirove" bubnjeve.</p>
+<p><img class="slika" src="https://dglava.github.io/images/ezd3-ableton1.png" /></p>
+<h3>Moje riješenje</h3>
+<p>Na internetu postoji mnogo različiti ideja kako ovo riješiti. Meni nisu
+odgovarali zbog nekoliko razloga, tako da sam došao do ovog trenutnog
+koje zadovoljava sve zahtijeve.</p>
+<p>Sastoji se iz <em>instrument racka</em> koji koristi više <em>chains</em> unutar
+kojih se nalaze <em>external instrument</em> instance koje primaju izlaze
+iz EZD3. Također su dostupna i imena bubnjeva na notama u MIDI klip
+prikazu. To je moguće zbog korištenja <em>MIDI Effect Racka</em> u prvom
+<em>chainu</em>, u kojem se nalazi po jedan <em>chain</em> za svaki udarac, mapiran
+samo na jednu notu (u <em>Key</em> polju).</p>
+<p><img class="slika" src="https://dglava.github.io/images/ezd3-ableton5.png" /></p>
+<p>Zvuči komplikovano, ali nije ako se jednostavno skine <em>preset</em>.
+Ja sam napravio po jedan za svaki originalni miks dostupan u EZD3
+(<em>Main Room</em>, <em>Bright Room</em> i <em>Tight Room</em>) i za <em>Into the Dark</em> ekspanziju
+koju posjedujem.</p>
+<p><br></p>
+<p><img class="slika" src="https://dglava.github.io/images/ezd3-ableton3.png" /></p>
+<h4>Klikni <a href="https://dglava.github.io/files/ezd3-ableton.zip"><strong>OVDJE</strong></a> za preuzimanje.</h4>
+<p>Ubaci <em>ADG</em> fajlove u svoj <em>Ableton User Folder</em> pod <em>presets</em> za
+<em>Instrument Rack</em>.
+Ubaci stvari iz <em>EdrumPresets</em> foldera u Toontrack folder unutar <em>My Documents</em>.
+To su MIDI mapiranja da pravi udarci budu <em>triggerovani</em>. Nažalost Ableton
+Live ne snimi njih u ADG fajlu (dok npr. miks postavke unutar EZD3 snima).</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'dglava';
+        var disqus_identifier = 'ezd3-ableton.html';
+        var disqus_url = 'https://dglava.github.io/ezd3-ableton.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//dglava.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Stranica koristi <a href="http://getpelican.com/">Pelican</a>. Tema: blago izmjenjena <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'dglava';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

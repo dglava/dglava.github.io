@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>dinoglava - ezd3</title>
+        <link rel="stylesheet" href="https://dglava.github.io/en/theme/css/main.css" />
+        <link rel="shortcut icon" type="image/png" href="https://dglava.github.io/en/theme/images/favicon.png">
+</head>
+
+<body id="index" class="home">
+        <script>
+        let day = new Date().getDay();
+        document.getElementById("index").style.backgroundImage = "url(https://dglava.github.io/en/theme/images/p" + day + ".jpg)";
+        </script>
+        <header id="banner" class="body">
+                <h1><a href="https://dglava.github.io/en/">dinoglava </a></h1>
+                <nav><ul>
+                    <li><a href="https://dglava.github.io/en/category/linux.html">Linux</a></li>
+                    <li><a href="https://dglava.github.io/en/category/stvari.html">Stuff</a></li>
+                    <li><a href="https://dglava.github.io/en/archives.html">Archive</a></li>
+                    <li><a href="https://dglava.github.io/en/pages/about.html">About</a></li>
+                    <li><a href="https://github.com/dglava"><img src="https://dglava.github.io/en/theme/images/git.png"></a></li>
+                    <li><a href="http://www.last.fm/user/dinoglava"><img src="https://dglava.github.io/en/theme/images/lastfm.png"></a></li>
+                    <li><a href="https://dglava.github.io/"><img src="https://dglava.github.io/en/theme/images/bs.png"></a></li>
+                    <li><a href="https://dglava.github.io/en/"><img src="https://dglava.github.io/en/theme/images/en.png"></a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/ezd3-ableton.html">EZDrummer 3 multi-out in Ableton Live</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2024-05-10T00:00:00+00:00">
+                Published: Fri, 10 May 2024
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/ableton.html">ableton</a> <a href="https://dglava.github.io/en/tag/ezd3.html">ezd3</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../ezd3-ableton.html">bs</a>
+
+</footer><!-- /.post-info --><p>Multi-out setups are useful for using various effects or for manipulating
+only certain parts of the drumkit. Multi-outs in this context means
+that each virtual mic's output gets routed to a separate track inside of Live.
+If you also use the "Original Mix" preset of EZD3, you're basically
+mixing "raw drums", which is really neat if you want that much control over it
+or to create new sounds from scratch.</p>
+<p><img class="slika" src="https://dglava.github.io/en/images/ezd3-ableton1.png" /></p>
+<h3>My solution</h3>
+<p>There are a bunch of ways to solve this on the internet. I didn't like them
+due to various reasons, so I set out to create my own solution.</p>
+<p>The current one I have consists of an Instrument Rack which is holding
+multiple Chains. Those Chains hold an External Instrument into which the
+output from EZD3 is routed. Apart from having each mic routed to its own
+track, the MIDI clips also have drum names on them for ease of use. This
+is accomplished via an instance of a MIDI Effect Rack that is holding
+a Chain for each drum articulation that EZD3 offers. Each one of those
+Chains is mapped to one note (via the <em>Key</em> tab).</p>
+<p><img class="slika" src="https://dglava.github.io/en/images/ezd3-ableton5.png" /></p>
+<p>It might sound complicated by reading the description, but it really isn't.
+You'll realize once you look at the preset.
+I have create presets for all the 3 original mixes available in EZD3
+(Main Room, Bright Room, Tight Room) and for the Into the Dark expansion pack.</p>
+<p><br></p>
+<p><img class="slika" src="https://dglava.github.io/en/images/ezd3-ableton3.png" /></p>
+<h4>Click <a href="https://dglava.github.io/en/files/ezd3-ableton.zip"><strong>HERE</strong></a> to download.</h4>
+<p>Put the <em>ADG</em> files inside of your <em>Ableton User Folder</em> presets for Instrument Racks.
+Put the files from <em>EdrumPresets</em> into your Toontrack folder with the same
+name inside of your My Documents folder. Those files are MIDI mapping
+files. Ableton Live doesn't save those together with the <em>ADG</em> file (it does
+the mixer and sound settings) to use the presets you need to copy them manually.</p>
+<p><img class="slika" src="https://dglava.github.io/en/images/ezd3-ableton6.png" /></p><p><a href="https://dglava.github.io/en/ezd3-ableton.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Made with <a href="http://getpelican.com/">Pelican</a>. Theme: slightly modified <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'dglava';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>
