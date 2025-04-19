@@ -28,7 +28,133 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/desktop-terminal.html">Desktop file and terminal emulator issues</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/labwc-undecorate.html">Automatically remove titlebar in maximized windows for Labwc</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-04-13T00:00:00+00:00">
+                Published: Sun, 13 Apr 2025
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/linux.html">Linux</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/labwc.html">labwc</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../labwc-undecorate.html">bs</a>
+
+</footer><!-- /.post-info --><p>I've switched to Wayland. Instead of <a href="https://openbox.org/">Openboxa</a>
+on Xorg,
+I started using <a href="https://labwc.github.io/">Labwc</a> with Wayland. I'm slowly
+moving my configuration to the new environment and trying to find solutions
+to problems that have already been solved for Openbox.</p>
+<p>One of those problems was the automatic removal of window titlebars
+for maximized windows. Since I use a top panel, the window name is displayed
+on the panel and I don't need the redundant titlebar. 
+<a href="https://dglava.github.io/en/orcsome.html">Orcsome was able to accomplish this.</a>.
+Unfortunately, there's nothing like Orcsome for Wayland or Labwc (yet).</p>
+<p>My previous workaround for Labwc was using a config file tweak which would
+remove the decorations every time the window is maximized by clicking the
+"maximize" button on the titlebar. Also, maximizing windows via a keyboard
+shortcut would also remove the titlebar.
+It worked fine, but had its limitations: windows that start maximized
+would still have the titlebar and I'd have to remove it manually by pressing the
+maximize keyboard shortcut. I also tried to define a catch-all rule
+which starts everything maximized without decorations and then separate
+rules for each program that I didn't want to maximize. It's tedious, because
+you always need to keep updating it.</p>
+<p>Here's how the workarounds look like:</p>
+<p>This is the first case which removes the decorations when clicking
+the maximize button.</p>
+<div class="highlight"><pre><span></span><code>&lt;context name=&quot;Maximize&quot;&gt;
+  &lt;mousebind button=&quot;Left&quot; action=&quot;Click&quot;&gt;
+    &lt;action name=&quot;ToggleMaximize&quot; /&gt;
+    &lt;action name=&quot;SetDecorations&quot; decorations=&quot;none&quot; forceSSD=&quot;no&quot; /&gt;
+  &lt;/mousebind&gt;
+...
+&lt;/context&gt;
+</code></pre></div>
+
+<p>The second example is for the keyboard shortcut which maximizes and
+removes the decorations.</p>
+<div class="highlight"><pre><span></span><code>&lt;keybind key=&quot;W-Page_Up&quot;&gt;
+  &lt;action name=&quot;Maximize&quot;/&gt;
+  &lt;action name=&quot;SetDecorations&quot; decorations=&quot;none&quot; forceSSD=&quot;no&quot; /&gt;
+&lt;/keybind&gt;
+</code></pre></div>
+
+<h3>Native Labwc solution</h3>
+<p>With the help of AI, I was able to cobble together a patch to bring this
+functionality to Labwc natively. "Help" is an understatement in this case.
+The AI did everything, since I have no C programming knowledge whatsoever.</p>
+<p>To my surprise, it worked on the first try. Here's the patch.</p>
+<div class="highlight"><pre><span></span><code>diff --git a/include/view.h b/include/view.h
+index 0ff42c85..43a4d4f0 100644
+--- a/include/view.h
++++ b/include/view.h
+@@ -209,6 +209,9 @@ struct view {
+    bool inhibits_keybinds;
+    xkb_layout_index_t keyboard_layout;
+
++   bool saved_ssd_enabled;
++   bool saved_decoration_state_valid;
++
+    /* Pointer to an output owned struct region, may be NULL */
+    struct region *tiled_region;
+    /* Set to region-&gt;name when tiled_region is free&#39;d by a destroying output */
+diff --git a/src/view.c b/src/view.c
+index e17a883c..1e86e3e3 100644
+--- a/src/view.c
++++ b/src/view.c
+@@ -1265,7 +1265,15 @@ view_apply_maximized_geometry(struct view *view)
+ {
+    assert(view);
+    assert(view-&gt;maximized != VIEW_AXIS_NONE);
++
++    if (!view-&gt;saved_decoration_state_valid) {
++        view-&gt;saved_ssd_enabled = view-&gt;ssd_enabled;
++        view-&gt;saved_decoration_state_valid = true;
++    }
++
++   view-&gt;ssd_enabled = false;
+    struct output *output = view-&gt;output;
++
+    assert(output_is_usable(output));
+
+    struct wlr_box box = output_usable_area_in_layout_coords(output);
+@@ -1365,6 +1373,10 @@ view_restore_to(struct view *view, struct wlr_box geometry)
+        return;
+    }
+    if (view-&gt;maximized != VIEW_AXIS_NONE) {
++       if (view-&gt;saved_decoration_state_valid) {
++                   view-&gt;ssd_enabled = view-&gt;saved_ssd_enabled;
++                   view-&gt;saved_decoration_state_valid = false;
++               }
+        set_maximized(view, VIEW_AXIS_NONE);
+    }
+    view_move_resize(view, geometry);
+@@ -2492,6 +2504,7 @@ void
+ view_init(struct view *view)
+ {
+    assert(view);
++   view-&gt;saved_decoration_state_valid = false;
+
+    wl_signal_init(&amp;view-&gt;events.new_app_id);
+    wl_signal_init(&amp;view-&gt;events.new_title);
+</code></pre></div>
+
+<p>Arch Linux users can use <a href="https://github.com/dglava/pkgbuilds/tree/master/labwc-noxwayland-undecorate-git">my PKGBUILD</a>.
+Bear in mind that this is working for the current Labwc version. I have
+no idea if I'll update the patch for future versions. My hopes are that
+the maintainers of Labwc implement this natively via a config option.</p><p><a href="https://dglava.github.io/en/labwc-undecorate.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/desktop-terminal.html" rel="bookmark"
+                           title="Permalink to Desktop file and terminal emulator issues">Desktop file and terminal emulator issues</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-01T00:00:00+00:00">
                 Published: Thu, 01 Mar 2018
@@ -42,40 +168,13 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/terminal.html">terminal</a> </p>Translations:
         <a href="https://dglava.github.io/en/../desktop-terminal.html">bs</a>
 
-</footer><!-- /.post-info --><p>I've had problems with opening text files with my text editor that's
+</footer><!-- /.post-info -->                <p>I've had problems with opening text files with my text editor that's
 running inside a terminal emulator (Vim) from inside my file manager.
 Nothing was happening after double clicking a file in my file manager (Nemo).</p>
-<p>A lot of time has passed between the time I became aware of that problem
-and now when I definitely found out why it was happening. Since it's
-pretty boring and menial, here's the general gist: problem discovery,
-no idea why it's happening, ugly hacky solution by specifying the
-terminal emulator to open Vim and the file inside the desktop file,
-the hacky solution not working because my distribution packaged Vim's 
-desktop file which was overwriting mine, figuring the problem out.</p>
-<h3>The cleanest hacky solution for someone else's mistake</h3>
-<p>Turns out that Glib was responsible for it. The problem lies in the fact
-that Glib hardcodes certain <a href="https://gitlab.gnome.org/GNOME/glib/blob/master/gio/gdesktopappinfo.c">terminal emulators</a>
-which are used to open the program if the desktop file contains a
-<code>Terminal=yes</code> line. If none of the hardcoded terminals is available,
-it fails.</p>
-<p>That behaviour is kind of disappointing and there's a <a href="https://gitlab.gnome.org/GNOME/glib/-/issues/338">bug report</a>,
-but it doesn't look like it will be resolved soon.</p>
-<p>A hopefully temporary solution is to just create a symlink which points
-gnome-terminal to your terminal emulator.</p>
-<p><code>ln -s YOUR-TERMINAL-EMULATOR /usr/bin/gnome-terminal</code></p>
-<p><strong>Update</strong><br>
-<a href="https://gitlab.gnome.org/GNOME/glib/-/commit/292cb2cb1be223ac334d2f14e8d64bc34a2d6ea0">This</a>
-commit added support for xfce4-terminal, which I'm using. Therefore I don't
-need to apply this fix anymore. If your terminal emulator isn't on the list,
-then it's still useful.</p>
-<p>Let's hope that the Glib people find a way to solve this properly and that they
-settle for a way which would allow us to reliably set a default terminal
-emulator system wide.</p><p><a href="https://dglava.github.io/en/desktop-terminal.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>A lot of time has passed between the time I became aware of that …</p>
+                <a class="readmore" href="https://dglava.github.io/en/desktop-terminal.html">read more</a>
+<p><a href="https://dglava.github.io/en/desktop-terminal.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -103,36 +202,6 @@ something which binds to it and makes it do things. Most desktop environments ha
 an utility which listens to keyboard presses and then toggles the touchpad …</p>
                 <a class="readmore" href="https://dglava.github.io/en/toggle-touch.html">read more</a>
 <p><a href="https://dglava.github.io/en/toggle-touch.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/en/firefox-dpms.html" rel="bookmark"
-                           title="Permalink to Prevent screen blanking when watching videos in Firefox">Prevent screen blanking when watching videos in Firefox</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-08-29T00:00:00+00:00">
-                Published: Tue, 29 Aug 2017
-        </abbr>
-        <br />
-        <abbr class="modified" title="2020-01-02T00:00:00+00:00">
-                Modified: Thu, 02 Jan 2020
-        </abbr>
-
-<p>In: <a href="https://dglava.github.io/en/category/linux.html">Linux</a></p>
-<p>Tags: <a href="https://dglava.github.io/en/tag/firefox.html">firefox</a> <a href="https://dglava.github.io/en/tag/dpms.html">dpms</a> </p>Translations:
-        <a href="https://dglava.github.io/en/../firefox-dpms.html">bs</a>
-
-</footer><!-- /.post-info -->                <p><strong>NOTE: as of Firefox 71 (perhaps even earlier), the screensaver/DPMS
-are automatically suspended when watching videos. This tool is therefore
-deprecated.</strong></p>
-<p>Watching videos on YouTube always proved to be problematic because
-my DPMS settings would kick in and the screen would turn off. Firefox
-didn't suspend them automatically when …</p>
-                <a class="readmore" href="https://dglava.github.io/en/firefox-dpms.html">read more</a>
-<p><a href="https://dglava.github.io/en/firefox-dpms.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">

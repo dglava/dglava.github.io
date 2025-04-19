@@ -28,7 +28,134 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/from-bethlehem-to-jenin.html">From Bethlehem to Jenin</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/labwc-undecorate.html">Automatski ukloni Labwc dekoraciju kad je maksimizirano</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-04-13T00:00:00+00:00">
+                Objavljeno: Ned, 13 Apr 2025
+        </abbr>
+
+<p>Kategorija: <a href="https://dglava.github.io/category/linux.html">Linux</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/labwc.html">labwc</a> </p>Prevodi:
+        <a href="https://dglava.github.io/en/labwc-undecorate.html">en</a>
+
+</footer><!-- /.post-info --><p>Prešao sam na Wayland. Umjesto <a href="https://openbox.org/">Openboxa</a> na Xorg-u,
+sad koristim <a href="https://labwc.github.io/">Labwc</a> na Waylandu. Polako premještam
+sve postavke koje su se nakupile nakon godina korištenja i tražim adekvatna
+rješenja za, na Openboxu, već rješene probleme.</p>
+<p>Jedna od tih je automatsko uklanjanje prozorske trake (dekoracije) kod
+maksimizirani prozora. Za to sam <a href="https://dglava.github.io/orcsome.html">koristio Orcsome</a>.
+Nažalost, nešto slično Orcsomeu ne postoji trenutno unutar samog
+Labwca ili uopšteno za Wayland kompzitore.</p>
+<p>Za sad sam koristio Labwc konfiguraciju koja bi uklonila dekoracije
+kad god se klikne na "maximize" dugme prozora i također kad uvećam
+prozor pomoću prečice na tastaturi. Funkcionisalo je, ali je nerviralo
+što svaki prozor koji otvorim, moram ručno pritisnuti prečicu na tastaturi,
+jer pri pokretanju, iako su maksimizirani, još uvijek su imali prozornu
+traku. Pokušao sam i globalno pravilo unutar Labwca koje bi pokrenulo
+svaki program maksimiziran i sa uklonjenom prozornom trakom, a za
+pojedine programe koje ne želim maksimizirane bi dodao izuzetak unutar
+konfiguracionog fajla. Naravno, to je neidealno rješenje, jer svaki
+put moram dodavati nove programe u iznimke i voditi brigu o listi.</p>
+<p>Evo kako je izgledalo otprilike. Prvi primjer je za uklonjanje dekoracije
+pri pritisku na <em>maximize</em> dugme.</p>
+<div class="highlight"><pre><span></span><code>&lt;context name=&quot;Maximize&quot;&gt;
+  &lt;mousebind button=&quot;Left&quot; action=&quot;Click&quot;&gt;
+    &lt;action name=&quot;ToggleMaximize&quot; /&gt;
+    &lt;action name=&quot;SetDecorations&quot; decorations=&quot;none&quot; forceSSD=&quot;no&quot; /&gt;
+  &lt;/mousebind&gt;
+...
+&lt;/context&gt;
+</code></pre></div>
+
+<p>Drugi primjer pri korištenju kombinacije tipki na tastaturi.</p>
+<div class="highlight"><pre><span></span><code>&lt;keybind key=&quot;W-Page_Up&quot;&gt;
+  &lt;action name=&quot;Maximize&quot;/&gt;
+  &lt;action name=&quot;SetDecorations&quot; decorations=&quot;none&quot; forceSSD=&quot;no&quot; /&gt;
+&lt;/keybind&gt;
+</code></pre></div>
+
+<h3>Labwc nativno rješenje</h3>
+<p>Uz pomoć, iako je u ovom primjeru pomoć blago rečeno jer gotovo sav posao
+je uradila UI (umjetna inteligencija), sam sklopio
+patch za Labwc. Svaki
+prozor koji se pokrene uvećan, gubi prozornu traku. Prozori koji nisu
+namješteni ili upamtili da krenu uvećani, zadrže traku.</p>
+<p>Na moje iznenađenje je radilo iz prvog pokušaja. Iako nemam nikakvo
+poznavanje C programskog jezika, niti Labwc projekta, uspijelo je
+dodati par kratkih izmjena da bi se postigla željena funkcija.</p>
+<p>Patch:</p>
+<div class="highlight"><pre><span></span><code>diff --git a/include/view.h b/include/view.h
+index 0ff42c85..43a4d4f0 100644
+--- a/include/view.h
++++ b/include/view.h
+@@ -209,6 +209,9 @@ struct view {
+    bool inhibits_keybinds;
+    xkb_layout_index_t keyboard_layout;
+
++   bool saved_ssd_enabled;
++   bool saved_decoration_state_valid;
++
+    /* Pointer to an output owned struct region, may be NULL */
+    struct region *tiled_region;
+    /* Set to region-&gt;name when tiled_region is free&#39;d by a destroying output */
+diff --git a/src/view.c b/src/view.c
+index e17a883c..1e86e3e3 100644
+--- a/src/view.c
++++ b/src/view.c
+@@ -1265,7 +1265,15 @@ view_apply_maximized_geometry(struct view *view)
+ {
+    assert(view);
+    assert(view-&gt;maximized != VIEW_AXIS_NONE);
++
++    if (!view-&gt;saved_decoration_state_valid) {
++        view-&gt;saved_ssd_enabled = view-&gt;ssd_enabled;
++        view-&gt;saved_decoration_state_valid = true;
++    }
++
++   view-&gt;ssd_enabled = false;
+    struct output *output = view-&gt;output;
++
+    assert(output_is_usable(output));
+
+    struct wlr_box box = output_usable_area_in_layout_coords(output);
+@@ -1365,6 +1373,10 @@ view_restore_to(struct view *view, struct wlr_box geometry)
+        return;
+    }
+    if (view-&gt;maximized != VIEW_AXIS_NONE) {
++       if (view-&gt;saved_decoration_state_valid) {
++                   view-&gt;ssd_enabled = view-&gt;saved_ssd_enabled;
++                   view-&gt;saved_decoration_state_valid = false;
++               }
+        set_maximized(view, VIEW_AXIS_NONE);
+    }
+    view_move_resize(view, geometry);
+@@ -2492,6 +2504,7 @@ void
+ view_init(struct view *view)
+ {
+    assert(view);
++   view-&gt;saved_decoration_state_valid = false;
+
+    wl_signal_init(&amp;view-&gt;events.new_app_id);
+    wl_signal_init(&amp;view-&gt;events.new_title);
+</code></pre></div>
+
+<p>Korisnici Arch Linuxa mogu koristiti <a href="https://github.com/dglava/pkgbuilds/tree/master/labwc-noxwayland-undecorate-git">moj PKGBUILD</a>
+da isprobaju. Treba imati na umu da ovo radi za trenutnu verziju
+Labwca, ne znam da li ću ažurirati patch za svaku sljedeću. Nadam se
+da će ovo postati dio Labwca.</p><p><a href="https://dglava.github.io/labwc-undecorate.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/from-bethlehem-to-jenin.html" rel="bookmark"
+                           title="Permalink to From Bethlehem to Jenin">From Bethlehem to Jenin</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2025-03-08T00:00:00+00:00">
                 Objavljeno: Sub, 08 Mar 2025
@@ -38,14 +165,12 @@
 <p>Tagovi: <a href="https://dglava.github.io/tag/tablature.html">tablature</a> <a href="https://dglava.github.io/tag/partiture.html">partiture</a> </p>Prevodi:
         <a href="https://dglava.github.io/en/from-bethlehem-to-jenin.html">en</a>
 
-</footer><!-- /.post-info --><p><a href="https://www.youtube.com/watch?v=jLVrqliCirc">Clann Zu - From Bethlehem to Jenin</a></p>
+</footer><!-- /.post-info -->                <p><a href="https://www.youtube.com/watch?v=jLVrqliCirc">Clann Zu - From Bethlehem to Jenin</a></p>
 <p>Klikni na sliku za skidanje PDF fajla ili <a href="https://dglava.github.io/files/from-bethlehem-to-jenin.pdf">ovdje</a>.</p>
-<p><a href="https://dglava.github.io/files/from-bethlehem-to-jenin.pdf"><img src="https://dglava.github.io/images/from-bethlehem-to-jenin.png" /></a></p><p><a href="https://dglava.github.io/from-bethlehem-to-jenin.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p><a href="https://dglava.github.io/files/from-bethlehem-to-jenin.pdf"><img src="https://dglava.github.io/images/from-bethlehem-to-jenin.png" /></a></p>
+                <a class="readmore" href="https://dglava.github.io/from-bethlehem-to-jenin.html">pročitaj više</a>
+<p><a href="https://dglava.github.io/from-bethlehem-to-jenin.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -56,7 +181,7 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2025-01-28T00:00:00+00:00">
-                Objavljeno: Tue 28 January 2025
+                Objavljeno: Uto 28 Januar 2025
         </abbr>
 
 <p>Kategorija: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
@@ -66,34 +191,9 @@
                 <a class="readmore" href="https://dglava.github.io/aa-bs, en.html">pročitaj više</a>
 <p><a href="https://dglava.github.io/aa-bs, en.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/youll-have-to-swim-orig.html" rel="bookmark"
-                           title="Permalink to You'll Have to Swim (albumska verzija)">You'll Have to Swim (albumska verzija)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-12-18T00:00:00+00:00">
-                Objavljeno: Sri, 18 Dec 2024
-        </abbr>
-
-<p>Kategorija: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
-<p>Tagovi: <a href="https://dglava.github.io/tag/tablature.html">tablature</a> <a href="https://dglava.github.io/tag/partiture.html">partiture</a> </p>Prevodi:
-        <a href="https://dglava.github.io/en/youll-have-to-swim-orig.html">en</a>
-
-</footer><!-- /.post-info -->                <p><a href="https://www.youtube.com/watch?v=pjiIrZ5IzIE">Clann Zu - You'll Have to Swim</a></p>
-<p>Već sam jednom <a href="https://dglava.github.io/youll-have-to-swim.html">pokušao napraviti transkripciju</a>
-ove pjesme. Sad, 6 godine kasnije, još uvijek nisam siguran da je 100%
-ispravno i autentično kao na albumu. Na primjer takt 95: ne mogu skontati
-šta gitara tačno svira sljedećih par taktova. Od 97. sam prilično siguran …</p>
-                <a class="readmore" href="https://dglava.github.io/youll-have-to-swim-orig.html">pročitaj više</a>
-<p><a href="https://dglava.github.io/youll-have-to-swim-orig.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Stranica 1 / 19
+    Stranica 1 / 20
         <a href="https://dglava.github.io/author/dino-duratovic2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
