@@ -76,8 +76,7 @@ tražio gdje se sve spominje <em>fade-out</em>. Obećavajuće je izgledala
 (zahvaljujući poznatim, istim imenima kao i za Python GObject veze).
 Pogodio sam iz prvog puta. Xfce4-notifyd notifikacije su nestajale odjednom,
 bez sopstevnog, neovisnog <em>fade-outa</em>.</p>
-<div class="highlight"><pre><span></span><code>:::diff
---- xfce4-notifyd-0.2.4/xfce4-notifyd/xfce-notify-window.c  2013-04-21 16:42:08.000000000 +0200
+<div class="highlight"><pre><span></span><code>--- xfce4-notifyd-0.2.4/xfce4-notifyd/xfce-notify-window.c  2013-04-21 16:42:08.000000000 +0200
 +++ xfce-notify-window.c    2016-05-09 17:47:19.730137584 +0200
 @@ -631,18 +631,9 @@
 
