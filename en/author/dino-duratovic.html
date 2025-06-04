@@ -28,7 +28,90 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/labwc-undecorate.html">Automatically remove titlebar in maximized windows for Labwc</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/maas-2.html">Better Modular Ableton Amp Sim</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-06-04T00:00:00+00:00">
+                Published: Wed, 04 Jun 2025
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/ableton.html">ableton</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../maas-2.html">bs</a>
+
+</footer><!-- /.post-info --><p>Someone requested updated presets on this
+<a href="https://dglava.github.io/en/maas.html">this article</a>.
+I noticed that it still contained instructions on how to create the
+"old" type of racks: with multiple amps inside one preset.
+It's time to post an update to those, showing a better way to approach it.</p>
+<p>I might create a video showcasing this, but for now this text guide
+will have to do.</p>
+<h2>The new way</h2>
+<p>In the old article, the amps were all inside one audio effect rack. The
+other audio effect rack contained the guitar cabs. Having one rack
+per amp and cab enables you to mix and match them in different ways.
+The good Neural Amp Modeler captures come with a bunch of different
+settings for an amp, enabling you to basically have a complete amp
+as a preset.</p>
+<p><img alt="" src="https://dglava.github.io/en/images/maas-novi-1.png"></p>
+<p>Add an Audio Effects Rack. Show the Device Chain list and add an
+instance of Neural Amp Modeler to it (<strong>see 1.</strong>). Inside of Neural
+Amp Modeler adjust its settings that you want the default instance
+to have. For example I turn off the EQ and the noise gate. The Input
+and Output parameters will be useful. Turn on the Macro controls and
+map the Input and Output parameters to them. Additionally, map the
+Chain Selector to a macro (<strong>see 2.</strong>). You will also need to map the
+Neural Amp Modeler Device's On/Off switch to the same macro you mapped
+the Chain Selctor to. Finally, add one Macro
+variation (<strong>see 3.</strong>). You can colour code it and rename your macros.
+If you rename the unused macro to just a " " (space), it will look nicer.</p>
+<p>That's the preset for your amp. Save it and whenever you want to add an
+amp, use it as a starting point. Let's do that now.</p>
+<p><img alt="" src="https://dglava.github.io/en/images/maas-novi-2.png"></p>
+<p>Open the Neural Amp Modeler instance in the chan. Load your first
+capture and rename the chain to something relevant (here it's Crank Low Gain).
+Duplicate the chain. Open Neural Amp Modeler again and load a different
+capture. Rename its chain, duplicate add a new one, etc. Do that until
+you've added every capture you want your amp to have.
+The next step involves opening the Chain Select Editor and adjusting
+the zones that every chain occupies its own. Make the zones as narrow
+as possible (1 width, <strong>see 4.</strong>). The old way distributed the zones equally
+amongst the chains, but that's not necessary. This way it's easier to add
+new captures without adjusting everything.
+In the Macro Mapping window adjust the Device On parameter for every chain:
+set it to the zone value from before, in both the Min and Max fields (<strong>see 5.</strong>).
+Now you can add a Macro variation for each chain. Set the "Setting"
+Macro to each chain number and save it, starting from 0 and keep
+increasing it.</p>
+<p>For the cabs, it's the same principle. Just that instead of Neural Amp
+Modeler, you can add an IR loader. Ableton Live has an IR loader natively,
+with the Hybrid Reverb effect. Unfortunately, it's only available in
+the Suite version. I am stuck on Standard, so I'm using a 3rd party
+IR loader: Lancaster Audio's Pulse. You can use any you'd like though.
+Instead of the Input and Output parameters of Neural Amp Modeler,
+I mapped the IR loader's high and low-pass filters. You can add anything
+you think you'll tweak often.</p>
+<p><img alt="" src="https://dglava.github.io/en/images/maas-novi-3.png"></p>
+<p>Once you're done, it should look like on the picture above. You can
+combine your amps and cabinets however you like. You can add effects,
+built in Live effects or plug-ins. You can even simulate something
+like an effects loop by adding the effects between the amp and cabinet.</p>
+<p><a href="https://dglava.github.io/en/files/amp-template.adg"><strong>Ableton Live 11 Amp Preset</strong></a></p>
+<p><a href="https://dglava.github.io/en/files/cab-template.adg"><strong>Ableton Live 11 Cabinet Preset</strong></a></p>
+<p>The Ableton devices above require Neural Amp Modeler and Lancaster
+Audio's Pulse installed.</p><p><a href="https://dglava.github.io/en/maas-2.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/labwc-undecorate.html" rel="bookmark"
+                           title="Permalink to Automatically remove titlebar in maximized windows for Labwc">Automatically remove titlebar in maximized windows for Labwc</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2025-04-13T00:00:00+00:00">
                 Published: Sun, 13 Apr 2025
@@ -38,115 +121,16 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/labwc.html">labwc</a> </p>Translations:
         <a href="https://dglava.github.io/en/../labwc-undecorate.html">bs</a>
 
-</footer><!-- /.post-info --><p>I've switched to Wayland. Instead of <a href="https://openbox.org/">Openbox</a>
+</footer><!-- /.post-info -->                <p>I've switched to Wayland. Instead of <a href="https://openbox.org/">Openbox</a>
 on Xorg,
 I started using <a href="https://labwc.github.io/">Labwc</a> with Wayland. I'm slowly
 moving my configuration to the new environment and trying to find solutions
 to problems that have already been solved for Openbox.</p>
 <p>One of those problems was the automatic removal of window titlebars
-for maximized windows. Since I use a top panel, the window name is displayed
-on the panel and I don't need the redundant titlebar. 
-<a href="https://dglava.github.io/en/orcsome.html">Orcsome was able to accomplish this</a>.
-Unfortunately, there's nothing like Orcsome for Wayland or Labwc (yet).</p>
-<p>My previous workaround for Labwc was using a config file tweak which would
-remove the decorations every time the window is maximized by clicking the
-"maximize" button on the titlebar. Also, maximizing windows via a keyboard
-shortcut would also remove the titlebar.
-It worked fine, but had its limitations: windows that start maximized
-would still have the titlebar and I'd have to remove it manually by pressing the
-maximize keyboard shortcut. I also tried to define a catch-all rule
-which starts everything maximized without decorations and then separate
-rules for each program that I didn't want to maximize. It's tedious, because
-you always need to keep updating it.</p>
-<p>Here's how the workarounds look like:</p>
-<p>This is the first case which removes the decorations when clicking
-the maximize button.</p>
-<div class="highlight"><pre><span></span><code>&lt;context name=&quot;Maximize&quot;&gt;
-  &lt;mousebind button=&quot;Left&quot; action=&quot;Click&quot;&gt;
-    &lt;action name=&quot;ToggleMaximize&quot; /&gt;
-    &lt;action name=&quot;SetDecorations&quot; decorations=&quot;none&quot; forceSSD=&quot;no&quot; /&gt;
-  &lt;/mousebind&gt;
-...
-&lt;/context&gt;
-</code></pre></div>
-
-<p>The second example is for the keyboard shortcut which maximizes and
-removes the decorations.</p>
-<div class="highlight"><pre><span></span><code>&lt;keybind key=&quot;W-Page_Up&quot;&gt;
-  &lt;action name=&quot;Maximize&quot;/&gt;
-  &lt;action name=&quot;SetDecorations&quot; decorations=&quot;none&quot; forceSSD=&quot;no&quot; /&gt;
-&lt;/keybind&gt;
-</code></pre></div>
-
-<h3>Native Labwc solution</h3>
-<p>With the help of AI, I was able to cobble together a patch to bring this
-functionality to Labwc natively. "Help" is an understatement in this case.
-The AI did everything, since I have no C programming knowledge whatsoever.</p>
-<p>To my surprise, it worked on the first try. Here's the patch.</p>
-<div class="highlight"><pre><span></span><code>diff --git a/include/view.h b/include/view.h
-index 0ff42c85..43a4d4f0 100644
---- a/include/view.h
-+++ b/include/view.h
-@@ -209,6 +209,9 @@ struct view {
-    bool inhibits_keybinds;
-    xkb_layout_index_t keyboard_layout;
-
-+   bool saved_ssd_enabled;
-+   bool saved_decoration_state_valid;
-+
-    /* Pointer to an output owned struct region, may be NULL */
-    struct region *tiled_region;
-    /* Set to region-&gt;name when tiled_region is free&#39;d by a destroying output */
-diff --git a/src/view.c b/src/view.c
-index e17a883c..1e86e3e3 100644
---- a/src/view.c
-+++ b/src/view.c
-@@ -1265,7 +1265,15 @@ view_apply_maximized_geometry(struct view *view)
- {
-    assert(view);
-    assert(view-&gt;maximized != VIEW_AXIS_NONE);
-+
-+    if (!view-&gt;saved_decoration_state_valid) {
-+        view-&gt;saved_ssd_enabled = view-&gt;ssd_enabled;
-+        view-&gt;saved_decoration_state_valid = true;
-+    }
-+
-+   view-&gt;ssd_enabled = false;
-    struct output *output = view-&gt;output;
-+
-    assert(output_is_usable(output));
-
-    struct wlr_box box = output_usable_area_in_layout_coords(output);
-@@ -1365,6 +1373,10 @@ view_restore_to(struct view *view, struct wlr_box geometry)
-        return;
-    }
-    if (view-&gt;maximized != VIEW_AXIS_NONE) {
-+       if (view-&gt;saved_decoration_state_valid) {
-+                   view-&gt;ssd_enabled = view-&gt;saved_ssd_enabled;
-+                   view-&gt;saved_decoration_state_valid = false;
-+               }
-        set_maximized(view, VIEW_AXIS_NONE);
-    }
-    view_move_resize(view, geometry);
-@@ -2492,6 +2504,7 @@ void
- view_init(struct view *view)
- {
-    assert(view);
-+   view-&gt;saved_decoration_state_valid = false;
-
-    wl_signal_init(&amp;view-&gt;events.new_app_id);
-    wl_signal_init(&amp;view-&gt;events.new_title);
-</code></pre></div>
-
-<p>Arch Linux users can use <a href="https://github.com/dglava/pkgbuilds/tree/master/labwc-noxwayland-undecorate-git">my PKGBUILD</a>.
-Bear in mind that this is working for the current Labwc version. I have
-no idea if I'll update the patch for future versions. My hopes are that
-the maintainers of Labwc implement this natively via a config option.</p><p><a href="https://dglava.github.io/en/labwc-undecorate.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+for …</p>
+                <a class="readmore" href="https://dglava.github.io/en/labwc-undecorate.html">read more</a>
+<p><a href="https://dglava.github.io/en/labwc-undecorate.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -170,34 +154,9 @@ the maintainers of Labwc implement this natively via a config option.</p><p><a h
                 <a class="readmore" href="https://dglava.github.io/en/from-bethlehem-to-jenin.html">read more</a>
 <p><a href="https://dglava.github.io/en/from-bethlehem-to-jenin.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dglava.github.io/en/youll-have-to-swim-orig.html" rel="bookmark"
-                           title="Permalink to You'll Have to Swim (album version)">You'll Have to Swim (album version)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-12-18T00:00:00+00:00">
-                Published: Wed, 18 Dec 2024
-        </abbr>
-
-<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
-<p>Tags: <a href="https://dglava.github.io/en/tag/tabs.html">tabs</a> <a href="https://dglava.github.io/en/tag/sheet-music.html">sheet-music</a> </p>Translations:
-        <a href="https://dglava.github.io/en/../youll-have-to-swim-orig.html">bs</a>
-
-</footer><!-- /.post-info -->                <p><a href="https://www.youtube.com/watch?v=pjiIrZ5IzIE">Clann Zu - You'll Have to Swim</a></p>
-<p>I have already tried <a href="https://dglava.github.io/youll-have-to-swim.html">transcribing this once</a>.
-Now, 6 years later, I'm still not completely sure that it's correct and
-authentic to the album version. For example the part starting on bar
-95: I can't figure out the first 2 chords. I know that …</p>
-                <a class="readmore" href="https://dglava.github.io/en/youll-have-to-swim-orig.html">read more</a>
-<p><a href="https://dglava.github.io/en/youll-have-to-swim-orig.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 15
+    Page 1 / 16
         <a href="https://dglava.github.io/en/author/dino-duratovic2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->

@@ -28,7 +28,90 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/en/ezd3-ableton.html">EZDrummer 3 multi-out in Ableton Live</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/en/maas-2.html">Better Modular Ableton Amp Sim</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-06-04T00:00:00+00:00">
+                Published: Wed, 04 Jun 2025
+        </abbr>
+
+<p>In: <a href="https://dglava.github.io/en/category/stvari.html">Stvari</a></p>
+<p>Tags: <a href="https://dglava.github.io/en/tag/ableton.html">ableton</a> </p>Translations:
+        <a href="https://dglava.github.io/en/../maas-2.html">bs</a>
+
+</footer><!-- /.post-info --><p>Someone requested updated presets on this
+<a href="https://dglava.github.io/en/maas.html">this article</a>.
+I noticed that it still contained instructions on how to create the
+"old" type of racks: with multiple amps inside one preset.
+It's time to post an update to those, showing a better way to approach it.</p>
+<p>I might create a video showcasing this, but for now this text guide
+will have to do.</p>
+<h2>The new way</h2>
+<p>In the old article, the amps were all inside one audio effect rack. The
+other audio effect rack contained the guitar cabs. Having one rack
+per amp and cab enables you to mix and match them in different ways.
+The good Neural Amp Modeler captures come with a bunch of different
+settings for an amp, enabling you to basically have a complete amp
+as a preset.</p>
+<p><img alt="" src="https://dglava.github.io/en/images/maas-novi-1.png"></p>
+<p>Add an Audio Effects Rack. Show the Device Chain list and add an
+instance of Neural Amp Modeler to it (<strong>see 1.</strong>). Inside of Neural
+Amp Modeler adjust its settings that you want the default instance
+to have. For example I turn off the EQ and the noise gate. The Input
+and Output parameters will be useful. Turn on the Macro controls and
+map the Input and Output parameters to them. Additionally, map the
+Chain Selector to a macro (<strong>see 2.</strong>). You will also need to map the
+Neural Amp Modeler Device's On/Off switch to the same macro you mapped
+the Chain Selctor to. Finally, add one Macro
+variation (<strong>see 3.</strong>). You can colour code it and rename your macros.
+If you rename the unused macro to just a " " (space), it will look nicer.</p>
+<p>That's the preset for your amp. Save it and whenever you want to add an
+amp, use it as a starting point. Let's do that now.</p>
+<p><img alt="" src="https://dglava.github.io/en/images/maas-novi-2.png"></p>
+<p>Open the Neural Amp Modeler instance in the chan. Load your first
+capture and rename the chain to something relevant (here it's Crank Low Gain).
+Duplicate the chain. Open Neural Amp Modeler again and load a different
+capture. Rename its chain, duplicate add a new one, etc. Do that until
+you've added every capture you want your amp to have.
+The next step involves opening the Chain Select Editor and adjusting
+the zones that every chain occupies its own. Make the zones as narrow
+as possible (1 width, <strong>see 4.</strong>). The old way distributed the zones equally
+amongst the chains, but that's not necessary. This way it's easier to add
+new captures without adjusting everything.
+In the Macro Mapping window adjust the Device On parameter for every chain:
+set it to the zone value from before, in both the Min and Max fields (<strong>see 5.</strong>).
+Now you can add a Macro variation for each chain. Set the "Setting"
+Macro to each chain number and save it, starting from 0 and keep
+increasing it.</p>
+<p>For the cabs, it's the same principle. Just that instead of Neural Amp
+Modeler, you can add an IR loader. Ableton Live has an IR loader natively,
+with the Hybrid Reverb effect. Unfortunately, it's only available in
+the Suite version. I am stuck on Standard, so I'm using a 3rd party
+IR loader: Lancaster Audio's Pulse. You can use any you'd like though.
+Instead of the Input and Output parameters of Neural Amp Modeler,
+I mapped the IR loader's high and low-pass filters. You can add anything
+you think you'll tweak often.</p>
+<p><img alt="" src="https://dglava.github.io/en/images/maas-novi-3.png"></p>
+<p>Once you're done, it should look like on the picture above. You can
+combine your amps and cabinets however you like. You can add effects,
+built in Live effects or plug-ins. You can even simulate something
+like an effects loop by adding the effects between the amp and cabinet.</p>
+<p><a href="https://dglava.github.io/en/files/amp-template.adg"><strong>Ableton Live 11 Amp Preset</strong></a></p>
+<p><a href="https://dglava.github.io/en/files/cab-template.adg"><strong>Ableton Live 11 Cabinet Preset</strong></a></p>
+<p>The Ableton devices above require Neural Amp Modeler and Lancaster
+Audio's Pulse installed.</p><p><a href="https://dglava.github.io/en/maas-2.html#disqus_thread">Comments</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Other articles</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/en/ezd3-ableton.html" rel="bookmark"
+                           title="Permalink to EZDrummer 3 multi-out in Ableton Live">EZDrummer 3 multi-out in Ableton Live</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2024-05-10T00:00:00+00:00">
                 Published: Fri, 10 May 2024
@@ -38,42 +121,14 @@
 <p>Tags: <a href="https://dglava.github.io/en/tag/ableton.html">ableton</a> <a href="https://dglava.github.io/en/tag/ezd3.html">ezd3</a> </p>Translations:
         <a href="https://dglava.github.io/en/../ezd3-ableton.html">bs</a>
 
-</footer><!-- /.post-info --><p>Multi-out setups are useful for using various effects or for manipulating
+</footer><!-- /.post-info -->                <p>Multi-out setups are useful for using various effects or for manipulating
 only certain parts of the drumkit. Multi-outs in this context means
 that each virtual mic's output gets routed to a separate track inside of Live.
 If you also use the "Original Mix" preset of EZD3, you're basically
-mixing "raw drums", which is really neat if you want that much control over it
-or to create new sounds from scratch.</p>
-<p><img class="slika" src="https://dglava.github.io/en/images/ezd3-ableton1.png" /></p>
-<h3>My solution</h3>
-<p>There are a bunch of ways to solve this on the internet. I didn't like them
-due to various reasons, so I set out to create my own solution.</p>
-<p>The current one I have consists of an Instrument Rack which is holding
-multiple Chains. Those Chains hold an External Instrument into which the
-output from EZD3 is routed. Apart from having each mic routed to its own
-track, the MIDI clips also have drum names on them for ease of use. This
-is accomplished via an instance of a MIDI Effect Rack that is holding
-a Chain for each drum articulation that EZD3 offers. Each one of those
-Chains is mapped to one note (via the <em>Key</em> tab).</p>
-<p><img class="slika" src="https://dglava.github.io/en/images/ezd3-ableton5.png" /></p>
-<p>It might sound complicated by reading the description, but it really isn't.
-You'll realize once you look at the preset.
-I have create presets for all the 3 original mixes available in EZD3
-(Main Room, Bright Room, Tight Room) and for the Into the Dark expansion pack.</p>
-<p><br></p>
-<p><img class="slika" src="https://dglava.github.io/en/images/ezd3-ableton3.png" /></p>
-<h4>Click <a href="https://dglava.github.io/en/files/ezd3-ableton.zip"><strong>HERE</strong></a> to download.</h4>
-<p>Put the <em>ADG</em> files inside of your <em>Ableton User Folder</em> presets for Instrument Racks.
-Put the files from <em>EdrumPresets</em> into your Toontrack folder with the same
-name inside of your My Documents folder. Those files are MIDI mapping
-files. Ableton Live doesn't save those together with the <em>ADG</em> file (it does
-the mixer and sound settings) to use the presets you need to copy them manually.</p>
-<p><img class="slika" src="https://dglava.github.io/en/images/ezd3-ableton6.png" /></p><p><a href="https://dglava.github.io/en/ezd3-ableton.html#disqus_thread">Comments</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Other articles</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+mixing "raw …</p>
+                <a class="readmore" href="https://dglava.github.io/en/ezd3-ableton.html">read more</a>
+<p><a href="https://dglava.github.io/en/ezd3-ableton.html#disqus_thread">Comments</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

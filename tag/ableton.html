@@ -28,7 +28,92 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dglava.github.io/ezd3-ableton.html">EZDrummer 3 multi-izlazi u Ableton Live</a></h1>
+                    <h1 class="entry-title"><a href="https://dglava.github.io/maas-2.html">Bolji Modularni Ableton Simulator Pojačala</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-06-04T00:00:00+00:00">
+                Objavljeno: Sri, 04 Jun 2025
+        </abbr>
+
+<p>Kategorija: <a href="https://dglava.github.io/category/stvari.html">Stvari</a></p>
+<p>Tagovi: <a href="https://dglava.github.io/tag/ableton.html">ableton</a> </p>Prevodi:
+        <a href="https://dglava.github.io/en/maas-2.html">en</a>
+
+</footer><!-- /.post-info --><p>Neko je na <a href="https://dglava.github.io/maas.html">ovom članku</a> zatražio
+<em>presete</em> za simulaciju gitarski pojačala i zvučnika. Vidio sam da
+je članak zastario što se tiče metode gradnje spomenuti pojačala i zvučnika.
+Vrijeme je da objavim bolje, unaprijeđeno riješenje koje trenutno
+koristim.</p>
+<p>Možda ću napraviti video koji pokazuje kako napraviti ovo, ali za sad je samo tekstualno
+upustvo dole dostupno.</p>
+<h2>Novi način</h2>
+<p>U starom članku su različita pojačala bila unutar jednog <em>audio effects
+racka</em>. Drugi <em>audio effects rack</em> je držao sve kabinete sa zvučnicima.
+Primjetio sam da je mnogo bolje svako pojačalo i kabinet za sebe
+spremiti. To omogućava, ne samo kombiniranje različitih pojačala, već
+i mnogo preglednije spremanje različitih postavki. Dobri
+Neural Amp Modeler modeli dolaze sa više <em>snimaka</em>, sa različitim
+gain, bas, <em>treble</em> i <em>presence</em> postavkama. Sve to možete snimiti
+kao <em>preset</em>.</p>
+<p><img alt="" src="https://dglava.github.io/images/maas-novi-1.png"></p>
+<p>Dodaj <em>Audio Effects Rack</em>. Prikaži listu lanaca i dodaj Neural Amp Modeler
+instancu u lanac (<strong>pogledaj pod 1.</strong>). Unutar Neural Amp Modelera
+podesi postavke, koje će biti standardne. Ja isključim EQ i <em>Noise Gate</em>,
+jer ih ne koristim. <em>Input</em> i <em>Output</em> opcije ćemo koristiti doduše.
+Uključi <em>Macro</em> kontrole i mapiraj <em>Input</em> i <em>Output</em> parametre iz
+Neural Amp Modelera na njih. Također mapiraj <em>Chain Selector</em> na jedan
+Macro (<strong>pogledaj pod 2.</strong>). Mapiraj "Device On/Off" dugme na Neural
+Amp Modeleru na isti <em>Macro</em> kao i <em>Chain Selector</em>. Za kraj dodaj jednu
+Macro varijaciju (<strong>pogledaj pod 3.</strong>). Možeš dodati i boje
+za lakše prepoznavanje, a Macro koji se ne koristi možeš preimenovati
+u prazno, radi boljeg izgleda.</p>
+<p>To je preset za pojačalo. Snimi ga, i kad god želiš dodati novo,
+koristi taj preset kao startnu poziciju. To ćemo sad uraditi.</p>
+<p><img alt="" src="https://dglava.github.io/images/maas-novi-2.png"></p>
+<p>Otvori instancu Neural Amp Modelera u lancu. Učitaj prvi snimak pojačala.
+Preimenuj lanac u nešto povezano s tim snimkom (u primjeru je "Crank Low Gain").
+Dupliciraj taj lanac,
+otvori Neural Amp Modeler instancu u njemu i učitaj drugi snimak i preimenuj ga.
+Ponovi to i mapiraj svaki snimak koji želiš.
+Otvori <em>Chain Select Editor</em> i podesi zone tako da svaki lanac ima
+zonu od raspona 1 (najmanju) za sebe (<strong>vidi pod 4.</strong>). Ovo olakšava kasnije mapiranje
+na Macro varijacije. U prošloj verziji, širine zona su ravnomjerno raspoređene
+na broj lanaca, ali je to bespotrebno.
+U <em>Macro Mapping</em> prozoru, podesi "Device On" parametar za svaki lanac.
+Podesi ga na vrijednost gore navedene zone. <em>Min</em> i <em>Max</em> su isti broj (<strong>vidi pod 5.</strong>).
+Sljedeće dodaj Macro varijaciju za svaki lanac, tj. snimku Neural Amp Modelera.
+Podesi "Setting" Macro, počevši od 0 i snimi na odgovarajuću Macro varijaciju.
+Sljedeći je Setting 1 i snimi ga na sljedeću Macro varijaciju, itd.
+Snimi <em>Preset</em> pod imenom koje želiš, npr. pojačala. Sad možeš jednostavno
+birati postavke pojačala klikom na strelicu Macro varijacije.</p>
+<p>Za kabinete sa zvučnicima je isti princip. Samo umjesto Neural Amp Modelera
+koristi neki <em>impulse response loader</em>. Ableton Live pruža mogućnost
+učitavanja IR fajlova uz pomoć Hybrid Reverb efekta. Dostupan je samo
+u Suite verziji doduše, tako da ja u ovom primjeru koristim <em>Pulse</em>
+od Lancaster Audio. Možete koristiti koji hoćete.
+Umjesto Input i Outputa, kod kabineta sam mapirao opcije od <em>Pulse</em>
+za podešavanje <em>high</em> i <em>low pass</em> filtera. Možete mapirati šta god
+mislite da ćete često podešavati.</p>
+<p><img alt="" src="https://dglava.github.io/images/maas-novi-3.png"></p>
+<p>Na kraju svega će otprilike izgledati kao na slici gore. Možete kombinirati
+sva pojačala i kabinete koje imate. Također možete postavljati opet
+bilo koji efekat, bez obzira da li je ugrađeni od Live ili dodatni
+plug-in. Možete čak približno simulirati <em>effects loop</em>, stavljajući efekte između
+pojačala i kabineta.</p>
+<p><a href="https://dglava.github.io/files/amp-template.adg"><strong>Ableton Live 11 Pojačalo Preset</strong></a></p>
+<p><a href="https://dglava.github.io/files/cab-template.adg"><strong>Ableton Live 11 Kabinet Preset</strong></a></p><p><a href="https://dglava.github.io/maas-2.html#disqus_thread">Komentari</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h3>Drugi članci</h3>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dglava.github.io/ezd3-ableton.html" rel="bookmark"
+                           title="Permalink to EZDrummer 3 multi-izlazi u Ableton Live">EZDrummer 3 multi-izlazi u Ableton Live</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2024-05-10T00:00:00+00:00">
                 Objavljeno: Pet, 10 Maj 2024
@@ -38,41 +123,14 @@
 <p>Tagovi: <a href="https://dglava.github.io/tag/ableton.html">ableton</a> <a href="https://dglava.github.io/tag/ezd3.html">ezd3</a> </p>Prevodi:
         <a href="https://dglava.github.io/en/ezd3-ableton.html">en</a>
 
-</footer><!-- /.post-info --><p>Multipli izlazi su korisni za korištenje raznih efekata i manipulacija
+</footer><!-- /.post-info -->                <p>Multipli izlazi su korisni za korištenje raznih efekata i manipulacija
 na samo izvjesnim dijelovima bubnja. Pod multiplim izlazima podrazumijevam
 svaki (virtuelni) mikrofon iz <em>EZDrummera</em> na zasebnoj traci. U suštini
 kao što bi se stvarni bubnjevi idealno snimali sa više mikrofona. Ako
-se koristi <em>Original mix</em> iz EZDrummera, isto je kao da miksate
-"sirove" bubnjeve.</p>
-<p><img class="slika" src="https://dglava.github.io/images/ezd3-ableton1.png" /></p>
-<h3>Moje riješenje</h3>
-<p>Na internetu postoji mnogo različiti ideja kako ovo riješiti. Meni nisu
-odgovarali zbog nekoliko razloga, tako da sam došao do ovog trenutnog
-koje zadovoljava sve zahtijeve.</p>
-<p>Sastoji se iz <em>instrument racka</em> koji koristi više <em>chains</em> unutar
-kojih se nalaze <em>external instrument</em> instance koje primaju izlaze
-iz EZD3. Također su dostupna i imena bubnjeva na notama u MIDI klip
-prikazu. To je moguće zbog korištenja <em>MIDI Effect Racka</em> u prvom
-<em>chainu</em>, u kojem se nalazi po jedan <em>chain</em> za svaki udarac, mapiran
-samo na jednu notu (u <em>Key</em> polju).</p>
-<p><img class="slika" src="https://dglava.github.io/images/ezd3-ableton5.png" /></p>
-<p>Zvuči komplikovano, ali nije ako se jednostavno skine <em>preset</em>.
-Ja sam napravio po jedan za svaki originalni miks dostupan u EZD3
-(<em>Main Room</em>, <em>Bright Room</em> i <em>Tight Room</em>) i za <em>Into the Dark</em> ekspanziju
-koju posjedujem.</p>
-<p><br></p>
-<p><img class="slika" src="https://dglava.github.io/images/ezd3-ableton3.png" /></p>
-<h4>Klikni <a href="https://dglava.github.io/files/ezd3-ableton.zip"><strong>OVDJE</strong></a> za preuzimanje.</h4>
-<p>Ubaci <em>ADG</em> fajlove u svoj <em>Ableton User Folder</em> pod <em>presets</em> za
-<em>Instrument Rack</em>.
-Ubaci stvari iz <em>EdrumPresets</em> foldera u Toontrack folder unutar <em>My Documents</em>.
-To su MIDI mapiranja da pravi udarci budu <em>triggerovani</em>. Nažalost Ableton
-Live ne snimi njih u ADG fajlu (dok npr. miks postavke unutar EZD3 snima).</p><p><a href="https://dglava.github.io/ezd3-ableton.html#disqus_thread">Komentari</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h3>Drugi članci</h3>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+se koristi <em>Original mix</em> iz EZDrummera, isto je kao …</p>
+                <a class="readmore" href="https://dglava.github.io/ezd3-ableton.html">pročitaj više</a>
+<p><a href="https://dglava.github.io/ezd3-ableton.html#disqus_thread">Komentari</a></p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
