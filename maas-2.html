@@ -44,52 +44,58 @@
         <a href="https://dglava.github.io/en/maas-2.html">en</a>
 
 </footer><!-- /.post-info -->      <p>Neko je na <a href="https://dglava.github.io/maas.html">ovom članku</a> zatražio
-<em>presete</em> za simulaciju gitarski pojačala i zvučnika. Vidio sam da
-je članak zastario što se tiče metode gradnje spomenuti pojačala i zvučnika.
-Vrijeme je da objavim bolje, unaprijeđeno riješenje koje trenutno
+<em>presete</em> za simulaciju gitarskih pojačala i zvučnika. Primjetio sam da
+je članak zastario što se tiče gradnje spomenutih pojačala i zvučnika.
+Vrijeme je da objavim bolje i unaprijeđeno rješenje koje trenutno
 koristim.</p>
-<p>Možda ću napraviti video koji pokazuje kako napraviti ovo, ali za sad je samo tekstualno
-upustvo dole dostupno.</p>
-<h2>Novi način</h2>
-<p>U starom članku su različita pojačala bila unutar jednog <em>audio effects
-racka</em>. Drugi <em>audio effects rack</em> je držao sve kabinete sa zvučnicima.
-Primjetio sam da je mnogo bolje svako pojačalo i kabinet za sebe
-spremiti. To omogućava, ne samo kombiniranje različitih pojačala, već
-i mnogo preglednije spremanje različitih postavki. Dobri
-Neural Amp Modeler modeli dolaze sa više <em>snimaka</em>, sa različitim
-gain, bas, <em>treble</em> i <em>presence</em> postavkama. Sve to možete snimiti
-kao <em>preset</em>.</p>
+<p>Možda ću napraviti video koji pokazuje kako to uraditi, ali za sad je
+dostupno samo tekstualno upustvo u nastavku.</p>
 <p><img alt="Pojačalo i kabinet" src="https://dglava.github.io/images/maas-novi-1.png"></p>
-<p>Dodaj <em>Audio Effects Rack</em>. Prikaži listu lanaca i dodaj Neural Amp Modeler
+<h2>Novi način</h2>
+<p>U starom članku, različita pojačala bila su unutar jednog <em>Audio Effects Racka</em>,
+dok je drugi <em>Audio Effects Rack</em> sadržavao sve kabinete sa zvučnicima.
+Uvidio sam da je mnogo bolje pohraniti svako pojačalo i kabinet zasebno.
+To omogućava ne samo kombinovanje različitih pojačala, već i mnogo
+preglednije čuvanje različitih postavki.
+Dobri Neural Amp Modeler modeli dolaze sa više <em>snimaka</em>, s različitim
+postavkama za gain, bas, <em>treble</em> i <em>presence</em>.
+Sve to možete sačuvati kao <em>preset</em>.</p>
+<ol>
+<li>Dodaj <em>Audio Effects Rack</em>.</li>
+<li>Prikaži listu lanaca i dodaj Neural Amp Modeler
 instancu u lanac (<strong>pogledaj pod 1.</strong>). Unutar Neural Amp Modelera
 podesi postavke, koje će biti standardne. Ja isključim EQ i <em>Noise Gate</em>,
-jer ih ne koristim. <em>Input</em> i <em>Output</em> opcije ćemo koristiti doduše.
-Uključi <em>Macro</em> kontrole i mapiraj <em>Input</em> i <em>Output</em> parametre iz
-Neural Amp Modelera na njih. Također mapiraj <em>Chain Selector</em> na jedan
-Macro (<strong>pogledaj pod 2.</strong>). Mapiraj "Device On/Off" dugme na Neural
-Amp Modeleru na isti <em>Macro</em> kao i <em>Chain Selector</em>. Za kraj dodaj jednu
-Macro varijaciju (<strong>pogledaj pod 3.</strong>). Možeš dodati i boje
+jer ih ne koristim. <em>Input</em> i <em>Output</em> opcije ćemo koristiti doduše.</li>
+<li>Uključi <em>Macro</em> kontrole i mapiraj <em>Input</em> i <em>Output</em> parametre iz
+Neural Amp Modelera na njih.</li>
+<li>Mapiraj <em>Chain Selector</em> na jedan
+Macro (<strong>pogledaj pod 2.</strong>).</li>
+<li>Mapiraj "Device On/Off" dugme na Neural
+Amp Modeleru na isti <em>Macro</em> kao i <em>Chain Selector</em>.</li>
+<li>Dodaj jednu Macro varijaciju (<strong>pogledaj pod 3.</strong>). Možeš dodati i boje
 za lakše prepoznavanje, a Macro koji se ne koristi možeš preimenovati
-u prazno, radi boljeg izgleda.</p>
+u <code>" "</code> (razmak), radi boljeg izgleda.</li>
+</ol>
 <p>To je preset za pojačalo. Snimi ga, i kad god želiš dodati novo,
 koristi taj preset kao startnu poziciju. To ćemo sad uraditi.</p>
-<p><img alt="Razne postavke za pojačalo" src="https://dglava.github.io/images/maas-novi-2.png"></p>
-<p>Otvori instancu Neural Amp Modelera u lancu. Učitaj prvi snimak pojačala.
-Preimenuj lanac u nešto povezano s tim snimkom (u primjeru je "Crank Low Gain").
-Dupliciraj taj lanac,
-otvori Neural Amp Modeler instancu u njemu i učitaj drugi snimak i preimenuj ga.
-Ponovi to i mapiraj svaki snimak koji želiš.
-Otvori <em>Chain Select Editor</em> i podesi zone tako da svaki lanac ima
+<ol>
+<li>Otvori instancu Neural Amp Modelera u lancu i učitaj prvi snimak pojačala.</li>
+<li>Preimenuj lanac u nešto povezano s tim snimkom (u primjeru je "Crank Low").</li>
+<li>Dupliciraj taj lanac, otvori Neural Amp Modeler instancu u njemu i
+učitaj drugi snimak i preimenuj ga. Ponovi to i mapiraj svaki snimak koji želiš.</li>
+<li>Otvori <em>Chain Select Editor</em> i podesi zone tako da svaki lanac ima
 zonu od raspona 1 (najmanju) za sebe (<strong>vidi pod 4.</strong>). Ovo olakšava kasnije mapiranje
 na Macro varijacije. U prošloj verziji, širine zona su ravnomjerno raspoređene
-na broj lanaca, ali je to bespotrebno.
-U <em>Macro Mapping</em> prozoru, podesi "Device On" parametar za svaki lanac.
+na broj lanaca, ali je to bespotrebno.</li>
+<li>U <em>Macro Mapping</em> prozoru, podesi "Device On" parametar za svaki lanac.
 Podesi ga na vrijednost gore navedene zone. <em>Min</em> i <em>Max</em> su isti broj (<strong>vidi pod 5.</strong>).
 Sljedeće dodaj Macro varijaciju za svaki lanac, tj. snimku Neural Amp Modelera.
 Podesi "Setting" Macro, počevši od 0 i snimi na odgovarajuću Macro varijaciju.
 Sljedeći je Setting 1 i snimi ga na sljedeću Macro varijaciju, itd.
 Snimi <em>Preset</em> pod imenom koje želiš, npr. pojačala. Sad možeš jednostavno
-birati postavke pojačala klikom na strelicu Macro varijacije.</p>
+birati postavke pojačala klikom na strelicu Macro varijacije.</li>
+</ol>
+<p><img alt="Razne postavke za pojačalo" src="https://dglava.github.io/images/maas-novi-2.png"></p>
 <p>Za kabinete sa zvučnicima je isti princip. Samo umjesto Neural Amp Modelera
 koristi neki <em>impulse response loader</em>. Ableton Live pruža mogućnost
 učitavanja IR fajlova uz pomoć Hybrid Reverb efekta. Dostupan je samo
@@ -106,6 +112,8 @@ plug-in. Možete čak približno simulirati <em>effects loop</em>, stavljajući 
 pojačala i kabineta.</p>
 <p><a href="https://dglava.github.io/files/amp-template.adg"><strong>Ableton Live 11 Pojačalo Preset</strong></a></p>
 <p><a href="https://dglava.github.io/files/cab-template.adg"><strong>Ableton Live 11 Kabinet Preset</strong></a></p>
+<p>Gore dostupni Ableton Live uređaji zahtijevaju instalaciju Neural
+Amp Modelera i Lancaster Audio Pulsea.</p>
     </div><!-- /.entry-content -->
     <div class="comments">
       <div id="disqus_thread"></div>
